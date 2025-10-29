@@ -1,0 +1,17 @@
+html,
+body,
+#__nuxt,
+#__layout {
+    min-height: 100%;
+    width: 100%;
+    margin: 0;
+
+}
+
+*/
+/* #__nuxt,
+#__layout */
+
+body {
+    margin: 0;
+}
