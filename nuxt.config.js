@@ -1,5 +1,20 @@
 import colors from 'vuetify/es5/util/colors'
 export default {
+      router: {
+    extendRoutes(routes, resolve) {
+      routes.forEach(route => {
+        // สำหรับหน้า index (หน้าแรก)
+        if (route.name === 'index') {
+          route.meta = { page: 1 }
+        }
+
+        // สำหรับหน้า users
+        if (route.name === 'users') {
+          route.meta = { page: 'users' }
+        }
+      })
+    }
+  },
 
     // Global page headers: https://go.nuxtjs.dev/config-head
     head: {
