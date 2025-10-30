@@ -103,17 +103,7 @@ div.user-icon {
 }
 
 .user-section:hover {
-  background-color: rgb(186, 227, 226);
+  background-color: rgb(192, 227, 186);
   cursor: pointer;
 }
-
-/* .user-section:has(.user-icon:hover) {
-  background-color: rgb(186, 227, 226);
-  cursor: pointer;
-} */
 </style>
-
-
-
-
-
