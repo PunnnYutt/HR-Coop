@@ -1,19 +1,15 @@
 <template>
   <div class="page-section">
     <Topbar />
-    <Header />
     <nuxt />
   </div>
 </template>
 
-
 <script>
 import Topbar from "../components/Topbar.vue";
-import Header from "../components/Header.vue";
 export default {
   components: {
     Topbar,
-    Header,
   },
 };
 </script>
@@ -28,6 +24,3 @@ div.page-section {
   align-items: center;
 }
 </style>
-
-
-
