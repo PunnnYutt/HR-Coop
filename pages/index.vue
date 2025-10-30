@@ -78,6 +78,17 @@
                             class="pr-md-4"
                           />
                           <v-select
+                            v-else-if="position.number === 2"
+                            :items="WorkplaceFields"
+                            item-text="label"
+                            item-value="label"
+                            outlined
+                            dense
+                            placeholder="เลือกประจำศูนย์"
+                            clearable
+                            class="pr-md-4"
+                          />
+                          <v-select
                             v-else-if="position.number === 3"
                             :items="WorkplaceFields"
                             item-text="label"
