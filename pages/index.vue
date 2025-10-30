@@ -2,23 +2,34 @@
   <v-app>
     <v-container>
       <v-row :class="$vuetify.breakpoint.mdAndUp ? '' : 'show-display'">
-        <v-col class="pa-0 mt-3" :class="$vuetify.breakpoint.mdAndUp ? '' : 'show-display'">
-          <v-card
-          elevation="0"
-          rounded="lg"
-          class="pa-0"
+        <v-col
+          class="pa-0 mt-3"
           :class="$vuetify.breakpoint.mdAndUp ? '' : 'show-display'"
+        >
+          <v-card
+            elevation="0"
+            rounded="lg"
+            class="pa-0"
+            :class="$vuetify.breakpoint.mdAndUp ? '' : 'show-display'"
           >
             <v-row class="ma-md-0">
               <v-col class="mt-3 pa-0 px-md-4 pt-md-4 mt-md-0 pb-md-0">
                 <v-card
                   rounded="lg"
                   class="px-0 pb-3 pt-0 mt-3 mt-md-0"
-                  :class="$vuetify.breakpoint.mdAndUp ? 'shadow-card' : 'shadow-card-none'"
+                  :class="
+                    $vuetify.breakpoint.mdAndUp
+                      ? 'shadow-card'
+                      : 'shadow-card-none'
+                  "
                 >
                   <v-row no-gutters class="green lighten-5 py-2 px-3 mb-3">
                     <v-col cols="12">
-                      <p class="primary--text lighten-1 mb-0 font-weight-medium">ตำแหน่งงาน / Position</p>
+                      <p
+                        class="primary--text lighten-1 mb-0 font-weight-medium"
+                      >
+                        ตำแหน่งงาน / Position
+                      </p>
                     </v-col>
                   </v-row>
                   <v-row no-gutters class="px-3 pt-3">
@@ -32,7 +43,13 @@
                     >
                       <v-row no-gutters>
                         <v-col cols="12">
-                          <p class="mb-1 font-weight-light">{{ position.label }}   <span class="pl-2 b-1 grey--text text--lighten-1 font-weight-light">{{ position.labelEn }}</span></p>
+                          <p class="mb-1 font-weight-light">
+                            {{ position.label }}
+                            <span
+                              class="pl-2 b-1 grey--text text--lighten-1 font-weight-light"
+                              >{{ position.labelEn }}</span
+                            >
+                          </p>
                         </v-col>
                         <v-col cols="12" class="pl-0 position-bottom">
                           <v-select
@@ -44,7 +61,9 @@
                             dense
                             placeholder="เลือกตำแหน่งงาน"
                             clearable
-                            :class="position.number === 1 ? 'pr-md-4' : 'pr-lg-4'"
+                            :class="
+                              position.number === 1 ? 'pr-md-4' : 'pr-lg-4'
+                            "
                           />
                           <v-select
                             v-else-if="position.number === 3"
@@ -102,19 +121,34 @@
                 <v-card
                   rounded="lg"
                   class="px-0 pb-3 pt-0 mt-3 mt-md-0"
-                  :class="$vuetify.breakpoint.mdAndUp ? 'shadow-card' : 'shadow-card-none'"
+                  :class="
+                    $vuetify.breakpoint.mdAndUp
+                      ? 'shadow-card'
+                      : 'shadow-card-none'
+                  "
                 >
                   <v-row no-gutters class="green lighten-5 py-2 px-3 mb-3">
-                      <v-col cols="12">
-                        <p class="primary--text lighten-1 mb-0 font-weight-medium">ประวัติส่วนตัว / Personal</p>
-                      </v-col>
-                    </v-row>
+                    <v-col cols="12">
+                      <p
+                        class="primary--text lighten-1 mb-0 font-weight-medium"
+                      >
+                        ประวัติส่วนตัว / Personal
+                      </p>
+                    </v-col>
+                  </v-row>
                   <v-row>
                     <v-col cols="12" md="3">
                       <v-row class="px-3 pt-3">
-                        <v-col cols="12" class="d-flex flex-column align-center justify-center" nogutters>
+                        <v-col
+                          cols="12"
+                          class="d-flex flex-column align-center justify-center"
+                          nogutters
+                        >
                           <v-row cols="12" class="mt-4">
-                            <v-hover v-if="!isProfileComplete" v-slot="{ isHovering, props }">
+                            <v-hover
+                              v-if="!isProfileComplete"
+                              v-slot="{ isHovering, props }"
+                            >
                               <v-col
                                 v-bind="props"
                                 class="d-flex flex-column align-center justify-center upload-card"
@@ -123,7 +157,9 @@
                                 <v-icon
                                   color="primary"
                                   size="48"
-                                  :class="isHovering ? 'hovering' : 'not-hovering'"
+                                  :class="
+                                    isHovering ? 'hovering' : 'not-hovering'
+                                  "
                                 >
                                   mdi-cloud-upload-outline
                                 </v-icon>
@@ -134,9 +170,17 @@
                               type="file"
                               class="d-none"
                               @change="onFileChange"
+                            />
+                            <v-col
+                              v-if="previewUrl"
+                              class="mt-4 upload-preview"
                             >
-                            <v-col v-if="previewUrl" class="mt-4 upload-preview">
-                              <img :src="previewUrl" alt="Preview" max-width="200px" max-height="210px">
+                              <img
+                                :src="previewUrl"
+                                alt="Preview"
+                                max-width="200px"
+                                max-height="210px"
+                              />
                             </v-col>
                           </v-row>
                           <v-row>
@@ -150,25 +194,61 @@
                     </v-col>
                     <v-col cols="12" md="9" class="pl-6 pl-md-0">
                       <v-row>
-                        <v-col cols="12" no-gutters class="d-flex justify-start align-center mt-12 mt-md-0 pb-0">
-                          <v-radio-group v-model="selectedGender" row class="color-label custom-label">
+                        <v-col
+                          cols="12"
+                          no-gutters
+                          class="d-flex justify-start align-center mt-12 mt-md-0 pb-0"
+                        >
+                          <v-radio-group
+                            v-model="selectedGender"
+                            row
+                            class="color-label custom-label"
+                          >
                             <template #label>
-                              <span>คำนำหน้าชื่อ<span class="red--text"> * </span>:</span>
+                              <span
+                                >คำนำหน้าชื่อ<span class="red--text"> * </span
+                                >:</span
+                              >
                             </template>
-                            <v-radio label="นาย" value="one" class="color-label custom-radio">test</v-radio>
-                            <v-radio label="นาง" value="two" class="color-label custom-radio">test</v-radio>
-                            <v-radio label="นางสาว" value="three" class="color-label custom-radio">test</v-radio>
+                            <v-radio
+                              label="นาย"
+                              value="one"
+                              class="color-label custom-radio"
+                              >test</v-radio
+                            >
+                            <v-radio
+                              label="นาง"
+                              value="two"
+                              class="color-label custom-radio"
+                              >test</v-radio
+                            >
+                            <v-radio
+                              label="นางสาว"
+                              value="three"
+                              class="color-label custom-radio"
+                              >test</v-radio
+                            >
                           </v-radio-group>
                         </v-col>
-                        <v-col cols="12" md="4" class="d-flex justify-center align-center pt-0">
+                        <v-col
+                          cols="12"
+                          md="4"
+                          class="d-flex justify-center align-center pt-0"
+                        >
                           <v-col>
                             <v-row>
-                              <v-col class="d-flex justify-start align-center pt-0 pl-0 pb-1">
-                                <p class="custom-label">ชื่อ (ภาษาไทย)<span class="red--text"> * </span></p>
+                              <v-col
+                                class="d-flex justify-start align-center pt-0 pl-0 pb-1"
+                              >
+                                <p class="custom-label">
+                                  ชื่อ (ภาษาไทย)<span class="red--text">
+                                    *
+                                  </span>
+                                </p>
                               </v-col>
                             </v-row>
                             <v-row>
-                              <v-col class="pt-0 pl-0 pr-md-0 ">
+                              <v-col class="pt-0 pl-0 pr-md-0">
                                 <v-text-field
                                   outlined
                                   dense
@@ -180,11 +260,21 @@
                             </v-row>
                           </v-col>
                         </v-col>
-                        <v-col cols="12" md="4" class="d-flex justify-center align-center pt-0 pl-md-0">
+                        <v-col
+                          cols="12"
+                          md="4"
+                          class="d-flex justify-center align-center pt-0 pl-md-0"
+                        >
                           <v-col>
                             <v-row>
-                              <v-col class="d-flex justify-start align-center pt-0 pl-0 pb-1">
-                                <p class="custom-label">นามสกุล (ภาษาไทย)<span class="red--text"> * </span></p>
+                              <v-col
+                                class="d-flex justify-start align-center pt-0 pl-0 pb-1"
+                              >
+                                <p class="custom-label">
+                                  นามสกุล (ภาษาไทย)<span class="red--text">
+                                    *
+                                  </span>
+                                </p>
                               </v-col>
                             </v-row>
                             <v-row>
@@ -200,11 +290,21 @@
                             </v-row>
                           </v-col>
                         </v-col>
-                        <v-col cols="12" md="4" class="d-flex justify-center align-center pt-0 pl-md-0">
+                        <v-col
+                          cols="12"
+                          md="4"
+                          class="d-flex justify-center align-center pt-0 pl-md-0"
+                        >
                           <v-col>
                             <v-row>
-                              <v-col class="d-flex justify-start align-center pt-0 pl-0 pb-1">
-                                <p class="custom-label">ชื่อเล่น (ภาษาไทย)<span class="red--text"> * </span></p>
+                              <v-col
+                                class="d-flex justify-start align-center pt-0 pl-0 pb-1"
+                              >
+                                <p class="custom-label">
+                                  ชื่อเล่น (ภาษาไทย)<span class="red--text">
+                                    *
+                                  </span>
+                                </p>
                               </v-col>
                             </v-row>
                             <v-row>
@@ -220,21 +320,55 @@
                             </v-row>
                           </v-col>
                         </v-col>
-                        <v-col cols="12" no-gutters class="d-flex justify-start align-center pb-0 pt-md-0">
-                          <v-radio-group v-model="selectedGender" row class="color-label custom-label mt-1 mt-md-0">
+                        <v-col
+                          cols="12"
+                          no-gutters
+                          class="d-flex justify-start align-center pb-0 pt-md-0"
+                        >
+                          <v-radio-group
+                            v-model="selectedGender"
+                            row
+                            class="color-label custom-label mt-1 mt-md-0"
+                          >
                             <template #label>
-                              <span>Name title<span class="red--text"> * </span>:</span>
+                              <span
+                                >Name title<span class="red--text"> * </span
+                                >:</span
+                              >
                             </template>
-                            <v-radio label="Mr." value="one" class="color-label custom-radio">test</v-radio>
-                            <v-radio label="Mrs." value="two" class="color-label custom-radio">test</v-radio>
-                            <v-radio label="MS." value="three" class="color-label custom-radio">test</v-radio>
+                            <v-radio
+                              label="Mr."
+                              value="one"
+                              class="color-label custom-radio"
+                              >test</v-radio
+                            >
+                            <v-radio
+                              label="Mrs."
+                              value="two"
+                              class="color-label custom-radio"
+                              >test</v-radio
+                            >
+                            <v-radio
+                              label="MS."
+                              value="three"
+                              class="color-label custom-radio"
+                              >test</v-radio
+                            >
                           </v-radio-group>
                         </v-col>
-                        <v-col cols="12" md="4" class="d-flex justify-center align-center pt-0">
+                        <v-col
+                          cols="12"
+                          md="4"
+                          class="d-flex justify-center align-center pt-0"
+                        >
                           <v-col>
                             <v-row>
-                              <v-col class="d-flex justify-start align-center pt-0 pl-0 pb-1 pr-md-0">
-                                <p class="custom-label">Name<span class="red--text"> * </span></p>
+                              <v-col
+                                class="d-flex justify-start align-center pt-0 pl-0 pb-1 pr-md-0"
+                              >
+                                <p class="custom-label">
+                                  Name<span class="red--text"> * </span>
+                                </p>
                               </v-col>
                             </v-row>
                             <v-row>
@@ -250,11 +384,19 @@
                             </v-row>
                           </v-col>
                         </v-col>
-                        <v-col cols="12" md="4" class="d-flex justify-center align-center pl-md-0 pt-0">
+                        <v-col
+                          cols="12"
+                          md="4"
+                          class="d-flex justify-center align-center pl-md-0 pt-0"
+                        >
                           <v-col>
                             <v-row>
-                              <v-col class="d-flex justify-start align-center pt-0 pl-0 pb-1">
-                                <p class="custom-label">Surname<span class="red--text"> * </span></p>
+                              <v-col
+                                class="d-flex justify-start align-center pt-0 pl-0 pb-1"
+                              >
+                                <p class="custom-label">
+                                  Surname<span class="red--text"> * </span>
+                                </p>
                               </v-col>
                             </v-row>
                             <v-row>
@@ -270,11 +412,19 @@
                             </v-row>
                           </v-col>
                         </v-col>
-                        <v-col cols="12" md="4" class="d-flex justify-center align-center pt-0 pl-md-0">
+                        <v-col
+                          cols="12"
+                          md="4"
+                          class="d-flex justify-center align-center pt-0 pl-md-0"
+                        >
                           <v-col>
                             <v-row>
-                              <v-col class="d-flex justify-start align-center pt-0 pl-0 pb-1">
-                                <p class="custom-label">Nickname<span class="red--text"> * </span></p>
+                              <v-col
+                                class="d-flex justify-start align-center pt-0 pl-0 pb-1"
+                              >
+                                <p class="custom-label">
+                                  Nickname<span class="red--text"> * </span>
+                                </p>
                               </v-col>
                             </v-row>
                             <v-row>
@@ -290,11 +440,21 @@
                             </v-row>
                           </v-col>
                         </v-col>
-                        <v-col cols="12" md="4" class="d-flex justify-center align-center pr-md-0 pt-0">
+                        <v-col
+                          cols="12"
+                          md="4"
+                          class="d-flex justify-center align-center pr-md-0 pt-0"
+                        >
                           <v-col>
                             <v-row>
-                              <v-col class="d-flex justify-start align-center mt-3 mt-md-0 pt-0 pl-0 pr-md-0 pb-1">
-                                <p class="custom-label">หมายเลขบัตรประชาชน  <span class="grey--text">I.D. Card No.</span><span class="red--text"> * </span></p>
+                              <v-col
+                                class="d-flex justify-start align-center mt-3 mt-md-0 pt-0 pl-0 pr-md-0 pb-1"
+                              >
+                                <p class="custom-label">
+                                  หมายเลขบัตรประชาชน
+                                  <span class="grey--text">I.D. Card No.</span
+                                  ><span class="red--text"> * </span>
+                                </p>
                               </v-col>
                             </v-row>
                             <v-row>
@@ -310,11 +470,23 @@
                             </v-row>
                           </v-col>
                         </v-col>
-                        <v-col cols="12" md="3" class="d-flex justify-center align-center pt-0 px-md-0">
+                        <v-col
+                          cols="12"
+                          md="3"
+                          class="d-flex justify-center align-center pt-0 px-md-0"
+                        >
                           <v-col>
                             <v-row>
-                              <v-col class="d-flex justify-start align-center pt-0 pl-0 pb-1">
-                                <p class="custom-label">ระบุเขต/อำเภอที่ออกบัตร<span class="red--text"> * </span></p>
+                              <v-col
+                                class="d-flex justify-start align-center pt-0 pl-0 pb-1"
+                              >
+                                <p class="custom-label">
+                                  ระบุเขต/อำเภอที่ออกบัตร<span
+                                    class="red--text"
+                                  >
+                                    *
+                                  </span>
+                                </p>
                               </v-col>
                             </v-row>
                             <v-row>
@@ -330,15 +502,25 @@
                             </v-row>
                           </v-col>
                         </v-col>
-                        <v-col cols="12" md="5" class="d-flex justify-center align-center pt-0 pb-0">
+                        <v-col
+                          cols="12"
+                          md="5"
+                          class="d-flex justify-center align-center pt-0 pb-0"
+                        >
                           <v-col cols="6">
                             <v-row>
-                              <v-col class="d-flex justify-start align-center pt-0 pl-0 pb-1 mt-md-1">
-                                <p class="custom-label">วันที่ออกบัตร <span class="grey--text">Issue date</span><span class="red--text"> * </span></p>
+                              <v-col
+                                class="d-flex justify-start align-center pt-0 pl-0 pb-1 mt-md-1"
+                              >
+                                <p class="custom-label">
+                                  วันที่ออกบัตร
+                                  <span class="grey--text">Issue date</span
+                                  ><span class="red--text"> * </span>
+                                </p>
                               </v-col>
                             </v-row>
                             <v-row>
-                              <v-col class="pt-0 pl-0 pr-4 pb-0 ">
+                              <v-col class="pt-0 pl-0 pr-4 pb-0">
                                 <v-menu
                                   ref="menu"
                                   v-model="menu1"
@@ -359,24 +541,32 @@
                                       v-on="on"
                                     >
                                       <template #append>
-                                        <v-icon color="primary">mdi-calendar</v-icon>
+                                        <v-icon color="primary"
+                                          >mdi-calendar</v-icon
+                                        >
                                       </template>
-                                        </v-text-field>
-                                      </template>
-                                      <v-date-picker
-                                        v-model="date1"
-                                        locale="th"
-                                        scrollable
-                                        @input="updateDate1"
-                                      />
+                                    </v-text-field>
+                                  </template>
+                                  <v-date-picker
+                                    v-model="date1"
+                                    locale="th"
+                                    scrollable
+                                    @input="updateDate1"
+                                  />
                                 </v-menu>
                               </v-col>
                             </v-row>
                           </v-col>
                           <v-col cols="6" class="">
                             <v-row>
-                              <v-col class="d-flex justify-start align-center pt-0 pl-0 pb-1 mt-md-1">
-                                <p class="custom-label">วันที่หมดอายุ<span class="grey--text"> Expiry date </span><span class="red--text"> * </span></p>
+                              <v-col
+                                class="d-flex justify-start align-center pt-0 pl-0 pb-1 mt-md-1"
+                              >
+                                <p class="custom-label">
+                                  วันที่หมดอายุ<span class="grey--text">
+                                    Expiry date </span
+                                  ><span class="red--text"> * </span>
+                                </p>
                               </v-col>
                             </v-row>
                             <v-row>
@@ -401,16 +591,18 @@
                                       v-on="on"
                                     >
                                       <template #append>
-                                        <v-icon color="primary">mdi-calendar</v-icon>
+                                        <v-icon color="primary"
+                                          >mdi-calendar</v-icon
+                                        >
                                       </template>
-                                        </v-text-field>
-                                      </template>
-                                      <v-date-picker
-                                        v-model="date2"
-                                        locale="th"
-                                        scrollable
-                                        @input="updateDate2"
-                                      />
+                                    </v-text-field>
+                                  </template>
+                                  <v-date-picker
+                                    v-model="date2"
+                                    locale="th"
+                                    scrollable
+                                    @input="updateDate2"
+                                  />
                                 </v-menu>
                               </v-col>
                             </v-row>
@@ -420,15 +612,25 @@
                     </v-col>
                   </v-row>
                   <v-row>
-                    <v-col cols="12" md="5" class="d-flex justify-center align-center pt-0 pb-0 pl-6 pr-md-0">
+                    <v-col
+                      cols="12"
+                      md="5"
+                      class="d-flex justify-center align-center pt-0 pb-0 pl-6 pr-md-0"
+                    >
                       <v-col cols="6">
                         <v-row>
-                          <v-col class="d-flex justify-start align-center pt-0 pl-0 pb-1 mt-md-1">
-                            <p class="custom-label">วันเกิด  <span class="grey--text">Date of Birth</span><span class="red--text"> * </span></p>
+                          <v-col
+                            class="d-flex justify-start align-center pt-0 pl-0 pb-1 mt-md-1"
+                          >
+                            <p class="custom-label">
+                              วันเกิด
+                              <span class="grey--text">Date of Birth</span
+                              ><span class="red--text"> * </span>
+                            </p>
                           </v-col>
                         </v-row>
                         <v-row>
-                          <v-col class="pt-0 pl-0 pr-4 pb-0 ">
+                          <v-col class="pt-0 pl-0 pr-4 pb-0">
                             <v-menu
                               ref="menu"
                               v-model="menu3"
@@ -449,24 +651,30 @@
                                   v-on="on"
                                 >
                                   <template #append>
-                                    <v-icon color="primary">mdi-calendar</v-icon>
+                                    <v-icon color="primary"
+                                      >mdi-calendar</v-icon
+                                    >
                                   </template>
-                                    </v-text-field>
-                                  </template>
-                                  <v-date-picker
-                                    v-model="date3"
-                                    locale="th"
-                                    scrollable
-                                    @input="updateDate3"
-                                  />
+                                </v-text-field>
+                              </template>
+                              <v-date-picker
+                                v-model="date3"
+                                locale="th"
+                                scrollable
+                                @input="updateDate3"
+                              />
                             </v-menu>
                           </v-col>
                         </v-row>
                       </v-col>
                       <v-col cols="6" class="">
                         <v-row>
-                          <v-col class="d-flex justify-start align-center pt-0 pl-0 pb-1 mt-md-1">
-                            <p class="custom-label pb-0">อายุ <span class="grey--text"> Age </span></p>
+                          <v-col
+                            class="d-flex justify-start align-center pt-0 pl-0 pb-1 mt-md-1"
+                          >
+                            <p class="custom-label pb-0">
+                              อายุ <span class="grey--text"> Age </span>
+                            </p>
                           </v-col>
                         </v-row>
                         <v-row>
@@ -493,31 +701,40 @@
                       </v-col>
                     </v-col>
                     <v-col md="4" class="py-0 d-sm-flex flex-sm-row pl-md-0">
-                     <v-col class="py-0 pl-6 pt-md-3">
-                      <v-row>
-                        <v-col class="d-flex justify-start align-center pt-0 pl-0 pb-1 mt-md-1">
-                          <p class="custom-label">โรคประจำตัว <span class="grey--text"> Any physical disability or disease? </span></p>
-                        </v-col>
-                      </v-row>
-                      <v-row>
-                        <v-col class="pt-0 pl-0 ">
-                          <v-text-field
-                            outlined
-                            dense
-                            hide-details="auto"
-                            class="ma-0"
-                            placeholder="โรคประจำตัว"
-                          />
-                        </v-col>
-                      </v-row>
-                     </v-col>
+                      <v-col class="py-0 pl-6 pt-md-3">
+                        <v-row>
+                          <v-col
+                            class="d-flex justify-start align-center pt-0 pl-0 pb-1 mt-md-1"
+                          >
+                            <p class="custom-label">
+                              โรคประจำตัว
+                              <span class="grey--text">
+                                Any physical disability or disease?
+                              </span>
+                            </p>
+                          </v-col>
+                        </v-row>
+                        <v-row>
+                          <v-col class="pt-0 pl-0">
+                            <v-text-field
+                              outlined
+                              dense
+                              hide-details="auto"
+                              class="ma-0"
+                              placeholder="โรคประจำตัว"
+                            />
+                          </v-col>
+                        </v-row>
+                      </v-col>
                     </v-col>
                   </v-row>
                   <v-row>
                     <v-col>
                       <v-row class="pt-4">
                         <v-col cols="12" md="2" class="pl-9">
-                          <v-row class="d-flex flex-md-column flex-row align-center align-md-start">
+                          <v-row
+                            class="d-flex flex-md-column flex-row align-center align-md-start"
+                          >
                             <p class="custom-label mb-0 mr-2 mr-md-0">
                               สถานะทางทหาร :
                             </p>
@@ -527,42 +744,73 @@
                           </v-row>
                         </v-col>
                         <v-col cols="12" md="9" class="py-0">
-                          <v-radio-group row class="color-label custom-label mt-1 mt-md-0">
-                            <v-col cols="12" md="4" class=" d-flex flex-row flex-md-colum mr-md-0 pa-md-0 pt-0">
-                            <v-radio value="three" class="color-label custom-radio">
-                              <template #label>
-                                <v-col class="pa-0">
-                                  <p>ได้รับการยกเว้น</p>
-                                  <p class="text-caption text--secondary">Exempted</p>
-                                </v-col>
-                              </template>
-                            </v-radio>
-                            <v-radio value="one" class="color-label custom-radio">
-                              <template #label>
-                                <v-col class="pa-0">
-                                  <p>ศึกษาวิชาทหาร</p>
-                                  <p class="text-caption text--secondary">Military Studies</p>
-                                </v-col>
-                              </template>
-                            </v-radio>
+                          <v-radio-group
+                            row
+                            class="color-label custom-label mt-1 mt-md-0"
+                          >
+                            <v-col
+                              cols="12"
+                              md="4"
+                              class="d-flex flex-row flex-md-colum mr-md-0 pa-md-0 pt-0"
+                            >
+                              <v-radio
+                                value="three"
+                                class="color-label custom-radio"
+                              >
+                                <template #label>
+                                  <v-col class="pa-0">
+                                    <p>ได้รับการยกเว้น</p>
+                                    <p class="text-caption text--secondary">
+                                      Exempted
+                                    </p>
+                                  </v-col>
+                                </template>
+                              </v-radio>
+                              <v-radio
+                                value="one"
+                                class="color-label custom-radio"
+                              >
+                                <template #label>
+                                  <v-col class="pa-0">
+                                    <p>ศึกษาวิชาทหาร</p>
+                                    <p class="text-caption text--secondary">
+                                      Military Studies
+                                    </p>
+                                  </v-col>
+                                </template>
+                              </v-radio>
                             </v-col>
-                            <v-col cols="12" md="4" class=" d-flex flex-row flex-md-colum pa-md-0 py-0">
-                            <v-radio value="two" class="color-label custom-radio">
-                              <template #label>
-                                <v-col class="pa-0">
-                                  <p>ผ่านการเกณฑ์ทหาร</p>
-                                  <p class="text-caption text--secondary">Discharged</p>
-                                </v-col>
-                              </template>
-                            </v-radio>
-                            <v-radio value="zero" class="color-label custom-radio">
-                              <template #label>
-                                <v-col class="pa-0">
-                                  <p>อื่นๆ</p>
-                                  <p class="text-caption text--secondary">Others</p>
-                                </v-col>
-                              </template>
-                            </v-radio>
+                            <v-col
+                              cols="12"
+                              md="4"
+                              class="d-flex flex-row flex-md-colum pa-md-0 py-0"
+                            >
+                              <v-radio
+                                value="two"
+                                class="color-label custom-radio"
+                              >
+                                <template #label>
+                                  <v-col class="pa-0">
+                                    <p>ผ่านการเกณฑ์ทหาร</p>
+                                    <p class="text-caption text--secondary">
+                                      Discharged
+                                    </p>
+                                  </v-col>
+                                </template>
+                              </v-radio>
+                              <v-radio
+                                value="zero"
+                                class="color-label custom-radio"
+                              >
+                                <template #label>
+                                  <v-col class="pa-0">
+                                    <p>อื่นๆ</p>
+                                    <p class="text-caption text--secondary">
+                                      Others
+                                    </p>
+                                  </v-col>
+                                </template>
+                              </v-radio>
                             </v-col>
                           </v-radio-group>
                         </v-col>
@@ -572,8 +820,13 @@
                   <v-row class="pl-7 pr-2">
                     <v-col cols="12" md="3">
                       <v-row>
-                        <v-col class="d-flex justify-start align-center pt-0 pl-0 pb-1">
-                          <p class="custom-label">เบอร์โทรศัพท์ <span class="grey--text"> Telephone No. </span></p>
+                        <v-col
+                          class="d-flex justify-start align-center pt-0 pl-0 pb-1"
+                        >
+                          <p class="custom-label">
+                            เบอร์โทรศัพท์
+                            <span class="grey--text"> Telephone No. </span>
+                          </p>
                         </v-col>
                       </v-row>
                       <v-row>
@@ -590,12 +843,16 @@
                     </v-col>
                     <v-col cols="12" md="3">
                       <v-row>
-                        <v-col class="d-flex justify-start align-center pt-0 pl-0 pb-1">
-                          <p class="custom-label">อีเมล <span class="grey--text"> E-mail </span></p>
+                        <v-col
+                          class="d-flex justify-start align-center pt-0 pl-0 pb-1"
+                        >
+                          <p class="custom-label">
+                            อีเมล <span class="grey--text"> E-mail </span>
+                          </p>
                         </v-col>
                       </v-row>
                       <v-row>
-                        <v-col class="pt-0 pl-0 ">
+                        <v-col class="pt-0 pl-0">
                           <v-text-field
                             outlined
                             dense
@@ -610,320 +867,405 @@
                 </v-card>
               </v-col>
             </v-row>
-              <v-row class="ma-md-0">
-                <v-col class="mt-3 pa-0 px-md-4 pt-md-0 mt-md-0 pb-md-0">
-                  <v-card
-                    rounded="lg"
-                    class="px-0 pb-3 pt-0 mt-3 mt-md-0"
-                    :class="$vuetify.breakpoint.mdAndUp ? 'shadow-card' : 'shadow-card-none'"
-                  >
-                    <v-row no-gutters class="green lighten-5 py-2 px-3 mb-3">
-                      <v-col cols="12">
-                        <p class="primary--text lighten-1 mb-0 font-weight-medium">ที่อยู่ตามบัตรประชาชน / Registered address</p>
-                      </v-col>
-                    </v-row>
-                      <v-row class="pb-md-3 pl-6 pl-md-0 pr-3 mt-md-7">
-                        <v-col cols="12" md="2" class="pl-md-9">
-                          <v-row>
-                            <v-col class="d-flex justify-start align-center pt-0 pl-0 pb-1">
-                              <p class="custom-label">บ้านเลขที่  <span class="grey--text"> Address </span><span class="red--text">*</span></p>
-                            </v-col>
-                          </v-row>
-                          <v-row>
-                            <v-col class="pt-0 pl-0 ">
-                              <v-text-field
-                                outlined
-                                dense
-                                hide-details="auto"
-                                class="ma-0"
-                                placeholder="บ้านเลขที่"
-                              />
-                            </v-col>
-                          </v-row>
+            <v-row class="ma-md-0">
+              <v-col class="mt-3 pa-0 px-md-4 pt-md-0 mt-md-0 pb-md-0">
+                <v-card
+                  rounded="lg"
+                  class="px-0 pb-3 pt-0 mt-3 mt-md-0"
+                  :class="
+                    $vuetify.breakpoint.mdAndUp
+                      ? 'shadow-card'
+                      : 'shadow-card-none'
+                  "
+                >
+                  <v-row no-gutters class="green lighten-5 py-2 px-3 mb-3">
+                    <v-col cols="12">
+                      <p
+                        class="primary--text lighten-1 mb-0 font-weight-medium"
+                      >
+                        ที่อยู่ตามบัตรประชาชน / Registered address
+                      </p>
+                    </v-col>
+                  </v-row>
+                  <v-row class="pb-md-3 pl-6 pl-md-0 pr-3 mt-md-7">
+                    <v-col cols="12" md="2" class="pl-md-9">
+                      <v-row>
+                        <v-col
+                          class="d-flex justify-start align-center pt-0 pl-0 pb-1"
+                        >
+                          <p class="custom-label">
+                            บ้านเลขที่ <span class="grey--text"> Address </span
+                            ><span class="red--text">*</span>
+                          </p>
                         </v-col>
-                        <v-col cols="4" md="1">
-                          <v-row>
-                            <v-col class="d-flex justify-start align-center pt-0 pl-0 pb-1">
-                              <p class="custom-label">หมู่ที่ </p>
-                            </v-col>
-                          </v-row>
-                          <v-row>
-                            <v-col class="pt-0 pl-0 ">
-                              <v-text-field
-                                outlined
-                                dense
-                                hide-details="auto"
-                                class="ma-0"
-                                placeholder="0"
-                              />
-                            </v-col>
-                          </v-row>
+                      </v-row>
+                      <v-row>
+                        <v-col class="pt-0 pl-0">
+                          <v-text-field
+                            outlined
+                            dense
+                            hide-details="auto"
+                            class="ma-0"
+                            placeholder="บ้านเลขที่"
+                          />
                         </v-col>
-                        <v-col cols="8" md="3">
-                          <v-row>
-                            <v-col class="d-flex justify-start align-center pt-0 pl-0 pb-1">
-                              <p class="custom-label">ถนน/ซอย <span class="grey--text"> Street </span></p>
-                            </v-col>
-                          </v-row>
-                          <v-row>
-                            <v-col class="pt-0 pl-0 ">
-                              <v-text-field
-                                outlined
-                                dense
-                                hide-details="auto"
-                                class="ma-0"
-                                placeholder="ระบุถนน/ซอย"
-                              />
-                            </v-col>
-                          </v-row>
+                      </v-row>
+                    </v-col>
+                    <v-col cols="4" md="1">
+                      <v-row>
+                        <v-col
+                          class="d-flex justify-start align-center pt-0 pl-0 pb-1"
+                        >
+                          <p class="custom-label">หมู่ที่</p>
                         </v-col>
-                        <v-col cols="6" md="2">
-                          <v-row>
-                            <v-col class="d-flex justify-start align-center pt-0 pl-0 pb-1">
-                              <p class="custom-label">จังหวัด <span class="grey--text"> Province </span><span class="red--text">*</span></p>
-                            </v-col>
-                          </v-row>
-                          <v-row>
-                            <v-col class="pt-0 pl-0 pb-0 pb-md-3">
-                              <v-select
-                                :items="positionFields"
-                                item-text="label"
-                                item-value="label"
-                                outlined
-                                dense
-                                placeholder="เลือกจังหวัด"
-                                clearable
-                              />
-                            </v-col>
-                          </v-row>
+                      </v-row>
+                      <v-row>
+                        <v-col class="pt-0 pl-0">
+                          <v-text-field
+                            outlined
+                            dense
+                            hide-details="auto"
+                            class="ma-0"
+                            placeholder="0"
+                          />
                         </v-col>
-                        <v-col cols="6" md="2">
-                          <v-row>
-                            <v-col class="d-flex justify-start align-center pt-0 pl-0 pb-1">
-                              <p class="custom-label">เขต/อำเภอ <span class="grey--text"> E-mail </span></p>
-                            </v-col>
-                          </v-row>
-                          <v-row>
-                            <v-col class="pt-0 pl-0 pb-0 pb-md-3">
-                              <v-select
-                                :items="positionFields"
-                                item-text="label"
-                                item-value="label"
-                                outlined
-                                dense
-                                placeholder="เลือกเขต/อำเภอ"
-                                clearable
-                              />
-                            </v-col>
-                          </v-row>
+                      </v-row>
+                    </v-col>
+                    <v-col cols="8" md="3">
+                      <v-row>
+                        <v-col
+                          class="d-flex justify-start align-center pt-0 pl-0 pb-1"
+                        >
+                          <p class="custom-label">
+                            ถนน/ซอย <span class="grey--text"> Street </span>
+                          </p>
                         </v-col>
-                        <v-col cols="6" md="2" class="pr-md-6">
-                          <v-row>
-                            <v-col class="d-flex justify-start align-center pt-0 pl-0 pb-1">
-                              <p class="custom-label">แขวง/ตำบล <span class="grey--text"> E-mail </span></p>
-                            </v-col>
-                          </v-row>
-                          <v-row>
-                            <v-col class="pt-0 pl-0 ">
-                              <v-select
-                                :items="positionFields"
-                                item-text="label"
-                                item-value="label"
-                                outlined
-                                dense
-                                placeholder="เลือกแขวง/ตำบล"
-                                clearable
-                              />
-                            </v-col>
-                          </v-row>
+                      </v-row>
+                      <v-row>
+                        <v-col class="pt-0 pl-0">
+                          <v-text-field
+                            outlined
+                            dense
+                            hide-details="auto"
+                            class="ma-0"
+                            placeholder="ระบุถนน/ซอย"
+                          />
                         </v-col>
-                        <v-col cols="6" md="3" class="pl-md-9">
-                          <v-row>
-                            <v-col class="d-flex justify-start align-center pt-0 pl-0 pb-1">
-                              <p class="custom-label">รหัสไปรษณี <span class="grey--text"> Postal code </span><span class="red--text">*</span></p>
-                            </v-col>
-                          </v-row>
-                          <v-row>
-                            <v-col class="pt-0 pl-0 ">
-                              <v-text-field
-                                outlined
-                                dense
-                                hide-details="auto"
-                                class="ma-0"
-                                placeholder="00000"
-                              />
-                            </v-col>
-                          </v-row>
+                      </v-row>
+                    </v-col>
+                    <v-col cols="6" md="2">
+                      <v-row>
+                        <v-col
+                          class="d-flex justify-start align-center pt-0 pl-0 pb-1"
+                        >
+                          <p class="custom-label">
+                            จังหวัด <span class="grey--text"> Province </span
+                            ><span class="red--text">*</span>
+                          </p>
                         </v-col>
-                    </v-row>
-                  </v-card>
-                </v-col>
-              </v-row>
-              <v-row class="ma-md-0">
-                <v-col class="mt-3 pa-0 px-md-4 pt-md-4 mt-md-0 pb-md-0">
-                  <v-card
-                    rounded="lg"
-                    class="px-0 pb-3 pt-0 mt-3 mt-md-0"
-                    :class="$vuetify.breakpoint.mdAndUp ? 'shadow-card' : 'shadow-card-none'"
-                  >
-                    <v-row no-gutters class="green lighten-5 py-2 px-3 mb-3">
-                      <v-col cols="12">
-                        <p class="primary--text lighten-1 mb-0 font-weight-medium">ที่อยู่ปัจจุบัน  / Persent address</p>
-                      </v-col>
-                    </v-row>
-                    <v-row class="pl-6 pr-3">
-                      <v-col cols="12" md="12" class="pl-0">
-                        <v-checkbox v-model="useSameAddress" :true-value="true" :false-value="false" off-icon="mdi-circle-outline" on-icon="mdi-check-circle" class="mt-md-0 custom-radio">
-                          <template #label>
-                            <v-row class="d-flex flex-md-row flex-column align-start align-md-start pl-3 pt-1 ">
-                              <p class="custom-label mb-0 mr-2 mr-md-0">
-                                ใช้ที่อยู่เดียวกับที่อยู่ตามบัตรประชาชน
-                              </p>
-                              <p class="grey--text custom-label mb-0">
-                                Copy all field from Registered Address
-                              </p>
-                            </v-row>
-                          </template>
-                        </v-checkbox>
-                      </v-col>
-                    </v-row>
-                    <v-row class="pb-md-3 pl-6 pl-md-0 pr-3">
-                        <v-col cols="12" md="2" class="pl-md-9">
-                          <v-row>
-                            <v-col class="d-flex justify-start align-center pt-0 pl-0 pb-1">
-                              <p class="custom-label">บ้านเลขที่  <span class="grey--text"> Address </span><span class="red--text">*</span></p>
-                            </v-col>
-                          </v-row>
-                          <v-row>
-                            <v-col class="pt-0 pl-0 ">
-                              <v-text-field
-                                outlined
-                                dense
-                                hide-details="auto"
-                                class="ma-0"
-                                placeholder="บ้านเลขที่"
-                              />
-                            </v-col>
-                          </v-row>
+                      </v-row>
+                      <v-row>
+                        <v-col class="pt-0 pl-0 pb-0 pb-md-3">
+                          <v-select
+                            :items="positionFields"
+                            item-text="label"
+                            item-value="label"
+                            outlined
+                            dense
+                            placeholder="เลือกจังหวัด"
+                            clearable
+                          />
                         </v-col>
-                        <v-col cols="4" md="1">
-                          <v-row>
-                            <v-col class="d-flex justify-start align-center pt-0 pl-0 pb-1">
-                              <p class="custom-label">หมู่ที่ </p>
-                            </v-col>
-                          </v-row>
-                          <v-row>
-                            <v-col class="pt-0 pl-0 ">
-                              <v-text-field
-                                outlined
-                                dense
-                                hide-details="auto"
-                                class="ma-0"
-                                placeholder="0"
-                              />
-                            </v-col>
-                          </v-row>
+                      </v-row>
+                    </v-col>
+                    <v-col cols="6" md="2">
+                      <v-row>
+                        <v-col
+                          class="d-flex justify-start align-center pt-0 pl-0 pb-1"
+                        >
+                          <p class="custom-label">
+                            เขต/อำเภอ <span class="grey--text"> E-mail </span>
+                          </p>
                         </v-col>
-                        <v-col cols="8" md="3">
-                          <v-row>
-                            <v-col class="d-flex justify-start align-center pt-0 pl-0 pb-1">
-                              <p class="custom-label">ถนน/ซอย <span class="grey--text"> Street </span></p>
-                            </v-col>
-                          </v-row>
-                          <v-row>
-                            <v-col class="pt-0 pl-0 ">
-                              <v-text-field
-                                outlined
-                                dense
-                                hide-details="auto"
-                                class="ma-0"
-                                placeholder="ระบุถนน/ซอย"
-                              />
-                            </v-col>
-                          </v-row>
+                      </v-row>
+                      <v-row>
+                        <v-col class="pt-0 pl-0 pb-0 pb-md-3">
+                          <v-select
+                            :items="positionFields"
+                            item-text="label"
+                            item-value="label"
+                            outlined
+                            dense
+                            placeholder="เลือกเขต/อำเภอ"
+                            clearable
+                          />
                         </v-col>
-                        <v-col cols="6" md="2">
-                          <v-row>
-                            <v-col class="d-flex justify-start align-center pt-0 pl-0 pb-1">
-                              <p class="custom-label">จังหวัด <span class="grey--text"> Province </span><span class="red--text">*</span></p>
-                            </v-col>
-                          </v-row>
-                          <v-row>
-                            <v-col class="pt-0 pl-0 pb-0 pb-md-3">
-                              <v-select
-                                :items="positionFields"
-                                item-text="label"
-                                item-value="label"
-                                outlined
-                                dense
-                                placeholder="เลือกจังหวัด"
-                                clearable
-                              />
-                            </v-col>
-                          </v-row>
+                      </v-row>
+                    </v-col>
+                    <v-col cols="6" md="2" class="pr-md-6">
+                      <v-row>
+                        <v-col
+                          class="d-flex justify-start align-center pt-0 pl-0 pb-1"
+                        >
+                          <p class="custom-label">
+                            แขวง/ตำบล <span class="grey--text"> E-mail </span>
+                          </p>
                         </v-col>
-                        <v-col cols="6" md="2">
-                          <v-row>
-                            <v-col class="d-flex justify-start align-center pt-0 pl-0 pb-1">
-                              <p class="custom-label">เขต/อำเภอ <span class="grey--text"> E-mail </span></p>
-                            </v-col>
-                          </v-row>
-                          <v-row>
-                            <v-col class="pt-0 pl-0 pb-0 pb-md-3">
-                              <v-select
-                                :items="positionFields"
-                                item-text="label"
-                                item-value="label"
-                                outlined
-                                dense
-                                placeholder="เลือกเขต/อำเภอ"
-                                clearable
-                              />
-                            </v-col>
-                          </v-row>
+                      </v-row>
+                      <v-row>
+                        <v-col class="pt-0 pl-0">
+                          <v-select
+                            :items="positionFields"
+                            item-text="label"
+                            item-value="label"
+                            outlined
+                            dense
+                            placeholder="เลือกแขวง/ตำบล"
+                            clearable
+                          />
                         </v-col>
-                        <v-col cols="6" md="2" class="pr-md-6">
-                          <v-row>
-                            <v-col class="d-flex justify-start align-center pt-0 pl-0 pb-1">
-                              <p class="custom-label">แขวง/ตำบล <span class="grey--text"> E-mail </span></p>
-                            </v-col>
-                          </v-row>
-                          <v-row>
-                            <v-col class="pt-0 pl-0 ">
-                              <v-select
-                                :items="positionFields"
-                                item-text="label"
-                                item-value="label"
-                                outlined
-                                dense
-                                placeholder="เลือกแขวง/ตำบล"
-                                clearable
-                              />
-                            </v-col>
-                          </v-row>
+                      </v-row>
+                    </v-col>
+                    <v-col cols="6" md="3" class="pl-md-9">
+                      <v-row>
+                        <v-col
+                          class="d-flex justify-start align-center pt-0 pl-0 pb-1"
+                        >
+                          <p class="custom-label">
+                            รหัสไปรษณี
+                            <span class="grey--text"> Postal code </span
+                            ><span class="red--text">*</span>
+                          </p>
                         </v-col>
-                        <v-col cols="6" md="3" class="pl-md-9">
-                          <v-row>
-                            <v-col class="d-flex justify-start align-center pt-0 pl-0 pb-1">
-                              <p class="custom-label">รหัสไปรษณี <span class="grey--text"> Postal code </span><span class="red--text">*</span></p>
-                            </v-col>
-                          </v-row>
-                          <v-row>
-                            <v-col class="pt-0 pl-0 ">
-                              <v-text-field
-                                outlined
-                                dense
-                                hide-details="auto"
-                                class="ma-0"
-                                placeholder="00000"
-                              />
-                            </v-col>
-                          </v-row>
+                      </v-row>
+                      <v-row>
+                        <v-col class="pt-0 pl-0">
+                          <v-text-field
+                            outlined
+                            dense
+                            hide-details="auto"
+                            class="ma-0"
+                            placeholder="00000"
+                          />
                         </v-col>
-                    </v-row>
-                  </v-card>
-                </v-col>
-              </v-row>
+                      </v-row>
+                    </v-col>
+                  </v-row>
+                </v-card>
+              </v-col>
+            </v-row>
+            <v-row class="ma-md-0">
+              <v-col class="mt-3 pa-0 px-md-4 pt-md-4 mt-md-0 pb-md-0">
+                <v-card
+                  rounded="lg"
+                  class="px-0 pb-3 pt-0 mt-3 mt-md-0"
+                  :class="
+                    $vuetify.breakpoint.mdAndUp
+                      ? 'shadow-card'
+                      : 'shadow-card-none'
+                  "
+                >
+                  <v-row no-gutters class="green lighten-5 py-2 px-3 mb-3">
+                    <v-col cols="12">
+                      <p
+                        class="primary--text lighten-1 mb-0 font-weight-medium"
+                      >
+                        ที่อยู่ปัจจุบัน / Persent address
+                      </p>
+                    </v-col>
+                  </v-row>
+                  <v-row class="pl-6 pr-3">
+                    <v-col cols="12" md="12" class="pl-0">
+                      <v-checkbox
+                        v-model="useSameAddress"
+                        :true-value="true"
+                        :false-value="false"
+                        off-icon="mdi-circle-outline"
+                        on-icon="mdi-check-circle"
+                        class="mt-md-0 custom-radio"
+                      >
+                        <template #label>
+                          <v-row
+                            class="d-flex flex-md-row flex-column align-start align-md-start pl-3 pt-1"
+                          >
+                            <p class="custom-label mb-0 mr-2 mr-md-0">
+                              ใช้ที่อยู่เดียวกับที่อยู่ตามบัตรประชาชน
+                            </p>
+                            <p class="grey--text custom-label mb-0">
+                              Copy all field from Registered Address
+                            </p>
+                          </v-row>
+                        </template>
+                      </v-checkbox>
+                    </v-col>
+                  </v-row>
+                  <v-row class="pb-md-3 pl-6 pl-md-0 pr-3">
+                    <v-col cols="12" md="2" class="pl-md-9">
+                      <v-row>
+                        <v-col
+                          class="d-flex justify-start align-center pt-0 pl-0 pb-1"
+                        >
+                          <p class="custom-label">
+                            บ้านเลขที่ <span class="grey--text"> Address </span
+                            ><span class="red--text">*</span>
+                          </p>
+                        </v-col>
+                      </v-row>
+                      <v-row>
+                        <v-col class="pt-0 pl-0">
+                          <v-text-field
+                            outlined
+                            dense
+                            hide-details="auto"
+                            class="ma-0"
+                            placeholder="บ้านเลขที่"
+                          />
+                        </v-col>
+                      </v-row>
+                    </v-col>
+                    <v-col cols="4" md="1">
+                      <v-row>
+                        <v-col
+                          class="d-flex justify-start align-center pt-0 pl-0 pb-1"
+                        >
+                          <p class="custom-label">หมู่ที่</p>
+                        </v-col>
+                      </v-row>
+                      <v-row>
+                        <v-col class="pt-0 pl-0">
+                          <v-text-field
+                            outlined
+                            dense
+                            hide-details="auto"
+                            class="ma-0"
+                            placeholder="0"
+                          />
+                        </v-col>
+                      </v-row>
+                    </v-col>
+                    <v-col cols="8" md="3">
+                      <v-row>
+                        <v-col
+                          class="d-flex justify-start align-center pt-0 pl-0 pb-1"
+                        >
+                          <p class="custom-label">
+                            ถนน/ซอย <span class="grey--text"> Street </span>
+                          </p>
+                        </v-col>
+                      </v-row>
+                      <v-row>
+                        <v-col class="pt-0 pl-0">
+                          <v-text-field
+                            outlined
+                            dense
+                            hide-details="auto"
+                            class="ma-0"
+                            placeholder="ระบุถนน/ซอย"
+                          />
+                        </v-col>
+                      </v-row>
+                    </v-col>
+                    <v-col cols="6" md="2">
+                      <v-row>
+                        <v-col
+                          class="d-flex justify-start align-center pt-0 pl-0 pb-1"
+                        >
+                          <p class="custom-label">
+                            จังหวัด <span class="grey--text"> Province </span
+                            ><span class="red--text">*</span>
+                          </p>
+                        </v-col>
+                      </v-row>
+                      <v-row>
+                        <v-col class="pt-0 pl-0 pb-0 pb-md-3">
+                          <v-select
+                            :items="positionFields"
+                            item-text="label"
+                            item-value="label"
+                            outlined
+                            dense
+                            placeholder="เลือกจังหวัด"
+                            clearable
+                          />
+                        </v-col>
+                      </v-row>
+                    </v-col>
+                    <v-col cols="6" md="2">
+                      <v-row>
+                        <v-col
+                          class="d-flex justify-start align-center pt-0 pl-0 pb-1"
+                        >
+                          <p class="custom-label">
+                            เขต/อำเภอ <span class="grey--text"> E-mail </span>
+                          </p>
+                        </v-col>
+                      </v-row>
+                      <v-row>
+                        <v-col class="pt-0 pl-0 pb-0 pb-md-3">
+                          <v-select
+                            :items="positionFields"
+                            item-text="label"
+                            item-value="label"
+                            outlined
+                            dense
+                            placeholder="เลือกเขต/อำเภอ"
+                            clearable
+                          />
+                        </v-col>
+                      </v-row>
+                    </v-col>
+                    <v-col cols="6" md="2" class="pr-md-6">
+                      <v-row>
+                        <v-col
+                          class="d-flex justify-start align-center pt-0 pl-0 pb-1"
+                        >
+                          <p class="custom-label">
+                            แขวง/ตำบล <span class="grey--text"> E-mail </span>
+                          </p>
+                        </v-col>
+                      </v-row>
+                      <v-row>
+                        <v-col class="pt-0 pl-0">
+                          <v-select
+                            :items="positionFields"
+                            item-text="label"
+                            item-value="label"
+                            outlined
+                            dense
+                            placeholder="เลือกแขวง/ตำบล"
+                            clearable
+                          />
+                        </v-col>
+                      </v-row>
+                    </v-col>
+                    <v-col cols="6" md="3" class="pl-md-9">
+                      <v-row>
+                        <v-col
+                          class="d-flex justify-start align-center pt-0 pl-0 pb-1"
+                        >
+                          <p class="custom-label">
+                            รหัสไปรษณี
+                            <span class="grey--text"> Postal code </span
+                            ><span class="red--text">*</span>
+                          </p>
+                        </v-col>
+                      </v-row>
+                      <v-row>
+                        <v-col class="pt-0 pl-0">
+                          <v-text-field
+                            outlined
+                            dense
+                            hide-details="auto"
+                            class="ma-0"
+                            placeholder="00000"
+                          />
+                        </v-col>
+                      </v-row>
+                    </v-col>
+                  </v-row>
+                </v-card>
+              </v-col>
+            </v-row>
           </v-card>
         </v-col>
       </v-row>
@@ -932,198 +1274,206 @@
 </template>
 <script>
 export default {
-  data () {
+  layout: "form",
+
+  data() {
     return {
       // format currency
       salaryFrom: 0,
-      salaryFromDisplay: '',
+      salaryFromDisplay: "",
       salaryTo: 0,
-      salaryToDisplay: '',
+      salaryToDisplay: "",
       // validation salary
       salaryFromError: false,
-      salaryFromErrorMessage: '',
+      salaryFromErrorMessage: "",
       salaryToError: false,
-      salaryToErrorMessage: '',
+      salaryToErrorMessage: "",
       // texts
       steps: [
-        { number: 1, label: 'ประวัติส่วนตัว' },
-        { number: 2, label: 'ประวัติการศึกษา' },
-        { number: 3, label: 'ประวัติการทำงาน' },
-        { number: 4, label: 'ประวัติครอบครัว' },
-        { number: 5, label: 'ทักษะและความสามารถ' },
-        { number: 6, label: 'ประวัติเพิ่มเติม' }
+        { number: 1, label: "ประวัติส่วนตัว" },
+        { number: 2, label: "ประวัติการศึกษา" },
+        { number: 3, label: "ประวัติการทำงาน" },
+        { number: 4, label: "ประวัติครอบครัว" },
+        { number: 5, label: "ทักษะและความสามารถ" },
+        { number: 6, label: "ประวัติเพิ่มเติม" },
       ],
       positions: [
-        { number: 1, label: 'ตำแหน่งงานที่ 1', labelEn: 'Position 1' },
-        { number: 2, label: 'ตำแหน่งงานที่ 2', labelEn: 'Position 2' },
-        { number: 3, label: 'สถานที่ทำงาน', labelEn: 'Workplace' },
-        { number: 4, label: 'เงินเดือนที่คาดหวัง', labelEn: 'Expected Salary' }
+        { number: 1, label: "ตำแหน่งงานที่ 1", labelEn: "Position 1" },
+        { number: 2, label: "ตำแหน่งงานที่ 2", labelEn: "Position 2" },
+        { number: 3, label: "สถานที่ทำงาน", labelEn: "Workplace" },
+        { number: 4, label: "เงินเดือนที่คาดหวัง", labelEn: "Expected Salary" },
       ],
       positionFields: [
-        { number: 1, label: 'programer' },
-        { number: 2, label: 'designer' },
-        { number: 3, label: 'manager' },
-        { number: 4, label: 'analyst' }
+        { number: 1, label: "programer" },
+        { number: 2, label: "designer" },
+        { number: 3, label: "manager" },
+        { number: 4, label: "analyst" },
       ],
       WorkplaceFields: [
-        { number: 1, label: 'Bangkok' },
-        { number: 2, label: 'Chiang Mai' },
-        { number: 3, label: 'Phuket' },
-        { number: 4, label: 'Khon Kaen' }
+        { number: 1, label: "Bangkok" },
+        { number: 2, label: "Chiang Mai" },
+        { number: 3, label: "Phuket" },
+        { number: 4, label: "Khon Kaen" },
       ],
       previewUrl: null,
       isProfileComplete: false,
       // date
       menu1: false,
       date1: null,
-      formattedDate1: '',
+      formattedDate1: "",
       menu2: false,
       date2: null,
-      formattedDate2: '',
+      formattedDate2: "",
       menu3: false,
       date3: null,
-      formattedDate3: '',
+      formattedDate3: "",
       // gender
       selectedGender: null,
       // address
-      useSameAddress: false
-    }
+      useSameAddress: false,
+    };
   },
   computed: {
-    todayDate () {
-      return new Date().toISOString().substr(0, 10)
+    todayDate() {
+      return new Date().toISOString().substr(0, 10);
     },
-    calculatedAge () {
-      if (!this.date3) { return '' }
-      const today = new Date()
-      const birth = new Date(this.date3)
-      let age = today.getFullYear() - birth.getFullYear()
-      const monthDiff = today.getMonth() - birth.getMonth()
-      // ถ้ายังไม่ถึงเดือนเกิด หรือถึงเดือนเกิดแต่ยังไม่ถึงวันเกิด ให้ลบ 1 ปี
-      if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birth.getDate())) {
-        age--
+    calculatedAge() {
+      if (!this.date3) {
+        return "";
       }
-      return age.toString()
-    }
+      const today = new Date();
+      const birth = new Date(this.date3);
+      let age = today.getFullYear() - birth.getFullYear();
+      const monthDiff = today.getMonth() - birth.getMonth();
+      // ถ้ายังไม่ถึงเดือนเกิด หรือถึงเดือนเกิดแต่ยังไม่ถึงวันเกิด ให้ลบ 1 ปี
+      if (
+        monthDiff < 0 ||
+        (monthDiff === 0 && today.getDate() < birth.getDate())
+      ) {
+        age--;
+      }
+      return age.toString();
+    },
   },
   methods: {
-    updateDate1 (val) {
-      const d = new Date(val)
-      const options = { day: '2-digit', month: '2-digit', year: 'numeric' }
-      this.formattedDate1 = d.toLocaleDateString('th-TH', options)
-      this.menu1 = false
+    updateDate1(val) {
+      const d = new Date(val);
+      const options = { day: "2-digit", month: "2-digit", year: "numeric" };
+      this.formattedDate1 = d.toLocaleDateString("th-TH", options);
+      this.menu1 = false;
     },
-    updateDate2 (val) {
-      const d = new Date(val)
-      const options = { day: '2-digit', month: '2-digit', year: 'numeric' }
-      this.formattedDate2 = d.toLocaleDateString('th-TH', options)
-      this.menu2 = false
+    updateDate2(val) {
+      const d = new Date(val);
+      const options = { day: "2-digit", month: "2-digit", year: "numeric" };
+      this.formattedDate2 = d.toLocaleDateString("th-TH", options);
+      this.menu2 = false;
     },
-    updateDate3 (val) {
-      const d = new Date(val)
-      const options = { day: '2-digit', month: '2-digit', year: 'numeric' }
-      this.formattedDate3 = d.toLocaleDateString('th-TH', options)
-      this.menu3 = false
+    updateDate3(val) {
+      const d = new Date(val);
+      const options = { day: "2-digit", month: "2-digit", year: "numeric" };
+      this.formattedDate3 = d.toLocaleDateString("th-TH", options);
+      this.menu3 = false;
     },
-    isNumber (evt) {
-      const charCode = evt.which ? evt.which : evt.keyCode
+    isNumber(evt) {
+      const charCode = evt.which ? evt.which : evt.keyCode;
       // อนุญาตเฉพาะตัวเลข 0-9
       if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-        evt.preventDefault()
+        evt.preventDefault();
       }
     },
-    triggerFileInput () {
-      this.$refs.fileInput.click()
+    triggerFileInput() {
+      this.$refs.fileInput.click();
     },
-    onFileChange (event) {
-      const file = event.target.files[0]
+    onFileChange(event) {
+      const file = event.target.files[0];
       if (file) {
         if (this.previewUrl) {
-          URL.revokeObjectURL(this.previewUrl)
+          URL.revokeObjectURL(this.previewUrl);
         }
-        this.previewUrl = URL.createObjectURL(file)
+        this.previewUrl = URL.createObjectURL(file);
       }
-      this.isProfileComplete = true
+      this.isProfileComplete = true;
     },
-    formatSalary (value, type) {
-      const inputValue = typeof value === 'string' ? value : value.target.value
-      const numValue = inputValue.replace(/\D/g, '')
+    formatSalary(value, type) {
+      const inputValue = typeof value === "string" ? value : value.target.value;
+      const numValue = inputValue.replace(/\D/g, "");
       if (!numValue) {
-        if (type === 'from') {
-          this.salaryFromDisplay = ''
-          this.salaryFrom = 0
+        if (type === "from") {
+          this.salaryFromDisplay = "";
+          this.salaryFrom = 0;
         } else {
-          this.salaryToDisplay = ''
-          this.salaryTo = 0
+          this.salaryToDisplay = "";
+          this.salaryTo = 0;
         }
-        this.validateSalary()
-        return
+        this.validateSalary();
+        return;
       }
-      const num = parseInt(numValue)
-      const formatted = num.toLocaleString('en-US')
-      if (type === 'from') {
-        this.salaryFromDisplay = formatted
-        this.salaryFrom = num
+      const num = parseInt(numValue);
+      const formatted = num.toLocaleString("en-US");
+      if (type === "from") {
+        this.salaryFromDisplay = formatted;
+        this.salaryFrom = num;
       } else {
-        this.salaryToDisplay = formatted
-        this.salaryTo = num
+        this.salaryToDisplay = formatted;
+        this.salaryTo = num;
       }
       // Validate real-time
-      this.validateSalary()
+      this.validateSalary();
     },
-    validateSalary () {
+    validateSalary() {
       // Reset errors
-      this.salaryFromError = false
-      this.salaryFromErrorMessage = ''
-      this.salaryToError = false
-      this.salaryToErrorMessage = ''
+      this.salaryFromError = false;
+      this.salaryFromErrorMessage = "";
+      this.salaryToError = false;
+      this.salaryToErrorMessage = "";
       // ตรวจสอบว่ากรอกข้อมูล
       if (!this.salaryFrom && this.salaryTo) {
-        this.salaryFromError = true
-        this.salaryFromErrorMessage = 'กรุณากรอกเงินเดือนต่ำสุด'
-        return false
+        this.salaryFromError = true;
+        this.salaryFromErrorMessage = "กรุณากรอกเงินเดือนต่ำสุด";
+        return false;
       }
       if (this.salaryFrom && !this.salaryTo) {
-        this.salaryToError = true
-        this.salaryToErrorMessage = 'กรุณากรอกเงินเดือนสูงสุด'
-        return false
+        this.salaryToError = true;
+        this.salaryToErrorMessage = "กรุณากรอกเงินเดือนสูงสุด";
+        return false;
       }
       // ตรวจสอบว่าเงินเดือนสูงสุดมากกว่าหรือเท่ากับต่ำสุด
       if (this.salaryFrom && this.salaryTo && this.salaryTo < this.salaryFrom) {
-        this.salaryToError = true
-        this.salaryToErrorMessage = 'เงินเดือนสูงสุดต้องมากกว่าหรือเท่ากับเงินเดือนต่ำสุด'
-        return false
+        this.salaryToError = true;
+        this.salaryToErrorMessage =
+          "เงินเดือนสูงสุดต้องมากกว่าหรือเท่ากับเงินเดือนต่ำสุด";
+        return false;
       }
       // ตรวจสอบว่าไม่ติดลบ
       if (this.salaryFrom < 0) {
-        this.salaryFromError = true
-        this.salaryFromErrorMessage = 'เงินเดือนต้องเป็นจำนวนบวก'
-        return false
+        this.salaryFromError = true;
+        this.salaryFromErrorMessage = "เงินเดือนต้องเป็นจำนวนบวก";
+        return false;
       }
       if (this.salaryTo < 0) {
-        this.salaryToError = true
-        this.salaryToErrorMessage = 'เงินเดือนต้องเป็นจำนวนบวก'
-        return false
+        this.salaryToError = true;
+        this.salaryToErrorMessage = "เงินเดือนต้องเป็นจำนวนบวก";
+        return false;
       }
-      return true
-    }
-  }
-}
+      return true;
+    },
+  },
+};
 </script>
 <style>
 .v-application--wrap {
-    flex: 1 1 auto;
-    backface-visibility: hidden;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    max-width: 100%;
-    position: relative;
-    background-color: #f2f2f2;
+  flex: 1 1 auto;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  max-width: 100%;
+  position: relative;
+  background-color: #f2f2f2;
 }
 .avatar-border {
-  border: 1px solid #58A144 !important;
-  border-radius: 50% ;
+  border: 1px solid #58a144 !important;
+  border-radius: 50%;
 }
 
 .position-relative {
@@ -1146,11 +1496,11 @@ export default {
 }
 
 .v-application p {
-    margin-bottom: 0px !important;
+  margin-bottom: 0px !important;
 }
 
 .position-bottom {
-    height: 40px;
+  height: 40px;
 }
 .v-list-item:hover {
   background-color: #e9ffeb !important;
@@ -1171,7 +1521,7 @@ export default {
 .upload-card {
   width: 200px;
   height: 210px;
-  border: 2px dashed #4CAF50;
+  border: 2px dashed #4caf50;
   border-radius: 8px;
   background-color: #f2faf2;
   cursor: pointer;
