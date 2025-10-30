@@ -25,6 +25,11 @@ export default {
       return this.$route.meta.page;
     },
   },
+  computed: {
+    headerVariant(){
+      return this.$route.meta.page
+    }
+  }
 };
 </script>
 

@@ -92,7 +92,7 @@ export default {
     height: { type: String, default: "56px" },
     maxWidth: { type: String, default: "232px" },
 
-    page: { type: Number, default: 0 },
+    page: { type: Number, default: 1 },
   },
 };
 </script>
