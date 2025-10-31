@@ -24,14 +24,14 @@ export default {
     headerVariant() {
       return this.$route.meta.page;
     },
-  }
+  },
 };
 </script>
 
 <style scoped>
 div.page-section {
   width: 100%;
-  height: 100%;
+  min-height: 100vh;
   background-color: #f2f2f2;
   display: flex;
   flex-direction: column;

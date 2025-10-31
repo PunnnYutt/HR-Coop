@@ -7,11 +7,11 @@
           :class="$vuetify.breakpoint.mdAndUp ? '' : 'show-display'"
         >
           <v-card
-          elevation="0"
-          rounded="lg"
-          class="mb-3"
-          max-width="1128"
-          :class="$vuetify.breakpoint.mdAndUp ? '' : 'show-display'"
+            elevation="0"
+            rounded="lg"
+            class="mb-3"
+            max-width="1128"
+            :class="$vuetify.breakpoint.mdAndUp ? '' : 'show-display'"
           >
             <v-row class="ma-md-0">
               <v-col class="mt-3 pa-0 px-md-4 pt-md-4 mt-md-0 pb-md-0">
@@ -77,17 +77,7 @@
                             clearable
                             class="pr-md-4"
                           />
-                          <v-select
-                            v-else-if="position.number === 2"
-                            :items="WorkplaceFields"
-                            item-text="label"
-                            item-value="label"
-                            outlined
-                            dense
-                            placeholder="เลือกประจำศูนย์"
-                            clearable
-                            class="pr-md-4"
-                          />
+
                           <v-select
                             v-else-if="position.number === 3"
                             :items="WorkplaceFields"
@@ -118,16 +108,27 @@
                   "
                 >
                   <v-row no-gutters class="green lighten-5 py-2 px-3">
-                      <v-col cols="12">
-                        <p class="primary--text lighten-1 mb-0 font-weight-medium">ประวัติส่วนตัว / Personal</p>
-                      </v-col>
-                    </v-row>
+                    <v-col cols="12">
+                      <p
+                        class="primary--text lighten-1 mb-0 font-weight-medium"
+                      >
+                        ประวัติส่วนตัว / Personal
+                      </p>
+                    </v-col>
+                  </v-row>
                   <v-row class="mt-0">
                     <v-col cols="12" md="3">
                       <v-row class="px-3 pt-3">
-                        <v-col cols="12" class="d-flex flex-column align-center justify-center" nogutters>
-                          <v-row cols="12" >
-                            <v-hover v-if="!isProfileComplete" v-slot="{ isHovering, props }">
+                        <v-col
+                          cols="12"
+                          class="d-flex flex-column align-center justify-center"
+                          nogutters
+                        >
+                          <v-row cols="12">
+                            <v-hover
+                              v-if="!isProfileComplete"
+                              v-slot="{ isHovering, props }"
+                            >
                               <v-col
                                 v-bind="props"
                                 class="d-flex flex-column align-center justify-center upload-card"
@@ -173,8 +174,16 @@
                     </v-col>
                     <v-col cols="12" md="9" class="pl-6 pl-md-0">
                       <v-row>
-                        <v-col cols="12" no-gutters class="d-flex justify-start align-center mt-12 mt-md-0 pb-0 pt-0">
-                          <v-radio-group v-model="selectedGender" row class="color-label custom-label">
+                        <v-col
+                          cols="12"
+                          no-gutters
+                          class="d-flex justify-start align-center mt-12 mt-md-0 pb-0 pt-0"
+                        >
+                          <v-radio-group
+                            v-model="selectedGender"
+                            row
+                            class="color-label custom-label"
+                          >
                             <template #label>
                               <span
                                 >คำนำหน้าชื่อ<span class="red--text"> * </span
@@ -583,7 +592,11 @@
                     </v-col>
                   </v-row>
                   <v-row>
-                    <v-col cols="12" md="3" class="d-flex justify-center align-center pt-0 pb-0 pl-6 pr-md-0">
+                    <v-col
+                      cols="12"
+                      md="3"
+                      class="d-flex justify-center align-center pt-0 pb-0 pl-6 pr-md-0"
+                    >
                       <v-col cols="8">
                         <v-row>
                           <v-col
@@ -668,24 +681,31 @@
                       </v-col>
                     </v-col>
                     <v-col md="9" class="py-0 d-sm-flex flex-sm-row pl-md-0">
-                     <v-col class="py-0 pl-3 pt-md-3">
-                      <v-row>
-                        <v-col class="d-flex justify-start align-center pt-0 pl-0 pb-1 mt-md-1">
-                          <p class="custom-label">โรคประจำตัว <span class="grey--text"> Any physical disability or disease? </span></p>
-                        </v-col>
-                      </v-row>
-                      <v-row>
-                        <v-col class="pt-0 pl-0 ">
-                          <v-text-field
-                            outlined
-                            dense
-                            hide-details="auto"
-                            class="ma-0"
-                            placeholder="โรคประจำตัว"
-                          />
-                        </v-col>
-                      </v-row>
-                     </v-col>
+                      <v-col class="py-0 pl-3 pt-md-3">
+                        <v-row>
+                          <v-col
+                            class="d-flex justify-start align-center pt-0 pl-0 pb-1 mt-md-1"
+                          >
+                            <p class="custom-label">
+                              โรคประจำตัว
+                              <span class="grey--text">
+                                Any physical disability or disease?
+                              </span>
+                            </p>
+                          </v-col>
+                        </v-row>
+                        <v-row>
+                          <v-col class="pt-0 pl-0">
+                            <v-text-field
+                              outlined
+                              dense
+                              hide-details="auto"
+                              class="ma-0"
+                              placeholder="โรคประจำตัว"
+                            />
+                          </v-col>
+                        </v-row>
+                      </v-col>
                     </v-col>
                   </v-row>
                   <v-row>
@@ -704,43 +724,75 @@
                           </v-row>
                         </v-col>
                         <v-col cols="12" md="9" class="py-0">
-                          <v-radio-group v-model="soldier" row class="color-label custom-label mt-1 mt-md-0 py-md-0">
-                            <v-col cols="12" md="4" class=" d-flex flex-row flex-md-colum mr-md-0 pa-md-0 pt-0">
-                            <v-radio value="three" class="color-label custom-radio">
-                              <template #label>
-                                <v-col class="pa-0">
-                                  <p>ได้รับการยกเว้น</p>
-                                  <p class="text-caption text--secondary">Exempted</p>
-                                </v-col>
-                              </template>
-                            </v-radio>
-                            <v-radio value="one" class="color-label custom-radio">
-                              <template #label>
-                                <v-col class="pa-0">
-                                  <p>ศึกษาวิชาทหาร</p>
-                                  <p class="text-caption text--secondary">Military Studies</p>
-                                </v-col>
-                              </template>
-                            </v-radio>
+                          <v-radio-group
+                            v-model="soldier"
+                            row
+                            class="color-label custom-label mt-1 mt-md-0 py-md-0"
+                          >
+                            <v-col
+                              cols="12"
+                              md="4"
+                              class="d-flex flex-row flex-md-colum mr-md-0 pa-md-0 pt-0"
+                            >
+                              <v-radio
+                                value="three"
+                                class="color-label custom-radio"
+                              >
+                                <template #label>
+                                  <v-col class="pa-0">
+                                    <p>ได้รับการยกเว้น</p>
+                                    <p class="text-caption text--secondary">
+                                      Exempted
+                                    </p>
+                                  </v-col>
+                                </template>
+                              </v-radio>
+                              <v-radio
+                                value="one"
+                                class="color-label custom-radio"
+                              >
+                                <template #label>
+                                  <v-col class="pa-0">
+                                    <p>ศึกษาวิชาทหาร</p>
+                                    <p class="text-caption text--secondary">
+                                      Military Studies
+                                    </p>
+                                  </v-col>
+                                </template>
+                              </v-radio>
                             </v-col>
-                              <v-col cols="12" md="6" class=" d-flex flex-row flex-md-colum pa-md-0 py-0">
-                              <v-radio value="two" class="color-label custom-radio">
+                            <v-col
+                              cols="12"
+                              md="6"
+                              class="d-flex flex-row flex-md-colum pa-md-0 py-0"
+                            >
+                              <v-radio
+                                value="two"
+                                class="color-label custom-radio"
+                              >
                                 <template #label>
                                   <v-col class="pa-0">
                                     <p>ผ่านการเกณฑ์ทหาร</p>
-                                    <p class="text-caption text--secondary">Discharged</p>
+                                    <p class="text-caption text--secondary">
+                                      Discharged
+                                    </p>
                                   </v-col>
                                 </template>
                               </v-radio>
-                              <v-radio value="zero" class="color-label custom-radio">
+                              <v-radio
+                                value="zero"
+                                class="color-label custom-radio"
+                              >
                                 <template #label>
                                   <v-col class="pa-0">
                                     <p>อื่นๆ</p>
-                                    <p class="text-caption text--secondary">Others</p>
+                                    <p class="text-caption text--secondary">
+                                      Others
+                                    </p>
                                   </v-col>
                                 </template>
                               </v-radio>
-                              <v-col v-if="soldier==='zero'" class="pa-0">
+                              <v-col v-if="soldier === 'zero'" class="pa-0">
                                 <v-text-field
                                   outlined
                                   dense
@@ -758,8 +810,13 @@
                   <v-row class="pl-7 pr-2 mt-md-2">
                     <v-col cols="12" md="6">
                       <v-row>
-                        <v-col class="d-flex justify-start align-center pt-0 pl-0 pb-1">
-                          <p class="custom-label">เบอร์โทรศัพท์ <span class="grey--text"> Telephone No. </span></p>
+                        <v-col
+                          class="d-flex justify-start align-center pt-0 pl-0 pb-1"
+                        >
+                          <p class="custom-label">
+                            เบอร์โทรศัพท์
+                            <span class="grey--text"> Telephone No. </span>
+                          </p>
                         </v-col>
                       </v-row>
                       <v-row>
@@ -776,12 +833,16 @@
                     </v-col>
                     <v-col cols="12" md="6">
                       <v-row>
-                        <v-col class="d-flex justify-start align-center pt-0 pl-0 pb-1">
-                          <p class="custom-label">อีเมล <span class="grey--text"> E-mail </span></p>
+                        <v-col
+                          class="d-flex justify-start align-center pt-0 pl-0 pb-1"
+                        >
+                          <p class="custom-label">
+                            อีเมล <span class="grey--text"> E-mail </span>
+                          </p>
                         </v-col>
                       </v-row>
                       <v-row>
-                        <v-col class="pt-0 pl-0 ">
+                        <v-col class="pt-0 pl-0">
                           <v-text-field
                             outlined
                             dense
@@ -805,7 +866,7 @@
 <script>
 export default {
   layout: "form",
-  data () {
+  data() {
     return {
       // format currency
       salaryFrom: 0,
@@ -827,9 +888,9 @@ export default {
         { number: 6, label: "ประวัติเพิ่มเติม" },
       ],
       positions: [
-        { number: 1, label: 'ตำแหน่งสหกิจหรือฝึกงาน', labelEn: 'Position' },
-        { number: 2, label: 'ประจำศูนย์', labelEn: 'Workplace' },
-        { number: 3, label: 'รูปแบบการฝึกงาน', labelEn: 'Internship Format' }
+        { number: 1, label: "ตำแหน่งสหกิจหรือฝึกงาน", labelEn: "Position" },
+        { number: 2, label: "ประจำศูนย์", labelEn: "Workplace" },
+        { number: 3, label: "รูปแบบการฝึกงาน", labelEn: "Internship Format" },
       ],
       positionFields: [
         { number: 1, label: "programer" },
@@ -838,89 +899,89 @@ export default {
         { number: 4, label: "analyst" },
       ],
       WorkplaceFields: [
-        { number: 1, label: 'Bangkok' },
-        { number: 2, label: 'Chiang Mai' },
-        { number: 3, label: 'Phuket' },
-        { number: 4, label: 'Khon Kaen' }
+        { number: 1, label: "Bangkok" },
+        { number: 2, label: "Chiang Mai" },
+        { number: 3, label: "Phuket" },
+        { number: 4, label: "Khon Kaen" },
       ],
       Provinces: [
-        { number: 1, label: 'กรุงเทพมหานคร' },
-        { number: 2, label: 'กระบี่' },
-        { number: 3, label: 'กาญจนบุรี' },
-        { number: 4, label: 'กาฬสินธุ์' },
-        { number: 5, label: 'กำแพงเพชร' },
-        { number: 6, label: 'ขอนแก่น' },
-        { number: 7, label: 'จันทบุรี' },
-        { number: 8, label: 'ฉะเชิงเทรา' },
-        { number: 9, label: 'ชลบุรี' },
-        { number: 10, label: 'ชัยนาท' },
-        { number: 11, label: 'ชัยภูมิ' },
-        { number: 12, label: 'ชุมพร' },
-        { number: 13, label: 'เชียงราย' },
-        { number: 14, label: 'เชียงใหม่' },
-        { number: 15, label: 'ตรัง' },
-        { number: 16, label: 'ตราด' },
-        { number: 17, label: 'ตาก' },
-        { number: 18, label: 'นครนายก' },
-        { number: 19, label: 'นครปฐม' },
-        { number: 20, label: 'นครพนม' },
-        { number: 21, label: 'นครราชสีมา' },
-        { number: 22, label: 'นครศรีธรรมราช' },
-        { number: 23, label: 'นครสวรรค์' },
-        { number: 24, label: 'นราธิวาส' },
-        { number: 25, label: 'น่าน' },
-        { number: 26, label: 'บึงกาฬ' },
-        { number: 27, label: 'บุรีรัมย์' },
-        { number: 28, label: 'ประจวบคีรีขันธ์' },
-        { number: 29, label: 'ปทุมธานี' },
-        { number: 30, label: 'ปราจีนบุรี' },
-        { number: 31, label: 'ปัตตานี' },
-        { number: 32, label: 'พะเยา' },
-        { number: 33, label: 'พระนครศรีอยุธยา' },
-        { number: 34, label: 'พังงา' },
-        { number: 35, label: 'พัทลุง' },
-        { number: 36, label: 'พิจิตร' },
-        { number: 37, label: 'พิษณุโลก' },
-        { number: 38, label: 'เพชรบุรี' },
-        { number: 39, label: 'เพชรบูรณ์' },
-        { number: 40, label: 'แพร่' },
-        { number: 41, label: 'พัทลุง' },
-        { number: 42, label: 'ภูเก็ต' },
-        { number: 43, label: 'มหาสารคาม' },
-        { number: 44, label: 'มุกดาหาร' },
-        { number: 45, label: 'แม่ฮ่องสอน' },
-        { number: 46, label: 'ยโสธร' },
-        { number: 47, label: 'ยะลา' },
-        { number: 48, label: 'ร้อยเอ็ด' },
-        { number: 49, label: 'ระนอง' },
-        { number: 50, label: 'ระยอง' },
-        { number: 51, label: 'ราชบุรี' },
-        { number: 52, label: 'ลพบุรี' },
-        { number: 53, label: 'ลำปาง' },
-        { number: 54, label: 'ลำพูน' },
-        { number: 55, label: 'เลย' },
-        { number: 56, label: 'ศรีสะเกษ' },
-        { number: 57, label: 'สกลนคร' },
-        { number: 58, label: 'สงขลา' },
-        { number: 59, label: 'สตูล' },
-        { number: 60, label: 'สมุทรปราการ' },
-        { number: 61, label: 'สมุทรสงคราม' },
-        { number: 62, label: 'สมุทรสาคร' },
-        { number: 63, label: 'สระแก้ว' },
-        { number: 64, label: 'สระบุรี' },
-        { number: 65, label: 'สิงห์บุรี' },
-        { number: 66, label: 'สุโขทัย' },
-        { number: 67, label: 'สุพรรณบุรี' },
-        { number: 68, label: 'สุราษฎร์ธานี' },
-        { number: 69, label: 'สุรินทร์' },
-        { number: 70, label: 'หนองคาย' },
-        { number: 71, label: 'หนองบัวลำภู' },
-        { number: 72, label: 'อำนาจเจริญ' },
-        { number: 73, label: 'อุดรธานี' },
-        { number: 74, label: 'อุตรดิตถ์' },
-        { number: 75, label: 'อุทัยธานี' },
-        { number: 76, label: 'อุบลราชธานี' },
-        { number: 77, label: 'ยะลา' }
+        { number: 1, label: "กรุงเทพมหานคร" },
+        { number: 2, label: "กระบี่" },
+        { number: 3, label: "กาญจนบุรี" },
+        { number: 4, label: "กาฬสินธุ์" },
+        { number: 5, label: "กำแพงเพชร" },
+        { number: 6, label: "ขอนแก่น" },
+        { number: 7, label: "จันทบุรี" },
+        { number: 8, label: "ฉะเชิงเทรา" },
+        { number: 9, label: "ชลบุรี" },
+        { number: 10, label: "ชัยนาท" },
+        { number: 11, label: "ชัยภูมิ" },
+        { number: 12, label: "ชุมพร" },
+        { number: 13, label: "เชียงราย" },
+        { number: 14, label: "เชียงใหม่" },
+        { number: 15, label: "ตรัง" },
+        { number: 16, label: "ตราด" },
+        { number: 17, label: "ตาก" },
+        { number: 18, label: "นครนายก" },
+        { number: 19, label: "นครปฐม" },
+        { number: 20, label: "นครพนม" },
+        { number: 21, label: "นครราชสีมา" },
+        { number: 22, label: "นครศรีธรรมราช" },
+        { number: 23, label: "นครสวรรค์" },
+        { number: 24, label: "นราธิวาส" },
+        { number: 25, label: "น่าน" },
+        { number: 26, label: "บึงกาฬ" },
+        { number: 27, label: "บุรีรัมย์" },
+        { number: 28, label: "ประจวบคีรีขันธ์" },
+        { number: 29, label: "ปทุมธานี" },
+        { number: 30, label: "ปราจีนบุรี" },
+        { number: 31, label: "ปัตตานี" },
+        { number: 32, label: "พะเยา" },
+        { number: 33, label: "พระนครศรีอยุธยา" },
+        { number: 34, label: "พังงา" },
+        { number: 35, label: "พัทลุง" },
+        { number: 36, label: "พิจิตร" },
+        { number: 37, label: "พิษณุโลก" },
+        { number: 38, label: "เพชรบุรี" },
+        { number: 39, label: "เพชรบูรณ์" },
+        { number: 40, label: "แพร่" },
+        { number: 41, label: "พัทลุง" },
+        { number: 42, label: "ภูเก็ต" },
+        { number: 43, label: "มหาสารคาม" },
+        { number: 44, label: "มุกดาหาร" },
+        { number: 45, label: "แม่ฮ่องสอน" },
+        { number: 46, label: "ยโสธร" },
+        { number: 47, label: "ยะลา" },
+        { number: 48, label: "ร้อยเอ็ด" },
+        { number: 49, label: "ระนอง" },
+        { number: 50, label: "ระยอง" },
+        { number: 51, label: "ราชบุรี" },
+        { number: 52, label: "ลพบุรี" },
+        { number: 53, label: "ลำปาง" },
+        { number: 54, label: "ลำพูน" },
+        { number: 55, label: "เลย" },
+        { number: 56, label: "ศรีสะเกษ" },
+        { number: 57, label: "สกลนคร" },
+        { number: 58, label: "สงขลา" },
+        { number: 59, label: "สตูล" },
+        { number: 60, label: "สมุทรปราการ" },
+        { number: 61, label: "สมุทรสงคราม" },
+        { number: 62, label: "สมุทรสาคร" },
+        { number: 63, label: "สระแก้ว" },
+        { number: 64, label: "สระบุรี" },
+        { number: 65, label: "สิงห์บุรี" },
+        { number: 66, label: "สุโขทัย" },
+        { number: 67, label: "สุพรรณบุรี" },
+        { number: 68, label: "สุราษฎร์ธานี" },
+        { number: 69, label: "สุรินทร์" },
+        { number: 70, label: "หนองคาย" },
+        { number: 71, label: "หนองบัวลำภู" },
+        { number: 72, label: "อำนาจเจริญ" },
+        { number: 73, label: "อุดรธานี" },
+        { number: 74, label: "อุตรดิตถ์" },
+        { number: 75, label: "อุทัยธานี" },
+        { number: 76, label: "อุบลราชธานี" },
+        { number: 77, label: "ยะลา" },
       ],
       previewUrl: null,
       isProfileComplete: false,
@@ -938,8 +999,8 @@ export default {
       selectedGender: null,
       // address
       useSameAddress: false,
-      soldier: ''
-    }
+      soldier: "",
+    };
   },
   computed: {
     todayDate() {
