@@ -6,7 +6,11 @@
       <span v-if="required">*</span>
     </div>
     <div class="select-wrap">
-      <select required>
+      <select
+        required
+        :value="value"
+        @input="$emit('input', $event.target.value)"
+      >
         <option :value="null" disabled selected hidden>
           {{ placeholder }}
         </option>
@@ -43,12 +47,16 @@ export default {
 
     height: { type: String, default: "56px" },
     maxWidth: { type: String, default: "232px" },
+    value: { type: String, default: null },
   },
 
   computed: {
     boxStyle() {
       return { height: this.height, maxWidth: this.maxWidth };
     },
+  },
+  data() {
+    return {};
   },
 };
 </script>

@@ -25,12 +25,12 @@
       </div>
       <div
         class="form-input-section"
-        v-for="key in educationNum"
-        :key="key"
-        :class="{ 'first-form-input-section': key === 1 }"
+        v-for="(item, index) in education_info"
+        :key="index"
+        :class="{ 'first-form-input-section': index === 0 }"
       >
-        <div class="form-input-section-delete" v-if="key !== 1">
-          <div class="delete-button" @click="delEducation">
+        <div class="form-input-section-delete" v-if="index !== 0">
+          <div class="delete-button" @click="delEducation(index)">
             <svg
               width="16"
               height="16"
@@ -53,6 +53,7 @@
             max-width="250px"
             height="56px"
             :choices="['ปริญญาตรี', 'ปริญญาโท', 'ปริญญาเอก']"
+            v-model="item.Level"
           />
 
           <InputBox
@@ -61,6 +62,7 @@
             placeholder="ระบุชื่อสถานศึกษา"
             max-width="516px"
             height="56px"
+            v-model="item.Institute"
           />
 
           <div class="edu-year-section">
@@ -75,6 +77,7 @@
                 maxWidth="114px"
                 locale="th"
                 date-format="th-TH"
+                v-model="item.StartYear"
               />
               <p>-</p>
               <date-picker
@@ -83,6 +86,7 @@
                 maxWidth="114px"
                 locale="th"
                 date-format="th-TH"
+                v-model="item.EndYear"
               />
             </div>
           </div>
@@ -92,21 +96,29 @@
             label-th="วุฒิการศึกษา"
             label-en="Qualifications"
             placeholder="0000"
+            v-model="item.Qualifications"
           />
 
           <InputBox
             label-th="สาขาวิชา"
             label-en="Major"
             placeholder="ระบุสาขาวิชา"
+            v-model="item.Major"
           />
 
-          <InputBox label-th="คณะ" label-en="Faculty" placeholder="ระบุคณะ" />
+          <InputBox
+            label-th="คณะ"
+            label-en="Faculty"
+            placeholder="ระบุคณะ"
+            v-model="item.Faculty"
+          />
 
           <InputBox
             label-th="เกรดเฉลี่ย"
             label-en="G.P.A"
             placeholder="ระบุเกรดเฉลี่ย"
             type="number"
+            v-model="item.GPA"
           />
         </div>
       </div>
@@ -123,7 +135,18 @@ export default {
 
   data() {
     return {
-      educationNum: 1,
+      education_info: [
+        {
+          Level: "",
+          Institute: "",
+          StartYear: "",
+          EndYear: "",
+          Qualifications: "",
+          Major: "",
+          Faculty: "",
+          GPA: "",
+        },
+      ],
       myDate: "",
     };
   },
@@ -135,10 +158,20 @@ export default {
 
   methods: {
     addEducation() {
-      this.educationNum++;
+      this.education_info.push({
+        Level: "",
+        Institute: "",
+        StartYear: "",
+        EndYear: "",
+        Qualifications: "",
+        Major: "",
+        Faculty: "",
+        GPA: "",
+      });
+      console.log(this.education_info);
     },
-    delEducation() {
-      this.educationNum = this.educationNum - 1;
+    delEducation(index) {
+      this.education_info.splice(index, 1);
     },
   },
 };
