@@ -9,7 +9,7 @@
           <v-card
             elevation="0"
             rounded="lg"
-            class="mb-3"
+            class="mb-3 pa-2"
             max-width="1128"
             :class="$vuetify.breakpoint.mdAndUp ? '' : 'show-display'"
           >
