@@ -13,27 +13,27 @@
           max-width="1128"
           :class="$vuetify.breakpoint.mdAndUp ? '' : 'show-display'"
           >
-            <v-row class="ma-md-0">
+            <v-row class="ma-md-0 ">
               <v-col class="mt-3 pa-0 px-md-4 pt-md-4 mt-md-0 pb-md-0">
                 <v-card
                   rounded="lg"
-                  class="px-0 pb-3 pt-0 mt-3 mt-md-0"
+                  class="px-0 pb-0 pt-0 mt-3 mt-md-0"
                   :class="
                     $vuetify.breakpoint.mdAndUp
                       ? 'shadow-card'
                       : 'shadow-card-none'
                   "
                 >
-                  <v-row no-gutters class="green lighten-5 py-2 px-3 mb-3">
-                    <v-col cols="12">
+                  <v-row no-gutters class="green lighten-5 px-4 py-9px">
+                    <v-col cols="10">
                       <p
-                        class="primary--text lighten-1 mb-0 font-weight-medium"
+                        class="primary--text lighten-1 text-body-2 mb-0 font-weight-medium"
                       >
-                        ตำแหน่งงาน / Position
+                        ตำแหน่งสหกิจหรือฝึกงาน / Position
                       </p>
                     </v-col>
                   </v-row>
-                  <v-row no-gutters class="px-3 pt-3">
+                  <v-row no-gutters class="pl-4 pt-4">
                     <v-col
                       v-for="position in positions"
                       :key="position.number"
@@ -44,7 +44,7 @@
                     >
                       <v-row no-gutters>
                         <v-col cols="12">
-                          <p class="mb-1 font-weight-light">
+                          <p class="mb-2 font-weight-light">
                             {{ position.label }}
                             <span
                               class="pl-2 b-1 grey--text text--lighten-1 font-weight-light"
@@ -117,15 +117,19 @@
                       : 'shadow-card-none'
                   "
                 >
-                  <v-row no-gutters class="green lighten-5 py-2 px-3">
-                      <v-col cols="12">
-                        <p class="primary--text lighten-1 mb-0 font-weight-medium">ประวัติส่วนตัว / Personal</p>
-                      </v-col>
-                    </v-row>
+                  <v-row no-gutters class="green lighten-5  px-4 py-9px">
+                    <v-col cols="12">
+                      <p
+                        class="primary--text lighten-1 text-body-2 mb-0 font-weight-medium"
+                      >
+                        ประวัติส่วนตัว / Personal
+                      </p>
+                    </v-col>
+                  </v-row>
                   <v-row class="mt-0">
                     <v-col cols="12" md="3">
-                      <v-row class="px-3 pt-3">
-                        <v-col cols="12" class="d-flex flex-column align-center justify-center" nogutters>
+                      <v-row no-gutters class="pl-10 py-4">
+                        <v-col cols="12" class="d-flex flex-column align-center justify-center pl-0 pr-6 pt-1" no-gutters>
                           <v-row cols="12" >
                             <v-hover v-if="!isProfileComplete" v-slot="{ isHovering, props }">
                               <v-col
@@ -163,18 +167,18 @@
                             </v-col>
                           </v-row>
                           <v-row>
-                            <p class="primary--text mt-5">อัปโหลดรูปประจำตัว</p>
+                            <p class="primary--text mt-5 custom-label">อัปโหลดรูปประจำตัว</p>
                           </v-row>
                           <v-row>
-                            <p class="grey--text mt-2">Upload Profile image</p>
+                            <p class="grey--text mt-2 custom-label">Upload Profile image</p>
                           </v-row>
                         </v-col>
                       </v-row>
                     </v-col>
                     <v-col cols="12" md="9" class="pl-6 pl-md-0">
                       <v-row>
-                        <v-col cols="12" no-gutters class="d-flex justify-start align-center mt-12 mt-md-0 pb-0 pt-0">
-                          <v-radio-group v-model="selectedGender" row class="color-label custom-label">
+                        <v-col cols="12" no-gutters class="d-flex justify-start align-center mt-12 mt-md-0 pb-0 pt-0 pl-4">
+                          <v-radio-group v-model="selectedGender" row class="color-label custom-label custom-radio-group">
                             <template #label>
                               <span
                                 >คำนำหน้าชื่อ<span class="red--text"> * </span
@@ -204,12 +208,12 @@
                         <v-col
                           cols="12"
                           md="4"
-                          class="d-flex justify-center align-center pt-0"
+                          class="d-flex justify-center align-center pt-0 px-4 pb-2"
                         >
                           <v-col>
                             <v-row>
                               <v-col
-                                class="d-flex justify-start align-center pt-0 pl-0 pb-1"
+                                class="d-flex justify-start align-center pt-0 pl-0 pb-2"
                               >
                                 <p class="custom-label">
                                   ชื่อ (ภาษาไทย)<span class="red--text">
@@ -234,12 +238,12 @@
                         <v-col
                           cols="12"
                           md="4"
-                          class="d-flex justify-center align-center pt-0 pl-md-0"
+                          class="d-flex justify-center align-center pt-0 px-md-0 pb-2"
                         >
                           <v-col>
                             <v-row>
                               <v-col
-                                class="d-flex justify-start align-center pt-0 pl-0 pb-1"
+                                class="d-flex justify-start align-center pt-0 pl-0 pb-2"
                               >
                                 <p class="custom-label">
                                   นามสกุล (ภาษาไทย)<span class="red--text">
@@ -249,7 +253,7 @@
                               </v-col>
                             </v-row>
                             <v-row>
-                              <v-col class="pt-0 pl-0 pr-md-0">
+                              <v-col class="pt-0 pl-0 pr-md-4">
                                 <v-text-field
                                   outlined
                                   dense
@@ -269,7 +273,7 @@
                           <v-col>
                             <v-row>
                               <v-col
-                                class="d-flex justify-start align-center pt-0 pl-0 pb-1"
+                                class="d-flex justify-start align-center pt-0 pl-0 pb-2"
                               >
                                 <p class="custom-label">
                                   ชื่อเล่น (ภาษาไทย)<span class="red--text">
@@ -279,7 +283,7 @@
                               </v-col>
                             </v-row>
                             <v-row>
-                              <v-col class="pt-0 pl-0">
+                              <v-col class="pt-0 pl-0 pb-2 pr-4">
                                 <v-text-field
                                   outlined
                                   dense
@@ -294,7 +298,7 @@
                         <v-col
                           cols="12"
                           no-gutters
-                          class="d-flex justify-start align-center pb-0 pt-md-0"
+                          class="d-flex justify-start align-center pb-0 pt-md-0 pl-4"
                         >
                           <v-radio-group
                             v-model="selectedGender"
@@ -330,12 +334,12 @@
                         <v-col
                           cols="12"
                           md="4"
-                          class="d-flex justify-center align-center pt-0"
+                          class="d-flex justify-center align-center pt-0 px-md-4"
                         >
                           <v-col>
                             <v-row>
                               <v-col
-                                class="d-flex justify-start align-center pt-0 pl-0 pb-1 pr-md-0"
+                                class="d-flex justify-start align-center pt-0 pl-0 pb-2 pr-md-0"
                               >
                                 <p class="custom-label">
                                   Name<span class="red--text"> * </span>
@@ -358,12 +362,12 @@
                         <v-col
                           cols="12"
                           md="4"
-                          class="d-flex justify-center align-center pl-md-0 pt-0"
+                          class="d-flex justify-center align-center pl-md-0 pr-md-4 pt-0"
                         >
                           <v-col>
                             <v-row>
                               <v-col
-                                class="d-flex justify-start align-center pt-0 pl-0 pb-1"
+                                class="d-flex justify-start align-center pt-0 pl-0 pb-2"
                               >
                                 <p class="custom-label">
                                   Surname<span class="red--text"> * </span>
@@ -391,7 +395,7 @@
                           <v-col>
                             <v-row>
                               <v-col
-                                class="d-flex justify-start align-center pt-0 pl-0 pb-1"
+                                class="d-flex justify-start align-center pt-0 pl-0 pb-2"
                               >
                                 <p class="custom-label">
                                   Nickname<span class="red--text"> * </span>
@@ -399,7 +403,7 @@
                               </v-col>
                             </v-row>
                             <v-row>
-                              <v-col class="pt-0 pl-0">
+                              <v-col class="pt-0 pl-0 pr-md-4">
                                 <v-text-field
                                   outlined
                                   dense
@@ -414,12 +418,12 @@
                         <v-col
                           cols="12"
                           md="4"
-                          class="d-flex justify-center align-center pr-md-0 pt-0"
+                          class="d-flex justify-center align-center pr-md-0 pl-md-4 pt-0 pb-md-2"
                         >
                           <v-col>
                             <v-row>
                               <v-col
-                                class="d-flex justify-start align-center mt-3 mt-md-0 pt-0 pl-0 pr-md-0 pb-1"
+                                class="d-flex justify-start align-center mt-3 mt-md-0 pt-0 pl-0 pr-md-0 pb-2"
                               >
                                 <p class="custom-label">
                                   หมายเลขบัตรประชาชน
@@ -429,7 +433,7 @@
                               </v-col>
                             </v-row>
                             <v-row>
-                              <v-col class="pt-0 pl-0">
+                              <v-col class="pt-0 pl-0 pr-md-4">
                                 <v-text-field
                                   outlined
                                   dense
@@ -444,12 +448,12 @@
                         <v-col
                           cols="12"
                           md="3"
-                          class="d-flex justify-center align-center pt-0 px-md-0"
+                          class="d-flex justify-center align-center pt-0 pr-md-0 pl-md-0 pb-md-2"
                         >
                           <v-col>
                             <v-row>
                               <v-col
-                                class="d-flex justify-start align-center pt-0 pl-0 pb-1"
+                                class="d-flex justify-start align-center pt-0 pl-0 pb-2"
                               >
                                 <p class="custom-label">
                                   ระบุเขต/อำเภอที่ออกบัตร<span
@@ -476,12 +480,12 @@
                         <v-col
                           cols="12"
                           md="5"
-                          class="d-flex justify-center align-center pt-0 pb-0"
+                          class="d-flex justify-start align-start pt-0 pb-0 pl-md-4 pb-md-2"
                         >
                           <v-col cols="6">
                             <v-row>
                               <v-col
-                                class="d-flex justify-start align-center pt-0 pl-0 pb-1 mt-md-1"
+                                class="pt-0 pl-0 pb-2"
                               >
                                 <p class="custom-label">
                                   วันที่ออกบัตร
@@ -531,7 +535,7 @@
                           <v-col cols="6" class="">
                             <v-row>
                               <v-col
-                                class="d-flex justify-start align-center pt-0 pl-0 pb-1 mt-md-1"
+                                class="pt-0 pl-0 pb-2"
                               >
                                 <p class="custom-label">
                                   วันที่หมดอายุ<span class="grey--text">
@@ -583,11 +587,11 @@
                     </v-col>
                   </v-row>
                   <v-row>
-                    <v-col cols="12" md="3" class="d-flex justify-center align-center pt-0 pb-0 pl-6 pr-md-0">
-                      <v-col cols="8">
+                    <v-col cols="12" md="3" class="d-flex justify-start align-start pt-0 pb-0 pl-3 pr-md-0">
+                      <v-col cols="8" class="pt-md-0">
                         <v-row>
                           <v-col
-                            class="d-flex justify-start align-center pt-0 pl-0 pb-1 mt-md-1"
+                            class="d-flex justify-start align-center pt-0 pl-4 pb-2 mt-md-4"
                           >
                             <p class="custom-label">
                               วันเกิด
@@ -597,7 +601,7 @@
                           </v-col>
                         </v-row>
                         <v-row>
-                          <v-col class="pt-0 pl-0 pr-4 pb-0">
+                          <v-col class="pt-0 pl-4 pr-4 pb-0">
                             <v-menu
                               ref="menu"
                               v-model="menu3"
@@ -637,9 +641,9 @@
                       <v-col cols="4">
                         <v-row>
                           <v-col
-                            class="d-flex justify-start align-center pt-0 pl-0 pb-1 mt-md-1"
+                            class="d-flex justify-start align-center pt-0 pl-0 pb-2"
                           >
-                            <p class="custom-label pb-0">
+                            <p class="custom-label pb-0 mt-md-1">
                               อายุ <span class="grey--text"> Age </span>
                             </p>
                           </v-col>
@@ -670,12 +674,12 @@
                     <v-col md="9" class="py-0 d-sm-flex flex-sm-row pl-md-0">
                      <v-col class="py-0 pl-3 pt-md-3">
                       <v-row>
-                        <v-col class="d-flex justify-start align-center pt-0 pl-0 pb-1 mt-md-1">
+                        <v-col class="d-flex justify-start align-center pt-0 pl-0 pb-2 mt-md-1">
                           <p class="custom-label">โรคประจำตัว <span class="grey--text"> Any physical disability or disease? </span></p>
                         </v-col>
                       </v-row>
                       <v-row>
-                        <v-col class="pt-0 pl-0 ">
+                        <v-col class="pt-0 pl-0 pr-4">
                           <v-text-field
                             outlined
                             dense
@@ -691,14 +695,14 @@
                   <v-row>
                     <v-col>
                       <v-row class="pt-4 pt-md-0">
-                        <v-col cols="12" md="2" class="pl-9">
+                        <v-col cols="12" md="2" class="pl-6">
                           <v-row
-                            class="d-flex flex-md-column flex-row align-center align-md-start"
+                            class="d-flex flex-md-column flex-row align-center align-md-start pb-md-6"
                           >
-                            <p class="custom-label mb-0 mr-2 mr-md-0">
+                            <p class="custom-label mb-0 mr-2 mr-md-0 pl-md-4">
                               สถานะทางทหาร :
                             </p>
-                            <p class="grey--text custom-label mb-0">
+                            <p class="grey--text custom-label mb-0 pl-md-4">
                               Military Service
                             </p>
                           </v-row>
@@ -755,15 +759,15 @@
                       </v-row>
                     </v-col>
                   </v-row>
-                  <v-row class="pl-7 pr-2 mt-md-2">
+                  <v-row class="pl-3 pr-2 pr-md-3 mt-md-2">
                     <v-col cols="12" md="6">
                       <v-row>
-                        <v-col class="d-flex justify-start align-center pt-0 pl-0 pb-1">
+                        <v-col class="d-flex justify-start align-center pt-0 pl-4 pb-2">
                           <p class="custom-label">เบอร์โทรศัพท์ <span class="grey--text"> Telephone No. </span></p>
                         </v-col>
                       </v-row>
                       <v-row>
-                        <v-col class="pt-0 pl-0 pr-md-4">
+                        <v-col class="pt-0 pl-4 pr-md-4 pb-md-4">
                           <v-text-field
                             outlined
                             dense
@@ -774,14 +778,14 @@
                         </v-col>
                       </v-row>
                     </v-col>
-                    <v-col cols="12" md="6">
+                    <v-col cols="12" md="6" class="py-md-0 pr-md-4 mt-md-3">
                       <v-row>
-                        <v-col class="d-flex justify-start align-center pt-0 pl-0 pb-1">
+                        <v-col class="d-flex justify-start align-center pt-0 pl-0 pb-2">
                           <p class="custom-label">อีเมล <span class="grey--text"> E-mail </span></p>
                         </v-col>
                       </v-row>
                       <v-row>
-                        <v-col class="pt-0 pl-0 ">
+                        <v-col class="pt-0 pl-0 pb-md-4">
                           <v-text-field
                             outlined
                             dense
@@ -1177,5 +1181,24 @@ export default {
 }
 .text-center input {
   text-align: center;
+}
+.py-9px {
+  padding-top: 9px !important;
+  padding-bottom: 9px !important;
+}
+
+.custom-radio-group.v-input--selection-controls {
+  margin-top: 12px;
+}
+.custom-radio-group .v-input__slot {
+  padding: 0px;
+  margin: 0px;
+  margin-bottom: 8px;
+}
+.v-messages {
+  display: none !important;
+}
+.v-text-field__details{
+  display: none !important;
 }
 </style>
