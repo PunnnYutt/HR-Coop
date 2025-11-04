@@ -6,6 +6,7 @@
       <educationCard />
       <familyCard />
       <skillCard />
+
       <div class="policy-section">
         <label class="policy-section" @click="popup = true">
           <input type="checkbox" id="myCheckbox" onclick="return false;" />
@@ -15,7 +16,7 @@
     </div>
 
     <v-dialog v-model="popup" max-width="819px">
-      <v-card class="my-dialog-card">
+      <v-card>
         <v-card-title class="card-title justify-center pa-0" width="100%">
           <span class="card-title-text"> นโยบายคุ้มครองข้อมูลส่วนบุคคล </span>
         </v-card-title>
@@ -263,7 +264,21 @@
           </div></v-card-text
         >
 
-        <v-card-actions class="actions-yellow"> </v-card-actions>
+        <v-card-actions class="fixed-footer">
+          <div style="width: 100%; text-align: center">
+            <v-slide-y-transition>
+              <v-chip v-if="!scrolledToEnd" color="primary" dark>
+                <v-icon right>mdi-arrow-down-thick</v-icon>
+                เลื่อนลงไปด้านล่างสุด
+              </v-chip>
+            </v-slide-y-transition>
+
+            <div v-if="scrolledToEnd">
+              <v-btn text @click="cancelPolicy">Cancel</v-btn>
+              <v-btn color="success" @click="acceptPolicy">Accept</v-btn>
+            </div>
+          </div>
+        </v-card-actions>
       </v-card>
     </v-dialog>
   </v-app>
@@ -285,7 +300,35 @@ export default {
     skillCard,
   },
   data() {
-    return { popup: false };
+    return { popup: false, scrolledToEnd: false };
+  },
+  watch: {
+    popup(val) {
+      if (val) {
+        this.$nextTick(() => {
+          const scrollEl = document.querySelector(
+            "#app > div.v-dialog__content.v-dialog__content--active > div > div"
+          );
+          if (scrollEl) {
+            scrollEl.addEventListener("scroll", this.onPolicyScroll);
+          }
+        });
+      }
+    },
+  },
+
+  methods: {
+    acceptPolicy() {
+      alert("Accepted!");
+      this.dialog = false;
+    },
+    cancelPolicy() {
+      this.dialog = false;
+    },
+
+    onPolicyScroll(e) {
+      console.log("works");
+    },
   },
 };
 </script>
@@ -368,8 +411,13 @@ label.policy-section {
   color: #333333;
 }
 
-.my-dialog-card .actions-yellow {
-  background-color: #ffeb3b !important; /* Yellow color */
+/* Add this in your <style> block, preferably scoped */
+.fixed-footer {
+  position: sticky;
+  bottom: 0;
+  padding: 12px 16px;
+  background-color: white;
+  z-index: 10; /* Ensure it stays above the scrolling content */
 }
 </style>
 font-family: Sarabun; font-weight: 400; font-style: Regular; font-size: 16px;

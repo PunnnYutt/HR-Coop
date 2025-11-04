@@ -4,7 +4,7 @@
     <Header :page="headerVariant" />
     <nuxt />
     <div class="footer-area">
-      <Footer :page="headerVariant" />
+      <!-- <Footer :page="headerVariant" /> -->
     </div>
   </div>
 </template>
