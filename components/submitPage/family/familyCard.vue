@@ -1,5 +1,5 @@
 <template>
-  <div class="form-body">
+  <div>
     <div class="form-first-section">
       <div class="form-title-section">
         <p>ประวัติบิดา / Father</p>
@@ -213,8 +213,8 @@
 </template>
 
 <script>
-import RadioButton from "../components/RadioButton.vue";
-import InputBox from "../components/InputBox.vue";
+import RadioButton from "../../RadioButton.vue";
+import InputBox from "../../InputBox.vue";
 export default {
   layout: "form",
   components: { RadioButton, InputBox },
@@ -260,20 +260,10 @@ export default {
 </script>
 
 <style scoped>
-div.form-body {
-  width: 100%;
-  max-width: 1128px;
-  background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0px 0px 4px 0px #00000029;
-  box-sizing: border-box;
-  padding: 24px 32px 8px 32px;
-}
-
 div.form-first-section {
   width: 100%;
   min-height: 236px;
-  max-width: 1064px;
+  max-width: 1080px;
   background-color: #ffffff;
   box-shadow: 0px 0px 4px 0px #00000029;
   border-radius: 8px;

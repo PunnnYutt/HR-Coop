@@ -106,4 +106,8 @@ div.user-icon {
   background-color: rgb(192, 227, 186);
   cursor: pointer;
 }
+
+p {
+  user-select: none;
+}
 </style>

@@ -198,4 +198,8 @@ div.header-page > div {
   line-height: 16px;
   font-size: 12px;
 }
+
+p {
+  user-select: none;
+}
 </style>

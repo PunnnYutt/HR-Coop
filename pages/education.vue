@@ -224,6 +224,10 @@ div.form-title-section-add {
   align-items: center;
 }
 
+.form-title-section-add > p {
+  user-select: none;
+}
+
 .form-title-section-add > p:hover {
   text-decoration: underline;
   cursor: pointer;

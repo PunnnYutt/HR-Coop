@@ -3,11 +3,10 @@
     <div class="radio-title" v-if="labelTh">
       <div>
         <span>{{ labelTh }}</span>
+        <span>{{ labelEn }}</span>
         <span v-if="required">*</span>
         <span>:</span>
       </div>
-
-      <p>{{ labelEn }}</p>
     </div>
 
     <div class="radio-input">
@@ -16,12 +15,12 @@
           type="radio"
           :name="group"
           :value="key"
-          @click="toggleRadio(key)"
-          v-model="selected"
+          :checked="internalValue === key"
+          @change="handleChange(key)"
         />
         <div class="label-section">
-          <label for="choice">{{ key }}</label>
-          <p v-if="value">{{ value }}</p>
+          <label :for="group + '-' + key">{{ key }}</label>
+          <p v-if="value">&nbsp;{{ value }}</p>
         </div>
       </div>
     </div>
@@ -32,10 +31,11 @@
 export default {
   name: "RadioButton",
   props: {
+    value: { type: [String, Number, Boolean], default: null }, // For v-model binding
     labelTh: { type: String, default: null },
     labelEn: { type: String, default: "" },
     required: { type: Boolean, default: false },
-    choices: { type: Object, default: {} },
+    choices: { type: Object, default: () => ({}) },
     group: { type: String, default: "choice" },
 
     height: { type: String, default: "20px" },
@@ -46,7 +46,7 @@ export default {
 
   data() {
     return {
-      selected: null,
+      internalValue: this.value,
     };
   },
 
@@ -55,11 +55,25 @@ export default {
       return { height: this.height, maxWidth: this.maxWidth };
     },
   },
+
+  watch: {
+    value(newVal) {
+      this.internalValue = newVal;
+    },
+  },
+
   methods: {
-    toggleRadio(key) {
-      if (this.selected === key && this.toggle) {
-        this.selected = null;
+    handleChange(key) {
+      // If toggle is enabled and clicking the same radio, deselect it
+      if (this.toggle && this.internalValue === key) {
+        this.internalValue = null;
+      } else {
+        this.internalValue = key;
       }
+
+      // Emit the new value for v-model
+      this.$emit("input", this.internalValue);
+      this.$emit("change", this.internalValue);
     },
   },
 };
@@ -90,13 +104,12 @@ span,
   line-height: 16px;
   font-size: 12px;
 }
-
-.radio-title p {
+.radio-title span:nth-child(2) {
   margin: 0px;
   color: grey;
 }
 
-span:nth-of-type(2) {
+span:nth-of-type(3) {
   color: red;
 }
 
@@ -117,7 +130,6 @@ span:nth-of-type(4) {
 .radio-input > div {
   height: 100%;
   box-sizing: border-box;
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -125,10 +137,10 @@ span:nth-of-type(4) {
 
 .label-section {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: space-between;
 }
+
 .label-section label,
 .label-section p {
   font-weight: 400;
@@ -148,5 +160,10 @@ input {
   height: 16px;
   margin: 0px 8px 0px 0px;
   accent-color: #58a144;
+  cursor: pointer;
+}
+
+label {
+  cursor: pointer;
 }
 </style>
