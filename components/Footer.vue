@@ -105,6 +105,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: background-color 0.25s ease, transform 0.25s ease;
 }
 
 .back-button > p {
@@ -114,6 +115,7 @@ export default {
   line-height: 24px;
   font-size: 16px;
   color: #58a144;
+  transition: background-color 0.25s ease, transform 0.25s ease;
 }
 
 .back-button:hover {
@@ -131,6 +133,7 @@ export default {
   align-items: center;
   justify-content: center;
   background-color: #cccccc;
+  transition: background-color 0.25s ease, transform 0.25s ease;
 }
 
 .next-button > p {
@@ -157,6 +160,7 @@ export default {
   align-items: center;
   justify-content: center;
   background-color: #cccccc;
+  transition: background-color 0.25s ease, transform 0.25s ease;
 }
 
 .submit-button > p {

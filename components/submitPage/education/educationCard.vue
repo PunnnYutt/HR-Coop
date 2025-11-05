@@ -5,22 +5,6 @@
         ประวัติการศึกษา / Education background
         <span style="color: red">*</span>
       </p>
-      <div class="form-title-section-add">
-        <svg
-          width="16"
-          height="16"
-          viewBox="0 0 16 16"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M8.00016 4.66634C7.6335 4.66634 7.3335 4.96634 7.3335 5.33301V7.33301H5.3335C4.96683 7.33301 4.66683 7.63301 4.66683 7.99967C4.66683 8.36634 4.96683 8.66634 5.3335 8.66634H7.3335V10.6663C7.3335 11.033 7.6335 11.333 8.00016 11.333C8.36683 11.333 8.66683 11.033 8.66683 10.6663V8.66634H10.6668C11.0335 8.66634 11.3335 8.36634 11.3335 7.99967C11.3335 7.63301 11.0335 7.33301 10.6668 7.33301H8.66683V5.33301C8.66683 4.96634 8.36683 4.66634 8.00016 4.66634ZM8.00016 1.33301C4.32016 1.33301 1.3335 4.31967 1.3335 7.99967C1.3335 11.6797 4.32016 14.6663 8.00016 14.6663C11.6802 14.6663 14.6668 11.6797 14.6668 7.99967C14.6668 4.31967 11.6802 1.33301 8.00016 1.33301ZM8.00016 13.333C5.06016 13.333 2.66683 10.9397 2.66683 7.99967C2.66683 5.05967 5.06016 2.66634 8.00016 2.66634C10.9402 2.66634 13.3335 5.05967 13.3335 7.99967C13.3335 10.9397 10.9402 13.333 8.00016 13.333Z"
-            fill="#58A144"
-          />
-        </svg>
-
-        <p @click="addEducation">เพิ่มประวัติการศึกษา</p>
-      </div>
     </div>
     <div
       class="form-input-section"
@@ -37,6 +21,7 @@
           height="56px"
           :choices="['ปริญญาตรี', 'ปริญญาโท', 'ปริญญาเอก']"
           v-model="item.Level"
+          :changeAble="false"
         />
 
         <InputBox
@@ -46,6 +31,7 @@
           max-width="516px"
           height="56px"
           v-model="item.Institute"
+          :changeAble="false"
         />
 
         <div class="edu-year-section">
@@ -80,6 +66,7 @@
           label-en="Qualifications"
           placeholder="0000"
           v-model="item.Qualifications"
+          :changeAble="false"
         />
 
         <InputBox
@@ -87,6 +74,7 @@
           label-en="Major"
           placeholder="ระบุสาขาวิชา"
           v-model="item.Major"
+          :changeAble="false"
         />
 
         <InputBox
@@ -94,6 +82,7 @@
           label-en="Faculty"
           placeholder="ระบุคณะ"
           v-model="item.Faculty"
+          :changeAble="false"
         />
 
         <InputBox
@@ -102,6 +91,7 @@
           placeholder="ระบุเกรดเฉลี่ย"
           type="number"
           v-model="item.GPA"
+          :changeAble="false"
         />
       </div>
     </div>
@@ -138,26 +128,17 @@ export default {
     DatePicker,
   },
 
-  methods: {
-    addEducation() {
-      this.education_info.push({
-        Level: "",
-        Institute: "",
-        StartYear: "",
-        EndYear: "",
-        Qualifications: "",
-        Major: "",
-        Faculty: "",
-        GPA: "",
-      });
-      console.log(this.education_info);
-    },
-    delEducation(index) {
-      this.education_info.splice(index, 1);
-    },
+  mounted() {
+    const storeData = this.$store.state.pages;
+    if (storeData[2] && storeData[2].length > 0) {
+      this.education_info = JSON.parse(JSON.stringify(storeData));
+      this.education_info = this.education_info[2];
+      console.log("HIIIIIIIII");
+    }
   },
 };
 </script>
+
 <style scoped>
 div.form-body {
   width: 100%;
@@ -171,7 +152,7 @@ div.form-body {
 
 div.form-first-section {
   width: 100%;
-  min-height: 176px;
+  min-height: 200px;
   max-width: 1080px;
   background-color: #ffffff;
   box-shadow: 0px 0px 4px 0px #00000029;
@@ -199,22 +180,6 @@ div.form-title-section p {
   font-size: 14px;
 }
 
-div.form-title-section-add {
-  width: 137px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.form-title-section-add > p {
-  user-select: none;
-}
-
-.form-title-section-add > p:hover {
-  text-decoration: underline;
-  cursor: pointer;
-}
-
 div.form-input-section {
   width: 100%;
   height: 176px;
@@ -229,15 +194,6 @@ div.form-input-section {
 
 div.first-form-input-section {
   padding: 24px 16px 24px 16px;
-}
-
-.form-input-section > div.form-input-section-delete {
-  width: 100%;
-  max-width: 1080px;
-  height: 32px;
-
-  display: flex;
-  justify-content: flex-end;
 }
 
 .form-input-section > div {

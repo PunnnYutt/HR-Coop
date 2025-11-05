@@ -8,7 +8,7 @@
 
     <div class="multiple-input">
       <input
-        class="range"
+        :class="{ range: true, displayOnly: !changeAble }"
         :type="type"
         :placeholder="placeholder"
         :value="value"
@@ -31,6 +31,7 @@ export default {
 
     height: { type: String, default: "56px" },
     maxWidth: { type: String, default: "250px" },
+    changeAble: { type: Boolean, default: true },
   },
 
   computed: {
@@ -111,5 +112,12 @@ span:nth-of-type(2) {
 }
 span:nth-of-type(3) {
   color: red;
+}
+
+.multiple-input > input.displayOnly {
+  pointer-events: none;
+  user-select: none;
+  cursor: not-allowed;
+  border: none;
 }
 </style>

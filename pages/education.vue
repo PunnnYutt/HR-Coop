@@ -156,6 +156,15 @@ export default {
     DatePicker,
   },
 
+  mounted() {
+    // ✅ DEEP COPY - No reference to store
+    const storeData = this.$store.state.pages;
+    if (storeData[2] && storeData[2].length > 0) {
+      this.education_info = JSON.parse(JSON.stringify(storeData));
+      this.education_info = this.education_info[2];
+    }
+  },
+
   methods: {
     addEducation() {
       this.education_info.push({
@@ -173,6 +182,9 @@ export default {
     delEducation(index) {
       this.education_info.splice(index, 1);
     },
+  },
+  beforeDestroy() {
+    this.$store.commit("SET_EDUCATION_DATA", this.education_info);
   },
 };
 </script>

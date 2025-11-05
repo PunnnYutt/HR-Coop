@@ -9,19 +9,45 @@
 
       <div class="policy-section">
         <label class="policy-section" @click="popup = true">
-          <input type="checkbox" id="myCheckbox" onclick="return false;" />
+          <input
+            type="checkbox"
+            id="myCheckbox"
+            onclick="return false;"
+            v-model="policyAcceptance"
+          />
           <span>ยอมรับนโยบายคุ้มครองข้อมูลส่วนบุคคล</span>
         </label>
       </div>
     </div>
 
-    <v-dialog v-model="popup" max-width="819px">
+    <v-dialog v-model="popup" max-width="819px" persistent>
       <v-card>
         <v-card-title class="card-title justify-center pa-0" width="100%">
           <span class="card-title-text"> นโยบายคุ้มครองข้อมูลส่วนบุคคล </span>
+          <div class="closeButton" @click="closePolicy">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g clip-path="url(#clip0_1_2392)">
+                <path
+                  d="M12.0002 10.5857L16.2432 6.34274C16.6337 5.95228 17.2668 5.95228 17.6572 6.34274C18.0477 6.73321 18.0477 7.36628 17.6572 7.75674L13.4142 11.9997L17.6572 16.2427C18.0477 16.6332 18.0477 17.2663 17.6572 17.6567C17.2668 18.0472 16.6337 18.0472 16.2432 17.6567L12.0002 13.4137L7.75723 17.6567C7.36677 18.0472 6.7337 18.0472 6.34323 17.6567C5.95277 17.2663 5.95277 16.6332 6.34323 16.2427L10.5862 11.9997L6.34323 7.75674C5.95277 7.36628 5.95277 6.73321 6.34323 6.34274C6.7337 5.95228 7.36677 5.95228 7.75723 6.34274L12.0002 10.5857Z"
+                  fill="#58A144"
+                />
+              </g>
+              <defs>
+                <clipPath id="clip0_1_2392">
+                  <rect width="24" height="24" fill="white" />
+                </clipPath>
+              </defs>
+            </svg>
+          </div>
         </v-card-title>
 
-        <v-card-text class="pa-6">
+        <v-card-text class="px-6 pt-6 pb-0">
           <div class="policy-text">
             <p>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -261,21 +287,39 @@
               โดยจะใช้มาตรฐานการดูแลข้อมูลความลับนั้นเสมือนกับการดูแลรักษาข้อมูลความลับที่สุดของตนเองเป็นอย่างน้อย
               เว้นแต่ จะได้รับความยินยอมเป็นลายลักษณ์อักษรจากบริษัท
             </p>
-          </div></v-card-text
-        >
+
+            <!-- Bottom detector div -->
+            <div ref="bottomDetector" class="bottom-detector"></div>
+          </div>
+        </v-card-text>
 
         <v-card-actions class="fixed-footer">
           <div style="width: 100%; text-align: center">
             <v-slide-y-transition>
-              <v-chip v-if="!scrolledToEnd" color="primary" dark>
-                <v-icon right>mdi-arrow-down-thick</v-icon>
-                เลื่อนลงไปด้านล่างสุด
-              </v-chip>
+              <div v-if="!scrolledToEnd" class="policy-chip">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M10 4.16699V15.8337M10 15.8337L15 10.8337M10 15.8337L5 10.8337"
+                    stroke="#58A144"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+
+                <span class="policy-chip-text">เลื่อนลงไปด้านล่างสุด</span>
+              </div>
             </v-slide-y-transition>
 
-            <div v-if="scrolledToEnd">
-              <v-btn text @click="cancelPolicy">Cancel</v-btn>
-              <v-btn color="success" @click="acceptPolicy">Accept</v-btn>
+            <div v-if="scrolledToEnd" class="policy-button">
+              <v-btn class="cancelButton" @click="cancelPolicy">ยกเลิก</v-btn>
+              <v-btn class="acceptButton" @click="acceptPolicy">ยอมรับ</v-btn>
             </div>
           </div>
         </v-card-actions>
@@ -290,6 +334,7 @@ import personalCard from "../components/submitPage/index/personalCard.vue";
 import educationCard from "../components/submitPage/education/educationCard.vue";
 import familyCard from "../components/submitPage/family/familyCard.vue";
 import skillCard from "../components/submitPage/skill/skillCard.vue";
+
 export default {
   layout: "form",
   components: {
@@ -300,34 +345,76 @@ export default {
     skillCard,
   },
   data() {
-    return { popup: false, scrolledToEnd: false };
+    return {
+      popup: false,
+      scrolledToEnd: false,
+      observer: null,
+      policyAcceptance: false,
+    };
   },
   watch: {
     popup(val) {
       if (val) {
         this.$nextTick(() => {
-          const scrollEl = document.querySelector(
-            "#app > div.v-dialog__content.v-dialog__content--active > div > div"
-          );
-          if (scrollEl) {
-            scrollEl.addEventListener("scroll", this.onPolicyScroll);
-          }
+          this.setupIntersectionObserver();
         });
+      } else {
+        // Clean up observer when dialog closes
+        this.disconnectObserver();
       }
     },
   },
-
+  beforeDestroy() {
+    this.disconnectObserver();
+  },
   methods: {
-    acceptPolicy() {
-      alert("Accepted!");
-      this.dialog = false;
-    },
-    cancelPolicy() {
-      this.dialog = false;
+    setupIntersectionObserver() {
+      const bottomDetector = this.$refs.bottomDetector;
+      if (!bottomDetector) return;
+
+      // Create intersection observer
+      this.observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              // Bottom div is visible in viewport
+              console.log("Scrolled to bottom!");
+              this.scrolledToEnd = true;
+            }
+          });
+        },
+        {
+          root: null, // Use viewport as root
+          threshold: 1.0, // Trigger when 100% of element is visible
+        }
+      );
+
+      // Start observing
+      this.observer.observe(bottomDetector);
     },
 
-    onPolicyScroll(e) {
-      console.log("works");
+    disconnectObserver() {
+      if (this.observer) {
+        this.observer.disconnect();
+        this.observer = null;
+      }
+    },
+
+    acceptPolicy() {
+      this.popup = false;
+      // this.scrolledToEnd = false; // Reset for next time
+      this.policyAcceptance = true;
+    },
+
+    cancelPolicy() {
+      this.popup = false;
+      // this.scrolledToEnd = false; // Reset for next time
+      this.policyAcceptance = false;
+    },
+
+    closePolicy() {
+      this.popup = false;
+      // this.scrolledToEnd = false; // Reset for next time
     },
   },
 };
@@ -385,6 +472,7 @@ label.policy-section {
 .card-title {
   background-color: #f0f9ee !important;
   height: 40px !important;
+  position: relative !important;
 }
 
 .card-title-text {
@@ -397,7 +485,8 @@ label.policy-section {
 
 .policy-text {
   width: 100%;
-  height: 100;
+  max-height: 400px; /* Set max height to make it scrollable */
+  overflow-y: auto;
   border-radius: 8px;
   padding: 16px;
   background-color: #fafafa;
@@ -409,16 +498,107 @@ label.policy-section {
   font-size: 16px !important;
   line-height: 26px !important;
   color: #333333;
+  margin-bottom: 16px;
 }
 
-/* Add this in your <style> block, preferably scoped */
+.bottom-detector {
+  height: 1px;
+  width: 100%;
+  visibility: hidden;
+}
+
 .fixed-footer {
   position: sticky;
   bottom: 0;
   padding: 12px 16px;
   background-color: white;
-  z-index: 10; /* Ensure it stays above the scrolling content */
+  z-index: 10;
+}
+
+.policy-chip {
+  width: 100% !important;
+  max-width: 771px;
+  height: 32px !important;
+  background-color: white !important;
+  border-radius: 8px;
+  border: 1px solid #58a144 !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+.policy-chip-text {
+  font-weight: 600;
+  font-family: "Sarabun", sans-serif;
+  line-height: 140%;
+  font-size: 14px;
+  color: #58a144;
+}
+
+.policy-button {
+  width: 100%;
+  max-width: 236px;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+}
+.closeButton {
+  height: 24px !important;
+  width: 24px !important;
+  background-color: #f0f9ee !important;
+  box-shadow: none !important;
+  align-items: center;
+  border-radius: 4px;
+  display: inline-flex;
+  flex: 0 0 auto;
+  font-weight: 500;
+  letter-spacing: 0.0892857143em;
+  justify-content: center;
+  outline: 0;
+  position: relative;
+  text-decoration: none;
+  text-indent: 0.0892857143em;
+  text-transform: uppercase;
+  transition-duration: 0.28s;
+  transition-property: box-shadow, transform, opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  cursor: pointer;
+  position: absolute; /* positioned relative to .parent */
+  top: 8px;
+  right: 16px;
+}
+
+.closeButton:hover {
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.28); /* stronger elevation */
+  background-color: #dee5dc !important;
+}
+
+.cancelButton {
+  height: 40px !important;
+  width: 100% !important;
+  max-width: 110px !important;
+  border: 1px solid #d7000a !important;
+  background-color: white !important;
+  color: #d7000a !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+}
+
+.acceptButton {
+  height: 40px !important;
+  width: 100% !important;
+  max-width: 110px !important;
+  background-color: #58a144 !important;
+  color: #ffffff !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
 }
 </style>
-font-family: Sarabun; font-weight: 400; font-style: Regular; font-size: 16px;
-leading-trim: NONE; line-height: 26px; letter-spacing: 0%;
