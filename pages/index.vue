@@ -129,7 +129,7 @@
                               >
                                 <v-icon
                                   color="primary"
-                                  size="48"
+                                   style="font-size: 40px !important;"
                                   :class="
                                     isHovering ? 'hovering' : 'not-hovering'
                                   "
