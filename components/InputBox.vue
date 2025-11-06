@@ -82,7 +82,11 @@ div.box-section {
 }
 
 input {
+  font-family: "Sarabun", sans-serif;
   padding: 8px 16px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
 }
 
 input::placeholder {
@@ -116,7 +120,6 @@ span:nth-of-type(3) {
 
 .multiple-input > input.displayOnly {
   pointer-events: none;
-  user-select: none;
   cursor: not-allowed;
   border: none;
 }

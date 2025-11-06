@@ -47,31 +47,20 @@
         </div>
         <div class="tel-section">
           <InputBox
-            label-th="วุฒิการศึกษา"
-            label-en="Qualifications"
-            placeholder="ระบุวุฒิการศึกษา เช่น วิทยาศาสตร์บัณฑิต"
-            v-model="fatherInfo.qualifications"
+            label-th="เบอร์โทรศัพท์"
+            label-en="Telephone"
+            :required="true"
+            placeholder="090-000-0000"
+            v-model="fatherInfo.tel"
+            max-width="508px"
           />
 
           <InputBox
-            label-th="สาขาวิชา"
-            label-en="Major"
-            placeholder="ระบุสาขาวิชา"
-            v-model="fatherInfo.major"
-          />
-
-          <InputBox
-            label-th="คณะ"
-            label-en="Faculty"
-            placeholder="ระบุคณะ"
-            v-model="fatherInfo.faculty"
-          />
-
-          <InputBox
-            label-th="เกรดเฉลี่ย"
-            label-en="G.P.A"
-            placeholder="ระบุเกรดเฉลี่ย"
-            v-model="fatherInfo.gpa"
+            label-th="ที่อยู่/สถานที่ทำงาน"
+            label-en="Address"
+            placeholder="ระบุที่อยู่/สถานที่ทำงาน"
+            v-model="fatherInfo.address"
+            max-width="508px"
           />
         </div>
       </div>
@@ -124,31 +113,20 @@
         </div>
         <div class="tel-section">
           <InputBox
-            label-th="วุฒิการศึกษา"
-            label-en="Qualifications"
-            placeholder="ระบุวุฒิการศึกษา เช่น วิทยาศาสตร์บัณฑิต"
-            v-model="motherInfo.qualifications"
+            label-th="เบอร์โทรศัพท์"
+            label-en="Telephone"
+            :required="true"
+            placeholder="090-000-0000"
+            v-model="motherInfo.tel"
+            max-width="508px"
           />
 
           <InputBox
-            label-th="สาขาวิชา"
-            label-en="Major"
-            placeholder="ระบุสาขาวิชา"
-            v-model="motherInfo.major"
-          />
-
-          <InputBox
-            label-th="คณะ"
-            label-en="Faculty"
-            placeholder="ระบุคณะ"
-            v-model="motherInfo.faculty"
-          />
-
-          <InputBox
-            label-th="เกรดเฉลี่ย"
-            label-en="G.P.A"
-            placeholder="ระบุเกรดเฉลี่ย"
-            v-model="motherInfo.gpa"
+            label-th="ที่อยู่/สถานที่ทำงาน"
+            label-en="Address"
+            placeholder="ระบุที่อยู่/สถานที่ทำงาน"
+            v-model="motherInfo.address"
+            max-width="508px"
           />
         </div>
       </div>
@@ -220,17 +198,14 @@ export default {
   components: { RadioButton, InputBox },
   data() {
     return {
-      testDate: null,
       fatherInfo: {
         nameTitle: "",
         sureName: "",
         name: "",
         sureName: "",
         job: "",
-        qualifications: "",
-        major: "",
-        faculty: "",
-        gpa: "",
+        tel: "",
+        address: "",
       },
 
       motherInfo: {
@@ -239,10 +214,8 @@ export default {
         name: "",
         sureName: "",
         job: "",
-        qualifications: "",
-        major: "",
-        faculty: "",
-        gpa: "",
+        tel: "",
+        address: "",
       },
 
       emergencyInfo: {
@@ -254,6 +227,26 @@ export default {
 
       thaiIDinfo: false,
     };
+  },
+
+  mounted() {
+    const storeData = this.$store.state.pages;
+    console.log("mount" + storeData);
+    if (storeData[3] && storeData[3].length > 0) {
+      const familyData = JSON.parse(JSON.stringify(storeData));
+      console.log("FAMMMMM" + familyData);
+      this.fatherInfo = familyData[fatherInfo];
+      this.motherInfo = familyData[motherInfo];
+      this.emergencyInfo = familyData[emergencyInfo];
+    }
+  },
+
+  beforeDestroy() {
+    this.$store.commit("SET_FAMILY_DATA", {
+      this.fatherInfo,
+      this.motherInfo,
+      this.emergencyInfo,
+  });
   },
   methods: {},
 };

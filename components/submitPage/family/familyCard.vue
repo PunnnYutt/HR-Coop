@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="form-body">
     <div class="form-first-section">
       <div class="form-title-section">
         <p>ประวัติบิดา / Father</p>
@@ -15,6 +15,7 @@
             height="20px"
             maxWidth="300px"
             v-model="fatherInfo.nameTitle"
+            :changeAble="false"
           />
         </div>
         <div class="name-section">
@@ -25,6 +26,7 @@
             placeholder="ชื่อ(ภาษาไทย)"
             v-model="fatherInfo.name"
             max-width="333px"
+            :changeAble="false"
           />
 
           <InputBox
@@ -34,6 +36,7 @@
             placeholder="นามสกุล(ภาษาไทย)"
             v-model="fatherInfo.sureName"
             max-width="333px"
+            :changeAble="false"
           />
 
           <InputBox
@@ -43,35 +46,27 @@
             placeholder="ระบุอาชีพ"
             v-model="fatherInfo.job"
             max-width="333px"
+            :changeAble="false"
           />
         </div>
         <div class="tel-section">
           <InputBox
-            label-th="วุฒิการศึกษา"
-            label-en="Qualifications"
-            placeholder="ระบุวุฒิการศึกษา เช่น วิทยาศาสตร์บัณฑิต"
-            v-model="fatherInfo.qualifications"
+            label-th="เบอร์โทรศัพท์"
+            label-en="Telephone"
+            :required="true"
+            placeholder="090-000-0000"
+            v-model="fatherInfo.tel"
+            max-width="508px"
+            :changeAble="false"
           />
 
           <InputBox
-            label-th="สาขาวิชา"
-            label-en="Major"
-            placeholder="ระบุสาขาวิชา"
-            v-model="fatherInfo.major"
-          />
-
-          <InputBox
-            label-th="คณะ"
-            label-en="Faculty"
-            placeholder="ระบุคณะ"
-            v-model="fatherInfo.faculty"
-          />
-
-          <InputBox
-            label-th="เกรดเฉลี่ย"
-            label-en="G.P.A"
-            placeholder="ระบุเกรดเฉลี่ย"
-            v-model="fatherInfo.gpa"
+            label-th="ที่อยู่/สถานที่ทำงาน"
+            label-en="Address"
+            placeholder="ระบุที่อยู่/สถานที่ทำงาน"
+            v-model="fatherInfo.address"
+            max-width="508px"
+            :changeAble="false"
           />
         </div>
       </div>
@@ -92,6 +87,7 @@
             height="20px"
             maxWidth="300px"
             v-model="motherInfo.nameTitle"
+            :changeAble="false"
           />
         </div>
         <div class="name-section">
@@ -102,6 +98,7 @@
             placeholder="ชื่อ(ภาษาไทย)"
             v-model="motherInfo.name"
             max-width="333px"
+            :changeAble="false"
           />
 
           <InputBox
@@ -111,6 +108,7 @@
             placeholder="นามสกุล(ภาษาไทย)"
             v-model="motherInfo.sureName"
             max-width="333px"
+            :changeAble="false"
           />
 
           <InputBox
@@ -120,35 +118,27 @@
             placeholder="ระบุอาชีพ"
             v-model="motherInfo.job"
             max-width="333px"
+            :changeAble="false"
           />
         </div>
         <div class="tel-section">
           <InputBox
-            label-th="วุฒิการศึกษา"
-            label-en="Qualifications"
-            placeholder="ระบุวุฒิการศึกษา เช่น วิทยาศาสตร์บัณฑิต"
-            v-model="motherInfo.qualifications"
+            label-th="เบอร์โทรศัพท์"
+            label-en="Telephone"
+            :required="true"
+            placeholder="090-000-0000"
+            v-model="motherInfo.tel"
+            max-width="508px"
+            :changeAble="false"
           />
 
           <InputBox
-            label-th="สาขาวิชา"
-            label-en="Major"
-            placeholder="ระบุสาขาวิชา"
-            v-model="motherInfo.major"
-          />
-
-          <InputBox
-            label-th="คณะ"
-            label-en="Faculty"
-            placeholder="ระบุคณะ"
-            v-model="motherInfo.faculty"
-          />
-
-          <InputBox
-            label-th="เกรดเฉลี่ย"
-            label-en="G.P.A"
-            placeholder="ระบุเกรดเฉลี่ย"
-            v-model="motherInfo.gpa"
+            label-th="ที่อยู่/สถานที่ทำงาน"
+            label-en="Address"
+            placeholder="ระบุที่อยู่/สถานที่ทำงาน"
+            v-model="motherInfo.address"
+            max-width="508px"
+            :changeAble="false"
           />
         </div>
       </div>
@@ -170,6 +160,7 @@
             placeholder="ระบุชื่อ-นามสกุล"
             v-model="emergencyInfo.fullName"
             max-width="333px"
+            :changeAble="false"
           />
 
           <InputBox
@@ -178,6 +169,7 @@
             placeholder="ระบุความสัมพันธ์"
             v-model="emergencyInfo.relation"
             max-width="333px"
+            :changeAble="false"
           />
 
           <InputBox
@@ -186,6 +178,7 @@
             placeholder="090-000-0000"
             v-model="emergencyInfo.tel"
             max-width="333px"
+            :changeAble="false"
           />
         </div>
 
@@ -198,6 +191,7 @@
           height="20px"
           maxWidth="390px"
           v-model="thaiIDinfo"
+          :changeAble="false"
         />
 
         <InputBox
@@ -206,6 +200,7 @@
           placeholder="ระบุที่อยู่"
           max-width="1032px"
           v-model="emergencyInfo.address"
+          :changeAble="false"
         />
       </div>
     </div>
@@ -220,7 +215,6 @@ export default {
   components: { RadioButton, InputBox },
   data() {
     return {
-      testDate: null,
       fatherInfo: {
         nameTitle: "",
         sureName: "",
@@ -251,8 +245,6 @@ export default {
         tel: "",
         address: "",
       },
-
-      thaiIDinfo: false,
     };
   },
   methods: {},
@@ -260,6 +252,16 @@ export default {
 </script>
 
 <style scoped>
+div.form-body {
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: none;
+  box-sizing: border-box;
+  padding: 0px;
+  margin-bottom: 16px;
+}
+
 div.form-first-section {
   width: 100%;
   min-height: 236px;

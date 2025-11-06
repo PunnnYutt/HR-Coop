@@ -41,21 +41,23 @@
           </div>
           <div class="edu-year-section-date">
             <date-picker
-              placeholder="วว/ดด/ปปปป"
               height="32px"
               maxWidth="114px"
               locale="th"
               date-format="th-TH"
               v-model="item.StartYear"
+              :changeAble="false"
+              placeholder="2560"
             />
             <p>-</p>
             <date-picker
-              placeholder="วว/ดด/ปปปป"
               height="32px"
               maxWidth="114px"
               locale="th"
               date-format="th-TH"
               v-model="item.EndYear"
+              :changeAble="false"
+              placeholder="2560"
             />
           </div>
         </div>

@@ -5,7 +5,7 @@
       <span>{{ labelEn }}</span>
       <span v-if="required">*</span>
     </div>
-    <div :class="{ 'select-wrap': true, displyOnly: !changeAble }">
+    <div :class="{ 'select-wrap': true, displayOnly: !changeAble }">
       <select
         required
         :value="value"
@@ -135,7 +135,7 @@ select:focus {
   pointer-events: none; /* clicks go to the select */
 }
 
-.displyOnly > select {
+.displayOnly > select {
   pointer-events: none;
   border: none;
 }

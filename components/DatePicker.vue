@@ -6,10 +6,14 @@
       <span v-if="required">*</span>
     </div>
     <div class="datepicker-wrap">
-      <div class="input-wrapper" @click="toggleMenu">
+      <div
+        @click="toggleMenu"
+        :class="{ 'input-wrapper': true, displayOnly: !changeAble }"
+      >
         <input
+          :class="{ displayOnly: !changeAble }"
           type="text"
-          :value="formattedDate"
+          :value="formattedYear"
           :placeholder="placeholder"
           readonly
         />
@@ -20,6 +24,7 @@
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           class="calendar-icon"
+          v-if="changeAble"
         >
           <path
             d="M11.2179 1.66016H2.11538C1.3613 1.66016 0.75 2.27146 0.75 3.02554V11.2178C0.75 11.9719 1.3613 12.5832 2.11538 12.5832H11.2179C11.972 12.5832 12.5833 11.9719 12.5833 11.2178V3.02554C12.5833 2.27146 11.972 1.66016 11.2179 1.66016Z"
@@ -84,17 +89,18 @@
         </svg>
       </div>
 
-      <!-- Calendar Popup (without v-app requirement) -->
+      <!-- Calendar Popup (Year Only Mode) -->
       <transition name="fade">
         <div v-if="menuOpen" class="calendar-container">
-          <v-app>
+          <v-app class="v-app-calendar">
             <v-date-picker
               v-model="internalValue"
               :locale="locale"
-              :min="min"
-              :max="max"
+              :min="minDate"
+              :max="maxDate"
+              type="year"
               scrollable
-              @change="updateDate"
+              @input="updateYear"
             />
           </v-app>
         </div>
@@ -108,24 +114,25 @@
 
 <script>
 export default {
-  name: "DatePicker",
+  name: "YearPicker",
   props: {
-    value: { type: String, default: null },
+    value: { type: [String, Number], default: null },
     labelTh: { type: String, default: null },
     labelEn: { type: String, default: "" },
     required: { type: Boolean, default: false },
-    placeholder: { type: String, default: "วว/ดด/ปปปป" },
+    placeholder: { type: String, default: "ปปปป" },
     height: { type: String, default: "56px" },
     maxWidth: { type: String, default: "232px" },
-    min: { type: String, default: null },
-    max: { type: String, default: null },
+    min: { type: [String, Number], default: null },
+    max: { type: [String, Number], default: null },
     locale: { type: String, default: "th" },
     dateFormat: { type: String, default: "th-TH" },
+    changeAble: { type: Boolean, default: true },
   },
   data() {
     return {
       menuOpen: false,
-      internalValue: this.value,
+      internalValue: this.value ? this.getDateFromYear(this.value) : null,
     };
   },
   computed: {
@@ -135,30 +142,53 @@ export default {
         height: this.height,
       };
     },
-    formattedDate() {
+    formattedYear() {
       if (!this.internalValue) return "";
 
-      const d = new Date(this.internalValue);
-      const options = { day: "2-digit", month: "2-digit", year: "numeric" };
-      return d.toLocaleDateString(this.dateFormat, options);
+      const year = new Date(this.internalValue).getFullYear();
+      if (this.locale === "th") {
+        return year + 543;
+      }
+      return year;
+    },
+    minDate() {
+      if (!this.min) return null;
+      return `${this.min}-01-01`;
+    },
+    maxDate() {
+      if (!this.max) return null;
+      return `${this.max}-12-31`;
     },
   },
   watch: {
     value(newVal) {
-      this.internalValue = newVal;
+      this.internalValue = newVal ? this.getDateFromYear(newVal) : null;
     },
   },
   methods: {
     toggleMenu() {
-      this.menuOpen = !this.menuOpen;
+      if (this.changeAble) {
+        this.menuOpen = !this.menuOpen;
+      }
     },
     closeMenu() {
       this.menuOpen = false;
     },
-    updateDate(val) {
+    getDateFromYear(year) {
+      // Convert year to a date string that v-date-picker can use
+      const yearNum = typeof year === "string" ? parseInt(year) : year;
+      return `${yearNum}-01-01`;
+    },
+    updateYear(val) {
+      if (!val) return;
+
+      // Extract year from the date
+      const year = new Date(val).getFullYear();
       this.internalValue = val;
-      this.$emit("input", val);
-      this.$emit("change", val);
+
+      // Emit the year as a number
+      this.$emit("input", year);
+      this.$emit("change", year);
       this.closeMenu();
     },
   },
@@ -209,10 +239,12 @@ input {
   border: 1px solid #e6e6e6;
   box-sizing: border-box;
   padding: 8px 40px 8px 16px;
-  font-weight: 400;
+
   font-family: "Sarabun", sans-serif;
-  line-height: 16px;
+  font-weight: 400;
   font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0%;
   cursor: pointer;
 }
 
@@ -235,6 +267,7 @@ input:focus {
 
 /* Calendar Container */
 .calendar-container {
+  height: 378px;
   position: absolute;
   top: calc(100% + 4px);
   left: 0;
@@ -264,5 +297,19 @@ input:focus {
 .fade-enter,
 .fade-leave-to {
   opacity: 0;
+}
+
+.displayOnly {
+  pointer-events: none;
+  cursor: not-allowed;
+  border: none;
+}
+
+.v-application {
+  height: 378px !important;
+}
+
+::deep(.v-application--wrap) {
+  height: 378px !important;
 }
 </style>

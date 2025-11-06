@@ -72,7 +72,7 @@
             </div>
             <div class="edu-year-section-date">
               <date-picker
-                placeholder="วว/ดด/ปปปป"
+                placeholder="2560"
                 height="32px"
                 maxWidth="114px"
                 locale="th"
@@ -81,7 +81,7 @@
               />
               <p>-</p>
               <date-picker
-                placeholder="วว/ดด/ปปปป"
+                placeholder="2560"
                 height="32px"
                 maxWidth="114px"
                 locale="th"
