@@ -235,18 +235,18 @@ export default {
     if (storeData[3] && storeData[3].length > 0) {
       const familyData = JSON.parse(JSON.stringify(storeData));
       console.log("FAMMMMM" + familyData);
-      this.fatherInfo = familyData[fatherInfo];
-      this.motherInfo = familyData[motherInfo];
-      this.emergencyInfo = familyData[emergencyInfo];
+      this.fatherInfo = familyData[0];
+      this.motherInfo = familyData[1];
+      this.emergencyInfo = familyData[2];
     }
   },
 
   beforeDestroy() {
-    this.$store.commit("SET_FAMILY_DATA", {
+    this.$store.commit("SET_FAMILY_DATA", [
       this.fatherInfo,
       this.motherInfo,
       this.emergencyInfo,
-  });
+    ]);
   },
   methods: {},
 };

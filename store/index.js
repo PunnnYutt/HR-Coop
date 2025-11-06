@@ -4,7 +4,7 @@ export const state = () => ({
       /* fields for page1 */
     },
     2: [],
-    3: {},
+    3: [],
     4: {
       /* fields for page4 */
     },
@@ -23,10 +23,6 @@ export const mutations = {
   },
 
   SET_FAMILY_DATA(state, payload) {
-    console.log(payload);
-    for (let key in payload) {
-      console.log(key);
-      state.pages[3][key] = payload[key];
-    }
+    state.pages[3] = payload;
   },
 };
