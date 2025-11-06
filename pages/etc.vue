@@ -14,7 +14,7 @@
                   <v-row no-gutters class="green lighten-5 pl-4 pr-0 py-9px">
                     <v-col cols="10" class="d-flex align-center">
                       <p class="primary--text lighten-1 text-body-2 mb-0 font-weight-medium">
-                        ทักษะและความสามารถ (ทักษะทางคอมพิวเตอร์) / Computer skills
+                        สอบถามเพิ่มเติม / More Informations  <span class="red--text">*</span>
                       </p>
                     </v-col>
                   </v-row>
@@ -475,7 +475,7 @@
 
             <div v-if="uploadedFiles.length > 0" class="mt-4">
               <div v-for="(file, index) in uploadedFiles" :key="index" class="d-flex align-center pa-3 mb-2 file-item">
-                <v-icon color="red" class="mr-3">mdi-file-pdf-box</v-icon>
+                <v-icon color="red" class="mr-3" style="font-size: 36px !important;">mdi-file-pdf-box</v-icon>
                 <div class="flex-grow-1">
                   <p class="mb-0 text-body-2">{{ file.name }}</p>
                   <p class="mb-0 text-caption grey--text">{{ formatDate(file) }} {{ formatTime(file) }} {{ formatFileSize(file.size) }}</p>
@@ -809,8 +809,8 @@ export default {
 }
 
 .pdf-icon {
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   background-color: #f44336;
   border-radius: 4px;
   display: flex;
