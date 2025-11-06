@@ -230,11 +230,9 @@ export default {
   },
 
   mounted() {
-    const storeData = this.$store.state.pages;
-    console.log("mount" + storeData);
-    if (storeData[3] && storeData[3].length > 0) {
+    const storeData = this.$store.state.pages[3];
+    if (storeData && storeData.length > 0) {
       const familyData = JSON.parse(JSON.stringify(storeData));
-      console.log("FAMMMMM" + familyData);
       this.fatherInfo = familyData[0];
       this.motherInfo = familyData[1];
       this.emergencyInfo = familyData[2];

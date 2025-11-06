@@ -309,7 +309,8 @@ input:focus {
   height: 378px !important;
 }
 
-::deep(.v-application--wrap) {
-  height: 378px !important;
+::v-deep .v-application--wrap {
+  min-height: 378px !important;
+  max-height: 378px !important;
 }
 </style>
