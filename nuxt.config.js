@@ -72,4 +72,6 @@ export default {
       },
     },
   },
+
+  plugins: ["~/plugins/fileStore.js"],
 };

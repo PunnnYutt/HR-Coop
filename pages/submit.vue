@@ -6,6 +6,8 @@
       <educationCard />
       <familyCard />
       <skillCard />
+      <moreInfoCard />
+      <docCard />
 
       <div class="policy-section">
         <label class="policy-section" @click="popup = true">
@@ -334,6 +336,8 @@ import personalCard from "../components/submitPage/index/personalCard.vue";
 import educationCard from "../components/submitPage/education/educationCard.vue";
 import familyCard from "../components/submitPage/family/familyCard.vue";
 import skillCard from "../components/submitPage/skill/skillCard.vue";
+import moreInfoCard from "../components/submitPage/etc/moreInfoCard.vue";
+import docCard from "../components/submitPage/etc/docCard.vue";
 
 export default {
   layout: "form",
@@ -343,6 +347,8 @@ export default {
     educationCard,
     familyCard,
     skillCard,
+    moreInfoCard,
+    docCard,
   },
   data() {
     return {

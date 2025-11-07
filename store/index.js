@@ -5,12 +5,8 @@ export const state = () => ({
     },
     2: [],
     3: [],
-    4: {
-      /* fields for page4 */
-    },
-    5: {
-      /* fields for page5 */
-    },
+    4: [],
+    5: {},
     6: {
       /* fields for page6 */
     },
@@ -24,5 +20,13 @@ export const mutations = {
 
   SET_FAMILY_DATA(state, payload) {
     state.pages[3] = payload;
+  },
+
+  SET_SKILL_DATA(state, payload) {
+    state.pages[4] = payload;
+  },
+
+  SET_ETC_DATA(state, payload) {
+    state.pages[5] = payload;
   },
 };

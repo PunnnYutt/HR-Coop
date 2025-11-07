@@ -2,19 +2,36 @@
   <v-app class="form-body">
     <v-container class="form-body-inner pt-0">
       <v-row :class="$vuetify.breakpoint.mdAndUp ? '' : 'show-display'">
-        <v-col class="pa-0 mt-3" :class="$vuetify.breakpoint.mdAndUp ? '' : 'show-display'">
-          <v-card elevation="0" rounded="lg" class="mb-3 pb-6 px-2 pt-2" max-width="1128" min-width="1128"
-            :class="$vuetify.breakpoint.mdAndUp ? '' : 'show-display'">
+        <v-col
+          class="pa-0 mt-3"
+          :class="$vuetify.breakpoint.mdAndUp ? '' : 'show-display'"
+        >
+          <v-card
+            elevation="0"
+            rounded="lg"
+            class="mb-3 pb-6 px-2 pt-2"
+            max-width="1128"
+            min-width="1128"
+            :class="$vuetify.breakpoint.mdAndUp ? '' : 'show-display'"
+          >
             <v-row class="ma-md-0">
               <v-col class="mt-3 pa-0 px-md-4 pt-md-4 mt-md-0 pb-md-0">
-                <v-card rounded="lg" class="px-0 pt-0 mt-3 mt-md-0" :class="$vuetify.breakpoint.mdAndUp
-                  ? 'shadow-card'
-                  : 'shadow-card-none'
-                  ">
+                <v-card
+                  rounded="lg"
+                  class="px-0 pt-0 mt-3 mt-md-0"
+                  :class="
+                    $vuetify.breakpoint.mdAndUp
+                      ? 'shadow-card'
+                      : 'shadow-card-none'
+                  "
+                >
                   <v-row no-gutters class="green lighten-5 pl-4 pr-0 py-9px">
                     <v-col cols="10" class="d-flex align-center">
-                      <p class="primary--text lighten-1 text-body-2 mb-0 font-weight-medium">
-                        สอบถามเพิ่มเติม / More Informations  <span class="red--text">*</span>
+                      <p
+                        class="primary--text lighten-1 text-body-2 mb-0 font-weight-medium"
+                      >
+                        สอบถามเพิ่มเติม / More Informations
+                        <span class="red--text">*</span>
                       </p>
                     </v-col>
                   </v-row>
@@ -26,31 +43,44 @@
                         </p>
                       </v-row>
                       <v-row no-gutters>
-                        <p class="custom-label grey--text">
-                          Driving licence
-                        </p>
+                        <p class="custom-label grey--text">Driving licence</p>
                       </v-row>
                     </v-col>
                     <v-col cols="4">
                       <v-row no-gutters class="align-center">
                         <v-col cols="4" class="pa-0">
-                          <v-checkbox v-model="cb1" dense class="custom-radio"><template #label><v-col class="pa-0">
+                          <v-checkbox
+                            v-model="formData.drivingLicense.car"
+                            dense
+                            class="custom-radio"
+                          >
+                            <template #label>
+                              <v-col class="pa-0">
                                 <p class="custom-label black--text">รถยนต์</p>
                                 <p class="text-caption text--secondary">Car</p>
-                              </v-col></template></v-checkbox>
+                              </v-col>
+                            </template>
+                          </v-checkbox>
                         </v-col>
                         <v-col cols="4" class="pa-0">
-                          <v-checkbox v-model="cb2" :true-value="true" :false-value="false" dense
-                            class="custom-radio"><template #label><v-col class="pa-0 custom-radio">
-                                <p class="custom-label black--text">มอเตอร์ไซต์</p>
-                                <p class="text-caption text--secondary">Motorcycle</p>
-                              </v-col></template>
+                          <v-checkbox
+                            v-model="formData.drivingLicense.motorcycle"
+                            dense
+                            class="custom-radio"
+                          >
+                            <template #label>
+                              <v-col class="pa-0 custom-radio">
+                                <p class="custom-label black--text">
+                                  มอเตอร์ไซต์
+                                </p>
+                                <p class="text-caption text--secondary">
+                                  Motorcycle
+                                </p>
+                              </v-col>
+                            </template>
                           </v-checkbox>
                         </v-col>
                       </v-row>
-                    </v-col>
-                    <v-col>
-
                     </v-col>
                   </v-row>
                   <v-divider></v-divider>
@@ -58,7 +88,8 @@
                     <v-col cols="5">
                       <v-row no-gutters>
                         <p class="custom-label">
-                          ท่านสามารถไปปฎิบัติงานต่างจังหวัดได้หรือไม่ <span class="red--text">*</span>
+                          ท่านสามารถไปปฎิบัติงานต่างจังหวัดได้หรือไม่
+                          <span class="red--text">*</span>
                         </p>
                       </v-row>
                       <v-row no-gutters>
@@ -70,21 +101,46 @@
                     <v-col cols="4">
                       <v-row no-gutters class="align-center">
                         <v-col md="3" class="pl-md-0 pt-md-0">
-                          <v-radio-group v-model="choice" row class="color-label custom-label pl-md-0 mt-0 mt-md-0">
-                            <v-col cols="12" md="5" class=" d-flex flex-row flex-md-colum mr-md-0 px-md-0 pt-0 pd-md-0">
-                              <v-radio value="three" class="color-label custom-radio">
+                          <v-radio-group
+                            v-model="formData.workUpcountry"
+                            row
+                            class="color-label custom-label pl-md-0 mt-0 mt-md-0"
+                          >
+                            <v-col
+                              cols="12"
+                              md="5"
+                              class="d-flex flex-row flex-md-colum mr-md-0 px-md-0 pt-0 pd-md-0"
+                            >
+                              <v-radio
+                                value="yes"
+                                class="color-label custom-radio"
+                              >
                                 <template #label>
                                   <v-col class="pa-0">
                                     <p>ได้</p>
-                                    <p class="text-caption text--secondary">Yes</p>
+                                    <p class="text-caption text--secondary">
+                                      Yes
+                                    </p>
                                   </v-col>
                                 </template>
                               </v-radio>
-                              <v-radio value="one" class="color-label custom-radio">
+                              <v-radio
+                                value="no"
+                                class="color-label custom-radio"
+                              >
                                 <template #label>
                                   <v-col cols="12" class="pa-0">
-                                    <p style="display: inline-block; white-space: nowrap;">ไม่ได้</p>
-                                    <p class="text-caption text--secondary">No</p>
+                                    <p
+                                      style="
+                                        display: inline-block;
+                                        white-space: nowrap;
+                                      "
+                                    >
+                                      ไม่ได้
+                                    </p>
+                                    <p class="text-caption text--secondary">
+                                      No
+                                    </p>
                                   </v-col>
                                 </template>
                               </v-radio>
@@ -93,42 +149,66 @@
                         </v-col>
                       </v-row>
                     </v-col>
-                    <v-col>
-
-                    </v-col>
                   </v-row>
                   <v-divider></v-divider>
                   <v-row no-gutters class="pl-4 py-4 pb-0">
                     <v-col cols="5">
                       <v-row no-gutters>
                         <p class="custom-label">
-                          ท่านเคยให้ถูกออกจากงาน หรือเลิกจ้างหรือไม่ <span class="red--text">*</span>
+                          ท่านเคยให้ถูกออกจากงาน หรือเลิกจ้างหรือไม่
+                          <span class="red--text">*</span>
                         </p>
                       </v-row>
                       <v-row no-gutters>
                         <p class="custom-label grey--text">
-                          Have you ever been discharged from employment for any reason?
+                          Have you ever been discharged from employment for any
+                          reason?
                         </p>
                       </v-row>
                     </v-col>
                     <v-col cols="4">
                       <v-row no-gutters class="align-center">
                         <v-col md="3" class="pl-md-0 pt-md-0">
-                          <v-radio-group v-model="choice" row class="color-label custom-label pl-md-0 mt-0 mt-md-0">
-                            <v-col cols="12" md="4" class=" d-flex flex-row flex-md-colum mr-md-0 px-md-0 pt-0 pd-md-0">
-                              <v-radio value="three" class="color-label custom-radio">
+                          <v-radio-group
+                            v-model="formData.dischargedFromWork"
+                            row
+                            class="color-label custom-label pl-md-0 mt-0 mt-md-0"
+                          >
+                            <v-col
+                              cols="12"
+                              md="4"
+                              class="d-flex flex-row flex-md-colum mr-md-0 px-md-0 pt-0 pd-md-0"
+                            >
+                              <v-radio
+                                value="no"
+                                class="color-label custom-radio"
+                              >
                                 <template #label>
                                   <v-col class="pa-0">
-                                    <p style="display: inline-block; white-space: nowrap;">ไม่เคย</p>
-                                    <p class="text-caption text--secondary">No</p>
+                                    <p
+                                      style="
+                                        display: inline-block;
+                                        white-space: nowrap;
+                                      "
+                                    >
+                                      ไม่เคย
+                                    </p>
+                                    <p class="text-caption text--secondary">
+                                      No
+                                    </p>
                                   </v-col>
                                 </template>
                               </v-radio>
-                              <v-radio value="one" class="color-label custom-radio">
+                              <v-radio
+                                value="yes"
+                                class="color-label custom-radio"
+                              >
                                 <template #label>
                                   <v-col class="pa-0">
                                     <p>เคย</p>
-                                    <p class="text-caption text--secondary">Yas</p>
+                                    <p class="text-caption text--secondary">
+                                      Yes
+                                    </p>
                                   </v-col>
                                 </template>
                               </v-radio>
@@ -143,7 +223,8 @@
                     <v-col cols="5">
                       <v-row no-gutters>
                         <p class="custom-label">
-                          ท่านเคยถูกจำคุก หรือโทษทางอาญาหรือไม่ <span class="red--text">*</span>
+                          ท่านเคยถูกจำคุก หรือโทษทางอาญาหรือไม่
+                          <span class="red--text">*</span>
                         </p>
                       </v-row>
                       <v-row no-gutters>
@@ -155,21 +236,46 @@
                     <v-col cols="4">
                       <v-row no-gutters class="align-center">
                         <v-col md="3" class="pl-md-0 pt-md-0">
-                          <v-radio-group v-model="choice" row class="color-label custom-label pl-md-0 mt-0 mt-md-0">
-                            <v-col cols="12" md="4" class=" d-flex flex-row flex-md-colum mr-md-0 px-md-0 pt-0 pd-md-0">
-                              <v-radio value="three" class="color-label custom-radio">
+                          <v-radio-group
+                            v-model="formData.imprisoned"
+                            row
+                            class="color-label custom-label pl-md-0 mt-0 mt-md-0"
+                          >
+                            <v-col
+                              cols="12"
+                              md="4"
+                              class="d-flex flex-row flex-md-colum mr-md-0 px-md-0 pt-0 pd-md-0"
+                            >
+                              <v-radio
+                                value="no"
+                                class="color-label custom-radio"
+                              >
                                 <template #label>
                                   <v-col class="pa-0">
-                                    <p style="display: inline-block; white-space: nowrap;">ไม่เคย</p>
-                                    <p class="text-caption text--secondary">No</p>
+                                    <p
+                                      style="
+                                        display: inline-block;
+                                        white-space: nowrap;
+                                      "
+                                    >
+                                      ไม่เคย
+                                    </p>
+                                    <p class="text-caption text--secondary">
+                                      No
+                                    </p>
                                   </v-col>
                                 </template>
                               </v-radio>
-                              <v-radio value="one" class="color-label custom-radio">
+                              <v-radio
+                                value="yes"
+                                class="color-label custom-radio"
+                              >
                                 <template #label>
                                   <v-col class="pa-0">
                                     <p>เคย</p>
-                                    <p class="text-caption text--secondary">Yas</p>
+                                    <p class="text-caption text--secondary">
+                                      Yes
+                                    </p>
                                   </v-col>
                                 </template>
                               </v-radio>
@@ -196,32 +302,84 @@
                     <v-col cols="4">
                       <v-row no-gutters class="align-center">
                         <v-col md="3" class="pl-md-0 pt-md-0">
-                          <v-radio-group v-model="choice" row class="color-label custom-label pl-md-0 mt-0 mt-md-0">
-                            <v-col cols="12" md="4" class=" d-flex flex-row flex-md-colum mr-md-0 px-md-0 pt-0 pd-md-0">
-                              <v-radio value="three" class="color-label custom-radio">
+                          <v-radio-group
+                            v-model="formData.smoking"
+                            row
+                            class="color-label custom-label pl-md-0 mt-0 mt-md-0"
+                          >
+                            <v-col
+                              cols="12"
+                              md="4"
+                              class="d-flex flex-row flex-md-colum mr-md-0 px-md-0 pt-0 pd-md-0"
+                            >
+                              <v-radio
+                                value="non-smoker"
+                                class="color-label custom-radio"
+                              >
                                 <template #label>
                                   <v-col class="pa-0">
                                     <p>ไม่สูบ</p>
-                                    <p class="text-caption text--secondary"
-                                      style="display: inline-block; white-space: nowrap;">Non-smoker</p>
+                                    <p
+                                      class="text-caption text--secondary"
+                                      style="
+                                        display: inline-block;
+                                        white-space: nowrap;
+                                      "
+                                    >
+                                      Non-smoker
+                                    </p>
                                   </v-col>
                                 </template>
                               </v-radio>
-                              <v-radio value="one" class="color-label custom-radio">
+                              <v-radio
+                                value="occasional"
+                                class="color-label custom-radio"
+                              >
                                 <template #label>
                                   <v-col class="pa-0">
-                                    <p style="display: inline-block; white-space: nowrap;">สูบบางครั้ง</p>
-                                    <p class="text-caption text--secondary"
-                                      style="display: inline-block; white-space: nowrap;">Occasional smoker</p>
+                                    <p
+                                      style="
+                                        display: inline-block;
+                                        white-space: nowrap;
+                                      "
+                                    >
+                                      สูบบางครั้ง
+                                    </p>
+                                    <p
+                                      class="text-caption text--secondary"
+                                      style="
+                                        display: inline-block;
+                                        white-space: nowrap;
+                                      "
+                                    >
+                                      Occasional smoker
+                                    </p>
                                   </v-col>
                                 </template>
                               </v-radio>
-                              <v-radio value="two" class="color-label custom-radio">
+                              <v-radio
+                                value="regular"
+                                class="color-label custom-radio"
+                              >
                                 <template #label>
                                   <v-col class="pa-0">
-                                    <p style="display: inline-block; white-space: nowrap;">สูบเป็นประจํา</p>
-                                    <p class="text-caption text--secondary"
-                                      style="display: inline-block; white-space: nowrap;">Smoke regularly</p>
+                                    <p
+                                      style="
+                                        display: inline-block;
+                                        white-space: nowrap;
+                                      "
+                                    >
+                                      สูบเป็นประจํา
+                                    </p>
+                                    <p
+                                      class="text-caption text--secondary"
+                                      style="
+                                        display: inline-block;
+                                        white-space: nowrap;
+                                      "
+                                    >
+                                      Smoke regularly
+                                    </p>
                                   </v-col>
                                 </template>
                               </v-radio>
@@ -236,7 +394,8 @@
                     <v-col cols="5">
                       <v-row no-gutters>
                         <p class="custom-label">
-                          ท่านดื่มเครื่องดื่มแอลกอฮอล์หรือไม่ <span class="red--text">*</span>
+                          ท่านดื่มเครื่องดื่มแอลกอฮอล์หรือไม่
+                          <span class="red--text">*</span>
                         </p>
                       </v-row>
                       <v-row no-gutters>
@@ -248,32 +407,77 @@
                     <v-col cols="4">
                       <v-row no-gutters class="align-center">
                         <v-col md="3" class="pl-md-0 pt-md-0">
-                          <v-radio-group v-model="choice" row class="color-label custom-label pl-md-0 mt-0 mt-md-0">
-                            <v-col cols="12" md="4" class=" d-flex flex-row flex-md-colum mr-md-0 px-md-0 pt-0 pd-md-0">
-                              <v-radio value="three" class="color-label custom-radio">
+                          <v-radio-group
+                            v-model="formData.drinking"
+                            row
+                            class="color-label custom-label pl-md-0 mt-0 mt-md-0"
+                          >
+                            <v-col
+                              cols="12"
+                              md="4"
+                              class="d-flex flex-row flex-md-colum mr-md-0 px-md-0 pt-0 pd-md-0"
+                            >
+                              <v-radio
+                                value="non-drinker"
+                                class="color-label custom-radio"
+                              >
                                 <template #label>
                                   <v-col class="pa-0">
                                     <p>ไม่ดื่ม</p>
-                                    <p class="text-caption text--secondary"
-                                      style="display: inline-block; white-space: nowrap;">Non-drinker</p>
+                                    <p
+                                      class="text-caption text--secondary"
+                                      style="
+                                        display: inline-block;
+                                        white-space: nowrap;
+                                      "
+                                    >
+                                      Non-drinker
+                                    </p>
                                   </v-col>
                                 </template>
                               </v-radio>
-                              <v-radio value="one" class="color-label custom-radio">
+                              <v-radio
+                                value="occasional"
+                                class="color-label custom-radio"
+                              >
                                 <template #label>
                                   <v-col class="pa-0">
                                     <p>ดื่มบางครั้ง</p>
-                                    <p class="text-caption text--secondary"
-                                      style="display: inline-block; white-space: nowrap;">Occasional drinker</p>
+                                    <p
+                                      class="text-caption text--secondary"
+                                      style="
+                                        display: inline-block;
+                                        white-space: nowrap;
+                                      "
+                                    >
+                                      Occasional drinker
+                                    </p>
                                   </v-col>
                                 </template>
                               </v-radio>
-                              <v-radio value="two" class="color-label custom-radio">
+                              <v-radio
+                                value="regular"
+                                class="color-label custom-radio"
+                              >
                                 <template #label>
                                   <v-col class="pa-0">
-                                    <p style="display: inline-block; white-space: nowrap;">ดื่มเป็นประจำ</p>
-                                    <p class="text-caption text--secondary"
-                                      style="display: inline-block; white-space: nowrap;">Regular drinker</p>
+                                    <p
+                                      style="
+                                        display: inline-block;
+                                        white-space: nowrap;
+                                      "
+                                    >
+                                      ดื่มเป็นประจำ
+                                    </p>
+                                    <p
+                                      class="text-caption text--secondary"
+                                      style="
+                                        display: inline-block;
+                                        white-space: nowrap;
+                                      "
+                                    >
+                                      Regular drinker
+                                    </p>
                                   </v-col>
                                 </template>
                               </v-radio>
@@ -288,34 +492,61 @@
                     <v-col cols="6">
                       <v-row no-gutters>
                         <p class="custom-label">
-                          ท่านมีข้อบกพร่องหรืออุปสรรคเกี่ยวกับร่างกาย หรืออวัยวะส่วนใดส่วนหนึ่งพิการหรือไม่ <span
-                            class="red--text">*</span>
+                          ท่านมีข้อบกพร่องหรืออุปสรรคเกี่ยวกับร่างกาย
+                          หรืออวัยวะส่วนใดส่วนหนึ่งพิการหรือไม่
+                          <span class="red--text">*</span>
                         </p>
                       </v-row>
                       <v-row no-gutters>
                         <p class="custom-label grey--text">
-                          You have deficiencies or obstacles in the body. Or any part of the organ is deformed or not
+                          You have deficiencies or obstacles in the body. Or any
+                          part of the organ is deformed or not
                         </p>
                       </v-row>
                     </v-col>
                     <v-col cols="4">
                       <v-row no-gutters class="align-center">
                         <v-col md="3" class="pl-md-0 pt-md-0">
-                          <v-radio-group v-model="choice" row class="color-label custom-label pl-md-0 mt-0 mt-md-0">
-                            <v-col cols="12" md="4" class=" d-flex flex-row flex-md-colum mr-md-0 px-md-0 pt-0 pd-md-0">
-                              <v-radio value="three" class="color-label custom-radio">
+                          <v-radio-group
+                            v-model="formData.disability"
+                            row
+                            class="color-label custom-label pl-md-0 mt-0 mt-md-0"
+                          >
+                            <v-col
+                              cols="12"
+                              md="4"
+                              class="d-flex flex-row flex-md-colum mr-md-0 px-md-0 pt-0 pd-md-0"
+                            >
+                              <v-radio
+                                value="no"
+                                class="color-label custom-radio"
+                              >
                                 <template #label>
                                   <v-col class="pa-0">
-                                    <p style="display: inline-block; white-space: nowrap;">ไม่เคย</p>
-                                    <p class="text-caption text--secondary">No</p>
+                                    <p
+                                      style="
+                                        display: inline-block;
+                                        white-space: nowrap;
+                                      "
+                                    >
+                                      ไม่เคย
+                                    </p>
+                                    <p class="text-caption text--secondary">
+                                      No
+                                    </p>
                                   </v-col>
                                 </template>
                               </v-radio>
-                              <v-radio value="one" class="color-label custom-radio">
+                              <v-radio
+                                value="yes"
+                                class="color-label custom-radio"
+                              >
                                 <template #label>
                                   <v-col class="pa-0">
                                     <p>เคย</p>
-                                    <p class="text-caption text--secondary">Yas</p>
+                                    <p class="text-caption text--secondary">
+                                      Yes
+                                    </p>
                                   </v-col>
                                 </template>
                               </v-radio>
@@ -330,21 +561,43 @@
                     <v-col>
                       <v-row no-gutters>
                         <p class="custom-label pb-2">
-                          ท่านทราบข่าวสารการสมัครฝึกงานจาก <span class="grey--text">How did you hear about this
-                            Internship
-                            application?</span>
+                          ท่านทราบข่าวสารการสมัครฝึกงานจาก
+                          <span class="grey--text"
+                            >How did you hear about this Internship
+                            application?</span
+                          >
                         </p>
                       </v-row>
                       <v-row no-gutters>
                         <v-col cols="5" class="pt-0 pl-0 pr-md-4">
-                          <v-select v-model="value" :items="howto" multiple item-text="label" item-value="label"
-                            outlined dense placeholder="เลือกข่าวสารการสมัครงาน" clearable
-                            :menu-props="{ maxHeight: 240 }" chips small-chips>
+                          <v-select
+                            v-model="formData.howDidYouHear"
+                            :items="howto"
+                            multiple
+                            item-text="label"
+                            item-value="value"
+                            outlined
+                            dense
+                            placeholder="เลือกข่าวสารการสมัครงาน"
+                            clearable
+                            :menu-props="{ maxHeight: 240 }"
+                            chips
+                            small-chips
+                          >
                             <template v-slot:selection="{ item, index }">
-                              <v-chip v-if="index < 4" small color="green lighten-5" text-color="primary" class="ma-1">
+                              <v-chip
+                                v-if="index < 4"
+                                small
+                                color="green lighten-5"
+                                text-color="primary"
+                                class="ma-1"
+                              >
                                 {{ item.label }}
                               </v-chip>
-                              <span v-if="index === 4" class="primary--text text-caption ml-2">
+                              <span
+                                v-if="index === 4"
+                                class="primary--text text-caption ml-2"
+                              >
                                 ...
                               </span>
                             </template>
@@ -358,27 +611,46 @@
             </v-row>
             <v-row class="ma-md-0">
               <v-col class="mt-3 pa-0 px-md-4 pt-md-4 mt-md-0 pb-md-0">
-                <v-card rounded="lg" class="px-0 pt-0 mt-3 mt-md-0" :class="$vuetify.breakpoint.mdAndUp
-                  ? 'shadow-card'
-                  : 'shadow-card-none'
-                  ">
+                <v-card
+                  rounded="lg"
+                  class="px-0 pt-0 mt-3 mt-md-0"
+                  :class="
+                    $vuetify.breakpoint.mdAndUp
+                      ? 'shadow-card'
+                      : 'shadow-card-none'
+                  "
+                >
                   <v-row no-gutters class="green lighten-5 pl-4 pr-0 py-9px">
                     <v-col cols="10" class="d-flex align-center">
-                      <p class="primary--text lighten-1 text-body-2 mb-0 font-weight-medium">
+                      <p
+                        class="primary--text lighten-1 text-body-2 mb-0 font-weight-medium"
+                      >
                         เอกสารประกอบ / Supporting Documents
                       </p>
                     </v-col>
                   </v-row>
-                  <v-row no-gutters class="pa-4" v-if="documents.length === 0">
-                    <v-col cols="12" class="border-dashed text-center py-8" @click="dialog = true">
-                      <v-card elevation="0" >
-                        <v-icon color="green" style="font-size: 48px !important;">mdi-cloud-upload-outline</v-icon>
+                  <v-row
+                    no-gutters
+                    class="pa-4"
+                    v-if="formData.documents.length === 0"
+                  >
+                    <v-col
+                      cols="12"
+                      class="border-dashed text-center py-8"
+                      @click="dialog = true"
+                    >
+                      <v-card elevation="0">
+                        <v-icon color="green" style="font-size: 48px !important"
+                          >mdi-cloud-upload-outline</v-icon
+                        >
                         <div class="mt-2">
-                          <p class="green--text custom-label mb-2">อัปโหลดเอกสาร</p>
-                          <p style="font-size: 10px;" class="grey--text mb-0">
+                          <p class="green--text custom-label mb-2">
+                            อัปโหลดเอกสาร
+                          </p>
+                          <p style="font-size: 10px" class="grey--text mb-0">
                             กรุณาอัปโหลดเอกสารประกอบ เช่น สำเนาบัตรประชาชน,
                           </p>
-                          <p style="font-size: 10px;" class="grey--text">
+                          <p style="font-size: 10px" class="grey--text">
                             สำเนาทะเบียนบ้าน, Transcript
                           </p>
                         </div>
@@ -388,56 +660,79 @@
 
                   <!-- Documents List Section -->
                   <v-row no-gutters v-else>
-                    <v-col cols="12" >
-                        <!-- Document Items -->
-                        <div v-for="(doc, index) in documents" :key="index"
-                          class="document-item d-flex align-center pa-3">
-                          <!-- PDF Icon -->
-                          <div class="pdf-icon mr-3">
-                            <v-icon color="white" size="12">mdi-file-pdf-box</v-icon>
-                          </div>
-
-                          <!-- Document Info -->
-                          <div class="flex-grow-1">
-                            <v-row no-gutters>
-                              <v-col>
-                                <p class="mb-1 text-body-2 font-weight-medium">{{ doc.name }}</p>
-                              </v-col>
-                              <v-col>
-                                <p class="mb-0 text-body-2 font-weight-medium grey--text">
-                                  ({{ doc.type }})
-                                </p>
-                              </v-col>
-                            </v-row>
-                            <p class="mb-0 text-caption grey--text">
-                              {{ doc.date }} {{ doc.time }} {{ doc.size }}
-                            </p>
-                          </div>
-
-                          <!-- Action Buttons -->
-                          <div class="d-flex align-center">
-                            <v-btn icon small @click="viewDocument(doc)" class="mr-2">
-                              <v-icon color="primary">mdi-eye-outline</v-icon>
-                            </v-btn>
-                            <v-btn icon small @click="downloadDocument(doc)" class="mr-2">
-                              <v-icon color="primary">mdi-download</v-icon>
-                            </v-btn>
-                            <v-btn icon small @click="removeDocument(index)">
-                              <v-icon color="primary">mdi-close</v-icon>
-                            </v-btn>
-                          </div>
+                    <v-col cols="12">
+                      <!-- Document Items -->
+                      <div
+                        v-for="(doc, index) in formData.documents"
+                        :key="index"
+                        class="document-item d-flex align-center pa-3"
+                      >
+                        <!-- PDF Icon -->
+                        <div class="pdf-icon mr-3">
+                          <v-icon color="white" size="12"
+                            >mdi-file-pdf-box</v-icon
+                          >
                         </div>
 
-                        <!-- Upload More Button -->
-                        <div class="text-center mt-4 mb-4">
-                          <v-btn outlined color="green" small @click="dialog = true">
-                            <v-icon small left>mdi-upload</v-icon>
-                            อัปโหลดเอกสาร
+                        <!-- Document Info -->
+                        <div class="flex-grow-1">
+                          <v-row no-gutters>
+                            <v-col>
+                              <p class="mb-1 text-body-2 font-weight-medium">
+                                {{ doc.name }}
+                              </p>
+                            </v-col>
+                            <v-col>
+                              <p
+                                class="mb-0 text-body-2 font-weight-medium grey--text"
+                              >
+                                ({{ doc.type }})
+                              </p>
+                            </v-col>
+                          </v-row>
+                          <p class="mb-0 text-caption grey--text">
+                            {{ doc.date }} {{ doc.time }} {{ doc.size }}
+                          </p>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="d-flex align-center">
+                          <v-btn
+                            icon
+                            small
+                            @click="viewDocument(doc)"
+                            class="mr-2"
+                          >
+                            <v-icon color="primary">mdi-eye-outline</v-icon>
+                          </v-btn>
+                          <v-btn
+                            icon
+                            small
+                            @click="downloadDocument(doc)"
+                            class="mr-2"
+                          >
+                            <v-icon color="primary">mdi-download</v-icon>
+                          </v-btn>
+                          <v-btn icon small @click="removeDocument(index)">
+                            <v-icon color="primary">mdi-close</v-icon>
                           </v-btn>
                         </div>
+                      </div>
+
+                      <!-- Upload More Button -->
+                      <div class="text-center mt-4 mb-4">
+                        <v-btn
+                          outlined
+                          color="green"
+                          small
+                          @click="dialog = true"
+                        >
+                          <v-icon small left>mdi-upload</v-icon>
+                          อัปโหลดเอกสาร
+                        </v-btn>
+                      </div>
                     </v-col>
                   </v-row>
-
                 </v-card>
               </v-col>
             </v-row>
@@ -446,7 +741,10 @@
       </v-row>
       <v-dialog v-model="dialog" max-width="500">
         <v-card>
-          <v-card-title style="font-size: 16px;" class="green--text green lighten-5 d-flex justify-space-between align-center py-2">
+          <v-card-title
+            style="font-size: 16px"
+            class="green--text green lighten-5 d-flex justify-space-between align-center py-2"
+          >
             <span></span>
             <span>อัปโหลดเอกสาร</span>
             <v-btn icon small @click="closeDialog">
@@ -456,29 +754,57 @@
 
           <v-card-text class="pt-4">
             <v-row>
-              <v-col cols="3" style="display: inline-block; white-space: nowrap;" class="d-flex align-center">
+              <v-col
+                cols="3"
+                style="display: inline-block; white-space: nowrap"
+                class="d-flex align-center"
+              >
                 <span>ประเภทเอกสาร :</span>
               </v-col>
               <v-col cols="9">
-                <v-select color="grey lighten-2" v-model="documentType" :items="documentTypes" outlined dense
-                  placeholder="กรุณาเลือกประเภทเอกสาร">
+                <v-select
+                  color="grey lighten-2"
+                  v-model="documentType"
+                  :items="documentTypes"
+                  outlined
+                  dense
+                  placeholder="กรุณาเลือกประเภทเอกสาร"
+                >
                 </v-select>
               </v-col>
             </v-row>
 
-
-            <v-card  elevation="0" class="border-dashed-upload text-center py-8 mt-4"
-              @click="handleUpload">
-              <v-icon color="green"  style="font-size: 48px !important;">mdi-cloud-upload-outline</v-icon>
-              <p class="green--text custom-label mt-2 mb-0">อัปโหลดไฟล์เอกสาร</p>
+            <v-card
+              elevation="0"
+              class="border-dashed-upload text-center py-8 mt-4"
+              @click="handleUpload"
+            >
+              <v-icon color="green" style="font-size: 48px !important"
+                >mdi-cloud-upload-outline</v-icon
+              >
+              <p class="green--text custom-label mt-2 mb-0">
+                อัปโหลดไฟล์เอกสาร
+              </p>
             </v-card>
 
             <div v-if="uploadedFiles.length > 0" class="mt-4">
-              <div v-for="(file, index) in uploadedFiles" :key="index" class="d-flex align-center pa-3 mb-2 file-item">
-                <v-icon color="red" class="mr-3" style="font-size: 36px !important;">mdi-file-pdf-box</v-icon>
+              <div
+                v-for="(file, index) in uploadedFiles"
+                :key="index"
+                class="d-flex align-center pa-3 mb-2 file-item"
+              >
+                <v-icon
+                  color="red"
+                  class="mr-3"
+                  style="font-size: 36px !important"
+                  >mdi-file-pdf-box</v-icon
+                >
                 <div class="flex-grow-1">
                   <p class="mb-0 text-body-2">{{ file.name }}</p>
-                  <p class="mb-0 text-caption grey--text">{{ formatDate(file) }} {{ formatTime(file) }} {{ formatFileSize(file.size) }}</p>
+                  <p class="mb-0 text-caption grey--text">
+                    {{ formatDate(file) }} {{ formatTime(file) }}
+                    {{ formatFileSize(file.size) }}
+                  </p>
                 </div>
                 <v-btn icon small @click="viewFile(file)">
                   <v-icon small class="primary--text">mdi-eye-outline</v-icon>
@@ -491,13 +817,25 @@
                 </v-btn>
               </div>
             </div>
-            <input ref="fileInput" type="file" hidden accept=".pdf" multiple @change="onFileChange">
+            <input
+              ref="fileInput"
+              type="file"
+              hidden
+              accept=".pdf"
+              multiple
+              @change="onFileChange"
+            />
           </v-card-text>
           <v-card-actions class="px-6 pb-4 d-flex justify-center">
             <v-btn text outlined color="grey" @click="closeDialog">
               ยกเลิก
             </v-btn>
-            <v-btn color="green" class="white--text" :disabled="uploadedFiles.length === 0 || !documentType" @click="submitDocument">
+            <v-btn
+              color="green"
+              class="white--text"
+              :disabled="uploadedFiles.length === 0 || !documentType"
+              @click="submitDocument"
+            >
               ตกลง
             </v-btn>
           </v-card-actions>
@@ -509,147 +847,188 @@
 <script>
 export default {
   layout: "form",
+  mounted() {
+    const storeData = this.$store.state.pages;
+    if (storeData[5]["drivingLicense"]) {
+      const vuexData = JSON.parse(JSON.stringify(storeData));
+      this.formData = vuexData[5];
+      this.formData.documents = [...this.$fileStore.myFile];
+    }
+  },
+
+  beforeDestroy() {
+    this.$store.commit("SET_ETC_DATA", this.formData);
+    this.$fileStore.myFile = this.formData.documents;
+  },
+
   data() {
     return {
+      formData: {
+        drivingLicense: {
+          car: false,
+          motorcycle: false,
+        },
+        workUpcountry: null,
+        dischargedFromWork: null,
+        imprisoned: null,
+        smoking: null,
+        drinking: null,
+        disability: null,
+        howDidYouHear: [],
+        documents: [],
+      },
       howto: [
-        { value: 'JobDB', label: 'JobDB' },
-        { value: 'Linkln', label: 'Linkln' },
-        { value: 'JobThai', label: 'JobThai' },
-        { value: 'Work Life Cycle', label: 'Work Life Cycle' },
-        { value: 'JobTopGun', label: 'JobTopGun' },
-        { value: 'KhonKaenLink', label: 'KhonKaenLink' },
-        { value: 'เว็ปไซต์บริษัท', label: 'เว็ปไซต์บริษัท' },
-        { value: 'Jobfinfin', label: 'Jobfinfin' },
-        { value: 'Jobbkk', label: 'Jobbkk' },
-        { value: 'TikTok', label: 'TikTok' },
-        { value: 'Job.Gimyong', label: 'Job.Gimyong' },
-        { value: 'ได้รับการติดต่อจากบริษัท', label: 'ได้รับการติดต่อจากบริษัท' },
-        { value: 'Job North Thailand', label: 'Job North Thailand' },
-        { value: 'เคยเป็นนักศึกษาฝึกงาน', label: 'เคยเป็นนักศึกษาฝึกงาน' },
-        { value: 'Job Fair (ระบุมหาลัย)', label: 'Job Fair (ระบุมหาลัย)' },
-        { value: 'Facebook (ระบุชื่อกลุ่ม/เพจ)', label: 'Facebook (ระบุชื่อกลุ่ม/เพจ)' },
-        { value: 'เพื่อน/คนรู้จักในบริษัท (ระบุชื่อคนรู้จัก)', label: 'เพื่อน/คนรู้จักในบริษัท (ระบุชื่อคนรู้จัก)' },
-        { value: 'อื่นๆ (ระบุ)', label: 'อื่นๆ (ระบุ)' }
+        { value: "JobDB", label: "JobDB" },
+        { value: "Linkln", label: "Linkln" },
+        { value: "JobThai", label: "JobThai" },
+        { value: "Work Life Cycle", label: "Work Life Cycle" },
+        { value: "JobTopGun", label: "JobTopGun" },
+        { value: "KhonKaenLink", label: "KhonKaenLink" },
+        { value: "website", label: "เว็ปไซต์บริษัท" },
+        { value: "Jobfinfin", label: "Jobfinfin" },
+        { value: "Jobbkk", label: "Jobbkk" },
+        { value: "TikTok", label: "TikTok" },
+        { value: "Job.Gimyong", label: "Job.Gimyong" },
+        { value: "contacted", label: "ได้รับการติดต่อจากบริษัท" },
+        { value: "Job North Thailand", label: "Job North Thailand" },
+        { value: "intern", label: "เคยเป็นนักศึกษาฝึกงาน" },
+        { value: "jobfair", label: "Job Fair (ระบุมหาลัย)" },
+        { value: "facebook", label: "Facebook (ระบุชื่อกลุ่ม/เพจ)" },
+        {
+          value: "friend",
+          label: "เพื่อน/คนรู้จักในบริษัท (ระบุชื่อคนรู้จัก)",
+        },
+        { value: "other", label: "อื่นๆ (ระบุ)" },
       ],
-      selectedFile: null,
       dialog: false,
       documentType: null,
       documentTypes: [
-        'สำเนาบัตรประชาชน',
-        'สำเนาทะเบียนบ้าน',
-        'Transcript',
-        'เอกสารอื่นๆ'
+        "สำเนาบัตรประชาชน",
+        "สำเนาทะเบียนบ้าน",
+        "Transcript",
+        "เอกสารอื่นๆ",
       ],
       uploadedFiles: [],
-       documents: []
-    }
+    };
   },
-   methods: {
-     formatDate(file) {
-    const date = file.lastModified ? new Date(file.lastModified) : new Date()
-    const day = String(date.getDate()).padStart(2, '0')
-    const month = String(date.getMonth() + 1).padStart(2, '0')
-    const year = date.getFullYear()
-    return `${day}/${month}/${year}`
-  },  
-  formatTime(file) {
-    const date = file.lastModified ? new Date(file.lastModified) : new Date()
-    const hours = String(date.getHours()).padStart(2, '0')
-    const minutes = String(date.getMinutes()).padStart(2, '0')
-    return `${hours}:${minutes}`
+  watch: {
+    formData: {
+      handler(newVal) {
+        console.log("Form data changed:", newVal);
+        // You can emit to parent or perform other actions here
+        this.$emit("input", newVal);
+      },
+      deep: true,
+    },
   },
+  methods: {
+    formatDate(file) {
+      const date = file.lastModified ? new Date(file.lastModified) : new Date();
+      const day = String(date.getDate()).padStart(2, "0");
+      const month = String(date.getMonth() + 1).padStart(2, "0");
+      const year = date.getFullYear();
+      return `${day}/${month}/${year}`;
+    },
+    formatTime(file) {
+      const date = file.lastModified ? new Date(file.lastModified) : new Date();
+      const hours = String(date.getHours()).padStart(2, "0");
+      const minutes = String(date.getMinutes()).padStart(2, "0");
+      return `${hours}:${minutes}`;
+    },
     handleUpload() {
-      this.$refs.fileInput.click()
+      this.$refs.fileInput.click();
     },
     onFileChange(event) {
-      const files = Array.from(event.target.files)
-      files.forEach(file => {
-        if (file.type === 'application/pdf' && file.size <= 25 * 1024 * 1024) {
-          this.uploadedFiles.push(file)
+      const files = Array.from(event.target.files);
+      files.forEach((file) => {
+        if (file.type === "application/pdf" && file.size <= 25 * 1024 * 1024) {
+          this.uploadedFiles.push(file);
         } else {
-          alert('กรุณาอัปโหลดไฟล์ PDF ขนาดไม่เกิน 25MB')
+          alert("กรุณาอัปโหลดไฟล์ PDF ขนาดไม่เกิน 25MB");
         }
-      })
-      this.$refs.fileInput.value = ''
+      });
+      this.$refs.fileInput.value = "";
     },
     removeFile(index) {
-      this.uploadedFiles.splice(index, 1)
+      this.uploadedFiles.splice(index, 1);
     },
     viewFile(file) {
-      const url = URL.createObjectURL(file)
-      window.open(url, '_blank')
+      const url = URL.createObjectURL(file);
+      window.open(url, "_blank");
     },
     downloadFile(file) {
-      const url = URL.createObjectURL(file)
-      const a = document.createElement('a')
-      a.href = url
-      a.download = file.name
-      a.click()
-      URL.revokeObjectURL(url)
+      const url = URL.createObjectURL(file);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = file.name;
+      a.click();
+      URL.revokeObjectURL(url);
     },
     formatFileSize(bytes) {
-      if (bytes === 0) return '0 Bytes'
-      const k = 1024
-      const sizes = ['Bytes', 'KB', 'MB', 'GB']
-      const i = Math.floor(Math.log(bytes) / Math.log(k))
-      return Math.round(bytes / Math.pow(k, i) * 100) / 100 + ' ' + sizes[i]
+      if (bytes === 0) return "0 Bytes";
+      const k = 1024;
+      const sizes = ["Bytes", "KB", "MB", "GB"];
+      const i = Math.floor(Math.log(bytes) / Math.log(k));
+      return Math.round((bytes / Math.pow(k, i)) * 100) / 100 + " " + sizes[i];
     },
     submitDocument() {
       if (this.documentType && this.uploadedFiles.length > 0) {
-        const currentDate = new Date()
-        const dateStr = currentDate.toLocaleDateString('th-TH')
-        const timeStr = currentDate.toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' })
-        
-        this.uploadedFiles.forEach(file => {
-          this.documents.push({
+        const currentDate = new Date();
+        const dateStr = currentDate.toLocaleDateString("th-TH");
+        const timeStr = currentDate.toLocaleTimeString("th-TH", {
+          hour: "2-digit",
+          minute: "2-digit",
+        });
+
+        this.uploadedFiles.forEach((file) => {
+          this.formData.documents.push({
             name: file.name,
             type: this.documentType,
             date: dateStr,
             time: timeStr,
             size: this.formatFileSize(file.size),
-            file: file
-          })
-        })
-        
-        this.dialog = false
-        this.resetForm()
+            file: file,
+          });
+        });
+
+        this.dialog = false;
+        this.resetForm();
       }
     },
     viewDocument(doc) {
       if (doc.file) {
-        const url = URL.createObjectURL(doc.file)
-        window.open(url, '_blank')
+        const url = URL.createObjectURL(doc.file);
+        window.open(url, "_blank");
       } else {
-        alert('ไม่สามารถเปิดไฟล์ได้')
+        alert("ไม่สามารถเปิดไฟล์ได้");
       }
     },
     downloadDocument(doc) {
       if (doc.file) {
-        const url = URL.createObjectURL(doc.file)
-        const a = document.createElement('a')
-        a.href = url
-        a.download = doc.name
-        a.click()
-        URL.revokeObjectURL(url)
+        const url = URL.createObjectURL(doc.file);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = doc.name;
+        a.click();
+        URL.revokeObjectURL(url);
       } else {
-        alert('ไม่สามารถดาวน์โหลดไฟล์ได้')
+        alert("ไม่สามารถดาวน์โหลดไฟล์ได้");
       }
     },
     removeDocument(index) {
-      if (confirm('คุณต้องการลบเอกสารนี้ใช่หรือไม่?')) {
-        this.documents.splice(index, 1)
+      if (confirm("คุณต้องการลบเอกสารนี้ใช่หรือไม่?")) {
+        this.formData.documents.splice(index, 1);
       }
     },
     closeDialog() {
-      this.dialog = false
-      this.resetForm()
+      this.dialog = false;
+      this.resetForm();
     },
     resetForm() {
-      this.documentType = null
-      this.uploadedFiles = []
-    }
-  }
-
+      this.documentType = null;
+      this.uploadedFiles = [];
+    },
+  },
 };
 </script>
 <style>
@@ -795,7 +1174,6 @@ export default {
 
 .file-item {
   box-shadow: 0.5px 0.5px 6px rgba(60, 60, 60, 0.15) !important;
-  
 }
 
 .document-item {
@@ -818,24 +1196,20 @@ export default {
   justify-content: center;
 }
 
-/* สีเทาอ่อนเมื่อยังไม่เลือก */
 .document-select .v-input__slot {
   border-color: #e0e0e0 !important;
 }
 
-/* สีเทาเข้มเมื่อ hover */
 .document-select:hover .v-input__slot {
   border-color: #bdbdbd !important;
 }
 
-/* สีเขียวเมื่อ focus */
 .document-select.v-input--is-focused .v-input__slot {
-  border-color: #58A144 !important;
+  border-color: #58a144 !important;
   border-width: 2px;
 }
 
-/* สีเขียวเมื่อเปิด dropdown */
 .document-select.v-select--is-menu-active .v-input__slot {
-  border-color: #58A144 !important;
+  border-color: #58a144 !important;
 }
 </style>

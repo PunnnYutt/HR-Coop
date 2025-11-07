@@ -7,12 +7,12 @@
           :class="$vuetify.breakpoint.mdAndUp ? '' : 'show-display'"
         >
           <v-card
-          elevation="0"
-          rounded="lg"
-          class="mb-3 pb-6 px-2 pt-2"
-          max-width="1128"
-          min-width="1128"
-          :class="$vuetify.breakpoint.mdAndUp ? '' : 'show-display'"
+            elevation="0"
+            rounded="lg"
+            class="mb-3 pb-6 px-2 pt-2"
+            max-width="1128"
+            min-width="1128"
+            :class="$vuetify.breakpoint.mdAndUp ? '' : 'show-display'"
           >
             <v-row class="ma-md-0">
               <v-col class="mt-3 pa-0 px-md-4 pt-md-4 mt-md-0 pb-md-0">
@@ -30,93 +30,130 @@
                       <p
                         class="primary--text lighten-1 text-body-2 mb-0 font-weight-medium"
                       >
-                        ทักษะและความสามารถ  (ทักษะทางคอมพิวเตอร์)  / Computer skills
+                        ทักษะและความสามารถ (ทักษะทางคอมพิวเตอร์) / Computer
+                        skills
                       </p>
                     </v-col>
                     <v-col cols="2" class="pl-6">
                       <v-btn
-                      class="btn-add-skill primary--text ml-6 pl-2 pr-2 height-20px"  
-                      @click="addRowHandler"
+                        class="btn-add-skill primary--text ml-6 pl-2 pr-2 height-20px"
+                        @click="addRowHandler"
                       >
-                      <v-icon start class="icon-plus">mdi-plus-circle-outline</v-icon>
-                      <span class="text-body-2">เพิ่มทักษะ</span>
+                        <v-icon start class="icon-plus"
+                          >mdi-plus-circle-outline</v-icon
+                        >
+                        <span class="text-body-2">เพิ่มทักษะ</span>
                       </v-btn>
                     </v-col>
                   </v-row>
-                  <v-row no-gutters class="pl-3 pt-0" v-for="(row, index) in rows" :key="row.id">
+                  <v-row
+                    no-gutters
+                    class="pl-3 pt-0"
+                    v-for="(row, index) in rows"
+                    :key="row.id"
+                  >
                     <v-col>
                       <v-row v-if="index > 0" class="pr-3">
-                      <v-divider></v-divider>
-                    </v-row>
-                    <v-row no-gutters
-                      :class="index == 0 ? 'pl-md-1' : 'pt-3 pl-1 mt-md-0'"
-                    >
-                      <v-col md="1" class="pt-4 px-0">
-                      <v-col  class="pa-0">
-                        <p class="custom-label">ทักษะที่ {{ index+1 }}</p>
-                      </v-col>
-                      <v-col class="px-0 pt-0 pb-0 mb-4">
-                        <p class="grey--text custom-label">No {{ index+1 }}.</p>
-                      </v-col>
-                    </v-col>  
-                    <v-col md="4" class="pt-md-4 px-md-0">
-                      <v-col class="pt-0 pl-0  pb-md-0 pr-md-4">
-                        <v-text-field
-                          outlined
-                          dense
-                          max-height="36px"
-                          hide-details="auto"
-                          class="ma-0 input-box"
-                          placeholder="ระบุทักษะ"
-                        />
-                      </v-col>
-                    </v-col>
-                    <v-col md="1" class="px-0 pt-md-4">
-                      <p class="custom-label">ระดับทักษะ :</p>
-                      <p class="grey--text custom-label">Skill level</p>
-                    </v-col>
-                    <v-col md="3" class="pl-md-0 pt-md-3">
-                      <v-radio-group v-model="row.choice" row class="color-label custom-label pl-md-0 mt-0 mt-md-0">
-                        <v-col cols="12" md="4" class=" d-flex flex-row flex-md-colum mr-md-0 px-md-0 pt-0 pd-md-0">
-                        <v-radio value="three" class="color-label custom-radio">
-                          <template #label>
-                            <v-col class="pa-0">
-                              <p>ดีมาก</p>
-                              <p class="text-caption text--secondary">Excellen</p>
-                            </v-col>
-                          </template>
-                        </v-radio>
-                        <v-radio value="one" class="color-label custom-radio">
-                          <template #label>
-                            <v-col class="pa-0">
-                              <p>ดี</p>
-                              <p class="text-caption text--secondary">Good</p>
-                            </v-col>
-                          </template>
-                        </v-radio>
-                        <v-radio value="two" class="color-label custom-radio">
-                            <template #label>
-                              <v-col class="pa-0">
-                                <p>พอใช้</p>
-                                <p class="text-caption text--secondary">fair</p>
-                              </v-col>
-                            </template>
-                          </v-radio>
-                        </v-col>
-                      </v-radio-group>
-                    </v-col>
-                    <v-col md="2" class="pt-5">
-                      <v-btn
-                        v-if="rows.length > 1"
-                        outlined
-                        color="grey"
-                        @click="removeRow(row.id)"
-                        class="px-0 btn-delete"
+                        <v-divider></v-divider>
+                      </v-row>
+                      <v-row
+                        no-gutters
+                        :class="index == 0 ? 'pl-md-1' : 'pt-3 pl-1 mt-md-0'"
                       >
-                        <v-icon color="grey" class="icon-delete">mdi-trash-can-outline</v-icon>
-                      </v-btn>
-                    </v-col>
-                    </v-row>
+                        <v-col md="1" class="pt-4 px-0">
+                          <v-col class="pa-0">
+                            <p class="custom-label">ทักษะที่ {{ index + 1 }}</p>
+                          </v-col>
+                          <v-col class="px-0 pt-0 pb-0 mb-4">
+                            <p class="grey--text custom-label">
+                              No {{ index + 1 }}.
+                            </p>
+                          </v-col>
+                        </v-col>
+                        <v-col md="4" class="pt-md-4 px-md-0">
+                          <v-col class="pt-0 pl-0 pb-md-0 pr-md-4">
+                            <v-text-field
+                              outlined
+                              dense
+                              max-height="36px"
+                              hide-details="auto"
+                              class="ma-0 input-box"
+                              placeholder="ระบุทักษะ"
+                              v-model="row.skill"
+                            />
+                          </v-col>
+                        </v-col>
+                        <v-col md="1" class="px-0 pt-md-4">
+                          <p class="custom-label">ระดับทักษะ :</p>
+                          <p class="grey--text custom-label">Skill level</p>
+                        </v-col>
+                        <v-col md="3" class="pl-md-0 pt-md-3">
+                          <v-radio-group
+                            v-model="row.choice"
+                            row
+                            class="color-label custom-label pl-md-0 mt-0 mt-md-0"
+                          >
+                            <v-col
+                              cols="12"
+                              md="4"
+                              class="d-flex flex-row flex-md-colum mr-md-0 px-md-0 pt-0 pd-md-0"
+                            >
+                              <v-radio
+                                value="three"
+                                class="color-label custom-radio"
+                              >
+                                <template #label>
+                                  <v-col class="pa-0">
+                                    <p>ดีมาก</p>
+                                    <p class="text-caption text--secondary">
+                                      Excellen
+                                    </p>
+                                  </v-col>
+                                </template>
+                              </v-radio>
+                              <v-radio
+                                value="one"
+                                class="color-label custom-radio"
+                              >
+                                <template #label>
+                                  <v-col class="pa-0">
+                                    <p>ดี</p>
+                                    <p class="text-caption text--secondary">
+                                      Good
+                                    </p>
+                                  </v-col>
+                                </template>
+                              </v-radio>
+                              <v-radio
+                                value="two"
+                                class="color-label custom-radio"
+                              >
+                                <template #label>
+                                  <v-col class="pa-0">
+                                    <p>พอใช้</p>
+                                    <p class="text-caption text--secondary">
+                                      fair
+                                    </p>
+                                  </v-col>
+                                </template>
+                              </v-radio>
+                            </v-col>
+                          </v-radio-group>
+                        </v-col>
+                        <v-col md="2" class="pt-5">
+                          <v-btn
+                            v-if="rows.length > 1"
+                            outlined
+                            color="grey"
+                            @click="removeRow(row.id)"
+                            class="px-0 btn-delete"
+                          >
+                            <v-icon color="grey" class="icon-delete"
+                              >mdi-trash-can-outline</v-icon
+                            >
+                          </v-btn>
+                        </v-col>
+                      </v-row>
                     </v-col>
                   </v-row>
                 </v-card>
@@ -131,22 +168,34 @@
 <script>
 export default {
   layout: "form",
-  data () {
+
+  mounted() {
+    const storeData = this.$store.state.pages;
+    if (storeData[4] && storeData[4].length > 0) {
+      const vuexData = JSON.parse(JSON.stringify(storeData));
+      this.rows = vuexData[4];
+    }
+  },
+
+  beforeDestroy() {
+    this.$store.commit("SET_SKILL_DATA", this.rows);
+  },
+
+  data() {
     return {
       rows: [
-         { id: 1,skil: '', choice: '' },
-         { id: 2,skil: '', choice: '' },
-         { id: 3,skil: '', choice: '' },
-
+        { id: 1, skill: "", choice: "" },
+        { id: 2, skill: "", choice: "" },
+        { id: 3, skill: "", choice: "" },
       ],
-    }
+    };
   },
   methods: {
     addRowHandler() {
-      this.rows.push({ id: Date.now(),skil: '', choice: ''  }) 
+      this.rows.push({ id: Date.now(), skil: "", choice: "" });
     },
     removeRow(id) {
-      this.rows = this.rows.filter(row => row.id !== id)
+      this.rows = this.rows.filter((row) => row.id !== id);
     },
   },
 };
@@ -205,41 +254,41 @@ export default {
   box-shadow: none !important;
   background-color: transparent !important;
 }
-.btn-delete{
+.btn-delete {
   height: 32px !important;
   min-width: 32px !important;
 }
-.icon-delete{
+.icon-delete {
   font-size: 18px !important;
 }
 
-.height-20px{
+.height-20px {
   height: 20px !important;
 }
 .py-9px {
   padding-top: 9px !important;
   padding-bottom: 9px !important;
 }
-.icon-plus{
-    height: 20px !important;
-    width: 20px !important;
+.icon-plus {
+  height: 20px !important;
+  width: 20px !important;
 }
 
 .v-icon.v-icon {
-    font-size: 16px !important;
+  font-size: 16px !important;
 }
 .label-width {
   width: 50px !important;
 }
 
 .input-box .v-input__slot {
-  min-height: 32px !important; 
+  min-height: 32px !important;
 }
 
 .input-box input {
-  padding: 0 !important;       
-  font-size: 14px;             
-  height: 32px !important;     
+  padding: 0 !important;
+  font-size: 14px;
+  height: 32px !important;
 }
 .v-messages {
   display: none !important;

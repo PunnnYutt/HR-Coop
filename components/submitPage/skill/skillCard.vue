@@ -14,15 +14,6 @@
               ทักษะและความสามารถ (ทักษะทางคอมพิวเตอร์) / Computer skills
             </p>
           </v-col>
-          <v-col cols="2" class="pl-6">
-            <v-btn
-              class="btn-add-skill primary--text pl-6 pr-0"
-              @click="addRowHandler"
-            >
-              <v-icon start class="mr-3">mdi-plus-circle-outline</v-icon>
-              <span class="text-body-1">เพิ่มทักษะ</span>
-            </v-btn>
-          </v-col>
         </v-row>
         <v-row
           no-gutters
@@ -45,8 +36,10 @@
                     outlined
                     dense
                     hide-details="auto"
-                    class="ma-0"
+                    class="ma-0 displayOnly"
                     placeholder="ระบุทักษะ"
+                    v-model="row.skill"
+                    readonly
                   />
                 </v-col>
               </v-col>
@@ -58,14 +51,18 @@
                 <v-radio-group
                   v-model="row.choice"
                   row
-                  class="color-label custom-label pl-md-1 mt-1 mt-md-1"
+                  class="color-label custom-label pl-md-1 mt-1 mt-md-1 readOnlyRadio"
                 >
                   <v-col
                     cols="12"
                     md="4"
                     class="d-flex flex-row flex-md-colum mr-md-0 pa-md-0 pt-0"
                   >
-                    <v-radio value="three" class="color-label custom-radio">
+                    <v-radio
+                      value="three"
+                      class="color-label custom-radio"
+                      readonly
+                    >
                       <template #label>
                         <v-col class="pa-0">
                           <p>ดีมาก</p>
@@ -73,7 +70,11 @@
                         </v-col>
                       </template>
                     </v-radio>
-                    <v-radio value="one" class="color-label custom-radio">
+                    <v-radio
+                      value="one"
+                      class="color-label custom-radio"
+                      readonly
+                    >
                       <template #label>
                         <v-col class="pa-0">
                           <p>ดี</p>
@@ -81,7 +82,11 @@
                         </v-col>
                       </template>
                     </v-radio>
-                    <v-radio value="two" class="color-label custom-radio">
+                    <v-radio
+                      value="two"
+                      class="color-label custom-radio"
+                      readonly
+                    >
                       <template #label>
                         <v-col class="pa-0">
                           <p>พอใช้</p>
@@ -91,19 +96,6 @@
                     </v-radio>
                   </v-col>
                 </v-radio-group>
-              </v-col>
-              <v-col md="2" class="pt-5">
-                <v-btn
-                  v-if="rows.length > 1"
-                  outlined
-                  color="grey"
-                  @click="removeRow(row.id)"
-                  class="px-0 btn-delete"
-                >
-                  <v-icon color="grey" class="icon-delete"
-                    >mdi-trash-can-outline</v-icon
-                  >
-                </v-btn>
               </v-col>
             </v-row>
           </v-col>
@@ -115,12 +107,20 @@
 <script>
 export default {
   layout: "form",
+  mounted() {
+    const storeData = this.$store.state.pages;
+    if (storeData[4] && storeData[4].length > 0) {
+      const vuexData = JSON.parse(JSON.stringify(storeData));
+      this.rows = vuexData[4];
+    }
+  },
+
   data() {
     return {
       rows: [
-        { id: 1, skil: "", choice: "" },
-        { id: 2, skil: "", choice: "" },
-        { id: 3, skil: "", choice: "" },
+        { id: 1, skill: "", choice: "" },
+        { id: 2, skill: "", choice: "" },
+        { id: 3, skill: "", choice: "" },
       ],
     };
   },
@@ -184,15 +184,32 @@ export default {
 .custom-radio .v-icon {
   color: #4caf50 !important;
 }
-.btn-add-skill {
-  box-shadow: none !important;
-  background-color: transparent !important;
-}
-.btn-delete {
-  height: 32px !important;
-  min-width: 32px !important;
-}
+
 .icon-delete {
   font-size: 18px !important;
+}
+
+.displayOnly input {
+  pointer-events: none !important;
+  cursor: not-allowed !important;
+}
+
+.displayOnly.v-text-field--outlined fieldset {
+  border: none !important;
+}
+
+.readOnlyRadio .v-radio,
+.readOnlyRadio .v-radio:hover,
+.readOnlyRadio .v-radio:focus {
+  cursor: default !important;
+}
+
+.readOnlyRadio .v-radio .v-input--selection-controls__ripple,
+.readOnlyRadio .v-radio .v-ripple__container {
+  display: none !important; /* hides the hover ripple */
+}
+
+.readOnlyRadio .v-radio input[type="radio"] {
+  pointer-events: none; /* block interaction if needed */
 }
 </style>
