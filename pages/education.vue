@@ -328,4 +328,8 @@ div.first-form-input-section {
   justify-content: space-between;
   align-items: center;
 }
+
+.v-application p {
+  margin-bottom: 0px !important;
+}
 </style>

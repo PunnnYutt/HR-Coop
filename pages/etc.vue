@@ -2,18 +2,34 @@
   <v-app class="form-body">
     <v-container class="form-body-inner pt-0">
       <v-row :class="$vuetify.breakpoint.mdAndUp ? '' : 'show-display'">
-        <v-col class="pa-0 mt-3" :class="$vuetify.breakpoint.mdAndUp ? '' : 'show-display'">
-          <v-card elevation="0" rounded="lg" class="mb-3 pb-6 px-2 pt-2" max-width="1128" min-width="1128"
-            :class="$vuetify.breakpoint.mdAndUp ? '' : 'show-display'">
+        <v-col
+          class="pa-0 mt-3"
+          :class="$vuetify.breakpoint.mdAndUp ? '' : 'show-display'"
+        >
+          <v-card
+            elevation="0"
+            rounded="lg"
+            class="mb-3 pb-6 px-2 pt-2"
+            max-width="1128"
+            min-width="1128"
+            :class="$vuetify.breakpoint.mdAndUp ? '' : 'show-display'"
+          >
             <v-row class="ma-md-0">
               <v-col class="mt-3 pa-0 px-md-4 pt-md-4 mt-md-0 pb-md-0">
-                <v-card rounded="lg" class="px-0 pt-0 mt-3 mt-md-0" :class="$vuetify.breakpoint.mdAndUp
-                    ? 'shadow-card'
-                    : 'shadow-card-none'
-                  ">
+                <v-card
+                  rounded="lg"
+                  class="px-0 pt-0 mt-3 mt-md-0"
+                  :class="
+                    $vuetify.breakpoint.mdAndUp
+                      ? 'shadow-card'
+                      : 'shadow-card-none'
+                  "
+                >
                   <v-row no-gutters class="green lighten-5 pl-4 pr-0 py-9px">
                     <v-col cols="10" class="d-flex align-center">
-                      <p class="primary--text lighten-1 text-body-2 mb-0 font-weight-medium">
+                      <p
+                        class="primary--text lighten-1 text-body-2 mb-0 font-weight-medium"
+                      >
                         สอบถามเพิ่มเติม / More Informations
                         <span class="red--text">*</span>
                       </p>
@@ -33,7 +49,11 @@
                     <v-col cols="4">
                       <v-row no-gutters class="align-center">
                         <v-col cols="4" class="pa-0">
-                          <v-checkbox v-model="formData.drivingLicense.car" dense class="custom-radio remove-message">
+                          <v-checkbox
+                            v-model="formData.drivingLicense.car"
+                            dense
+                            class="custom-radio remove-message"
+                          >
                             <template #label>
                               <v-col class="pa-0">
                                 <p class="custom-label black--text">รถยนต์</p>
@@ -43,7 +63,11 @@
                           </v-checkbox>
                         </v-col>
                         <v-col cols="4" class="pa-0">
-                          <v-checkbox v-model="formData.drivingLicense.motorcycle" dense class="custom-radio remove-message">
+                          <v-checkbox
+                            v-model="formData.drivingLicense.motorcycle"
+                            dense
+                            class="custom-radio remove-message"
+                          >
                             <template #label>
                               <v-col class="pa-0 custom-radio">
                                 <p class="custom-label black--text">
@@ -77,11 +101,21 @@
                     <v-col cols="4">
                       <v-row no-gutters class="align-center">
                         <v-col md="3" class="pl-md-0 pt-md-0">
-                          <v-radio-group v-model="formData.workUpcountry" row :rules="[
-                            v => !!v || '',
-                          ]" class="color-label custom-label remove-message pl-md-0 mt-0 mt-md-0">
-                            <v-col cols="12" md="5" class="d-flex flex-row flex-md-colum mr-md-0 px-md-0 pt-0 pd-md-0">
-                              <v-radio value="yes" class="color-label custom-radio">
+                          <v-radio-group
+                            v-model="formData.workUpcountry"
+                            row
+                            :rules="[(v) => !!v || '']"
+                            class="color-label custom-label remove-message pl-md-0 mt-0 mt-md-0"
+                          >
+                            <v-col
+                              cols="12"
+                              md="5"
+                              class="d-flex flex-row flex-md-colum mr-md-0 px-md-0 pt-0 pd-md-0"
+                            >
+                              <v-radio
+                                value="yes"
+                                class="color-label custom-radio"
+                              >
                                 <template #label>
                                   <v-col class="pa-0">
                                     <p class="text-caption">ได้</p>
@@ -91,12 +125,13 @@
                                   </v-col>
                                 </template>
                               </v-radio>
-                              <v-radio value="no" class="color-label custom-radio">
+                              <v-radio
+                                value="no"
+                                class="color-label custom-radio"
+                              >
                                 <template #label>
                                   <v-col cols="12" class="pa-0">
-                                    <p class="doc text-caption">
-                                      ไม่ได้
-                                    </p>
+                                    <p class="doc text-caption">ไม่ได้</p>
                                     <p class="text-caption text--secondary">
                                       No
                                     </p>
@@ -128,23 +163,34 @@
                     <v-col cols="4">
                       <v-row no-gutters class="align-center">
                         <v-col md="3" class="pl-md-0 pt-md-0">
-                          <v-radio-group v-model="formData.dischargedFromWork" row :rules="[
-                            v => !!v || '',
-                          ]" class="color-label custom-label remove-message pl-md-0 mt-0 mt-md-0">
-                            <v-col cols="12" md="4" class="d-flex flex-row flex-md-colum mr-md-0 px-md-0 pt-0 pd-md-0">
-                              <v-radio value="no" class="color-label custom-radio">
+                          <v-radio-group
+                            v-model="formData.dischargedFromWork"
+                            row
+                            :rules="[(v) => !!v || '']"
+                            class="color-label custom-label remove-message pl-md-0 mt-0 mt-md-0"
+                          >
+                            <v-col
+                              cols="12"
+                              md="4"
+                              class="d-flex flex-row flex-md-colum mr-md-0 px-md-0 pt-0 pd-md-0"
+                            >
+                              <v-radio
+                                value="no"
+                                class="color-label custom-radio"
+                              >
                                 <template #label>
                                   <v-col class="pa-0">
-                                    <p class="doc text-caption">
-                                      ไม่เคย
-                                    </p>
+                                    <p class="doc text-caption">ไม่เคย</p>
                                     <p class="text-caption text--secondary">
                                       No
                                     </p>
                                   </v-col>
                                 </template>
                               </v-radio>
-                              <v-radio value="yes" class="color-label custom-radio">
+                              <v-radio
+                                value="yes"
+                                class="color-label custom-radio"
+                              >
                                 <template #label>
                                   <v-col class="pa-0">
                                     <p class="text-caption">เคย</p>
@@ -178,23 +224,34 @@
                     <v-col cols="4">
                       <v-row no-gutters class="align-center">
                         <v-col md="3" class="pl-md-0 pt-md-0">
-                          <v-radio-group v-model="formData.imprisoned" row :rules="[
-                            v => !!v || '',
-                          ]" class="color-label custom-label remove-message pl-md-0 mt-0 mt-md-0">
-                            <v-col cols="12" md="4" class="d-flex flex-row flex-md-colum mr-md-0 px-md-0 pt-0 pd-md-0">
-                              <v-radio value="no" class="color-label custom-radio">
+                          <v-radio-group
+                            v-model="formData.imprisoned"
+                            row
+                            :rules="[(v) => !!v || '']"
+                            class="color-label custom-label remove-message pl-md-0 mt-0 mt-md-0"
+                          >
+                            <v-col
+                              cols="12"
+                              md="4"
+                              class="d-flex flex-row flex-md-colum mr-md-0 px-md-0 pt-0 pd-md-0"
+                            >
+                              <v-radio
+                                value="no"
+                                class="color-label custom-radio"
+                              >
                                 <template #label>
                                   <v-col class="pa-0">
-                                    <p class="doc text-caption">
-                                      ไม่เคย
-                                    </p>
+                                    <p class="doc text-caption">ไม่เคย</p>
                                     <p class="text-caption text--secondary">
                                       No
                                     </p>
                                   </v-col>
                                 </template>
                               </v-radio>
-                              <v-radio value="yes" class="color-label custom-radio">
+                              <v-radio
+                                value="yes"
+                                class="color-label custom-radio"
+                              >
                                 <template #label>
                                   <v-col class="pa-0">
                                     <p class="text-caption">เคย</p>
@@ -227,11 +284,21 @@
                     <v-col cols="4">
                       <v-row no-gutters class="align-center">
                         <v-col md="3" class="pl-md-0 pt-md-0">
-                          <v-radio-group v-model="formData.smoking" row :rules="[
-                            v => !!v || '',
-                          ]" class="color-label custom-label remove-message pl-md-0 mt-0 mt-md-0">
-                            <v-col cols="12" md="4" class="d-flex flex-row flex-md-colum mr-md-0 px-md-0 pt-0 pd-md-0">
-                              <v-radio value="non-smoker" class="color-label custom-radio">
+                          <v-radio-group
+                            v-model="formData.smoking"
+                            row
+                            :rules="[(v) => !!v || '']"
+                            class="color-label custom-label remove-message pl-md-0 mt-0 mt-md-0"
+                          >
+                            <v-col
+                              cols="12"
+                              md="4"
+                              class="d-flex flex-row flex-md-colum mr-md-0 px-md-0 pt-0 pd-md-0"
+                            >
+                              <v-radio
+                                value="non-smoker"
+                                class="color-label custom-radio"
+                              >
                                 <template #label>
                                   <v-col class="pa-0">
                                     <p class="text-caption">ไม่สูบ</p>
@@ -241,19 +308,23 @@
                                   </v-col>
                                 </template>
                               </v-radio>
-                              <v-radio value="occasional" class="color-label custom-radio">
+                              <v-radio
+                                value="occasional"
+                                class="color-label custom-radio"
+                              >
                                 <template #label>
                                   <v-col class="pa-0">
-                                    <p class="doc text-caption">
-                                      สูบบางครั้ง
-                                    </p>
+                                    <p class="doc text-caption">สูบบางครั้ง</p>
                                     <p class="text-caption text--secondary doc">
                                       Occasional smoker
                                     </p>
                                   </v-col>
                                 </template>
                               </v-radio>
-                              <v-radio value="regular" class="color-label custom-radio">
+                              <v-radio
+                                value="regular"
+                                class="color-label custom-radio"
+                              >
                                 <template #label>
                                   <v-col class="pa-0">
                                     <p class="doc text-caption">
@@ -289,22 +360,34 @@
                     <v-col cols="4">
                       <v-row no-gutters class="align-center">
                         <v-col md="3" class="pl-md-0 pt-md-0">
-                          <v-radio-group v-model="formData.drinking" row :rules="[
-                            v => !!v || '',
-                          ]" class="color-label custom-label remove-message pl-md-0 mt-0 mt-md-0">
-                            <v-col cols="12" md="4" class="d-flex flex-row flex-md-colum mr-md-0 px-md-0 pt-0 pd-md-0">
-                              <v-radio value="non-drinker" class="color-label custom-radio">
+                          <v-radio-group
+                            v-model="formData.drinking"
+                            row
+                            :rules="[(v) => !!v || '']"
+                            class="color-label custom-label remove-message pl-md-0 mt-0 mt-md-0"
+                          >
+                            <v-col
+                              cols="12"
+                              md="4"
+                              class="d-flex flex-row flex-md-colum mr-md-0 px-md-0 pt-0 pd-md-0"
+                            >
+                              <v-radio
+                                value="non-drinker"
+                                class="color-label custom-radio"
+                              >
                                 <template #label>
                                   <v-col class="pa-0">
                                     <p class="text-caption">ไม่ดื่ม</p>
-                                    <p class="text-caption text--secondary doc"
-                                      >
+                                    <p class="text-caption text--secondary doc">
                                       Non-drinker
                                     </p>
                                   </v-col>
                                 </template>
                               </v-radio>
-                              <v-radio value="occasional" class="color-label custom-radio">
+                              <v-radio
+                                value="occasional"
+                                class="color-label custom-radio"
+                              >
                                 <template #label>
                                   <v-col class="pa-0">
                                     <p class="text-caption">ดื่มบางครั้ง</p>
@@ -314,15 +397,16 @@
                                   </v-col>
                                 </template>
                               </v-radio>
-                              <v-radio value="regular" class="color-label custom-radio">
+                              <v-radio
+                                value="regular"
+                                class="color-label custom-radio"
+                              >
                                 <template #label>
                                   <v-col class="pa-0">
-                                    <p class="doc text-caption"
-                                      >
+                                    <p class="doc text-caption">
                                       ดื่มเป็นประจำ
                                     </p>
-                                    <p class="text-caption text--secondary doc" 
-                                      >
+                                    <p class="text-caption text--secondary doc">
                                       Regular drinker
                                     </p>
                                   </v-col>
@@ -354,23 +438,34 @@
                     <v-col cols="4">
                       <v-row no-gutters class="align-center">
                         <v-col md="3" class="pl-md-0 pt-md-0">
-                          <v-radio-group v-model="formData.disability" row :rules="[
-                            v => !!v || '',
-                          ]" class="color-label custom-label remove-message pl-md-0 mt-0 mt-md-0">
-                            <v-col cols="12" md="4" class="d-flex flex-row flex-md-colum mr-md-0 px-md-0 pt-0 pd-md-0">
-                              <v-radio value="no" class="color-label custom-radio">
+                          <v-radio-group
+                            v-model="formData.disability"
+                            row
+                            :rules="[(v) => !!v || '']"
+                            class="color-label custom-label remove-message pl-md-0 mt-0 mt-md-0"
+                          >
+                            <v-col
+                              cols="12"
+                              md="4"
+                              class="d-flex flex-row flex-md-colum mr-md-0 px-md-0 pt-0 pd-md-0"
+                            >
+                              <v-radio
+                                value="no"
+                                class="color-label custom-radio"
+                              >
                                 <template #label>
                                   <v-col class="pa-0">
-                                    <p class="doc text-caption">
-                                      ไม่เคย
-                                    </p>
+                                    <p class="doc text-caption">ไม่เคย</p>
                                     <p class="text-caption text--secondary">
                                       No
                                     </p>
                                   </v-col>
                                 </template>
                               </v-radio>
-                              <v-radio value="yes" class="color-label custom-radio">
+                              <v-radio
+                                value="yes"
+                                class="color-label custom-radio"
+                              >
                                 <template #label>
                                   <v-col class="pa-0">
                                     <p class="text-caption">เคย</p>
@@ -392,22 +487,45 @@
                       <v-row no-gutters>
                         <p class="custom-label pb-2">
                           ท่านทราบข่าวสารการสมัครฝึกงานจาก
-                          <span class="grey--text">How did you hear about this Internship
-                            application?</span>
+                          <span class="grey--text"
+                            >How did you hear about this Internship
+                            application?</span
+                          >
                         </p>
                       </v-row>
                       <v-row no-gutters>
                         <v-col cols="5" class="pt-0 pl-0 pr-md-4">
-                          <v-select v-model="formData.howDidYouHear" :items="howto" multiple item-text="label"
-                            item-value="value" outlined dense :rules="[
-                              v => !!v || '',
-                            ]" placeholder="เลือกข่าวสารการสมัครงาน" clearable :menu-props="{ maxHeight: 240 }" chips
-                            small-chips hide-details class="remove-message input-box">
+                          <v-select
+                            v-model="formData.howDidYouHear"
+                            :items="howto"
+                            multiple
+                            item-text="label"
+                            item-value="value"
+                            outlined
+                            dense
+                            :rules="[(v) => !!v || '']"
+                            placeholder="เลือกข่าวสารการสมัครงาน"
+                            clearable
+                            :menu-props="{ maxHeight: 240 }"
+                            chips
+                            small-chips
+                            hide-details
+                            class="remove-message input-box"
+                          >
                             <template v-slot:selection="{ item, index }">
-                              <v-chip v-if="index < 4" small color="green lighten-5" text-color="primary" class="ma-1">
+                              <v-chip
+                                v-if="index < 4"
+                                small
+                                color="green lighten-5"
+                                text-color="primary"
+                                class="ma-1"
+                              >
                                 {{ item.label }}
                               </v-chip>
-                              <span v-if="index === 4" class="primary--text text-caption ml-2">
+                              <span
+                                v-if="index === 4"
+                                class="primary--text text-caption ml-2"
+                              >
                                 ...
                               </span>
                             </template>
@@ -421,21 +539,38 @@
             </v-row>
             <v-row class="ma-md-0">
               <v-col class="mt-3 pa-0 px-md-4 pt-md-4 mt-md-0 pb-md-0">
-                <v-card rounded="lg" class="px-0 pt-0 mt-3 mt-md-0" :class="$vuetify.breakpoint.mdAndUp
-                    ? 'shadow-card'
-                    : 'shadow-card-none'
-                  ">
+                <v-card
+                  rounded="lg"
+                  class="px-0 pt-0 mt-3 mt-md-0"
+                  :class="
+                    $vuetify.breakpoint.mdAndUp
+                      ? 'shadow-card'
+                      : 'shadow-card-none'
+                  "
+                >
                   <v-row no-gutters class="green lighten-5 pl-4 pr-0 py-9px">
                     <v-col cols="10" class="d-flex align-center">
-                      <p class="primary--text lighten-1 text-body-2 mb-0 font-weight-medium">
+                      <p
+                        class="primary--text lighten-1 text-body-2 mb-0 font-weight-medium"
+                      >
                         เอกสารประกอบ / Supporting Documents
                       </p>
                     </v-col>
                   </v-row>
-                  <v-row no-gutters class="pa-4" v-if="formData.documents.length === 0">
-                    <v-col cols="12" class="border-dashed text-center py-8" @click="dialog = true">
+                  <v-row
+                    no-gutters
+                    class="pa-4"
+                    v-if="formData.documents.length === 0"
+                  >
+                    <v-col
+                      cols="12"
+                      class="border-dashed text-center py-8"
+                      @click="opendialog"
+                    >
                       <v-card elevation="0">
-                        <v-icon color="green" class="font-48">mdi-cloud-upload-outline</v-icon>
+                        <v-icon color="green" class="font-48"
+                          >mdi-cloud-upload-outline</v-icon
+                        >
                         <div class="mt-2">
                           <p class="green--text custom-label mb-2">
                             อัปโหลดเอกสาร
@@ -455,11 +590,16 @@
                   <v-row no-gutters v-else>
                     <v-col cols="12">
                       <!-- Document Items -->
-                      <div v-for="(doc, index) in formData.documents" :key="index"
-                        class="document-item d-flex align-center pa-3">
+                      <div
+                        v-for="(doc, index) in formData.documents"
+                        :key="index"
+                        class="document-item d-flex align-center pa-3"
+                      >
                         <!-- PDF Icon -->
                         <div class="pdf-icon mr-3">
-                          <v-icon color="white" size="12">mdi-file-pdf-box</v-icon>
+                          <v-icon color="white" size="12"
+                            >mdi-file-pdf-box</v-icon
+                          >
                         </div>
 
                         <!-- Document Info -->
@@ -471,7 +611,9 @@
                               </p>
                             </v-col>
                             <v-col>
-                              <p class="mb-0 text-body-2 font-weight-medium grey--text">
+                              <p
+                                class="mb-0 text-body-2 font-weight-medium grey--text"
+                              >
                                 ({{ doc.type }})
                               </p>
                             </v-col>
@@ -483,10 +625,20 @@
 
                         <!-- Action Buttons -->
                         <div class="d-flex align-center">
-                          <v-btn icon small @click="viewDocument(doc)" class="mr-2">
+                          <v-btn
+                            icon
+                            small
+                            @click="viewDocument(doc)"
+                            class="mr-2"
+                          >
                             <v-icon color="primary">mdi-eye-outline</v-icon>
                           </v-btn>
-                          <v-btn icon small @click="downloadDocument(doc)" class="mr-2">
+                          <v-btn
+                            icon
+                            small
+                            @click="downloadDocument(doc)"
+                            class="mr-2"
+                          >
                             <v-icon color="primary">mdi-download</v-icon>
                           </v-btn>
                           <v-btn icon small @click="removeDocument(index)">
@@ -497,7 +649,7 @@
 
                       <!-- Upload More Button -->
                       <div class="text-center mt-4 mb-4">
-                        <v-btn outlined color="green" small @click="dialog = true">
+                        <v-btn outlined color="green" small @click="opendialog">
                           <v-icon small left>mdi-upload</v-icon>
                           อัปโหลดเอกสาร
                         </v-btn>
@@ -513,7 +665,8 @@
       <v-dialog v-model="dialog" max-width="500">
         <v-card>
           <v-card-title
-            class="font-16 green--text green lighten-5 d-flex justify-space-between align-center py-2">
+            class="font-16 green--text green lighten-5 d-flex justify-space-between align-center py-2"
+          >
             <span></span>
             <span>อัปโหลดเอกสาร</span>
             <v-btn icon small @click="closeDialog">
@@ -527,22 +680,44 @@
                 <span>ประเภทเอกสาร :</span>
               </v-col>
               <v-col cols="9">
-                <v-select color="grey lighten-2" v-model="documentType" :items="documentTypes" outlined dense hide-details
-                  placeholder="กรุณาเลือกประเภทเอกสาร">
+                <v-select
+                  color="grey lighten-2"
+                  v-model="documentType"
+                  :items="documentTypes"
+                  outlined
+                  dense
+                  hide-details
+                  placeholder="กรุณาเลือกประเภทเอกสาร"
+                >
                 </v-select>
               </v-col>
             </v-row>
 
-            <v-card elevation="0" class="border-dashed-upload text-center py-8 mt-4" @click="handleUpload">
-              <v-icon color="green" class="font-48">mdi-cloud-upload-outline</v-icon>
+            <v-card
+              elevation="0"
+              class="border-dashed-upload text-center py-8 mt-4"
+              @click="handleUpload"
+            >
+              <v-icon color="green" class="font-48"
+                >mdi-cloud-upload-outline</v-icon
+              >
               <p class="green--text custom-label mt-2 mb-0">
                 อัปโหลดไฟล์เอกสาร
               </p>
             </v-card>
 
             <div v-if="uploadedFiles.length > 0" class="mt-4">
-              <div v-for="(file, index) in uploadedFiles" :key="index" class="d-flex align-center pa-3 mb-2 file-item">
-                <v-icon color="red" class="mr-3" style="font-size: 36px !important">mdi-file-pdf-box</v-icon>
+              <div
+                v-for="(file, index) in uploadedFiles"
+                :key="index"
+                class="d-flex align-center pa-3 mb-2 file-item"
+              >
+                <v-icon
+                  color="red"
+                  class="mr-3"
+                  style="font-size: 36px !important"
+                  >mdi-file-pdf-box</v-icon
+                >
                 <div class="flex-grow-1">
                   <p class="mb-0 text-body-2">{{ file.name }}</p>
                   <p class="mb-0 text-caption grey--text">
@@ -561,14 +736,25 @@
                 </v-btn>
               </div>
             </div>
-            <input ref="fileInput" type="file" hidden accept=".pdf" multiple @change="onFileChange" />
+            <input
+              ref="fileInput"
+              type="file"
+              hidden
+              accept=".pdf"
+              multiple
+              @change="onFileChange"
+            />
           </v-card-text>
           <v-card-actions class="px-6 pb-4 d-flex justify-center">
             <v-btn text outlined color="grey" @click="closeDialog">
               ยกเลิก
             </v-btn>
-            <v-btn color="green" class="white--text" :disabled="uploadedFiles.length === 0 || !documentType"
-              @click="submitDocument">
+            <v-btn
+              color="green"
+              class="white--text"
+              :disabled="uploadedFiles.length === 0 || !documentType"
+              @click="submitDocument"
+            >
               ตกลง
             </v-btn>
           </v-card-actions>
@@ -655,6 +841,10 @@ export default {
     },
   },
   methods: {
+    opendialog() {
+      this.dialog = true;
+      this.$store.commit("SET_Footer", false);
+    },
     formatDate(file) {
       const date = file.lastModified ? new Date(file.lastModified) : new Date();
       const day = String(date.getDate()).padStart(2, "0");
@@ -727,6 +917,7 @@ export default {
         this.dialog = false;
         this.resetForm();
       }
+      this.$store.commit("SET_Footer", true);
     },
     viewDocument(doc) {
       if (doc.file) {
@@ -756,6 +947,7 @@ export default {
     closeDialog() {
       this.dialog = false;
       this.resetForm();
+      this.$store.commit("SET_Footer", true);
     },
     resetForm() {
       this.documentType = null;
@@ -946,28 +1138,28 @@ export default {
   border-color: #58a144 !important;
 }
 
-.font-48{
-  font-size: 48px !important
+.font-48 {
+  font-size: 48px !important;
 }
 .v-icon.font-48 {
   font-size: 48px !important;
 }
-.font-10{
-  font-size: 10px
+.font-10 {
+  font-size: 10px;
 }
-.font-16{
-  font-size: 16px
+.font-16 {
+  font-size: 16px;
 }
-.doc{
-  display: inline-block; 
-  white-space: nowrap
+.doc {
+  display: inline-block;
+  white-space: nowrap;
 }
 
 .remove-message >>> .v-messages {
   display: none !important;
 }
 
-.remove-message .v-text-field__details{
+.remove-message .v-text-field__details {
   display: none !important;
 }
 

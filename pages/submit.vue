@@ -10,7 +10,7 @@
       <docCard />
 
       <div class="policy-section">
-        <label class="policy-section" @click="popup = true">
+        <label class="policy-section" @click="openPolicy">
           <input
             type="checkbox"
             id="myCheckbox"
@@ -374,6 +374,11 @@ export default {
     this.disconnectObserver();
   },
   methods: {
+    openPolicy() {
+      this.popup = true;
+      this.$store.commit("SET_Footer", false);
+    },
+
     setupIntersectionObserver() {
       const bottomDetector = this.$refs.bottomDetector;
       if (!bottomDetector) return;
@@ -410,16 +415,19 @@ export default {
       this.popup = false;
       // this.scrolledToEnd = false; // Reset for next time
       this.policyAcceptance = true;
+      this.$store.commit("SET_Footer", true);
     },
 
     cancelPolicy() {
       this.popup = false;
       // this.scrolledToEnd = false; // Reset for next time
       this.policyAcceptance = false;
+      this.$store.commit("SET_Footer", true);
     },
 
     closePolicy() {
       this.popup = false;
+      this.$store.commit("SET_Footer", true);
       // this.scrolledToEnd = false; // Reset for next time
     },
   },

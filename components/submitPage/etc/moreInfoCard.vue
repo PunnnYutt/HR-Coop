@@ -30,12 +30,13 @@
             </v-row>
           </v-col>
           <v-col cols="4">
-            <v-row no-gutters class="align-center">
+            <v-row no-gutters class="align-center readOnlyCheckbox">
               <v-col cols="4" class="pa-0">
                 <v-checkbox
                   v-model="formData.drivingLicense.car"
                   dense
                   class="custom-radio"
+                  readonly
                 >
                   <template #label>
                     <v-col class="pa-0">
@@ -50,6 +51,7 @@
                   v-model="formData.drivingLicense.motorcycle"
                   dense
                   class="custom-radio"
+                  readonly
                 >
                   <template #label>
                     <v-col class="pa-0 custom-radio">
@@ -81,14 +83,18 @@
                 <v-radio-group
                   v-model="formData.workUpcountry"
                   row
-                  class="color-label custom-label pl-md-0 mt-0 mt-md-0"
+                  class="color-label custom-label pl-md-0 mt-0 mt-md-0 readOnlyRadio"
                 >
                   <v-col
                     cols="12"
                     md="5"
                     class="d-flex flex-row flex-md-colum mr-md-0 px-md-0 pt-0 pd-md-0"
                   >
-                    <v-radio value="yes" class="color-label custom-radio">
+                    <v-radio
+                      value="yes"
+                      class="color-label custom-radio"
+                      readonly
+                    >
                       <template #label>
                         <v-col class="pa-0">
                           <p>ได้</p>
@@ -96,7 +102,11 @@
                         </v-col>
                       </template>
                     </v-radio>
-                    <v-radio value="no" class="color-label custom-radio">
+                    <v-radio
+                      value="no"
+                      class="color-label custom-radio"
+                      readonly
+                    >
                       <template #label>
                         <v-col cols="12" class="pa-0">
                           <p style="display: inline-block; white-space: nowrap">
@@ -133,14 +143,18 @@
                 <v-radio-group
                   v-model="formData.dischargedFromWork"
                   row
-                  class="color-label custom-label pl-md-0 mt-0 mt-md-0"
+                  class="color-label custom-label pl-md-0 mt-0 mt-md-0 readOnlyRadio"
                 >
                   <v-col
                     cols="12"
                     md="4"
                     class="d-flex flex-row flex-md-colum mr-md-0 px-md-0 pt-0 pd-md-0"
                   >
-                    <v-radio value="no" class="color-label custom-radio">
+                    <v-radio
+                      value="no"
+                      class="color-label custom-radio"
+                      readonly
+                    >
                       <template #label>
                         <v-col class="pa-0">
                           <p style="display: inline-block; white-space: nowrap">
@@ -150,7 +164,11 @@
                         </v-col>
                       </template>
                     </v-radio>
-                    <v-radio value="yes" class="color-label custom-radio">
+                    <v-radio
+                      value="yes"
+                      class="color-label custom-radio"
+                      readonly
+                    >
                       <template #label>
                         <v-col class="pa-0">
                           <p>เคย</p>
@@ -185,14 +203,18 @@
                 <v-radio-group
                   v-model="formData.imprisoned"
                   row
-                  class="color-label custom-label pl-md-0 mt-0 mt-md-0"
+                  class="color-label custom-label pl-md-0 mt-0 mt-md-0 readOnlyRadio"
                 >
                   <v-col
                     cols="12"
                     md="4"
                     class="d-flex flex-row flex-md-colum mr-md-0 px-md-0 pt-0 pd-md-0"
                   >
-                    <v-radio value="no" class="color-label custom-radio">
+                    <v-radio
+                      value="no"
+                      class="color-label custom-radio"
+                      readonly
+                    >
                       <template #label>
                         <v-col class="pa-0">
                           <p style="display: inline-block; white-space: nowrap">
@@ -202,7 +224,11 @@
                         </v-col>
                       </template>
                     </v-radio>
-                    <v-radio value="yes" class="color-label custom-radio">
+                    <v-radio
+                      value="yes"
+                      class="color-label custom-radio"
+                      readonly
+                    >
                       <template #label>
                         <v-col class="pa-0">
                           <p>เคย</p>
@@ -234,7 +260,7 @@
                 <v-radio-group
                   v-model="formData.smoking"
                   row
-                  class="color-label custom-label pl-md-0 mt-0 mt-md-0"
+                  class="color-label custom-label pl-md-0 mt-0 mt-md-0 readOnlyRadio"
                 >
                   <v-col
                     cols="12"
@@ -244,6 +270,7 @@
                     <v-radio
                       value="non-smoker"
                       class="color-label custom-radio"
+                      readonly
                     >
                       <template #label>
                         <v-col class="pa-0">
@@ -260,6 +287,7 @@
                     <v-radio
                       value="occasional"
                       class="color-label custom-radio"
+                      readonly
                     >
                       <template #label>
                         <v-col class="pa-0">
@@ -275,7 +303,11 @@
                         </v-col>
                       </template>
                     </v-radio>
-                    <v-radio value="regular" class="color-label custom-radio">
+                    <v-radio
+                      value="regular"
+                      class="color-label custom-radio"
+                      readonly
+                    >
                       <template #label>
                         <v-col class="pa-0">
                           <p style="display: inline-block; white-space: nowrap">
@@ -317,7 +349,7 @@
                 <v-radio-group
                   v-model="formData.drinking"
                   row
-                  class="color-label custom-label pl-md-0 mt-0 mt-md-0"
+                  class="color-label custom-label pl-md-0 mt-0 mt-md-0 readOnlyRadio"
                 >
                   <v-col
                     cols="12"
@@ -327,6 +359,7 @@
                     <v-radio
                       value="non-drinker"
                       class="color-label custom-radio"
+                      readonly
                     >
                       <template #label>
                         <v-col class="pa-0">
@@ -343,6 +376,7 @@
                     <v-radio
                       value="occasional"
                       class="color-label custom-radio"
+                      readonly
                     >
                       <template #label>
                         <v-col class="pa-0">
@@ -356,7 +390,11 @@
                         </v-col>
                       </template>
                     </v-radio>
-                    <v-radio value="regular" class="color-label custom-radio">
+                    <v-radio
+                      value="regular"
+                      class="color-label custom-radio"
+                      readonly
+                    >
                       <template #label>
                         <v-col class="pa-0">
                           <p style="display: inline-block; white-space: nowrap">
@@ -400,14 +438,18 @@
                 <v-radio-group
                   v-model="formData.disability"
                   row
-                  class="color-label custom-label pl-md-0 mt-0 mt-md-0"
+                  class="color-label custom-label pl-md-0 mt-0 mt-md-0 readOnlyRadio"
                 >
                   <v-col
                     cols="12"
                     md="4"
                     class="d-flex flex-row flex-md-colum mr-md-0 px-md-0 pt-0 pd-md-0"
                   >
-                    <v-radio value="no" class="color-label custom-radio">
+                    <v-radio
+                      value="no"
+                      class="color-label custom-radio"
+                      readonly
+                    >
                       <template #label>
                         <v-col class="pa-0">
                           <p style="display: inline-block; white-space: nowrap">
@@ -417,7 +459,11 @@
                         </v-col>
                       </template>
                     </v-radio>
-                    <v-radio value="yes" class="color-label custom-radio">
+                    <v-radio
+                      value="yes"
+                      class="color-label custom-radio"
+                      readonly
+                    >
                       <template #label>
                         <v-col class="pa-0">
                           <p>เคย</p>
@@ -453,10 +499,11 @@
                   outlined
                   dense
                   placeholder="เลือกข่าวสารการสมัครงาน"
-                  clearable
                   :menu-props="{ maxHeight: 240 }"
                   chips
                   small-chips
+                  readonly
+                  append-icon=""
                 >
                   <template v-slot:selection="{ item, index }">
                     <v-chip
@@ -665,3 +712,47 @@ export default {
   },
 };
 </script>
+
+<style>
+.readOnlyRadio .v-radio,
+.readOnlyRadio .v-radio:hover,
+.readOnlyRadio .v-radio:focus {
+  cursor: default !important;
+}
+
+.readOnlyRadio .v-radio .v-input--selection-controls__ripple,
+.readOnlyRadio .v-radio .v-ripple__container {
+  display: none !important; /* hides the hover ripple */
+}
+
+.readOnlyRadio .v-radio input[type="radio"] {
+  pointer-events: none; /* block interaction if needed */
+}
+
+/* 1. Target the Checkbox Component/Input area */
+.readOnlyCheckbox .v-input--selection-controls {
+  /* Prevent pointer/cursor interaction and change cursor appearance */
+  cursor: default !important;
+  pointer-events: none !important;
+}
+
+/* 2. Remove Hover/Focus effects and the Ripple */
+.readOnlyCheckbox .v-input--selection-controls__ripple,
+.readOnlyCheckbox
+  .v-input--selection-controls__input:hover
+  .v-input--selection-controls__ripple,
+.readOnlyCheckbox .v-ripple__container {
+  /* Hides the ripple effect on click and hover */
+  display: none !important;
+}
+
+/* 3. Ensure the inner input element is untouchable (Optional but thorough) */
+.readOnlyCheckbox input[type="checkbox"] {
+  pointer-events: none;
+}
+
+/* 4. Visually dull the text (Optional) */
+.readOnlyCheckbox label.v-label {
+  opacity: 0.6; /* Dims the label text slightly */
+}
+</style>

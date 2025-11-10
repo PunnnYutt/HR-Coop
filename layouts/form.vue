@@ -1,12 +1,15 @@
 <template>
-  <div class="page-section">
-    <Topbar />
-    <Header :page="headerVariant" />
-    <nuxt />
-    <div class="footer-area">
-      <Footer :page="headerVariant" />
+  <v-app>
+    <div class="page-section">
+      <Topbar />
+      <Header :page="headerVariant" />
+
+      <nuxt />
+      <div class="footer-area">
+        <Footer :page="headerVariant" />
+      </div>
     </div>
-  </div>
+  </v-app>
 </template>
 
 <script>

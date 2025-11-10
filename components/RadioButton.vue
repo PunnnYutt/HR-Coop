@@ -13,6 +13,7 @@
       <div v-for="(value, key) in choices" :key="key">
         <input
           type="radio"
+          :class="{ displayOnly: !changeAble }"
           :name="group"
           :value="key"
           :checked="internalValue === key"
@@ -42,6 +43,7 @@ export default {
     maxWidth: { type: String, default: "316px" },
 
     toggle: { type: Boolean, default: false },
+    changeAble: { type: Boolean, default: true },
   },
 
   data() {
@@ -165,5 +167,10 @@ input {
 
 label {
   cursor: pointer;
+}
+
+input.displayOnly {
+  pointer-events: none;
+  cursor: not-allowed;
 }
 </style>
