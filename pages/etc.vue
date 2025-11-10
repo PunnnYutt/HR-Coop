@@ -510,7 +510,7 @@
                             chips
                             small-chips
                             hide-details
-                            class="remove-message input-box"
+                            class="remove-message input-box input-select custom-height"
                           >
                             <template v-slot:selection="{ item, index }">
                               <v-chip
@@ -687,6 +687,7 @@
                   outlined
                   dense
                   hide-details
+                  class="custom-height input-select input-select-2"
                   placeholder="กรุณาเลือกประเภทเอกสาร"
                 >
                 </v-select>
@@ -1048,14 +1049,21 @@ export default {
   width: 50px !important;
 }
 
-.input-box .v-input__slot {
-  min-height: 32px !important;
+::v-deep .input-select input {
+  padding: 0 !important;
+  font-size: 14px !important;
+  height: 32px !important;
 }
 
-.input-box input {
+
+::v-deep .input-box input {
   padding: 0 !important;
   font-size: 14px;
   height: 32px !important;
+}
+
+::v-deep .input-select-2 .v-select__selection {
+  font-size: 0.75rem !important; /* 12px */
 }
 
 .v-messages {
@@ -1125,6 +1133,28 @@ export default {
   border-color: #e0e0e0 !important;
 }
 
+::v-deep .input-select .v-input__control {
+  min-height: 32px !important;
+  height: 32px !important;
+}
+
+::v-deep .input-select input {
+  padding: 0 !important;
+  font-size: 14px !important;
+  height: 32px !important;
+}
+
+::v-deep .input-box input {
+  padding: 0 !important;
+  font-size: 14px !important;
+  height: 32px !important;
+}
+
+
+::v-deep .custom-select-size .v-select__selection {
+  font-size: 0.75rem !important; 
+}
+
 .document-select:hover .v-input__slot {
   border-color: #bdbdbd !important;
 }
@@ -1190,5 +1220,34 @@ export default {
 ::v-deep .input-box input::placeholder {
   font-size: 0.75rem !important;
   opacity: 0.6;
+}
+
+::v-deep .custom-height .v-input__slot {
+  min-height: 32px !important;
+  max-height: 32px !important;
+}
+
+::v-deep .custom-height .v-select__selections {
+  align-items: center !important;
+  padding-top: 4px !important;
+  padding-bottom: 4px !important;
+}
+
+::v-deep .input-select .v-input__append-inner {
+  margin-top: 0 !important;
+  align-self: center !important;
+}
+
+::v-deep .input-select .v-list-item:hover {
+  background-color: 
+#f0f9ee !important;
+}
+
+::v-deep .input-box label {
+  font-size: 0.75rem !important;
+}
+
+::v-deep .input-box label {
+  font-size: 0.75rem !important;
 }
 </style>

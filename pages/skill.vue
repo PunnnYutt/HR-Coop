@@ -285,8 +285,8 @@ export default {
   width: 50px !important;
 }
 
-.input-box .v-input__slot {
-  min-height: 32px !important;
+::v-deep .input-box .v-input__slot {
+  min-height: 36px !important;
 }
 .remove-message >>> .v-messages {
   display: none !important;
