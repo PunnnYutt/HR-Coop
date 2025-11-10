@@ -123,4 +123,8 @@ span:nth-of-type(3) {
   cursor: not-allowed;
   border: none;
 }
+
+.multiple-input > input:focus {
+  outline-color: #58a144;
+}
 </style>

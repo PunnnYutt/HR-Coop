@@ -637,7 +637,7 @@
                     <v-col
                       cols="12"
                       class="border-dashed text-center py-8"
-                      @click="dialog = true"
+                      @click="opendialog"
                     >
                       <v-card elevation="0">
                         <v-icon color="green" style="font-size: 48px !important"
@@ -721,12 +721,7 @@
 
                       <!-- Upload More Button -->
                       <div class="text-center mt-4 mb-4">
-                        <v-btn
-                          outlined
-                          color="green"
-                          small
-                          @click="dialog = true"
-                        >
+                        <v-btn outlined color="green" small @click="opendialog">
                           <v-icon small left>mdi-upload</v-icon>
                           อัปโหลดเอกสาร
                         </v-btn>
@@ -922,6 +917,10 @@ export default {
     },
   },
   methods: {
+    opendialog() {
+      this.dialog = true;
+      this.$store.commit("SET_Footer", false);
+    },
     formatDate(file) {
       const date = file.lastModified ? new Date(file.lastModified) : new Date();
       const day = String(date.getDate()).padStart(2, "0");
@@ -994,6 +993,7 @@ export default {
         this.dialog = false;
         this.resetForm();
       }
+      this.$store.commit("SET_Footer", true);
     },
     viewDocument(doc) {
       if (doc.file) {
@@ -1023,6 +1023,7 @@ export default {
     closeDialog() {
       this.dialog = false;
       this.resetForm();
+      this.$store.commit("SET_Footer", true);
     },
     resetForm() {
       this.documentType = null;

@@ -10,7 +10,7 @@
       >
         <v-row no-gutters class="green lighten-5 py-2 pr-3 pl-4 mb-4">
           <v-col cols="10" class="pt-1">
-            <p class="primary--text lighten-1 mb-0 font-weight-medium">
+            <p class="mb-0 title-text">
               ทักษะและความสามารถ (ทักษะทางคอมพิวเตอร์) / Computer skills
             </p>
           </v-col>
@@ -27,8 +27,8 @@
             </v-row>
             <v-row class="pt-1 pl-1">
               <v-col md="1">
-                <p>ทักษะที่ {{ index + 1 }}</p>
-                <p class="grey--text">No {{ index + 1 }}.</p>
+                <p class="card-text">ทักษะที่ {{ index + 1 }}</p>
+                <p class="card-text-grey">No {{ index + 1 }}.</p>
               </v-col>
               <v-col md="4">
                 <v-col class="pt-1 pl-0 pr-md-4">
@@ -44,8 +44,8 @@
                 </v-col>
               </v-col>
               <v-col md="1" class="px-0">
-                <p>ระดับทักษะ :</p>
-                <p class="grey--text">Skill level</p>
+                <p class="card-text">ระดับทักษะ :</p>
+                <p class="card-text-grey">Skill level</p>
               </v-col>
               <v-col md="3">
                 <v-radio-group
@@ -65,8 +65,8 @@
                     >
                       <template #label>
                         <v-col class="pa-0">
-                          <p>ดีมาก</p>
-                          <p class="text-caption text--secondary">Excellen</p>
+                          <p class="card-text">ดีมาก</p>
+                          <p class="card-text-grey">Excellen</p>
                         </v-col>
                       </template>
                     </v-radio>
@@ -77,8 +77,8 @@
                     >
                       <template #label>
                         <v-col class="pa-0">
-                          <p>ดี</p>
-                          <p class="text-caption text--secondary">Good</p>
+                          <p class="card-text">ดี</p>
+                          <p class="card-text-grey">Good</p>
                         </v-col>
                       </template>
                     </v-radio>
@@ -89,8 +89,8 @@
                     >
                       <template #label>
                         <v-col class="pa-0">
-                          <p>พอใช้</p>
-                          <p class="text-caption text--secondary">fiar</p>
+                          <p class="card-text">พอใช้</p>
+                          <p class="card-text-grey">fiar</p>
                         </v-col>
                       </template>
                     </v-radio>
@@ -211,5 +211,25 @@ export default {
 
 .readOnlyRadio .v-radio input[type="radio"] {
   pointer-events: none; /* block interaction if needed */
+}
+
+.title-text {
+  color: #58a144;
+  font-weight: 600;
+  font-family: "Sarabun", sans-serif;
+  line-height: 22px;
+  font-size: 14px;
+}
+
+.card-text,
+.card-text-grey {
+  font-weight: 400;
+  font-family: "Sarabun", sans-serif;
+  line-height: 16px;
+  font-size: 12px;
+}
+
+.card-text-grey {
+  color: #989898;
 }
 </style>

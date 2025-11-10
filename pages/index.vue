@@ -2,45 +2,95 @@
   <v-app class="form-body">
     <v-container class="form-body-inner pt-0">
       <v-row :class="$vuetify.breakpoint.mdAndUp ? '' : 'show-display'">
-        <v-col class="pa-0 mt-3" :class="$vuetify.breakpoint.mdAndUp ? '' : 'show-display'">
-          <v-card elevation="0" rounded="lg" class="mb-3 pa-2" max-width="1128"
-            :class="$vuetify.breakpoint.mdAndUp ? '' : 'show-display'">
-            <v-row class="ma-md-0 ">
+        <v-col
+          class="pa-0 mt-3"
+          :class="$vuetify.breakpoint.mdAndUp ? '' : 'show-display'"
+        >
+          <v-card
+            elevation="0"
+            rounded="lg"
+            class="mb-3 pa-2"
+            max-width="1128"
+            :class="$vuetify.breakpoint.mdAndUp ? '' : 'show-display'"
+          >
+            <v-row class="ma-md-0">
               <v-col class="mt-3 pa-0 px-md-4 pt-md-4 mt-md-0 pb-md-0">
-                <v-card rounded="lg" class="px-0 pb-0 pt-0 mt-3 mt-md-0" :class="$vuetify.breakpoint.mdAndUp
-                  ? 'shadow-card'
-                  : 'shadow-card-none'
-                  ">
+                <v-card
+                  rounded="lg"
+                  class="px-0 pb-0 pt-0 mt-3 mt-md-0"
+                  :class="
+                    $vuetify.breakpoint.mdAndUp
+                      ? 'shadow-card'
+                      : 'shadow-card-none'
+                  "
+                >
                   <v-row no-gutters class="green lighten-5 px-4 py-9px">
                     <v-col cols="10">
-                      <p class="primary--text lighten-1 text-body-2 mb-0 font-weight-medium">
+                      <p
+                        class="primary--text lighten-1 text-body-2 mb-0 font-weight-medium"
+                      >
                         ตำแหน่งสหกิจหรือฝึกงาน / Position
                       </p>
                     </v-col>
                   </v-row>
                   <v-row no-gutters class="pl-4 pt-4">
-                    <v-col v-for="position in positions" :key="position.number" cols="12" md="6" lg="4"
-                      class="mb-4 custom-label">
+                    <v-col
+                      v-for="position in positions"
+                      :key="position.number"
+                      cols="12"
+                      md="6"
+                      lg="4"
+                      class="mb-4 custom-label"
+                    >
                       <v-row no-gutters>
                         <v-col cols="12">
                           <p class="mb-2 font-weight-light">
                             {{ position.label }}
-                            <span class="pl-2 b-1 grey--text text--lighten-1 font-weight-light">{{ position.labelEn
-                            }}</span>
+                            <span
+                              class="pl-2 b-1 grey--text text--lighten-1 font-weight-light"
+                              >{{ position.labelEn }}</span
+                            >
                           </p>
                         </v-col>
                         <v-col cols="12" class="pl-0 position-bottom">
-                          <v-select v-if="position.number <= 2" :items="positionFields" item-text="label"
-                            item-value="label" outlined dense placeholder="เลือกตำแหน่งสหกิจหรือฝึกงาน" clearable
-                            :class="position.number === 1 ? 'pr-md-4 input-select input-box' : 'pr-lg-4 input-select input-box'
-                              " />
-                          <v-select v-else-if="position.number === 2" :items="WorkplaceFields" item-text="label"
-                            item-value="label" outlined dense placeholder="เลือกประจำศูนย์" clearable
-                            class="pr-md-4 input-select input-box" />
+                          <v-select
+                            v-if="position.number <= 2"
+                            :items="positionFields"
+                            item-text="label"
+                            item-value="label"
+                            outlined
+                            dense
+                            placeholder="เลือกตำแหน่งสหกิจหรือฝึกงาน"
+                            clearable
+                            :class="
+                              position.number === 1
+                                ? 'pr-md-4 input-select input-box'
+                                : 'pr-lg-4 input-select input-box'
+                            "
+                          />
+                          <v-select
+                            v-else-if="position.number === 2"
+                            :items="WorkplaceFields"
+                            item-text="label"
+                            item-value="label"
+                            outlined
+                            dense
+                            placeholder="เลือกประจำศูนย์"
+                            clearable
+                            class="pr-md-4 input-select input-box"
+                          />
 
-                          <v-select v-else-if="position.number === 3" :items="WorkplaceFields" item-text="label"
-                            item-value="label" outlined dense placeholder="เลือกการฝึกงาน" clearable
-                            class="pr-md-4 input-select input-box" />
+                          <v-select
+                            v-else-if="position.number === 3"
+                            :items="WorkplaceFields"
+                            item-text="label"
+                            item-value="label"
+                            outlined
+                            dense
+                            placeholder="เลือกการฝึกงาน"
+                            clearable
+                            class="pr-md-4 input-select input-box"
+                          />
                         </v-col>
                       </v-row>
                     </v-col>
@@ -50,13 +100,20 @@
             </v-row>
             <v-row class="ma-md-0">
               <v-col class="mt-3 pa-0 pa-md-4 mt-md-0">
-                <v-card rounded="lg" class="px-0 pb-3 pt-0 mt-3 mt-md-0" :class="$vuetify.breakpoint.mdAndUp
-                  ? 'shadow-card'
-                  : 'shadow-card-none'
-                  ">
-                  <v-row no-gutters class="green lighten-5  px-4 py-9px">
+                <v-card
+                  rounded="lg"
+                  class="px-0 pb-3 pt-0 mt-3 mt-md-0"
+                  :class="
+                    $vuetify.breakpoint.mdAndUp
+                      ? 'shadow-card'
+                      : 'shadow-card-none'
+                  "
+                >
+                  <v-row no-gutters class="green lighten-5 px-4 py-9px">
                     <v-col cols="12">
-                      <p class="primary--text lighten-1 text-body-2 mb-0 font-weight-medium">
+                      <p
+                        class="primary--text lighten-1 text-body-2 mb-0 font-weight-medium"
+                      >
                         ประวัติส่วนตัว / Personal
                       </p>
                     </v-col>
@@ -64,50 +121,111 @@
                   <v-row class="mt-0">
                     <v-col cols="12" md="3">
                       <v-row no-gutters class="pl-10 py-4">
-                        <v-col cols="12" class="d-flex flex-column align-center justify-center pl-0 pr-6 pt-1"
-                          no-gutters>
+                        <v-col
+                          cols="12"
+                          class="d-flex flex-column align-center justify-center pl-0 pr-6 pt-1"
+                          no-gutters
+                        >
                           <v-row cols="12">
-                            <v-hover v-if="!isProfileComplete" v-slot="{ isHovering, props }">
-                              <v-col v-bind="props" class="d-flex flex-column align-center justify-center upload-card"
-                                @click="triggerFileInput">
-                                <v-icon color="primary" style="font-size: 40px !important;" :class="isHovering ? 'hovering' : 'not-hovering'
-                                  ">
+                            <v-hover
+                              v-if="!isProfileComplete"
+                              v-slot="{ isHovering, props }"
+                            >
+                              <v-col
+                                v-bind="props"
+                                class="d-flex flex-column align-center justify-center upload-card"
+                                @click="triggerFileInput"
+                              >
+                                <v-icon
+                                  color="primary"
+                                  style="font-size: 40px !important"
+                                  :class="
+                                    isHovering ? 'hovering' : 'not-hovering'
+                                  "
+                                >
                                   mdi-cloud-upload-outline
                                 </v-icon>
                               </v-col>
                             </v-hover>
-                            <input ref="fileInput" type="file" class="d-none" @change="onFileChange" />
-                            <v-col v-if="previewUrl" class="mt-4 upload-preview">
-                              <img :src="previewUrl" alt="Preview" max-width="200px" max-height="210px" />
+                            <input
+                              ref="fileInput"
+                              type="file"
+                              class="d-none"
+                              @change="onFileChange"
+                            />
+                            <v-col
+                              v-if="previewUrl"
+                              class="mt-4 upload-preview"
+                            >
+                              <img
+                                :src="previewUrl"
+                                alt="Preview"
+                                max-width="200px"
+                                max-height="210px"
+                              />
                             </v-col>
                           </v-row>
                           <v-row>
-                            <p class="primary--text mt-5 custom-label">อัปโหลดรูปประจำตัว</p>
+                            <p class="primary--text mt-5 custom-label">
+                              อัปโหลดรูปประจำตัว
+                            </p>
                           </v-row>
                           <v-row>
-                            <p class="grey--text mt-2 custom-label">Upload Profile image</p>
+                            <p class="grey--text mt-2 custom-label">
+                              Upload Profile image
+                            </p>
                           </v-row>
                         </v-col>
                       </v-row>
                     </v-col>
                     <v-col cols="12" md="9" class="pl-6 pl-md-0">
                       <v-row>
-                        <v-col cols="12" no-gutters
-                          class="d-flex justify-start align-center mt-12 mt-md-0 pb-0 pt-0 pl-4">
-                          <v-radio-group v-model="selectedGender" row
-                            class="color-label custom-label custom-radio-group">
+                        <v-col
+                          cols="12"
+                          no-gutters
+                          class="d-flex justify-start align-center mt-12 mt-md-0 pb-0 pt-0 pl-4"
+                        >
+                          <v-radio-group
+                            v-model="selectedGender"
+                            row
+                            class="color-label custom-label custom-radio-group"
+                          >
                             <template #label>
-                              <span>คำนำหน้าชื่อ<span class="red--text"> * </span>:</span>
+                              <span
+                                >คำนำหน้าชื่อ<span class="red--text"> * </span
+                                >:</span
+                              >
                             </template>
-                            <v-radio label="นาย" value="one" class="color-label custom-radio">test</v-radio>
-                            <v-radio label="นาง" value="two" class="color-label custom-radio">test</v-radio>
-                            <v-radio label="นางสาว" value="three" class="color-label custom-radio">test</v-radio>
+                            <v-radio
+                              label="นาย"
+                              value="one"
+                              class="color-label custom-radio"
+                              >test</v-radio
+                            >
+                            <v-radio
+                              label="นาง"
+                              value="two"
+                              class="color-label custom-radio"
+                              >test</v-radio
+                            >
+                            <v-radio
+                              label="นางสาว"
+                              value="three"
+                              class="color-label custom-radio"
+                              >test</v-radio
+                            >
                           </v-radio-group>
                         </v-col>
-                        <v-col cols="12" md="4" class="d-flex justify-center align-center pt-0 px-4 pb-0">
+                        <v-col
+                          cols="12"
+                          md="4"
+                          class="d-flex justify-center align-center pt-0 px-4 pb-0"
+                        >
                           <v-col>
                             <v-row>
-                              <v-col class="d-flex justify-start align-center pt-0 pl-0 pb-2">
+                              <v-col
+                                class="d-flex justify-start align-center pt-0 pl-0 pb-2"
+                              >
                                 <p class="custom-label">
                                   ชื่อ (ภาษาไทย)<span class="red--text">
                                     *
@@ -117,18 +235,34 @@
                             </v-row>
                             <v-row>
                               <v-col class="pt-0 pl-0 pr-md-0 pb-0">
-                                <v-text-field label="ชื่อ (ภาษาไทย)" :rules="[
-                                  v => !!v || 'กรุณากรอกชื่อ',
-                                  v => /^[ก-๙\s]+$/.test(v) || 'กรุณากรอกเฉพาะตัวอักษรภาษาไทย'
-                                ]" outlined dense single-line required class="input-box" />
+                                <v-text-field
+                                  label="ชื่อ (ภาษาไทย)"
+                                  :rules="[
+                                    (v) => !!v || 'กรุณากรอกชื่อ',
+                                    (v) =>
+                                      /^[ก-๙\s]+$/.test(v) ||
+                                      'กรุณากรอกเฉพาะตัวอักษรภาษาไทย',
+                                  ]"
+                                  outlined
+                                  dense
+                                  single-line
+                                  required
+                                  class="input-box"
+                                />
                               </v-col>
                             </v-row>
                           </v-col>
                         </v-col>
-                        <v-col cols="12" md="4" class="d-flex justify-center align-center pt-0 px-md-0 pb-0">
+                        <v-col
+                          cols="12"
+                          md="4"
+                          class="d-flex justify-center align-center pt-0 px-md-0 pb-0"
+                        >
                           <v-col>
                             <v-row>
-                              <v-col class="d-flex justify-start align-center pt-0 pl-0 pb-2">
+                              <v-col
+                                class="d-flex justify-start align-center pt-0 pl-0 pb-2"
+                              >
                                 <p class="custom-label">
                                   นามสกุล (ภาษาไทย)<span class="red--text">
                                     *
@@ -138,18 +272,34 @@
                             </v-row>
                             <v-row>
                               <v-col class="pt-0 pl-0 pr-md-4 pb-0">
-                                <v-text-field label="นามสกุล (ภาษาไทย)" :rules="[
-                                  v => !!v || 'กรุณากรอกนามสกุล',
-                                  v => /^[ก-๙\s]+$/.test(v) || 'กรุณากรอกเฉพาะตัวอักษรภาษาไทย'
-                                ]" outlined dense single-line required class="input-box" />
+                                <v-text-field
+                                  label="นามสกุล (ภาษาไทย)"
+                                  :rules="[
+                                    (v) => !!v || 'กรุณากรอกนามสกุล',
+                                    (v) =>
+                                      /^[ก-๙\s]+$/.test(v) ||
+                                      'กรุณากรอกเฉพาะตัวอักษรภาษาไทย',
+                                  ]"
+                                  outlined
+                                  dense
+                                  single-line
+                                  required
+                                  class="input-box"
+                                />
                               </v-col>
                             </v-row>
                           </v-col>
                         </v-col>
-                        <v-col cols="12" md="4" class="d-flex justify-center align-center pt-0 pl-md-0 pb-md-0">
+                        <v-col
+                          cols="12"
+                          md="4"
+                          class="d-flex justify-center align-center pt-0 pl-md-0 pb-md-0"
+                        >
                           <v-col>
                             <v-row>
-                              <v-col class="d-flex justify-start align-center pt-0 pl-0 pb-2">
+                              <v-col
+                                class="d-flex justify-start align-center pt-0 pl-0 pb-2"
+                              >
                                 <p class="custom-label">
                                   ชื่อเล่น (ภาษาไทย)<span class="red--text">
                                     *
@@ -159,28 +309,70 @@
                             </v-row>
                             <v-row>
                               <v-col class="pt-0 pl-0 pb-0 pr-4">
-                                <v-text-field label="ชื่อเล่น (ภาษาไทย)" :rules="[
-                                  v => !!v || 'กรุณากรอกนามสกุล',
-                                  v => /^[ก-๙\s]+$/.test(v) || 'กรุณากรอกเฉพาะตัวอักษรภาษาไทย'
-                                ]" outlined dense single-line required class="input-box" />
+                                <v-text-field
+                                  label="ชื่อเล่น (ภาษาไทย)"
+                                  :rules="[
+                                    (v) => !!v || 'กรุณากรอกนามสกุล',
+                                    (v) =>
+                                      /^[ก-๙\s]+$/.test(v) ||
+                                      'กรุณากรอกเฉพาะตัวอักษรภาษาไทย',
+                                  ]"
+                                  outlined
+                                  dense
+                                  single-line
+                                  required
+                                  class="input-box"
+                                />
                               </v-col>
                             </v-row>
                           </v-col>
                         </v-col>
-                        <v-col cols="12" no-gutters class="d-flex justify-start align-center pb-0 pt-md-0 pl-4">
-                          <v-radio-group v-model="selectedGender" row class="color-label custom-label mt-1 mt-md-0">
+                        <v-col
+                          cols="12"
+                          no-gutters
+                          class="d-flex justify-start align-center pb-0 pt-md-0 pl-4"
+                        >
+                          <v-radio-group
+                            v-model="selectedGender"
+                            row
+                            class="color-label custom-label mt-1 mt-md-0"
+                          >
                             <template #label>
-                              <span>Name title<span class="red--text"> * </span>:</span>
+                              <span
+                                >Name title<span class="red--text"> * </span
+                                >:</span
+                              >
                             </template>
-                            <v-radio label="Mr." value="one" class="color-label custom-radio">test</v-radio>
-                            <v-radio label="Mrs." value="two" class="color-label custom-radio">test</v-radio>
-                            <v-radio label="MS." value="three" class="color-label custom-radio">test</v-radio>
+                            <v-radio
+                              label="Mr."
+                              value="one"
+                              class="color-label custom-radio"
+                              >test</v-radio
+                            >
+                            <v-radio
+                              label="Mrs."
+                              value="two"
+                              class="color-label custom-radio"
+                              >test</v-radio
+                            >
+                            <v-radio
+                              label="MS."
+                              value="three"
+                              class="color-label custom-radio"
+                              >test</v-radio
+                            >
                           </v-radio-group>
                         </v-col>
-                        <v-col cols="12" md="4" class="d-flex justify-center align-center pt-md-0 px-md-4 pb-md-0">
+                        <v-col
+                          cols="12"
+                          md="4"
+                          class="d-flex justify-center align-center pt-md-0 px-md-4 pb-md-0"
+                        >
                           <v-col>
                             <v-row>
-                              <v-col class="d-flex justify-start align-center pt-0 pl-0 pb-2 pr-md-0">
+                              <v-col
+                                class="d-flex justify-start align-center pt-0 pl-0 pb-2 pr-md-0"
+                              >
                                 <p class="custom-label">
                                   Name<span class="red--text"> * </span>
                                 </p>
@@ -188,18 +380,34 @@
                             </v-row>
                             <v-row>
                               <v-col class="pt-0 pl-0 pr-md-0 pb-0">
-                                <v-text-field label="Name" :rules="[
-                                  v => !!v || 'Please input name',
-                                  v => /^[A-Za-z\\s]+$/.test(v) || 'Please input English letters only'
-                                ]" outlined dense single-line required class="input-box"></v-text-field>
+                                <v-text-field
+                                  label="Name"
+                                  :rules="[
+                                    (v) => !!v || 'Please input name',
+                                    (v) =>
+                                      /^[A-Za-z\\s]+$/.test(v) ||
+                                      'Please input English letters only',
+                                  ]"
+                                  outlined
+                                  dense
+                                  single-line
+                                  required
+                                  class="input-box"
+                                ></v-text-field>
                               </v-col>
                             </v-row>
                           </v-col>
                         </v-col>
-                        <v-col cols="12" md="4" class="d-flex justify-center align-center pl-md-0 pr-md-4 pt-0 pb-md-0">
+                        <v-col
+                          cols="12"
+                          md="4"
+                          class="d-flex justify-center align-center pl-md-0 pr-md-4 pt-0 pb-md-0"
+                        >
                           <v-col>
                             <v-row>
-                              <v-col class="d-flex justify-start align-center pt-0 pl-0 pb-2">
+                              <v-col
+                                class="d-flex justify-start align-center pt-0 pl-0 pb-2"
+                              >
                                 <p class="custom-label">
                                   Surname<span class="red--text"> * </span>
                                 </p>
@@ -207,18 +415,34 @@
                             </v-row>
                             <v-row>
                               <v-col class="pt-0 pl-0 pr-md-0 pb-0">
-                                <v-text-field label="Surname" :rules="[
-                                  v => !!v || 'Please input Surname',
-                                  v => /^[A-Za-z\\s]+$/.test(v) || 'Please input English letters only'
-                                ]" outlined dense single-line required class="input-box"></v-text-field>
+                                <v-text-field
+                                  label="Surname"
+                                  :rules="[
+                                    (v) => !!v || 'Please input Surname',
+                                    (v) =>
+                                      /^[A-Za-z\\s]+$/.test(v) ||
+                                      'Please input English letters only',
+                                  ]"
+                                  outlined
+                                  dense
+                                  single-line
+                                  required
+                                  class="input-box"
+                                ></v-text-field>
                               </v-col>
                             </v-row>
                           </v-col>
                         </v-col>
-                        <v-col cols="12" md="4" class="d-flex justify-center align-center pt-0 pl-md-0 pb-md-0">
+                        <v-col
+                          cols="12"
+                          md="4"
+                          class="d-flex justify-center align-center pt-0 pl-md-0 pb-md-0"
+                        >
                           <v-col>
                             <v-row>
-                              <v-col class="d-flex justify-start align-center pt-0 pl-0 pb-2">
+                              <v-col
+                                class="d-flex justify-start align-center pt-0 pl-0 pb-2"
+                              >
                                 <p class="custom-label">
                                   Nickname<span class="red--text"> * </span>
                                 </p>
@@ -226,43 +450,83 @@
                             </v-row>
                             <v-row>
                               <v-col class="pt-0 pl-0 pr-md-4 pb-0">
-                                <v-text-field label="Nickname" :rules="[
-                                  v => !!v || 'Please input Nickname',
-                                  v => /^[A-Za-z\\s]+$/.test(v) || 'Please input English letters only'
-                                ]" outlined dense single-line required class="input-box"></v-text-field>
+                                <v-text-field
+                                  label="Nickname"
+                                  :rules="[
+                                    (v) => !!v || 'Please input Nickname',
+                                    (v) =>
+                                      /^[A-Za-z\\s]+$/.test(v) ||
+                                      'Please input English letters only',
+                                  ]"
+                                  outlined
+                                  dense
+                                  single-line
+                                  required
+                                  class="input-box"
+                                ></v-text-field>
                               </v-col>
                             </v-row>
                           </v-col>
                         </v-col>
-                        <v-col cols="12" md="4" class="d-flex justify-center align-center pr-md-0 pl-md-4 pt-0 pb-md-2">
+                        <v-col
+                          cols="12"
+                          md="4"
+                          class="d-flex justify-center align-center pr-md-0 pl-md-4 pt-0 pb-md-2"
+                        >
                           <v-col>
                             <v-row>
-                              <v-col class="d-flex justify-start align-center mt-3 mt-md-0 pt-0 pl-0 pr-md-0 pb-2">
+                              <v-col
+                                class="d-flex justify-start align-center mt-3 mt-md-0 pt-0 pl-0 pr-md-0 pb-2"
+                              >
                                 <p class="custom-label">
                                   หมายเลขบัตรประชาชน
-                                  <span class="grey--text">I.D. Card No.</span><span class="red--text"> * </span>
+                                  <span class="grey--text">I.D. Card No.</span
+                                  ><span class="red--text"> * </span>
                                 </p>
                               </v-col>
                             </v-row>
                             <v-row>
                               <v-col class="pt-0 pl-0 pr-md-4 pb-0">
-                                <v-text-field label="0-0000-00000-00-0" v-model="citizenId" @input="formatCitizenId"
+                                <v-text-field
+                                  label="0-0000-00000-00-0"
+                                  v-model="citizenId"
+                                  @input="formatCitizenId"
                                   :rules="[
-                                    v => !!v || 'กรุณากรอกเลขบัตรประชาชน',
-                                    v => /^[0-9\-]+$/.test(v) || 'กรุณากรอกเฉพาะตัวเลข',
-                                    v => v.replace(/-/g, '').length === 13 || 'กรุณากรอกให้ครบ 13 หลัก',
-                                    v => validateThaiID(v.replace(/-/g, '')) || 'เลขบัตรประชาชนไม่ถูกต้อง'
-                                  ]" outlined dense single-line required class="input-box"></v-text-field>
+                                    (v) => !!v || 'กรุณากรอกเลขบัตรประชาชน',
+                                    (v) =>
+                                      /^[0-9\-]+$/.test(v) ||
+                                      'กรุณากรอกเฉพาะตัวเลข',
+                                    (v) =>
+                                      v.replace(/-/g, '').length === 13 ||
+                                      'กรุณากรอกให้ครบ 13 หลัก',
+                                    (v) =>
+                                      validateThaiID(v.replace(/-/g, '')) ||
+                                      'เลขบัตรประชาชนไม่ถูกต้อง',
+                                  ]"
+                                  outlined
+                                  dense
+                                  single-line
+                                  required
+                                  class="input-box"
+                                ></v-text-field>
                               </v-col>
                             </v-row>
                           </v-col>
                         </v-col>
-                        <v-col cols="12" md="3" class="d-flex justify-center align-center pt-0 pr-md-0 pl-md-0 pb-md-2">
+                        <v-col
+                          cols="12"
+                          md="3"
+                          class="d-flex justify-center align-center pt-0 pr-md-0 pl-md-0 pb-md-2"
+                        >
                           <v-col>
                             <v-row>
-                              <v-col class="d-flex justify-start align-center pt-0 pl-0 pb-2">
+                              <v-col
+                                class="d-flex justify-start align-center pt-0 pl-0 pb-2"
+                              >
                                 <p class="custom-label">
-                                  ระบุเขต/อำเภอที่ออกบัตร<span class="red--text">
+                                  ระบุเขต/อำเภอที่ออกบัตร<span
+                                    class="red--text"
+                                  >
                                     *
                                   </span>
                                 </p>
@@ -270,40 +534,81 @@
                             </v-row>
                             <v-row>
                               <v-col class="pt-0 pl-0 pr-md-0 pb-0">
-                                <v-text-field label="ระบุเขต/อำเภอที่ออกบัตร" :rules="[
-                                  v => !!v || 'กรุณากรอกเขต/อำเภอที่ออกบัตร',
-                                  v => /^[ก-๙\s]+$/.test(v) || 'กรุณากรอกเฉพาะตัวอักษรภาษาไทย'
-                                ]" outlined dense single-line required class="input-box" />
+                                <v-text-field
+                                  label="ระบุเขต/อำเภอที่ออกบัตร"
+                                  :rules="[
+                                    (v) =>
+                                      !!v || 'กรุณากรอกเขต/อำเภอที่ออกบัตร',
+                                    (v) =>
+                                      /^[ก-๙\s]+$/.test(v) ||
+                                      'กรุณากรอกเฉพาะตัวอักษรภาษาไทย',
+                                  ]"
+                                  outlined
+                                  dense
+                                  single-line
+                                  required
+                                  class="input-box"
+                                />
                               </v-col>
                             </v-row>
                           </v-col>
                         </v-col>
-                        <v-col cols="12" md="5" class="d-flex justify-start align-start pt-0 pb-0 pl-md-4 pb-md-2">
+                        <v-col
+                          cols="12"
+                          md="5"
+                          class="d-flex justify-start align-start pt-0 pb-0 pl-md-4 pb-md-2"
+                        >
                           <v-col cols="6">
                             <v-row>
                               <v-col class="pt-0 pl-0 pb-2">
                                 <p class="custom-label">
                                   วันที่ออกบัตร
-                                  <span class="grey--text">Issue date</span><span class="red--text"> * </span>
+                                  <span class="grey--text">Issue date</span
+                                  ><span class="red--text"> * </span>
                                 </p>
                               </v-col>
                             </v-row>
                             <v-row>
                               <v-col class="pt-0 pl-0 pr-4 pb-0">
-                                <v-menu ref="menu" v-model="menu1" :close-on-content-click="false" :nudge-top="40"
-                                  transition="scale-transition" offset-y min-width="290px">
+                                <v-menu
+                                  ref="menu"
+                                  v-model="menu1"
+                                  :close-on-content-click="false"
+                                  :nudge-top="40"
+                                  transition="scale-transition"
+                                  offset-y
+                                  min-width="290px"
+                                >
                                   <template #activator="{ on, attrs }">
-                                    <v-text-field v-model="formattedDate1" placeholder="วว/ดด/ปปปป" outlined dense
-                                      readonly v-bind="attrs" v-on="on" class="date_box input-box" :rules="[
-                                        v => !!v || 'กรุณาระบุวันเกิด'
-                                      ]" required>
+                                    <v-text-field
+                                      v-model="formattedDate1"
+                                      placeholder="วว/ดด/ปปปป"
+                                      outlined
+                                      dense
+                                      readonly
+                                      v-bind="attrs"
+                                      v-on="on"
+                                      class="date_box input-box"
+                                      :rules="[
+                                        (v) => !!v || 'กรุณาระบุวันเกิด',
+                                      ]"
+                                      required
+                                    >
                                       <template #append>
-                                        <v-icon color="primary">mdi-calendar</v-icon>
+                                        <v-icon color="primary"
+                                          >mdi-calendar</v-icon
+                                        >
                                       </template>
                                     </v-text-field>
                                   </template>
-                                  <v-date-picker v-model="date1" locale="th" scrollable :max="todayDate"
-                                    @input="updateDate1" class="compact-date-picker" />
+                                  <v-date-picker
+                                    v-model="date1"
+                                    locale="th"
+                                    scrollable
+                                    :max="todayDate"
+                                    @input="updateDate1"
+                                    class="compact-date-picker"
+                                  />
                                 </v-menu>
                               </v-col>
                             </v-row>
@@ -313,26 +618,51 @@
                               <v-col class="pt-0 pl-0 pb-2">
                                 <p class="custom-label">
                                   วันที่หมดอายุ<span class="grey--text">
-                                    Expiry date </span><span class="red--text"> * </span>
+                                    Expiry date </span
+                                  ><span class="red--text"> * </span>
                                 </p>
                               </v-col>
                             </v-row>
                             <v-row>
                               <v-col class="pt-0 pl-0 pr-4 pb-0">
-                                <v-menu ref="menu" v-model="menu2" :close-on-content-click="false" :nudge-top="40"
-                                  transition="scale-transition" offset-y min-width="290px">
+                                <v-menu
+                                  ref="menu"
+                                  v-model="menu2"
+                                  :close-on-content-click="false"
+                                  :nudge-top="40"
+                                  transition="scale-transition"
+                                  offset-y
+                                  min-width="290px"
+                                >
                                   <template #activator="{ on, attrs }">
-                                    <v-text-field v-model="formattedDate2" placeholder="วว/ดด/ปปปป" outlined dense
-                                      readonly class="date_box input-box" v-bind="attrs" v-on="on" :rules="[
-                                        v => !!v || 'กรุณาระบุวันเกิด'
-                                      ]" required>
+                                    <v-text-field
+                                      v-model="formattedDate2"
+                                      placeholder="วว/ดด/ปปปป"
+                                      outlined
+                                      dense
+                                      readonly
+                                      class="date_box input-box"
+                                      v-bind="attrs"
+                                      v-on="on"
+                                      :rules="[
+                                        (v) => !!v || 'กรุณาระบุวันเกิด',
+                                      ]"
+                                      required
+                                    >
                                       <template #append>
-                                        <v-icon color="primary">mdi-calendar</v-icon>
+                                        <v-icon color="primary"
+                                          >mdi-calendar</v-icon
+                                        >
                                       </template>
                                     </v-text-field>
                                   </template>
-                                  <v-date-picker v-model="date2" locale="th" scrollable @input="updateDate2"
-                                    class="compact-date-picker" />
+                                  <v-date-picker
+                                    v-model="date2"
+                                    locale="th"
+                                    scrollable
+                                    @input="updateDate2"
+                                    class="compact-date-picker"
+                                  />
                                 </v-menu>
                               </v-col>
                             </v-row>
@@ -342,39 +672,71 @@
                     </v-col>
                   </v-row>
                   <v-row>
-                    <v-col cols="12" md="3" class="d-flex justify-start align-start pt-0 pb-0 pl-3 pr-md-0">
+                    <v-col
+                      cols="12"
+                      md="3"
+                      class="d-flex justify-start align-start pt-0 pb-0 pl-3 pr-md-0"
+                    >
                       <v-col cols="8" class="pt-md-0">
                         <v-row>
-                          <v-col class="d-flex justify-start align-center pt-0 pl-4 pb-2 mt-md-4">
+                          <v-col
+                            class="d-flex justify-start align-center pt-0 pl-4 pb-2 mt-md-4"
+                          >
                             <p class="custom-label">
                               วันเกิด
-                              <span class="grey--text">Date of Birth</span><span class="red--text"> * </span>
+                              <span class="grey--text">Date of Birth</span
+                              ><span class="red--text"> * </span>
                             </p>
                           </v-col>
                         </v-row>
                         <v-row>
                           <v-col class="pt-0 pl-4 pr-4 pb-0">
-                            <v-menu ref="menu" v-model="menu3" :close-on-content-click="false" :nudge-top="200"
-                              transition="scale-transition" offset-y min-width="290px">
+                            <v-menu
+                              ref="menu"
+                              v-model="menu3"
+                              :close-on-content-click="false"
+                              :nudge-top="200"
+                              transition="scale-transition"
+                              offset-y
+                              min-width="290px"
+                            >
                               <template #activator="{ on, attrs }">
-                                <v-text-field v-model="formattedDate3" placeholder="วว/ดด/ปปปป" outlined dense readonly
-                                  v-bind="attrs" v-on="on" class="date_box input-box" :rules="[
-                                    v => !!v || 'กรุณาระบุวันเกิด'
-                                  ]" required>
+                                <v-text-field
+                                  v-model="formattedDate3"
+                                  placeholder="วว/ดด/ปปปป"
+                                  outlined
+                                  dense
+                                  readonly
+                                  v-bind="attrs"
+                                  v-on="on"
+                                  class="date_box input-box"
+                                  :rules="[(v) => !!v || 'กรุณาระบุวันเกิด']"
+                                  required
+                                >
                                   <template #append>
-                                    <v-icon color="primary">mdi-calendar</v-icon>
+                                    <v-icon color="primary"
+                                      >mdi-calendar</v-icon
+                                    >
                                   </template>
                                 </v-text-field>
                               </template>
-                              <v-date-picker v-model="date3" locale="th" scrollable :max="todayDate"
-                                @input="updateDate3" class="compact-date-picker" />
+                              <v-date-picker
+                                v-model="date3"
+                                locale="th"
+                                scrollable
+                                :max="todayDate"
+                                @input="updateDate3"
+                                class="compact-date-picker"
+                              />
                             </v-menu>
                           </v-col>
                         </v-row>
                       </v-col>
                       <v-col cols="4">
                         <v-row>
-                          <v-col class="d-flex justify-start align-center pt-0 pl-0 pb-2">
+                          <v-col
+                            class="d-flex justify-start align-center pt-0 pl-0 pb-2"
+                          >
                             <p class="custom-label pb-0 mt-md-1">
                               อายุ <span class="grey--text"> Age </span>
                             </p>
@@ -382,8 +744,15 @@
                         </v-row>
                         <v-row>
                           <v-col cols="7" class="pt-0 pl-0 pr-2 pb-0">
-                            <v-text-field v-model="calculatedAge" outlined dense hide-details="auto"
-                              class="mb-26px grey lighten-4 text-center input-box" placeholder="0" readonly />
+                            <v-text-field
+                              v-model="calculatedAge"
+                              outlined
+                              dense
+                              hide-details="auto"
+                              class="mb-26px grey lighten-4 text-center input-box"
+                              placeholder="0"
+                              readonly
+                            />
                           </v-col>
                           <v-col cols="3">
                             <v-row>
@@ -399,15 +768,26 @@
                     <v-col md="9" class="py-0 d-sm-flex flex-sm-row pl-md-0">
                       <v-col class="py-0 pl-3 pt-md-3">
                         <v-row>
-                          <v-col class="d-flex justify-start align-center pt-0 pl-0 pb-2 mt-md-1">
-                            <p class="custom-label">โรคประจำตัว <span class="grey--text"> Any physical disability or
-                                disease? </span></p>
+                          <v-col
+                            class="d-flex justify-start align-center pt-0 pl-0 pb-2 mt-md-1"
+                          >
+                            <p class="custom-label">
+                              โรคประจำตัว
+                              <span class="grey--text">
+                                Any physical disability or disease?
+                              </span>
+                            </p>
                           </v-col>
                         </v-row>
                         <v-row>
                           <v-col class="pt-0 pl-0 pr-4 pb-md-6 mb-md-6">
-                            <v-text-field label="ระบุโรคประจำตัว" outlined dense single-line
-                              class="input-box date_box" />
+                            <v-text-field
+                              label="ระบุโรคประจำตัว"
+                              outlined
+                              dense
+                              single-line
+                              class="input-box date_box"
+                            />
                           </v-col>
                         </v-row>
                       </v-col>
@@ -415,10 +795,16 @@
                   </v-row>
                   <v-col>
                     <v-row>
-                      <v-col cols="12" md="4" class="d-flex justify-center align-center pt-0 px-4 pb-0">
+                      <v-col
+                        cols="12"
+                        md="4"
+                        class="d-flex justify-center align-center pt-0 px-4 pb-0"
+                      >
                         <v-col>
                           <v-row>
-                            <v-col class="d-flex justify-start align-center pt-0 pl-0 pb-2">
+                            <v-col
+                              class="d-flex justify-start align-center pt-0 pl-0 pb-2"
+                            >
                               <p class="custom-label">
                                 สัญชาติ<span class="grey--text">
                                   Nationality
@@ -428,49 +814,75 @@
                           </v-row>
                           <v-row>
                             <v-col class="pt-0 pl-0 pr-md-0 pb-0">
-                              <v-text-field label="ระบุสัญชาติ" :rules="[
-                                v => !!v || 'กรุณาระบุสัญชาติ'
-                              ]" outlined dense single-line required class="input-box" />
+                              <v-text-field
+                                label="ระบุสัญชาติ"
+                                :rules="[(v) => !!v || 'กรุณาระบุสัญชาติ']"
+                                outlined
+                                dense
+                                single-line
+                                required
+                                class="input-box"
+                              />
                             </v-col>
                           </v-row>
                         </v-col>
                       </v-col>
-                      <v-col cols="12" md="4" class="d-flex justify-center align-center pt-0 px-md-0 pb-0">
+                      <v-col
+                        cols="12"
+                        md="4"
+                        class="d-flex justify-center align-center pt-0 px-md-0 pb-0"
+                      >
                         <v-col>
                           <v-row>
-                            <v-col class="d-flex justify-start align-center pt-0 pl-0 pb-2">
+                            <v-col
+                              class="d-flex justify-start align-center pt-0 pl-0 pb-2"
+                            >
                               <p class="custom-label">
-                                เชื้อชาติ<span class="grey--text">
-                                  Race
-                                </span>
+                                เชื้อชาติ<span class="grey--text"> Race </span>
                               </p>
                             </v-col>
                           </v-row>
                           <v-row>
                             <v-col class="pt-0 pl-0 pr-md-4 pb-0">
-                              <v-text-field label="ระบุเชื้อชาติ" :rules="[
-                                v => !!v || 'กรุณาระบุเชื้อชาติ'
-                              ]" outlined dense single-line required class="input-box" />
+                              <v-text-field
+                                label="ระบุเชื้อชาติ"
+                                :rules="[(v) => !!v || 'กรุณาระบุเชื้อชาติ']"
+                                outlined
+                                dense
+                                single-line
+                                required
+                                class="input-box"
+                              />
                             </v-col>
                           </v-row>
                         </v-col>
                       </v-col>
-                      <v-col cols="12" md="4" class="d-flex justify-center align-center pt-0 pl-md-0 pb-md-0">
+                      <v-col
+                        cols="12"
+                        md="4"
+                        class="d-flex justify-center align-center pt-0 pl-md-0 pb-md-0"
+                      >
                         <v-col>
                           <v-row>
-                            <v-col class="d-flex justify-start align-center pt-0 pl-0 pb-2">
+                            <v-col
+                              class="d-flex justify-start align-center pt-0 pl-0 pb-2"
+                            >
                               <p class="custom-label">
-                                ศาสนา<span class="grey--text">
-                                  Religion
-                                </span>
+                                ศาสนา<span class="grey--text"> Religion </span>
                               </p>
                             </v-col>
                           </v-row>
                           <v-row>
                             <v-col class="pt-0 pl-0 pb-0 pr-4">
-                              <v-text-field label="ระบุศาสนา" :rules="[
-                                v => !!v || 'กรุณาระบุศาสนา'
-                              ]" outlined dense single-line required class="input-box" />
+                              <v-text-field
+                                label="ระบุศาสนา"
+                                :rules="[(v) => !!v || 'กรุณาระบุศาสนา']"
+                                outlined
+                                dense
+                                single-line
+                                required
+                                class="input-box"
+                              />
                             </v-col>
                           </v-row>
                         </v-col>
@@ -481,7 +893,9 @@
                     <v-col>
                       <v-row class="pt-4 pt-md-0">
                         <v-col cols="12" md="2" class="pl-6">
-                          <v-row class="d-flex flex-md-column flex-row align-center align-md-start pb-md-6">
+                          <v-row
+                            class="d-flex flex-md-column flex-row align-center align-md-start pb-md-6"
+                          >
                             <p class="custom-label mb-0 mr-2 mr-md-0 pl-md-4">
                               สถานะทางทหาร :
                             </p>
@@ -491,11 +905,20 @@
                           </v-row>
                         </v-col>
                         <v-col cols="12" md="9" class="py-0">
-                          <v-radio-group v-model="soldier" row
-                            class="color-label custom-label mt-1 mt-md-0 py-md-0 date_box">
-                            <v-col cols="12" md="4"
-                              class="d-flex flex-row flex-md-colum align-md-start mr-md-0 pa-md-0 pt-0">
-                              <v-radio value="three" class="color-label custom-radio">
+                          <v-radio-group
+                            v-model="soldier"
+                            row
+                            class="color-label custom-label mt-1 mt-md-0 py-md-0 date_box"
+                          >
+                            <v-col
+                              cols="12"
+                              md="4"
+                              class="d-flex flex-row flex-md-colum align-md-start mr-md-0 pa-md-0 pt-0"
+                            >
+                              <v-radio
+                                value="three"
+                                class="color-label custom-radio"
+                              >
                                 <template #label>
                                   <v-col class="pa-0">
                                     <p>ได้รับการยกเว้น</p>
@@ -505,7 +928,10 @@
                                   </v-col>
                                 </template>
                               </v-radio>
-                              <v-radio value="one" class="color-label custom-radio">
+                              <v-radio
+                                value="one"
+                                class="color-label custom-radio"
+                              >
                                 <template #label>
                                   <v-col class="pa-0">
                                     <p>ศึกษาวิชาทหาร</p>
@@ -516,8 +942,15 @@
                                 </template>
                               </v-radio>
                             </v-col>
-                            <v-col cols="12" md="6" class="d-flex flex-row flex-md-colum align-md-start pa-md-0 py-0">
-                              <v-radio value="two" class="color-label custom-radio">
+                            <v-col
+                              cols="12"
+                              md="6"
+                              class="d-flex flex-row flex-md-colum align-md-start pa-md-0 py-0"
+                            >
+                              <v-radio
+                                value="two"
+                                class="color-label custom-radio"
+                              >
                                 <template #label>
                                   <v-col class="pa-0">
                                     <p>ผ่านการเกณฑ์ทหาร</p>
@@ -527,7 +960,10 @@
                                   </v-col>
                                 </template>
                               </v-radio>
-                              <v-radio value="zero" class="color-label custom-radio">
+                              <v-radio
+                                value="zero"
+                                class="color-label custom-radio"
+                              >
                                 <template #label>
                                   <v-col class="pa-0">
                                     <p>อื่นๆ</p>
@@ -537,11 +973,18 @@
                                   </v-col>
                                 </template>
                               </v-radio>
-                              <v-col v-if="soldier === 'zero'"
-                                class="d-flex flex-row flex-md-colum align-md-start pa-0">
-                                <v-text-field label="ระบุอื่นๆ" :rules="[
-                                  v => !!v || 'กรุณาระบุอื่นๆ'
-                                ]" outlined dense single-line class="input-box margin-zero-message" />
+                              <v-col
+                                v-if="soldier === 'zero'"
+                                class="d-flex flex-row flex-md-colum align-md-start pa-0"
+                              >
+                                <v-text-field
+                                  label="ระบุอื่นๆ"
+                                  :rules="[(v) => !!v || 'กรุณาระบุอื่นๆ']"
+                                  outlined
+                                  dense
+                                  single-line
+                                  class="input-box margin-zero-message"
+                                />
                               </v-col>
                             </v-col>
                           </v-radio-group>
@@ -552,32 +995,62 @@
                   <v-row class="pl-3 pr-2 pr-md-3 mt-md-2">
                     <v-col cols="12" md="6">
                       <v-row>
-                        <v-col class="d-flex justify-start align-center pt-0 pl-4 pb-2">
-                          <p class="custom-label">เบอร์โทรศัพท์ <span class="grey--text"> Telephone No. </span></p>
+                        <v-col
+                          class="d-flex justify-start align-center pt-0 pl-4 pb-2"
+                        >
+                          <p class="custom-label">
+                            เบอร์โทรศัพท์
+                            <span class="grey--text"> Telephone No. </span>
+                          </p>
                         </v-col>
                       </v-row>
                       <v-row>
                         <v-col class="pt-0 pl-4 pr-md-4 pb-md-4">
-                          <v-text-field v-model="phoneNumber" label="เบอร์โทรศัพท์" :rules="[
-                            (v) => !!v || 'กรุณากรอกเบอร์โทรศัพท์',
-                            v => /^0[0-9]{2}-[0-9]{3}-[0-9]{4}$/.test(v) || 'เบอร์โทรศัพท์ไม่ถูกต้อง'
-                          ]" outlined dense single-line class="input-box" required @input="formatPhoneNumber"
-                            @paste.prevent="handlePaste" />
+                          <v-text-field
+                            v-model="phoneNumber"
+                            label="เบอร์โทรศัพท์"
+                            :rules="[
+                              (v) => !!v || 'กรุณากรอกเบอร์โทรศัพท์',
+                              (v) =>
+                                /^0[0-9]{2}-[0-9]{3}-[0-9]{4}$/.test(v) ||
+                                'เบอร์โทรศัพท์ไม่ถูกต้อง',
+                            ]"
+                            outlined
+                            dense
+                            single-line
+                            class="input-box"
+                            required
+                            @input="formatPhoneNumber"
+                            @paste.prevent="handlePaste"
+                          />
                         </v-col>
                       </v-row>
                     </v-col>
                     <v-col cols="12" md="6" class="py-md-0 pr-md-4 mt-md-3">
                       <v-row>
-                        <v-col class="d-flex justify-start align-center pt-0 pl-0 pb-2">
-                          <p class="custom-label">อีเมล <span class="grey--text"> E-mail </span></p>
+                        <v-col
+                          class="d-flex justify-start align-center pt-0 pl-0 pb-2"
+                        >
+                          <p class="custom-label">
+                            อีเมล <span class="grey--text"> E-mail </span>
+                          </p>
                         </v-col>
                       </v-row>
                       <v-row>
                         <v-col class="pt-0 pl-0 pb-md-4">
-                          <v-text-field label="อีเมล" :rules="[
-                            (v) => !!v || 'กรุณากรอกอีเมล',
-                            (v) => /.+@.+\..+/.test(v) || 'รูปแบบอีเมลไม่ถูกต้อง',
-                          ]" outlined dense single-line class="input-box" required />
+                          <v-text-field
+                            label="อีเมล"
+                            :rules="[
+                              (v) => !!v || 'กรุณากรอกอีเมล',
+                              (v) =>
+                                /.+@.+\..+/.test(v) || 'รูปแบบอีเมลไม่ถูกต้อง',
+                            ]"
+                            outlined
+                            dense
+                            single-line
+                            class="input-box"
+                            required
+                          />
                         </v-col>
                       </v-row>
                     </v-col>
@@ -596,7 +1069,7 @@ export default {
   layout: "form",
   data() {
     return {
-      phoneNumber: '',
+      phoneNumber: "",
       // format currency
       salaryFrom: 0,
       salaryFromDisplay: "",
@@ -731,7 +1204,7 @@ export default {
       useSameAddress: false,
       soldier: "",
       //citizen
-      citizenId: ''
+      citizenId: "",
     };
   },
   computed: {
@@ -759,63 +1232,70 @@ export default {
   methods: {
     formatPhoneNumber() {
       // ลบทุกอักขระที่ไม่ใช่ตัวเลข
-      let cleaned = this.phoneNumber.replace(/\D/g, '');
+      let cleaned = this.phoneNumber.replace(/\D/g, "");
 
       // จำกัดให้ไม่เกิน 10 ตัว
       cleaned = cleaned.substring(0, 10);
 
       // เพิ่มขีดตามรูปแบบ
       if (cleaned.length > 6) {
-        this.phoneNumber = cleaned.replace(/(\d{3})(\d{3})(\d{0,4})/, '$1-$2-$3');
+        this.phoneNumber = cleaned.replace(
+          /(\d{3})(\d{3})(\d{0,4})/,
+          "$1-$2-$3"
+        );
       } else if (cleaned.length > 3) {
-        this.phoneNumber = cleaned.replace(/(\d{3})(\d{0,3})/, '$1-$2');
+        this.phoneNumber = cleaned.replace(/(\d{3})(\d{0,3})/, "$1-$2");
       } else {
         this.phoneNumber = cleaned;
       }
     },
     handlePaste(event) {
       // ดึงข้อมูลจาก clipboard
-      const pasted = (event.clipboardData || window.clipboardData).getData('text');
+      const pasted = (event.clipboardData || window.clipboardData).getData(
+        "text"
+      );
 
       // ลบอักขระที่ไม่ใช่ตัวเลข
-      let cleaned = pasted.replace(/\D/g, '');
+      let cleaned = pasted.replace(/\D/g, "");
 
       // จำกัด 10 ตัว
       cleaned = cleaned.substring(0, 10);
 
       // ใส่ขีดอัตโนมัติ
       if (cleaned.length > 6) {
-        this.phoneNumber = cleaned.replace(/(\d{3})(\d{3})(\d{0,4})/, '$1-$2-$3');
+        this.phoneNumber = cleaned.replace(
+          /(\d{3})(\d{3})(\d{0,4})/,
+          "$1-$2-$3"
+        );
       } else if (cleaned.length > 3) {
-        this.phoneNumber = cleaned.replace(/(\d{3})(\d{0,3})/, '$1-$2');
+        this.phoneNumber = cleaned.replace(/(\d{3})(\d{0,3})/, "$1-$2");
       } else {
         this.phoneNumber = cleaned;
       }
-
     },
     formatCitizenId() {
       // ลบขีดเก่าก่อน
-      let value = this.citizenId.replace(/\D/g, '')
+      let value = this.citizenId.replace(/\D/g, "");
 
       // จำกัดให้ไม่เกิน 13 หลัก
-      value = value.slice(0, 13)
+      value = value.slice(0, 13);
 
       // เพิ่มขีดตามตำแหน่ง
-      if (value.length > 1) value = value.slice(0, 1) + '-' + value.slice(1)
-      if (value.length > 6) value = value.slice(0, 6) + '-' + value.slice(6)
-      if (value.length > 12) value = value.slice(0, 12) + '-' + value.slice(12)
-      if (value.length > 15) value = value.slice(0, 15) + '-' + value.slice(15)
+      if (value.length > 1) value = value.slice(0, 1) + "-" + value.slice(1);
+      if (value.length > 6) value = value.slice(0, 6) + "-" + value.slice(6);
+      if (value.length > 12) value = value.slice(0, 12) + "-" + value.slice(12);
+      if (value.length > 15) value = value.slice(0, 15) + "-" + value.slice(15);
 
-      this.citizenId = value
+      this.citizenId = value;
     },
     validateThaiID(id) {
-      if (!/^[0-9]{13}$/.test(id)) return false
-      let sum = 0
+      if (!/^[0-9]{13}$/.test(id)) return false;
+      let sum = 0;
       for (let i = 0; i < 12; i++) {
-        sum += parseInt(id.charAt(i)) * (13 - i)
+        sum += parseInt(id.charAt(i)) * (13 - i);
       }
-      const checkDigit = (11 - (sum % 11)) % 10
-      return checkDigit === parseInt(id.charAt(12))
+      const checkDigit = (11 - (sum % 11)) % 10;
+      return checkDigit === parseInt(id.charAt(12));
     },
     updateDate1(val) {
       const d = new Date(val);
@@ -1080,7 +1560,6 @@ export default {
   height: 32px !important;
 }
 
-
 .input-box input {
   padding: 0 !important;
   font-size: 14px;
@@ -1091,7 +1570,7 @@ export default {
   font-size: 12px !important;
   top: 50% !important;
   transform: translateY(-50%) scale(1) !important;
-  color: #cdcbcb
+  color: #cdcbcb;
 }
 
 .input-box .v-text-field__details {

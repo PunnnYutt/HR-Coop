@@ -202,4 +202,8 @@ div.header-page > div {
 p {
   user-select: none;
 }
+
+.v-application p {
+  margin-bottom: 0px !important;
+}
 </style>

@@ -11,6 +11,8 @@ export const state = () => ({
       /* fields for page6 */
     },
   },
+
+  footerDisplay: true,
 });
 
 export const mutations = {
@@ -28,5 +30,9 @@ export const mutations = {
 
   SET_ETC_DATA(state, payload) {
     state.pages[5] = payload;
+  },
+
+  SET_Footer(state, payload) {
+    state.footerDisplay = payload;
   },
 };

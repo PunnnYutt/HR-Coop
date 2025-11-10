@@ -1,5 +1,5 @@
 <template>
-  <div class="footer-section">
+  <div class="footer-section" v-show="this.$store.state.footerDisplay">
     <div>
       <div class="back-button" v-if="page > 1" @click="goBack">
         <p>ย้อนกลับ</p>
@@ -174,5 +174,8 @@ export default {
 
 p {
   user-select: none;
+}
+.v-application p {
+  margin-bottom: 0px !important;
 }
 </style>
