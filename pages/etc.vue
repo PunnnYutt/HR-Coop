@@ -52,7 +52,7 @@
                           <v-checkbox
                             v-model="formData.drivingLicense.car"
                             dense
-                            class="custom-radio"
+                            class="custom-radio remove-message"
                           >
                             <template #label>
                               <v-col class="pa-0">
@@ -66,7 +66,7 @@
                           <v-checkbox
                             v-model="formData.drivingLicense.motorcycle"
                             dense
-                            class="custom-radio"
+                            class="custom-radio remove-message"
                           >
                             <template #label>
                               <v-col class="pa-0 custom-radio">
@@ -104,7 +104,8 @@
                           <v-radio-group
                             v-model="formData.workUpcountry"
                             row
-                            class="color-label custom-label pl-md-0 mt-0 mt-md-0"
+                            :rules="[(v) => !!v || '']"
+                            class="color-label custom-label remove-message pl-md-0 mt-0 mt-md-0"
                           >
                             <v-col
                               cols="12"
@@ -117,7 +118,7 @@
                               >
                                 <template #label>
                                   <v-col class="pa-0">
-                                    <p>ได้</p>
+                                    <p class="text-caption">ได้</p>
                                     <p class="text-caption text--secondary">
                                       Yes
                                     </p>
@@ -130,14 +131,7 @@
                               >
                                 <template #label>
                                   <v-col cols="12" class="pa-0">
-                                    <p
-                                      style="
-                                        display: inline-block;
-                                        white-space: nowrap;
-                                      "
-                                    >
-                                      ไม่ได้
-                                    </p>
+                                    <p class="doc text-caption">ไม่ได้</p>
                                     <p class="text-caption text--secondary">
                                       No
                                     </p>
@@ -172,7 +166,8 @@
                           <v-radio-group
                             v-model="formData.dischargedFromWork"
                             row
-                            class="color-label custom-label pl-md-0 mt-0 mt-md-0"
+                            :rules="[(v) => !!v || '']"
+                            class="color-label custom-label remove-message pl-md-0 mt-0 mt-md-0"
                           >
                             <v-col
                               cols="12"
@@ -185,14 +180,7 @@
                               >
                                 <template #label>
                                   <v-col class="pa-0">
-                                    <p
-                                      style="
-                                        display: inline-block;
-                                        white-space: nowrap;
-                                      "
-                                    >
-                                      ไม่เคย
-                                    </p>
+                                    <p class="doc text-caption">ไม่เคย</p>
                                     <p class="text-caption text--secondary">
                                       No
                                     </p>
@@ -205,7 +193,7 @@
                               >
                                 <template #label>
                                   <v-col class="pa-0">
-                                    <p>เคย</p>
+                                    <p class="text-caption">เคย</p>
                                     <p class="text-caption text--secondary">
                                       Yes
                                     </p>
@@ -239,7 +227,8 @@
                           <v-radio-group
                             v-model="formData.imprisoned"
                             row
-                            class="color-label custom-label pl-md-0 mt-0 mt-md-0"
+                            :rules="[(v) => !!v || '']"
+                            class="color-label custom-label remove-message pl-md-0 mt-0 mt-md-0"
                           >
                             <v-col
                               cols="12"
@@ -252,14 +241,7 @@
                               >
                                 <template #label>
                                   <v-col class="pa-0">
-                                    <p
-                                      style="
-                                        display: inline-block;
-                                        white-space: nowrap;
-                                      "
-                                    >
-                                      ไม่เคย
-                                    </p>
+                                    <p class="doc text-caption">ไม่เคย</p>
                                     <p class="text-caption text--secondary">
                                       No
                                     </p>
@@ -272,7 +254,7 @@
                               >
                                 <template #label>
                                   <v-col class="pa-0">
-                                    <p>เคย</p>
+                                    <p class="text-caption">เคย</p>
                                     <p class="text-caption text--secondary">
                                       Yes
                                     </p>
@@ -305,7 +287,8 @@
                           <v-radio-group
                             v-model="formData.smoking"
                             row
-                            class="color-label custom-label pl-md-0 mt-0 mt-md-0"
+                            :rules="[(v) => !!v || '']"
+                            class="color-label custom-label remove-message pl-md-0 mt-0 mt-md-0"
                           >
                             <v-col
                               cols="12"
@@ -318,14 +301,8 @@
                               >
                                 <template #label>
                                   <v-col class="pa-0">
-                                    <p>ไม่สูบ</p>
-                                    <p
-                                      class="text-caption text--secondary"
-                                      style="
-                                        display: inline-block;
-                                        white-space: nowrap;
-                                      "
-                                    >
+                                    <p class="text-caption">ไม่สูบ</p>
+                                    <p class="text-caption text--secondary doc">
                                       Non-smoker
                                     </p>
                                   </v-col>
@@ -337,21 +314,8 @@
                               >
                                 <template #label>
                                   <v-col class="pa-0">
-                                    <p
-                                      style="
-                                        display: inline-block;
-                                        white-space: nowrap;
-                                      "
-                                    >
-                                      สูบบางครั้ง
-                                    </p>
-                                    <p
-                                      class="text-caption text--secondary"
-                                      style="
-                                        display: inline-block;
-                                        white-space: nowrap;
-                                      "
-                                    >
+                                    <p class="doc text-caption">สูบบางครั้ง</p>
+                                    <p class="text-caption text--secondary doc">
                                       Occasional smoker
                                     </p>
                                   </v-col>
@@ -363,21 +327,10 @@
                               >
                                 <template #label>
                                   <v-col class="pa-0">
-                                    <p
-                                      style="
-                                        display: inline-block;
-                                        white-space: nowrap;
-                                      "
-                                    >
+                                    <p class="doc text-caption">
                                       สูบเป็นประจํา
                                     </p>
-                                    <p
-                                      class="text-caption text--secondary"
-                                      style="
-                                        display: inline-block;
-                                        white-space: nowrap;
-                                      "
-                                    >
+                                    <p class="text-caption text--secondary doc">
                                       Smoke regularly
                                     </p>
                                   </v-col>
@@ -410,7 +363,8 @@
                           <v-radio-group
                             v-model="formData.drinking"
                             row
-                            class="color-label custom-label pl-md-0 mt-0 mt-md-0"
+                            :rules="[(v) => !!v || '']"
+                            class="color-label custom-label remove-message pl-md-0 mt-0 mt-md-0"
                           >
                             <v-col
                               cols="12"
@@ -423,14 +377,8 @@
                               >
                                 <template #label>
                                   <v-col class="pa-0">
-                                    <p>ไม่ดื่ม</p>
-                                    <p
-                                      class="text-caption text--secondary"
-                                      style="
-                                        display: inline-block;
-                                        white-space: nowrap;
-                                      "
-                                    >
+                                    <p class="text-caption">ไม่ดื่ม</p>
+                                    <p class="text-caption text--secondary doc">
                                       Non-drinker
                                     </p>
                                   </v-col>
@@ -442,14 +390,8 @@
                               >
                                 <template #label>
                                   <v-col class="pa-0">
-                                    <p>ดื่มบางครั้ง</p>
-                                    <p
-                                      class="text-caption text--secondary"
-                                      style="
-                                        display: inline-block;
-                                        white-space: nowrap;
-                                      "
-                                    >
+                                    <p class="text-caption">ดื่มบางครั้ง</p>
+                                    <p class="text-caption text--secondary doc">
                                       Occasional drinker
                                     </p>
                                   </v-col>
@@ -461,21 +403,10 @@
                               >
                                 <template #label>
                                   <v-col class="pa-0">
-                                    <p
-                                      style="
-                                        display: inline-block;
-                                        white-space: nowrap;
-                                      "
-                                    >
+                                    <p class="doc text-caption">
                                       ดื่มเป็นประจำ
                                     </p>
-                                    <p
-                                      class="text-caption text--secondary"
-                                      style="
-                                        display: inline-block;
-                                        white-space: nowrap;
-                                      "
-                                    >
+                                    <p class="text-caption text--secondary doc">
                                       Regular drinker
                                     </p>
                                   </v-col>
@@ -510,7 +441,8 @@
                           <v-radio-group
                             v-model="formData.disability"
                             row
-                            class="color-label custom-label pl-md-0 mt-0 mt-md-0"
+                            :rules="[(v) => !!v || '']"
+                            class="color-label custom-label remove-message pl-md-0 mt-0 mt-md-0"
                           >
                             <v-col
                               cols="12"
@@ -523,14 +455,7 @@
                               >
                                 <template #label>
                                   <v-col class="pa-0">
-                                    <p
-                                      style="
-                                        display: inline-block;
-                                        white-space: nowrap;
-                                      "
-                                    >
-                                      ไม่เคย
-                                    </p>
+                                    <p class="doc text-caption">ไม่เคย</p>
                                     <p class="text-caption text--secondary">
                                       No
                                     </p>
@@ -543,7 +468,7 @@
                               >
                                 <template #label>
                                   <v-col class="pa-0">
-                                    <p>เคย</p>
+                                    <p class="text-caption">เคย</p>
                                     <p class="text-caption text--secondary">
                                       Yes
                                     </p>
@@ -578,11 +503,14 @@
                             item-value="value"
                             outlined
                             dense
+                            :rules="[(v) => !!v || '']"
                             placeholder="เลือกข่าวสารการสมัครงาน"
                             clearable
                             :menu-props="{ maxHeight: 240 }"
                             chips
                             small-chips
+                            hide-details
+                            class="remove-message input-box"
                           >
                             <template v-slot:selection="{ item, index }">
                               <v-chip
@@ -640,17 +568,17 @@
                       @click="opendialog"
                     >
                       <v-card elevation="0">
-                        <v-icon color="green" style="font-size: 48px !important"
+                        <v-icon color="green" class="font-48"
                           >mdi-cloud-upload-outline</v-icon
                         >
                         <div class="mt-2">
                           <p class="green--text custom-label mb-2">
                             อัปโหลดเอกสาร
                           </p>
-                          <p style="font-size: 10px" class="grey--text mb-0">
+                          <p class="grey--text mb-0 font-10">
                             กรุณาอัปโหลดเอกสารประกอบ เช่น สำเนาบัตรประชาชน,
                           </p>
-                          <p style="font-size: 10px" class="grey--text">
+                          <p class="grey--text font-10">
                             สำเนาทะเบียนบ้าน, Transcript
                           </p>
                         </div>
@@ -737,8 +665,7 @@
       <v-dialog v-model="dialog" max-width="500">
         <v-card>
           <v-card-title
-            style="font-size: 16px"
-            class="green--text green lighten-5 d-flex justify-space-between align-center py-2"
+            class="font-16 green--text green lighten-5 d-flex justify-space-between align-center py-2"
           >
             <span></span>
             <span>อัปโหลดเอกสาร</span>
@@ -749,11 +676,7 @@
 
           <v-card-text class="pt-4">
             <v-row>
-              <v-col
-                cols="3"
-                style="display: inline-block; white-space: nowrap"
-                class="d-flex align-center"
-              >
+              <v-col cols="3" class="doc d-flex align-center">
                 <span>ประเภทเอกสาร :</span>
               </v-col>
               <v-col cols="9">
@@ -763,6 +686,7 @@
                   :items="documentTypes"
                   outlined
                   dense
+                  hide-details
                   placeholder="กรุณาเลือกประเภทเอกสาร"
                 >
                 </v-select>
@@ -774,7 +698,7 @@
               class="border-dashed-upload text-center py-8 mt-4"
               @click="handleUpload"
             >
-              <v-icon color="green" style="font-size: 48px !important"
+              <v-icon color="green" class="font-48"
                 >mdi-cloud-upload-outline</v-icon
               >
               <p class="green--text custom-label mt-2 mb-0">
@@ -1032,7 +956,7 @@ export default {
   },
 };
 </script>
-<style>
+<style scoped>
 .v-application--wrap {
   flex: 1 1 auto;
   backface-visibility: hidden;
@@ -1212,5 +1136,59 @@ export default {
 
 .document-select.v-select--is-menu-active .v-input__slot {
   border-color: #58a144 !important;
+}
+
+.font-48 {
+  font-size: 48px !important;
+}
+.v-icon.font-48 {
+  font-size: 48px !important;
+}
+.font-10 {
+  font-size: 10px;
+}
+.font-16 {
+  font-size: 16px;
+}
+.doc {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.remove-message >>> .v-messages {
+  display: none !important;
+}
+
+.remove-message .v-text-field__details {
+  display: none !important;
+}
+
+/* Vue 2 สามารถใช้ deep selector แบบนี้ได้ */
+.remove-message::v-deep .v-messages {
+  display: none !important;
+}
+
+/* หรือ */
+::v-deep .remove-message .v-messages {
+  display: none !important;
+}
+
+::v-deep .input-box label {
+  font-size: 0.75rem !important;
+}
+
+::v-deep .input-box label {
+  font-size: 0.75rem !important;
+}
+
+/* ลดขนาด input text */
+::v-deep .input-box input {
+  font-size: 0.75rem !important;
+}
+
+/* ลดขนาด placeholder */
+::v-deep .input-box input::placeholder {
+  font-size: 0.75rem !important;
+  opacity: 0.6;
 }
 </style>

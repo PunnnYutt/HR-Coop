@@ -80,6 +80,9 @@
                               class="ma-0 input-box"
                               placeholder="ระบุทักษะ"
                               v-model="row.skill"
+                              :rules="[
+                                  v => !!v || 'กรุณาระบุทักษะ',
+                                ]"
                             />
                           </v-col>
                         </v-col>
@@ -91,12 +94,15 @@
                           <v-radio-group
                             v-model="row.choice"
                             row
-                            class="color-label custom-label pl-md-0 mt-0 mt-md-0"
+                            :rules="[
+                              v => !!v || '',
+                            ]"
+                            :class="index == rows.length - 1 ? 'remove-message color-label custom-label pl-md-0 mt-0 mt-md-0':'color-label custom-label pl-md-0 mt-0 mt-md-0'"
                           >
                             <v-col
                               cols="12"
                               md="4"
-                              class="d-flex flex-row flex-md-colum mr-md-0 px-md-0 pt-0 pd-md-0"
+                              class="d-flex flex-row flex-md-colum mr-md-0 px-md-0 pt-0 pb-md-2"
                             >
                               <v-radio
                                 value="three"
@@ -104,9 +110,9 @@
                               >
                                 <template #label>
                                   <v-col class="pa-0">
-                                    <p>ดีมาก</p>
+                                    <p class="text-caption" >ดีมาก</p>
                                     <p class="text-caption text--secondary">
-                                      Excellen
+                                      Excellent
                                     </p>
                                   </v-col>
                                 </template>
@@ -117,7 +123,7 @@
                               >
                                 <template #label>
                                   <v-col class="pa-0">
-                                    <p>ดี</p>
+                                    <p class="text-caption">ดี</p>
                                     <p class="text-caption text--secondary">
                                       Good
                                     </p>
@@ -130,7 +136,7 @@
                               >
                                 <template #label>
                                   <v-col class="pa-0">
-                                    <p>พอใช้</p>
+                                    <p class="text-caption">พอใช้</p>
                                     <p class="text-caption text--secondary">
                                       fair
                                     </p>
@@ -200,7 +206,7 @@ export default {
   },
 };
 </script>
-<style>
+<style scoped>
 .v-application--wrap {
   flex: 1 1 auto;
   backface-visibility: hidden;
@@ -227,9 +233,7 @@ export default {
   box-shadow: 0.5px 0.5px 6px rgba(0, 0, 0, 0.15) !important;
 }
 
-.shadow-card-none {
-  box-shadow: none !important;
-}
+
 
 .color-label .v-label {
   color: rgb(0, 0, 0);
@@ -284,11 +288,40 @@ export default {
 .input-box .v-input__slot {
   min-height: 32px !important;
 }
+.remove-message >>> .v-messages {
+  display: none !important;
+}
+
+.remove-message::v-deep .v-messages {
+  display: none !important;
+}
+
+::v-deep .remove-message .v-messages {
+  display: none !important;
+}
 
 .input-box input {
   padding: 0 !important;
   font-size: 14px;
   height: 32px !important;
+}
+::v-deep .input-box label {
+  font-size: 0.75rem !important;
+}
+
+::v-deep .input-box label {
+  font-size: 0.75rem !important;
+}
+
+/* ลดขนาด input text */
+::v-deep .input-box input {
+  font-size: 0.75rem !important;
+}
+
+/* ลดขนาด placeholder */
+::v-deep .input-box input::placeholder {
+  font-size: 0.75rem !important;
+  opacity: 0.6;
 }
 .v-messages {
   display: none !important;

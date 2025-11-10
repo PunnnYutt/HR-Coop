@@ -44,7 +44,7 @@
                     >
                       <v-row no-gutters>
                         <v-col cols="12">
-                          <p class="mb-2 font-weight-light">
+                          <p class="mb-2 font-weight-light pb-md-2">
                             {{ position.label }}
                             <span
                               class="pl-2 b-1 grey--text text--lighten-1 font-weight-light"
@@ -188,10 +188,10 @@
                           <v-radio-group
                             v-model="selectedGender"
                             row
-                            class="color-label custom-label custom-radio-group"
+                            class="color-label custom-label custom-radio-group remove-message"
                           >
                             <template #label>
-                              <span
+                              <span class="custom-label"
                                 >คำนำหน้าชื่อ<span class="red--text"> * </span
                                 >:</span
                               >
@@ -199,19 +199,19 @@
                             <v-radio
                               label="นาย"
                               value="one"
-                              class="color-label custom-radio"
+                              class="color-label custom-radio text-caption"
                               >test</v-radio
                             >
                             <v-radio
                               label="นาง"
                               value="two"
-                              class="color-label custom-radio"
+                              class="color-label custom-radio text-caption"
                               >test</v-radio
                             >
                             <v-radio
                               label="นางสาว"
                               value="three"
-                              class="color-label custom-radio"
+                              class="color-label custom-radio text-caption"
                               >test</v-radio
                             >
                           </v-radio-group>
@@ -335,10 +335,10 @@
                           <v-radio-group
                             v-model="selectedGender"
                             row
-                            class="color-label custom-label mt-1 mt-md-0"
+                            class="color-label custom-label mt-1 mt-md-0 remove-message"
                           >
                             <template #label>
-                              <span
+                              <span class="custom-label"
                                 >Name title<span class="red--text"> * </span
                                 >:</span
                               >
@@ -780,7 +780,7 @@
                           </v-col>
                         </v-row>
                         <v-row>
-                          <v-col class="pt-0 pl-0 pr-4 pb-md-6 mb-md-6">
+                          <v-col class="pt-0 pl-0 pr-4 pb-md-6">
                             <v-text-field
                               label="ระบุโรคประจำตัว"
                               outlined
@@ -813,7 +813,7 @@
                             </v-col>
                           </v-row>
                           <v-row>
-                            <v-col class="pt-0 pl-0 pr-md-0 pb-0">
+                            <v-col class="pt-0 pl-0 pr-md-0 pb-md-2">
                               <v-text-field
                                 label="ระบุสัญชาติ"
                                 :rules="[(v) => !!v || 'กรุณาระบุสัญชาติ']"
@@ -873,7 +873,7 @@
                             </v-col>
                           </v-row>
                           <v-row>
-                            <v-col class="pt-0 pl-0 pb-0 pr-4">
+                            <v-col class="pt-0 pl-0 pb-0 pr-1">
                               <v-text-field
                                 label="ระบุศาสนา"
                                 :rules="[(v) => !!v || 'กรุณาระบุศาสนา']"
@@ -908,7 +908,7 @@
                           <v-radio-group
                             v-model="soldier"
                             row
-                            class="color-label custom-label mt-1 mt-md-0 py-md-0 date_box"
+                            class="color-label custom-label mt-1 mt-md-0 py-md-0 date_box remove-message"
                           >
                             <v-col
                               cols="12"
@@ -1005,7 +1005,7 @@
                         </v-col>
                       </v-row>
                       <v-row>
-                        <v-col class="pt-0 pl-4 pr-md-4 pb-md-4">
+                        <v-col class="pt-0 pl-4 pr-md-4 pb-md-0">
                           <v-text-field
                             v-model="phoneNumber"
                             label="เบอร์โทรศัพท์"
@@ -1037,7 +1037,7 @@
                         </v-col>
                       </v-row>
                       <v-row>
-                        <v-col class="pt-0 pl-0 pb-md-4">
+                        <v-col class="pt-0 pl-0 pb-md-0">
                           <v-text-field
                             label="อีเมล"
                             :rules="[
@@ -1401,7 +1401,7 @@ export default {
   },
 };
 </script>
-<style>
+<style scoped>
 .v-application--wrap {
   flex: 1 1 auto;
   backface-visibility: hidden;
@@ -1501,6 +1501,16 @@ export default {
   font-weight: 500;
 }
 
+::v-deep .custom-radio .v-label {
+  font-size: 0.75rem !important;
+  font-weight: 500;
+}
+
+::v-deep .custom-radio-group > .v-label {
+  font-size: 0.75rem !important;
+  font-weight: 500;
+}
+
 .custom-label .v-label {
   font-size: 0.75rem !important;
   font-weight: 500;
@@ -1549,6 +1559,25 @@ export default {
   min-height: 32px !important;
 }
 
+::v-deep .input-box label {
+  font-size: 0.75rem !important;
+}
+
+::v-deep .input-box label {
+  font-size: 0.75rem !important;
+}
+
+/* ลดขนาด input text */
+::v-deep .input-box input {
+  font-size: 0.75rem !important;
+}
+
+/* ลดขนาด placeholder */
+::v-deep .input-box input::placeholder {
+  font-size: 0.75rem !important;
+  opacity: 0.6;
+}
+
 .input-select .v-input__control {
   min-height: 32px !important;
   height: 32px !important;
@@ -1556,13 +1585,13 @@ export default {
 
 .input-select input {
   padding: 0 !important;
-  font-size: 14px;
+  font-size: 14px !important;
   height: 32px !important;
 }
 
 .input-box input {
   padding: 0 !important;
-  font-size: 14px;
+  font-size: 14px !important;
   height: 32px !important;
 }
 
@@ -1597,5 +1626,23 @@ export default {
 
 .margin-zero-message .v-text-field__details {
   margin-bottom: 0px !important;
+}
+
+.remove-message >>> .v-messages {
+  display: none !important;
+}
+
+.remove-message .v-text-field__details {
+  display: none !important;
+}
+
+/* Vue 2 สามารถใช้ deep selector แบบนี้ได้ */
+.remove-message::v-deep .v-messages {
+  display: none !important;
+}
+
+/* หรือ */
+::v-deep .remove-message .v-messages {
+  display: none !important;
 }
 </style>
