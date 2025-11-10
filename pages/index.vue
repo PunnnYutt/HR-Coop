@@ -23,7 +23,7 @@
                       class="mb-4 custom-label">
                       <v-row no-gutters>
                         <v-col cols="12">
-                          <p class="mb-2 font-weight-light">
+                          <p class="mb-2 font-weight-light pb-md-2">
                             {{ position.label }}
                             <span class="pl-2 b-1 grey--text text--lighten-1 font-weight-light">{{ position.labelEn
                             }}</span>
@@ -95,13 +95,13 @@
                         <v-col cols="12" no-gutters
                           class="d-flex justify-start align-center mt-12 mt-md-0 pb-0 pt-0 pl-4">
                           <v-radio-group v-model="selectedGender" row
-                            class="color-label custom-label custom-radio-group">
+                            class="color-label custom-label custom-radio-group remove-message">
                             <template #label>
-                              <span>คำนำหน้าชื่อ<span class="red--text"> * </span>:</span>
+                              <span class="custom-label">คำนำหน้าชื่อ<span class="red--text"> * </span>:</span>
                             </template>
-                            <v-radio label="นาย" value="one" class="color-label custom-radio">test</v-radio>
-                            <v-radio label="นาง" value="two" class="color-label custom-radio">test</v-radio>
-                            <v-radio label="นางสาว" value="three" class="color-label custom-radio">test</v-radio>
+                            <v-radio label="นาย" value="one" class="color-label custom-radio text-caption">test</v-radio>
+                            <v-radio label="นาง" value="two" class="color-label custom-radio text-caption">test</v-radio>
+                            <v-radio label="นางสาว" value="three" class="color-label custom-radio text-caption">test</v-radio>
                           </v-radio-group>
                         </v-col>
                         <v-col cols="12" md="4" class="d-flex justify-center align-center pt-0 px-4 pb-0">
@@ -168,9 +168,9 @@
                           </v-col>
                         </v-col>
                         <v-col cols="12" no-gutters class="d-flex justify-start align-center pb-0 pt-md-0 pl-4">
-                          <v-radio-group v-model="selectedGender" row class="color-label custom-label mt-1 mt-md-0">
+                          <v-radio-group v-model="selectedGender" row class="color-label custom-label mt-1 mt-md-0 remove-message">
                             <template #label>
-                              <span>Name title<span class="red--text"> * </span>:</span>
+                              <span class="custom-label">Name title<span class="red--text"> * </span>:</span>
                             </template>
                             <v-radio label="Mr." value="one" class="color-label custom-radio">test</v-radio>
                             <v-radio label="Mrs." value="two" class="color-label custom-radio">test</v-radio>
@@ -405,7 +405,7 @@
                           </v-col>
                         </v-row>
                         <v-row>
-                          <v-col class="pt-0 pl-0 pr-4 pb-md-6 mb-md-6">
+                          <v-col class="pt-0 pl-0 pr-4 pb-md-6">
                             <v-text-field label="ระบุโรคประจำตัว" outlined dense single-line
                               class="input-box date_box" />
                           </v-col>
@@ -427,7 +427,7 @@
                             </v-col>
                           </v-row>
                           <v-row>
-                            <v-col class="pt-0 pl-0 pr-md-0 pb-0">
+                            <v-col class="pt-0 pl-0 pr-md-0 pb-md-2">
                               <v-text-field label="ระบุสัญชาติ" :rules="[
                                 v => !!v || 'กรุณาระบุสัญชาติ'
                               ]" outlined dense single-line required class="input-box" />
@@ -467,7 +467,7 @@
                             </v-col>
                           </v-row>
                           <v-row>
-                            <v-col class="pt-0 pl-0 pb-0 pr-4">
+                            <v-col class="pt-0 pl-0 pb-0 pr-1">
                               <v-text-field label="ระบุศาสนา" :rules="[
                                 v => !!v || 'กรุณาระบุศาสนา'
                               ]" outlined dense single-line required class="input-box" />
@@ -492,7 +492,7 @@
                         </v-col>
                         <v-col cols="12" md="9" class="py-0">
                           <v-radio-group v-model="soldier" row
-                            class="color-label custom-label mt-1 mt-md-0 py-md-0 date_box">
+                            class="color-label custom-label mt-1 mt-md-0 py-md-0 date_box remove-message">
                             <v-col cols="12" md="4"
                               class="d-flex flex-row flex-md-colum align-md-start mr-md-0 pa-md-0 pt-0">
                               <v-radio value="three" class="color-label custom-radio">
@@ -557,7 +557,7 @@
                         </v-col>
                       </v-row>
                       <v-row>
-                        <v-col class="pt-0 pl-4 pr-md-4 pb-md-4">
+                        <v-col class="pt-0 pl-4 pr-md-4 pb-md-0">
                           <v-text-field v-model="phoneNumber" label="เบอร์โทรศัพท์" :rules="[
                             (v) => !!v || 'กรุณากรอกเบอร์โทรศัพท์',
                             v => /^0[0-9]{2}-[0-9]{3}-[0-9]{4}$/.test(v) || 'เบอร์โทรศัพท์ไม่ถูกต้อง'
@@ -573,7 +573,7 @@
                         </v-col>
                       </v-row>
                       <v-row>
-                        <v-col class="pt-0 pl-0 pb-md-4">
+                        <v-col class="pt-0 pl-0 pb-md-0">
                           <v-text-field label="อีเมล" :rules="[
                             (v) => !!v || 'กรุณากรอกอีเมล',
                             (v) => /.+@.+\..+/.test(v) || 'รูปแบบอีเมลไม่ถูกต้อง',
@@ -921,7 +921,7 @@ export default {
   },
 };
 </script>
-<style>
+<style scoped>
 .v-application--wrap {
   flex: 1 1 auto;
   backface-visibility: hidden;
@@ -1021,6 +1021,16 @@ export default {
   font-weight: 500;
 }
 
+::v-deep .custom-radio .v-label {
+  font-size: 0.75rem !important; 
+    font-weight: 500;
+}
+
+::v-deep .custom-radio-group > .v-label {
+  font-size: 0.75rem !important; 
+    font-weight: 500;
+}
+
 .custom-label .v-label {
   font-size: 0.75rem !important;
   font-weight: 500;
@@ -1069,6 +1079,25 @@ export default {
   min-height: 32px !important;
 }
 
+::v-deep .input-box label {
+  font-size: 0.75rem !important;
+}
+
+::v-deep .input-box label {
+  font-size: 0.75rem !important;
+}
+
+/* ลดขนาด input text */
+::v-deep .input-box input {
+  font-size: 0.75rem !important;
+}
+
+/* ลดขนาด placeholder */
+::v-deep .input-box input::placeholder {
+  font-size: 0.75rem !important;
+  opacity: 0.6;
+}
+
 .input-select .v-input__control {
   min-height: 32px !important;
   height: 32px !important;
@@ -1076,14 +1105,14 @@ export default {
 
 .input-select input {
   padding: 0 !important;
-  font-size: 14px;
+  font-size: 14px !important;
   height: 32px !important;
 }
 
 
 .input-box input {
   padding: 0 !important;
-  font-size: 14px;
+  font-size: 14px !important;
   height: 32px !important;
 }
 
@@ -1118,5 +1147,23 @@ export default {
 
 .margin-zero-message .v-text-field__details {
   margin-bottom: 0px !important;
+}
+
+.remove-message >>> .v-messages {
+  display: none !important;
+}
+
+.remove-message .v-text-field__details{
+  display: none !important;
+}
+
+/* Vue 2 สามารถใช้ deep selector แบบนี้ได้ */
+.remove-message::v-deep .v-messages {
+  display: none !important;
+}
+
+/* หรือ */
+::v-deep .remove-message .v-messages {
+  display: none !important;
 }
 </style>
