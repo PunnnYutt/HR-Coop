@@ -32,15 +32,15 @@
                         <v-col cols="12" class="pl-0 position-bottom">
                           <v-select v-if="position.number <= 2" :items="positionFields" item-text="label"
                             item-value="label" outlined dense placeholder="เลือกตำแหน่งสหกิจหรือฝึกงาน" clearable
-                            :class="position.number === 1 ? 'pr-md-4 input-select input-box' : 'pr-lg-4 input-select input-box'
+                            :class="position.number === 1 ? 'pr-md-4 input-select input-box custom-select-size' : 'pr-lg-4 input-select input-box custom-select-size'
                               " />
                           <v-select v-else-if="position.number === 2" :items="WorkplaceFields" item-text="label"
                             item-value="label" outlined dense placeholder="เลือกประจำศูนย์" clearable
-                            class="pr-md-4 input-select input-box" />
+                            class="pr-md-4 input-select input-box custom-select-size" />
 
                           <v-select v-else-if="position.number === 3" :items="WorkplaceFields" item-text="label"
                             item-value="label" outlined dense placeholder="เลือกการฝึกงาน" clearable
-                            class="pr-md-4 input-select input-box" />
+                            class="pr-md-4 input-select input-box custom-select-size" />
                         </v-col>
                       </v-row>
                     </v-col>
@@ -965,8 +965,9 @@ export default {
   height: 40px;
 }
 
-.v-list-item:hover {
-  background-color: #e9ffeb !important;
+::v-deep .v-list-item:hover {
+  background-color: 
+#f0f9ee !important;
 }
 
 .show-display {
@@ -1031,9 +1032,13 @@ export default {
     font-weight: 500;
 }
 
-.custom-label .v-label {
+::v-deep .custom-label .v-label {
   font-size: 0.75rem !important;
   font-weight: 500;
+}
+
+::v-deep .custom-select-size .v-select__selection {
+  font-size: 0.75rem !important; 
 }
 
 .custom-radio .v-input--selection-controls__ripple {
@@ -1048,7 +1053,7 @@ export default {
   margin-bottom: 26px !important;
 }
 
-.text-center input {
+::v-deep .text-center input {
   text-align: center;
 }
 
@@ -1057,7 +1062,7 @@ export default {
   padding-bottom: 9px !important;
 }
 
-.custom-radio-group.v-input--selection-controls {
+::v-deep .custom-radio-group.v-input--selection-controls {
   margin-top: 12px;
 }
 
@@ -1075,7 +1080,7 @@ export default {
   display: none !important;
 }
 
-.input-box .v-input__slot {
+::v-deep .input-box .v-input__slot {
   min-height: 32px !important;
 }
 
@@ -1098,25 +1103,25 @@ export default {
   opacity: 0.6;
 }
 
-.input-select .v-input__control {
+::v-deep .input-select .v-input__control {
   min-height: 32px !important;
   height: 32px !important;
 }
 
-.input-select input {
+::v-deep .input-select input {
   padding: 0 !important;
   font-size: 14px !important;
   height: 32px !important;
 }
 
 
-.input-box input {
+::v-deep .input-box input {
   padding: 0 !important;
   font-size: 14px !important;
   height: 32px !important;
 }
 
-.input-box .v-label {
+::v-deep .input-box .v-label {
   font-size: 12px !important;
   top: 50% !important;
   transform: translateY(-50%) scale(1) !important;
@@ -1126,26 +1131,29 @@ export default {
 .input-box .v-text-field__details {
   padding-top: 2px !important;
 }
+::v-deep .centered-input .v-input__slot {
+  align-items: center !important;
+}
 
-.align-center-icon {
+::v-deep .align-center-icon {
   display: flex;
   align-items: center;
   height: 100%;
 }
 
-.v-input__append-inner {
+::v-deep .v-input__append-inner {
   margin-top: 5px !important;
 }
 
-.compact-date-picker .v-picker__title {
+::v-deep .compact-date-picker .v-picker__title {
   height: 81px !important;
 }
 
-.margin-zero-message .v-messages {
+::v-deep .margin-zero-message .v-messages {
   margin-bottom: 0px !important;
 }
 
-.margin-zero-message .v-text-field__details {
+::v-deep .margin-zero-message .v-text-field__details {
   margin-bottom: 0px !important;
 }
 
