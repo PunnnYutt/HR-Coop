@@ -25,7 +25,7 @@
                       : 'shadow-card-none'
                   "
                 >
-                  <v-row no-gutters class="green lighten-5 pl-4 pr-0 py-9px">
+                  <v-row no-gutters class="bg-header pl-4 pr-0 py-9px">
                     <v-col cols="10" class="d-flex align-center">
                       <p
                         class="primary--text lighten-1 text-body-2 mb-0 font-weight-medium"
@@ -43,7 +43,7 @@
                         </p>
                       </v-row>
                       <v-row no-gutters>
-                        <p class="custom-label grey--text">Driving licence</p>
+                        <p class="text-caption grey--text lighten-5">Driving licence</p>
                       </v-row>
                     </v-col>
                     <v-col cols="4">
@@ -57,7 +57,7 @@
                             <template #label>
                               <v-col class="pa-0">
                                 <p class="custom-label black--text">รถยนต์</p>
-                                <p class="text-caption text--secondary">Car</p>
+                                <p class="text-caption grey--text lighten-5">Car</p>
                               </v-col>
                             </template>
                           </v-checkbox>
@@ -73,7 +73,7 @@
                                 <p class="custom-label black--text">
                                   มอเตอร์ไซต์
                                 </p>
-                                <p class="text-caption text--secondary">
+                                <p class="text-caption grey--text lighten-5">
                                   Motorcycle
                                 </p>
                               </v-col>
@@ -93,7 +93,7 @@
                         </p>
                       </v-row>
                       <v-row no-gutters>
-                        <p class="custom-label grey--text">
+                        <p class="text-caption grey--text lighten-5">
                           Can you work in upcountry?
                         </p>
                       </v-row>
@@ -118,8 +118,8 @@
                               >
                                 <template #label>
                                   <v-col class="pa-0">
-                                    <p class="text-caption">ได้</p>
-                                    <p class="text-caption text--secondary">
+                                    <p class="text-caption black--text">ได้</p>
+                                    <p class="text-caption grey--text lighten-5">
                                       Yes
                                     </p>
                                   </v-col>
@@ -131,8 +131,8 @@
                               >
                                 <template #label>
                                   <v-col cols="12" class="pa-0">
-                                    <p class="doc text-caption">ไม่ได้</p>
-                                    <p class="text-caption text--secondary">
+                                    <p class="doc text-caption black--text">ไม่ได้</p>
+                                    <p class="text-caption grey--text lighten-5">
                                       No
                                     </p>
                                   </v-col>
@@ -154,7 +154,7 @@
                         </p>
                       </v-row>
                       <v-row no-gutters>
-                        <p class="custom-label grey--text">
+                        <p class="text-caption grey--text lighten-5">
                           Have you ever been discharged from employment for any
                           reason?
                         </p>
@@ -180,8 +180,8 @@
                               >
                                 <template #label>
                                   <v-col class="pa-0">
-                                    <p class="doc text-caption">ไม่เคย</p>
-                                    <p class="text-caption text--secondary">
+                                    <p class="doc text-caption black--text">ไม่เคย</p>
+                                    <p class="text-caption grey--text lighten-5">
                                       No
                                     </p>
                                   </v-col>
@@ -193,8 +193,8 @@
                               >
                                 <template #label>
                                   <v-col class="pa-0">
-                                    <p class="text-caption">เคย</p>
-                                    <p class="text-caption text--secondary">
+                                    <p class="text-caption black--text">เคย</p>
+                                    <p class="text-caption grey--text lighten-5">
                                       Yes
                                     </p>
                                   </v-col>
@@ -216,7 +216,7 @@
                         </p>
                       </v-row>
                       <v-row no-gutters>
-                        <p class="custom-label grey--text">
+                        <p class="text-caption grey--text lighten-5">
                           Have you ever been imprisoned or required indirectly?
                         </p>
                       </v-row>
@@ -241,8 +241,8 @@
                               >
                                 <template #label>
                                   <v-col class="pa-0">
-                                    <p class="doc text-caption">ไม่เคย</p>
-                                    <p class="text-caption text--secondary">
+                                    <p class="doc text-caption black--text">ไม่เคย</p>
+                                    <p class="text-caption grey--text lighten-5">
                                       No
                                     </p>
                                   </v-col>
@@ -254,8 +254,8 @@
                               >
                                 <template #label>
                                   <v-col class="pa-0">
-                                    <p class="text-caption">เคย</p>
-                                    <p class="text-caption text--secondary">
+                                    <p class="text-caption black--text">เคย</p>
+                                    <p class="text-caption grey--text lighten-5">
                                       Yes
                                     </p>
                                   </v-col>
@@ -276,7 +276,7 @@
                         </p>
                       </v-row>
                       <v-row no-gutters>
-                        <p class="custom-label grey--text">
+                        <p class="text-caption grey--text lighten-5">
                           Do you smoke cigarettes?
                         </p>
                       </v-row>
@@ -301,8 +301,8 @@
                               >
                                 <template #label>
                                   <v-col class="pa-0">
-                                    <p class="text-caption">ไม่สูบ</p>
-                                    <p class="text-caption text--secondary doc">
+                                    <p class="text-caption black--text">ไม่สูบ</p>
+                                    <p class="text-caption grey--text lighten-5 doc">
                                       Non-smoker
                                     </p>
                                   </v-col>
@@ -314,8 +314,8 @@
                               >
                                 <template #label>
                                   <v-col class="pa-0">
-                                    <p class="doc text-caption">สูบบางครั้ง</p>
-                                    <p class="text-caption text--secondary doc">
+                                    <p class="doc text-caption black--text">สูบบางครั้ง</p>
+                                    <p class="text-caption grey--text lighten-5 doc">
                                       Occasional smoker
                                     </p>
                                   </v-col>
@@ -327,10 +327,10 @@
                               >
                                 <template #label>
                                   <v-col class="pa-0">
-                                    <p class="doc text-caption">
+                                    <p class="doc text-caption black--text">
                                       สูบเป็นประจํา
                                     </p>
-                                    <p class="text-caption text--secondary doc">
+                                    <p class="text-caption grey--text lighten-5 doc">
                                       Smoke regularly
                                     </p>
                                   </v-col>
@@ -352,7 +352,7 @@
                         </p>
                       </v-row>
                       <v-row no-gutters>
-                        <p class="custom-label grey--text">
+                        <p class="text-caption grey--text lighten-5">
                           Do you consume alcoholic beverages?
                         </p>
                       </v-row>
@@ -377,8 +377,8 @@
                               >
                                 <template #label>
                                   <v-col class="pa-0">
-                                    <p class="text-caption">ไม่ดื่ม</p>
-                                    <p class="text-caption text--secondary doc">
+                                    <p class="text-caption black--text">ไม่ดื่ม</p>
+                                    <p class="text-caption grey--text lighten-5 doc">
                                       Non-drinker
                                     </p>
                                   </v-col>
@@ -390,8 +390,8 @@
                               >
                                 <template #label>
                                   <v-col class="pa-0">
-                                    <p class="text-caption">ดื่มบางครั้ง</p>
-                                    <p class="text-caption text--secondary doc">
+                                    <p class="text-caption black--text">ดื่มบางครั้ง</p>
+                                    <p class="text-caption grey--text lighten-5 doc">
                                       Occasional drinker
                                     </p>
                                   </v-col>
@@ -403,10 +403,10 @@
                               >
                                 <template #label>
                                   <v-col class="pa-0">
-                                    <p class="doc text-caption">
+                                    <p class="doc text-caption black--text">
                                       ดื่มเป็นประจำ
                                     </p>
-                                    <p class="text-caption text--secondary doc">
+                                    <p class="text-caption grey--text lighten-5 doc">
                                       Regular drinker
                                     </p>
                                   </v-col>
@@ -429,7 +429,7 @@
                         </p>
                       </v-row>
                       <v-row no-gutters>
-                        <p class="custom-label grey--text">
+                        <p class="text-caption grey--text lighten-5">
                           You have deficiencies or obstacles in the body. Or any
                           part of the organ is deformed or not
                         </p>
@@ -455,8 +455,8 @@
                               >
                                 <template #label>
                                   <v-col class="pa-0">
-                                    <p class="doc text-caption">ไม่เคย</p>
-                                    <p class="text-caption text--secondary">
+                                    <p class="doc text-caption black--text">ไม่เคย</p>
+                                    <p class="text-caption grey--text lighten-5">
                                       No
                                     </p>
                                   </v-col>
@@ -468,8 +468,8 @@
                               >
                                 <template #label>
                                   <v-col class="pa-0">
-                                    <p class="text-caption">เคย</p>
-                                    <p class="text-caption text--secondary">
+                                    <p class="text-caption black--text">เคย</p>
+                                    <p class="text-caption grey--text lighten-5">
                                       Yes
                                     </p>
                                   </v-col>
@@ -487,7 +487,7 @@
                       <v-row no-gutters>
                         <p class="custom-label pb-2">
                           ท่านทราบข่าวสารการสมัครฝึกงานจาก
-                          <span class="grey--text"
+                          <span class="text-caption grey--text lighten-5"
                             >How did you hear about this Internship
                             application?</span
                           >
@@ -499,6 +499,7 @@
                             v-model="formData.howDidYouHear"
                             :items="howto"
                             multiple
+                            append-icon="mdi-chevron-down" append-icon-color="primary"
                             item-text="label"
                             item-value="value"
                             outlined
@@ -510,7 +511,7 @@
                             chips
                             small-chips
                             hide-details
-                            class="remove-message input-box"
+                            class="remove-message input-box input-select custom-height"
                           >
                             <template v-slot:selection="{ item, index }">
                               <v-chip
@@ -548,7 +549,7 @@
                       : 'shadow-card-none'
                   "
                 >
-                  <v-row no-gutters class="green lighten-5 pl-4 pr-0 py-9px">
+                  <v-row no-gutters class="bg-header pl-4 pr-0 py-9px">
                     <v-col cols="10" class="d-flex align-center">
                       <p
                         class="primary--text lighten-1 text-body-2 mb-0 font-weight-medium"
@@ -665,7 +666,7 @@
       <v-dialog v-model="dialog" max-width="500">
         <v-card>
           <v-card-title
-            class="font-16 green--text green lighten-5 d-flex justify-space-between align-center py-2"
+            class="font-16 green--text bg-header d-flex justify-space-between align-center py-2"
           >
             <span></span>
             <span>อัปโหลดเอกสาร</span>
@@ -684,9 +685,11 @@
                   color="grey lighten-2"
                   v-model="documentType"
                   :items="documentTypes"
+                  append-icon="mdi-chevron-down" append-icon-color="primary"
                   outlined
                   dense
                   hide-details
+                  class="custom-height input-select input-select-2"
                   placeholder="กรุณาเลือกประเภทเอกสาร"
                 >
                 </v-select>
@@ -940,9 +943,7 @@ export default {
       }
     },
     removeDocument(index) {
-      if (confirm("คุณต้องการลบเอกสารนี้ใช่หรือไม่?")) {
         this.formData.documents.splice(index, 1);
-      }
     },
     closeDialog() {
       this.dialog = false;
@@ -1048,18 +1049,21 @@ export default {
   width: 50px !important;
 }
 
-.input-box .v-input__slot {
-  min-height: 32px !important;
+::v-deep .input-select input {
+  padding: 0 !important;
+  font-size: 14px !important;
+  height: 32px !important;
 }
 
-.input-box input {
+
+::v-deep .input-box input {
   padding: 0 !important;
   font-size: 14px;
   height: 32px !important;
 }
 
-.v-messages {
-  display: none !important;
+::v-deep .input-select-2 .v-select__selection {
+  font-size: 0.75rem !important; /* 12px */
 }
 
 .v-input.v-input--checkbox.v-input--dense {
@@ -1123,6 +1127,28 @@ export default {
 
 .document-select .v-input__slot {
   border-color: #e0e0e0 !important;
+}
+
+::v-deep .input-select .v-input__control {
+  min-height: 32px !important;
+  height: 32px !important;
+}
+
+::v-deep .input-select input {
+  padding: 0 !important;
+  font-size: 14px !important;
+  height: 32px !important;
+}
+
+::v-deep .input-box input {
+  padding: 0 !important;
+  font-size: 14px !important;
+  height: 32px !important;
+}
+
+
+::v-deep .custom-select-size .v-select__selection {
+  font-size: 0.75rem !important; 
 }
 
 .document-select:hover .v-input__slot {
@@ -1190,5 +1216,68 @@ export default {
 ::v-deep .input-box input::placeholder {
   font-size: 0.75rem !important;
   opacity: 0.6;
+}
+
+::v-deep .custom-height .v-input__slot {
+  min-height: 32px !important;
+  max-height: 32px !important;
+}
+
+::v-deep .custom-height .v-select__selections {
+  align-items: center !important;
+  padding-top: 4px !important;
+  padding-bottom: 4px !important;
+}
+
+::v-deep .input-select .v-input__append-inner {
+  margin-top: 0 !important;
+  align-self: center !important;
+}
+
+::v-deep .input-select .v-list-item:hover {
+  background-color: 
+#f0f9ee !important;
+}
+
+::v-deep .input-box label {
+  font-size: 0.75rem !important;
+}
+
+::v-deep .input-box label {
+  font-size: 0.75rem !important;
+}
+
+::v-deep .input-box.v-text-field--outlined fieldset {
+  border-color: #e6e6e6 !important; /* เทา */
+}
+::v-deep .input-box.v-input.error--text.v-text-field--outlined fieldset {
+  border-color: #e53935 !important; /* สีแดง error */
+}
+::v-deep .input-box.v-input--is-focused fieldset {
+  border-color: #4caf50 !important; /* เขียวเข้ม */
+  border-width: 2px !important;
+}
+
+::v-deep .input-select.v-text-field--outlined fieldset {
+  border-color: #e6e6e6 !important; /* เทา */
+}
+::v-deep .input-select.v-input.error--text.v-text-field--outlined fieldset {
+  border-color: #e53935 !important; /* สีแดง error */
+}
+::v-deep .input-select.v-input--is-focused fieldset {
+  border-color: #4caf50 !important; /* เขียวเข้ม */
+  border-width: 2px !important;
+}
+
+::v-deep .custom-radio .v-icon {
+  color: #4caf50 !important; /* สีของจุดวงกลม */
+}
+
+::v-deep .input-select .v-input__append-inner .v-icon {
+  color: #4caf50 !important;
+}
+
+.bg-header{
+  background-color: #f0f9ee;
 }
 </style>
