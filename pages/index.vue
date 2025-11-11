@@ -59,13 +59,14 @@
                             item-text="label"
                             item-value="label"
                             outlined
+                            append-icon="mdi-chevron-down"
                             dense
                             placeholder="เลือกตำแหน่งสหกิจหรือฝึกงาน"
                             clearable
                             :class="
                               position.number === 1
-                                ? 'pr-md-4 input-select input-box'
-                                : 'pr-lg-4 input-select input-box'
+                                ? 'pr-md-4 input-select input-box custom-select-size custom-select'
+                                : 'pr-lg-4 input-select input-box custom-select-size custom-select'
                             "
                             v-model="formData.position"
                           />
@@ -76,9 +77,10 @@
                             item-value="label"
                             outlined
                             dense
+                            append-icon="mdi-chevron-down"
                             placeholder="เลือกประจำศูนย์"
                             clearable
-                            class="pr-md-4 input-select input-box"
+                            class="pr-md-4 input-select input-box custom-select-size custom-select"
                             v-model="formData.workplace"
                           />
 
@@ -89,9 +91,10 @@
                             item-value="label"
                             outlined
                             dense
+                            append-icon="mdi-chevron-down"
                             placeholder="เลือกการฝึกงาน"
                             clearable
-                            class="pr-md-4 input-select input-box"
+                            class="pr-md-4 input-select input-box custom-select-size custom-select"
                             v-model="formData.internshipFormat"
                           />
                         </v-col>
@@ -944,7 +947,7 @@
                             </p>
                           </v-row>
                         </v-col>
-                        <v-col cols="12" md="9" class="py-0">
+                        <v-col cols="12" md="9" class="py-0 ml-md-9">
                           <v-radio-group
                             v-model="formData.soldierStatus"
                             row
@@ -1059,7 +1062,7 @@
                         <v-col class="pt-0 pl-4 pr-md-4 pb-md-0">
                           <v-text-field
                             v-model="formData.phoneNumber"
-                            label="เบอร์โทรศัพท์"
+                            label="090-000-0000"
                             :rules="[
                               (v) => !!v || 'กรุณากรอกเบอร์โทรศัพท์',
                               (v) =>
@@ -1093,7 +1096,7 @@
                       <v-row>
                         <v-col class="pt-0 pl-0 pb-md-0">
                           <v-text-field
-                            label="อีเมล"
+                            label="HR_inet@one.th"
                             :rules="[
                               (v) => !!v || 'กรุณากรอกอีเมล',
                               (v) =>
@@ -1221,7 +1224,7 @@ export default {
         { number: 4, label: "INET หาดใหญ่" },
         { number: 5, label: "INET นครราชสีมา" },
       ],
-      WorkFields: [
+      FormatFields: [
         { number: 1, label: "สหกิจ" },
         { number: 2, label: "ฝึกงาน" },
       ],
@@ -1732,6 +1735,7 @@ export default {
 
 ::v-deep .custom-select .v-input__append-inner .v-icon {
   color: #4caf50 !important;
+  font-size: 16px;
 }
 
 .doc {
