@@ -1,6 +1,7 @@
 const fileStore = {
   // We'll store our file from the form here
-  myFile: [],
+  docFile: [],
+  imageFile: null,
 };
 
 // 'inject' makes it available on the Nuxt context (this.$fileStore)

@@ -539,7 +539,7 @@ export default {
     if (storeData[5]["drivingLicense"]) {
       const vuexData = JSON.parse(JSON.stringify(storeData));
       this.formData = vuexData[5];
-      this.formData.documents = [...this.$fileStore.myFile];
+      this.formData.documents = [...this.$fileStore.docFile];
     }
   },
   data() {

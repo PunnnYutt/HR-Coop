@@ -771,13 +771,13 @@ export default {
     if (storeData[5]["drivingLicense"]) {
       const vuexData = JSON.parse(JSON.stringify(storeData));
       this.formData = vuexData[5];
-      this.formData.documents = [...this.$fileStore.myFile];
+      this.formData.documents = [...this.$fileStore.docFile];
     }
   },
 
   beforeDestroy() {
     this.$store.commit("SET_ETC_DATA", this.formData);
-    this.$fileStore.myFile = this.formData.documents;
+    this.$fileStore.docFile = this.formData.documents;
   },
 
   data() {

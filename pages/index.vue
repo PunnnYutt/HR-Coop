@@ -54,7 +54,7 @@
                         </v-col>
                         <v-col cols="12" class="pl-0 position-bottom">
                           <v-select
-                            v-if="position.number <= 2"
+                            v-if="position.number === 1"
                             :items="positionFields"
                             item-text="label"
                             item-value="label"
@@ -67,6 +67,7 @@
                                 ? 'pr-md-4 input-select input-box'
                                 : 'pr-lg-4 input-select input-box'
                             "
+                            v-model="formData.position"
                           />
                           <v-select
                             v-else-if="position.number === 2"
@@ -78,11 +79,12 @@
                             placeholder="เลือกประจำศูนย์"
                             clearable
                             class="pr-md-4 input-select input-box"
+                            v-model="formData.workplace"
                           />
 
                           <v-select
                             v-else-if="position.number === 3"
-                            :items="WorkplaceFields"
+                            :items="FormatFields"
                             item-text="label"
                             item-value="label"
                             outlined
@@ -90,6 +92,7 @@
                             placeholder="เลือกการฝึกงาน"
                             clearable
                             class="pr-md-4 input-select input-box"
+                            v-model="formData.internshipFormat"
                           />
                         </v-col>
                       </v-row>
@@ -186,7 +189,7 @@
                           class="d-flex justify-start align-center mt-12 mt-md-0 pb-0 pt-0 pl-4"
                         >
                           <v-radio-group
-                            v-model="selectedGender"
+                            v-model="formData.namePrefix"
                             row
                             class="color-label custom-label custom-radio-group remove-message"
                           >
@@ -248,6 +251,7 @@
                                   single-line
                                   required
                                   class="input-box"
+                                  v-model="formData.firstNameTh"
                                 />
                               </v-col>
                             </v-row>
@@ -285,6 +289,7 @@
                                   single-line
                                   required
                                   class="input-box"
+                                  v-model="formData.lastNameTh"
                                 />
                               </v-col>
                             </v-row>
@@ -322,6 +327,7 @@
                                   single-line
                                   required
                                   class="input-box"
+                                  v-model="formData.nickNameTh"
                                 />
                               </v-col>
                             </v-row>
@@ -333,7 +339,7 @@
                           class="d-flex justify-start align-center pb-0 pt-md-0 pl-4"
                         >
                           <v-radio-group
-                            v-model="selectedGender"
+                            v-model="formData.namePrefix"
                             row
                             class="color-label custom-label mt-1 mt-md-0 remove-message"
                           >
@@ -393,6 +399,7 @@
                                   single-line
                                   required
                                   class="input-box"
+                                  v-model="formData.firstNameEn"
                                 ></v-text-field>
                               </v-col>
                             </v-row>
@@ -428,6 +435,7 @@
                                   single-line
                                   required
                                   class="input-box"
+                                  v-model="formData.lastNameEn"
                                 ></v-text-field>
                               </v-col>
                             </v-row>
@@ -463,6 +471,7 @@
                                   single-line
                                   required
                                   class="input-box"
+                                  v-model="formData.nickNameEn"
                                 ></v-text-field>
                               </v-col>
                             </v-row>
@@ -489,7 +498,7 @@
                               <v-col class="pt-0 pl-0 pr-md-4 pb-0">
                                 <v-text-field
                                   label="0-0000-00000-00-0"
-                                  v-model="citizenId"
+                                  v-model="formData.citizenId"
                                   @input="formatCitizenId"
                                   :rules="[
                                     (v) => !!v || 'กรุณากรอกเลขบัตรประชาชน',
@@ -548,6 +557,7 @@
                                   single-line
                                   required
                                   class="input-box"
+                                  v-model="formData.idIssueDistrict"
                                 />
                               </v-col>
                             </v-row>
@@ -581,7 +591,7 @@
                                 >
                                   <template #activator="{ on, attrs }">
                                     <v-text-field
-                                      v-model="formattedDate1"
+                                      v-model="formData.formattedIssueDate"
                                       placeholder="วว/ดด/ปปปป"
                                       outlined
                                       dense
@@ -602,11 +612,11 @@
                                     </v-text-field>
                                   </template>
                                   <v-date-picker
-                                    v-model="date1"
+                                    v-model="formData.idIssueDate"
                                     locale="th"
                                     scrollable
                                     :max="todayDate"
-                                    @input="updateDate1"
+                                    @input="updateIssueDate"
                                     class="compact-date-picker"
                                   />
                                 </v-menu>
@@ -636,7 +646,7 @@
                                 >
                                   <template #activator="{ on, attrs }">
                                     <v-text-field
-                                      v-model="formattedDate2"
+                                      v-model="formData.formattedExpiryDate"
                                       placeholder="วว/ดด/ปปปป"
                                       outlined
                                       dense
@@ -657,10 +667,10 @@
                                     </v-text-field>
                                   </template>
                                   <v-date-picker
-                                    v-model="date2"
+                                    v-model="formData.idExpiryDate"
                                     locale="th"
                                     scrollable
-                                    @input="updateDate2"
+                                    @input="updateExpiryDate"
                                     class="compact-date-picker"
                                   />
                                 </v-menu>
@@ -702,7 +712,7 @@
                             >
                               <template #activator="{ on, attrs }">
                                 <v-text-field
-                                  v-model="formattedDate3"
+                                  v-model="formData.formattedBirthDate"
                                   placeholder="วว/ดด/ปปปป"
                                   outlined
                                   dense
@@ -721,11 +731,11 @@
                                 </v-text-field>
                               </template>
                               <v-date-picker
-                                v-model="date3"
+                                v-model="formData.BirthDate"
                                 locale="th"
                                 scrollable
                                 :max="todayDate"
-                                @input="updateDate3"
+                                @input="updateBirthDate"
                                 class="compact-date-picker"
                               />
                             </v-menu>
@@ -745,7 +755,7 @@
                         <v-row>
                           <v-col cols="7" class="pt-0 pl-0 pr-2 pb-0">
                             <v-text-field
-                              v-model="calculatedAge"
+                              v-model="formData.age"
                               outlined
                               dense
                               hide-details="auto"
@@ -787,6 +797,7 @@
                               dense
                               single-line
                               class="input-box date_box"
+                              v-model="formData.disease"
                             />
                           </v-col>
                         </v-row>
@@ -822,6 +833,7 @@
                                 single-line
                                 required
                                 class="input-box"
+                                v-model="formData.nationality"
                               />
                             </v-col>
                           </v-row>
@@ -852,6 +864,7 @@
                                 single-line
                                 required
                                 class="input-box"
+                                v-model="formData.race"
                               />
                             </v-col>
                           </v-row>
@@ -882,6 +895,7 @@
                                 single-line
                                 required
                                 class="input-box"
+                                v-model="formData.religion"
                               />
                             </v-col>
                           </v-row>
@@ -906,7 +920,7 @@
                         </v-col>
                         <v-col cols="12" md="9" class="py-0">
                           <v-radio-group
-                            v-model="soldier"
+                            v-model="formData.soldierStatus"
                             row
                             class="color-label custom-label mt-1 mt-md-0 py-md-0 date_box remove-message"
                           >
@@ -974,7 +988,7 @@
                                 </template>
                               </v-radio>
                               <v-col
-                                v-if="soldier === 'zero'"
+                                v-if="formData.soldierStatus === 'zero'"
                                 class="d-flex flex-row flex-md-colum align-md-start pa-0"
                               >
                                 <v-text-field
@@ -984,6 +998,7 @@
                                   dense
                                   single-line
                                   class="input-box margin-zero-message"
+                                  v-model="formData.soldierOther"
                                 />
                               </v-col>
                             </v-col>
@@ -1007,7 +1022,7 @@
                       <v-row>
                         <v-col class="pt-0 pl-4 pr-md-4 pb-md-0">
                           <v-text-field
-                            v-model="phoneNumber"
+                            v-model="formData.phoneNumber"
                             label="เบอร์โทรศัพท์"
                             :rules="[
                               (v) => !!v || 'กรุณากรอกเบอร์โทรศัพท์',
@@ -1050,6 +1065,7 @@
                             single-line
                             class="input-box"
                             required
+                            v-model="formData.email"
                           />
                         </v-col>
                       </v-row>
@@ -1067,9 +1083,67 @@
 <script>
 export default {
   layout: "form",
+  mounted() {
+    // ✅ DEEP COPY - No reference to store
+    const storeData = this.$store.state.pages;
+    if ("email" in storeData[6]) {
+      const storeDataCopy = JSON.parse(JSON.stringify(storeData));
+      this.formData = storeDataCopy[6];
+      this.formData.profileImage = this.$fileStore.imageFile;
+
+      if (this.formData.profileImage) {
+        this.previewUrl = URL.createObjectURL(this.formData.profileImage);
+        this.isProfileComplete = true;
+      }
+    }
+  },
+  beforeDestroy() {
+    this.$store.commit("SET_INDEX_DATA", this.formData);
+    if (this.previewUrl) {
+      URL.revokeObjectURL(this.previewUrl);
+    }
+  },
   data() {
     return {
-      phoneNumber: "",
+      formData: {
+        position: "",
+        workplace: "",
+        internshipFormat: "",
+
+        namePrefix: "",
+        firstNameTh: "",
+        lastNameTh: "",
+        nickNameTh: "",
+
+        firstNameEn: "",
+        lastNameEn: "",
+        nickNameEn: "",
+
+        citizenId: "",
+        idIssueDistrict: "",
+        idIssueDate: null,
+        formattedIssueDate: "",
+        formattedExpiryDate: "",
+        idExpiryDate: null,
+
+        formattedBirthDate: "",
+        BirthDate: null,
+        age: "",
+        disease: "",
+
+        nationality: "",
+        race: "",
+        religion: "",
+
+        soldierStatus: "",
+        soldierOther: "",
+
+        phoneNumber: "",
+        email: "",
+
+        profileImage: null,
+      },
+
       // format currency
       salaryFrom: 0,
       salaryFromDisplay: "",
@@ -1095,17 +1169,25 @@ export default {
         { number: 3, label: "รูปแบบการฝึกงาน", labelEn: "Internship Format" },
       ],
       positionFields: [
-        { number: 1, label: "programer" },
-        { number: 2, label: "designer" },
-        { number: 3, label: "manager" },
-        { number: 4, label: "analyst" },
+        { number: 1, label: "Front-End Developer" },
+        { number: 2, label: "Back-End Developer" },
+        { number: 3, label: "Business Analysis" },
+        { number: 4, label: "UX/UI Designer" },
+        { number: 5, label: "System Administrator" },
       ],
       WorkplaceFields: [
-        { number: 1, label: "Bangkok" },
-        { number: 2, label: "Chiang Mai" },
-        { number: 3, label: "Phuket" },
-        { number: 4, label: "Khon Kaen" },
+        { number: 1, label: "INET กรุงเทพ" },
+        { number: 2, label: "INET ขอนแก่น" },
+        { number: 3, label: "INET เชียงใหม่" },
+        { number: 4, label: "INET หาดใหญ่" },
+        { number: 5, label: "INET นครราชสีมา " },
       ],
+
+      FormatFields: [
+        { number: 1, label: "ฝึกงาน" },
+        { number: 2, label: "สหกิจ" },
+      ],
+
       Provinces: [
         { number: 1, label: "กรุงเทพมหานคร" },
         { number: 2, label: "กระบี่" },
@@ -1189,34 +1271,25 @@ export default {
       isProfileComplete: false,
       // date
       menu1: false,
-      date1: null,
-      formattedDate1: "",
+
       menu2: false,
-      date2: null,
-      formattedDate2: "",
+
       menu3: false,
-      date3: null,
-      formattedDate3: "",
+
       today: new Date().toISOString().substr(0, 10),
-      // gender
-      selectedGender: null,
-      // address
+
       useSameAddress: false,
-      soldier: "",
-      //citizen
-      citizenId: "",
     };
   },
   computed: {
     todayDate() {
       return new Date().toISOString().substr(0, 10);
     },
-    calculatedAge() {
-      if (!this.date3) {
-        return "";
-      }
+  },
+  watch: {
+    "formData.BirthDate"(val) {
       const today = new Date();
-      const birth = new Date(this.date3);
+      const birth = new Date(val);
       let age = today.getFullYear() - birth.getFullYear();
       const monthDiff = today.getMonth() - birth.getMonth();
       // ถ้ายังไม่ถึงเดือนเกิด หรือถึงเดือนเกิดแต่ยังไม่ถึงวันเกิด ให้ลบ 1 ปี
@@ -1226,27 +1299,30 @@ export default {
       ) {
         age--;
       }
-      return age.toString();
+      this.formData.age = age.toString();
     },
   },
   methods: {
     formatPhoneNumber() {
       // ลบทุกอักขระที่ไม่ใช่ตัวเลข
-      let cleaned = this.phoneNumber.replace(/\D/g, "");
+      let cleaned = this.formData.phoneNumber.replace(/\D/g, "");
 
       // จำกัดให้ไม่เกิน 10 ตัว
       cleaned = cleaned.substring(0, 10);
 
       // เพิ่มขีดตามรูปแบบ
       if (cleaned.length > 6) {
-        this.phoneNumber = cleaned.replace(
+        this.formData.phoneNumber = cleaned.replace(
           /(\d{3})(\d{3})(\d{0,4})/,
           "$1-$2-$3"
         );
       } else if (cleaned.length > 3) {
-        this.phoneNumber = cleaned.replace(/(\d{3})(\d{0,3})/, "$1-$2");
+        this.formData.phoneNumber = cleaned.replace(
+          /(\d{3})(\d{0,3})/,
+          "$1-$2"
+        );
       } else {
-        this.phoneNumber = cleaned;
+        this.formData.phoneNumber = cleaned;
       }
     },
     handlePaste(event) {
@@ -1263,19 +1339,22 @@ export default {
 
       // ใส่ขีดอัตโนมัติ
       if (cleaned.length > 6) {
-        this.phoneNumber = cleaned.replace(
+        this.formData.phoneNumber = cleaned.replace(
           /(\d{3})(\d{3})(\d{0,4})/,
           "$1-$2-$3"
         );
       } else if (cleaned.length > 3) {
-        this.phoneNumber = cleaned.replace(/(\d{3})(\d{0,3})/, "$1-$2");
+        this.formData.phoneNumber = cleaned.replace(
+          /(\d{3})(\d{0,3})/,
+          "$1-$2"
+        );
       } else {
-        this.phoneNumber = cleaned;
+        this.formData.phoneNumber = cleaned;
       }
     },
     formatCitizenId() {
       // ลบขีดเก่าก่อน
-      let value = this.citizenId.replace(/\D/g, "");
+      let value = this.formData.citizenId.replace(/\D/g, "");
 
       // จำกัดให้ไม่เกิน 13 หลัก
       value = value.slice(0, 13);
@@ -1286,7 +1365,7 @@ export default {
       if (value.length > 12) value = value.slice(0, 12) + "-" + value.slice(12);
       if (value.length > 15) value = value.slice(0, 15) + "-" + value.slice(15);
 
-      this.citizenId = value;
+      this.formData.citizenId = value;
     },
     validateThaiID(id) {
       if (!/^[0-9]{13}$/.test(id)) return false;
@@ -1297,22 +1376,25 @@ export default {
       const checkDigit = (11 - (sum % 11)) % 10;
       return checkDigit === parseInt(id.charAt(12));
     },
-    updateDate1(val) {
+    updateIssueDate(val) {
       const d = new Date(val);
       const options = { day: "2-digit", month: "2-digit", year: "numeric" };
-      this.formattedDate1 = d.toLocaleDateString("th-TH", options);
+      this.formData.formattedIssueDate = d.toLocaleDateString("th-TH", options);
       this.menu1 = false;
     },
-    updateDate2(val) {
+    updateExpiryDate(val) {
       const d = new Date(val);
       const options = { day: "2-digit", month: "2-digit", year: "numeric" };
-      this.formattedDate2 = d.toLocaleDateString("th-TH", options);
+      this.formData.formattedExpiryDate = d.toLocaleDateString(
+        "th-TH",
+        options
+      );
       this.menu2 = false;
     },
-    updateDate3(val) {
+    updateBirthDate(val) {
       const d = new Date(val);
       const options = { day: "2-digit", month: "2-digit", year: "numeric" };
-      this.formattedDate3 = d.toLocaleDateString("th-TH", options);
+      this.formData.formattedBirthDate = d.toLocaleDateString("th-TH", options);
       this.menu3 = false;
     },
     isNumber(evt) {
@@ -1332,6 +1414,7 @@ export default {
           URL.revokeObjectURL(this.previewUrl);
         }
         this.previewUrl = URL.createObjectURL(file);
+        this.$fileStore.imageFile = file; // Store the profile iamge file
       }
       this.isProfileComplete = true;
     },

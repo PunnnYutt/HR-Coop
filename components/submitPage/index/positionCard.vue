@@ -458,10 +458,4 @@ export default {
   margin: 0px;
   margin-bottom: 8px;
 }
-.v-messages {
-  display: none !important;
-}
-.v-text-field__details {
-  display: none !important;
-}
 </style>

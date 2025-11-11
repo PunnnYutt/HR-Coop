@@ -7,9 +7,7 @@ export const state = () => ({
     3: [],
     4: [],
     5: {},
-    6: {
-      /* fields for page6 */
-    },
+    6: {},
   },
 
   footerDisplay: true,
@@ -17,7 +15,7 @@ export const state = () => ({
 
 export const mutations = {
   SET_EDUCATION_DATA(state, payload) {
-    state.pages[2] = [...payload];
+    state.pages[2] = payload;
   },
 
   SET_FAMILY_DATA(state, payload) {
@@ -30,6 +28,10 @@ export const mutations = {
 
   SET_ETC_DATA(state, payload) {
     state.pages[5] = payload;
+  },
+
+  SET_INDEX_DATA(state, payload) {
+    state.pages[6] = payload;
   },
 
   SET_Footer(state, payload) {

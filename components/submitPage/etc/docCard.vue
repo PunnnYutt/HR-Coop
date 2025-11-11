@@ -73,7 +73,7 @@
 export default {
   layout: "form",
   mounted() {
-    this.documents = [...this.$fileStore.myFile];
+    this.documents = [...this.$fileStore.docFile];
   },
 
   data() {
