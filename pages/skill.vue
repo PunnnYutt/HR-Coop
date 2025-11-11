@@ -25,7 +25,7 @@
                       : 'shadow-card-none'
                   "
                 >
-                  <v-row no-gutters class="green lighten-5 pl-4 pr-0 py-9px">
+                  <v-row no-gutters class="bg-header pl-4 pr-0 py-9px">
                     <v-col cols="10" class="d-flex align-center">
                       <p
                         class="primary--text lighten-1 text-body-2 mb-0 font-weight-medium"
@@ -65,7 +65,7 @@
                             <p class="custom-label">ทักษะที่ {{ index + 1 }}</p>
                           </v-col>
                           <v-col class="px-0 pt-0 pb-0 mb-4">
-                            <p class="grey--text custom-label">
+                            <p class="text-caption grey--text lighten-5">
                               No {{ index + 1 }}.
                             </p>
                           </v-col>
@@ -88,7 +88,7 @@
                         </v-col>
                         <v-col md="1" class="px-0 pt-md-4">
                           <p class="custom-label">ระดับทักษะ :</p>
-                          <p class="grey--text custom-label">Skill level</p>
+                          <p class="text-caption grey--text lighten-5">Skill level</p>
                         </v-col>
                         <v-col md="3" class="pl-md-0 pt-md-3">
                           <v-radio-group
@@ -110,8 +110,8 @@
                               >
                                 <template #label>
                                   <v-col class="pa-0">
-                                    <p class="text-caption" >ดีมาก</p>
-                                    <p class="text-caption text--secondary">
+                                    <p class="text-caption black--text" >ดีมาก</p>
+                                    <p class="text-caption grey--text lighten-5">
                                       Excellent
                                     </p>
                                   </v-col>
@@ -123,8 +123,8 @@
                               >
                                 <template #label>
                                   <v-col class="pa-0">
-                                    <p class="text-caption">ดี</p>
-                                    <p class="text-caption text--secondary">
+                                    <p class="text-caption black--text">ดี</p>
+                                    <p class="text-caption grey--text lighten-5">
                                       Good
                                     </p>
                                   </v-col>
@@ -136,8 +136,8 @@
                               >
                                 <template #label>
                                   <v-col class="pa-0">
-                                    <p class="text-caption">พอใช้</p>
-                                    <p class="text-caption text--secondary">
+                                    <p class="text-caption black--text">พอใช้</p>
+                                    <p class="text-caption grey--text lighten-5">
                                       fair
                                     </p>
                                   </v-col>
@@ -323,7 +323,23 @@ export default {
   font-size: 0.75rem !important;
   opacity: 0.6;
 }
-.v-messages {
-  display: none !important;
+
+::v-deep .input-box.v-text-field--outlined fieldset {
+  border-color: #e6e6e6 !important; /* เทา */
+}
+::v-deep .input-box.v-input.error--text.v-text-field--outlined fieldset {
+  border-color: #e53935 !important; /* สีแดง error */
+}
+::v-deep .input-box.v-input--is-focused fieldset {
+  border-color: #4caf50 !important; /* เขียวเข้ม */
+  border-width: 2px !important;
+}
+
+::v-deep .custom-radio .v-icon {
+  color: #4caf50 !important; /* สีของจุดวงกลม */
+}
+
+.bg-header{
+  background-color: #f0f9ee;
 }
 </style>

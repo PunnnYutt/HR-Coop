@@ -24,7 +24,7 @@
                       : 'shadow-card-none'
                   "
                 >
-                  <v-row no-gutters class="green lighten-5 px-4 py-9px">
+                  <v-row no-gutters class="bg-header px-4 py-9px">
                     <v-col cols="10">
                       <p
                         class="primary--text lighten-1 text-body-2 mb-0 font-weight-medium"
@@ -44,26 +44,26 @@
                     >
                       <v-row no-gutters>
                         <v-col cols="12">
-                          <p class="mb-2 font-weight-light pb-md-2">
+                          <p class="mb-2 custom-label pb-md-2">
                             {{ position.label }}
                             <span
-                              class="pl-2 b-1 grey--text text--lighten-1 font-weight-light"
+                              class="pl-1 b-1 text-caption grey--text lighten-5"
                               >{{ position.labelEn }}</span
                             >
                           </p>
                         </v-col>
                         <v-col cols="12" class="pl-0 position-bottom">
-                          <v-select v-if="position.number <= 2" :items="positionFields" item-text="label"
+                          <v-select v-if="position.number < 2" :items="positionFields" item-text="label" append-icon="mdi-chevron-down" append-icon-color="primary"
                             item-value="label" outlined dense placeholder="เลือกตำแหน่งสหกิจหรือฝึกงาน" clearable
-                            :class="position.number === 1 ? 'pr-md-4 input-select input-box custom-select-size' : 'pr-lg-4 input-select input-box custom-select-size'
+                            :class="position.number === 1 ? 'pr-md-4 input-select input-box custom-select-size custom-select' : 'pr-lg-4 input-select input-box custom-select-size custom-select'
                               " />
-                          <v-select v-else-if="position.number === 2" :items="WorkplaceFields" item-text="label"
+                          <v-select v-else-if="position.number === 2" :items="WorkplaceFields" item-text="label" append-icon="mdi-chevron-down" append-icon-color="primary"
                             item-value="label" outlined dense placeholder="เลือกประจำศูนย์" clearable
-                            class="pr-md-4 input-select input-box custom-select-size" />
+                            class="pr-md-4 input-select input-box custom-select-size custom-select" />
 
-                          <v-select v-else-if="position.number === 3" :items="WorkplaceFields" item-text="label"
+                          <v-select v-else-if="position.number === 3" :items="WorkFields" item-text="label" append-icon="mdi-chevron-down" append-icon-color="primary"
                             item-value="label" outlined dense placeholder="เลือกการฝึกงาน" clearable
-                            class="pr-md-4 input-select input-box custom-select-size" />
+                            class="pr-md-4 input-select input-box custom-select-size custom-select" />
                         </v-col>
                       </v-row>
                     </v-col>
@@ -82,7 +82,7 @@
                       : 'shadow-card-none'
                   "
                 >
-                  <v-row no-gutters class="green lighten-5 px-4 py-9px">
+                  <v-row no-gutters class="bg-header px-4 py-9px">
                     <v-col cols="12">
                       <p
                         class="primary--text lighten-1 text-body-2 mb-0 font-weight-medium"
@@ -144,7 +144,7 @@
                             </p>
                           </v-row>
                           <v-row>
-                            <p class="grey--text mt-2 custom-label">
+                            <p class="text-caption grey--text lighten-5 mt-2">
                               Upload Profile image
                             </p>
                           </v-row>
@@ -164,7 +164,7 @@
                             class="color-label custom-label custom-radio-group remove-message"
                           >
                             <template #label>
-                              <span class="custom-label"
+                              <span class="custom-label black--text"
                                 >คำนำหน้าชื่อ<span class="red--text"> * </span
                                 >:</span
                               >
@@ -172,19 +172,19 @@
                             <v-radio
                               label="นาย"
                               value="one"
-                              class="color-label custom-radio text-caption"
+                              class="color-label custom-radio text-caption black--text"
                               >test</v-radio
                             >
                             <v-radio
                               label="นาง"
                               value="two"
-                              class="color-label custom-radio text-caption"
+                              class="color-label custom-radio text-caption black--text"
                               >test</v-radio
                             >
                             <v-radio
                               label="นางสาว"
                               value="three"
-                              class="color-label custom-radio text-caption"
+                              class="color-label custom-radio text-caption black--text"
                               >test</v-radio
                             >
                           </v-radio-group>
@@ -453,7 +453,7 @@
                               >
                                 <p class="custom-label">
                                   หมายเลขบัตรประชาชน
-                                  <span class="grey--text">I.D. Card No.</span
+                                  <span class="text-caption grey--text lighten-5">I.D. Card No.</span
                                   ><span class="red--text"> * </span>
                                 </p>
                               </v-col>
@@ -536,7 +536,7 @@
                               <v-col class="pt-0 pl-0 pb-2">
                                 <p class="custom-label">
                                   วันที่ออกบัตร
-                                  <span class="grey--text">Issue date</span
+                                  <span class="text-caption grey--text lighten-5">Issue date</span
                                   ><span class="red--text"> * </span>
                                 </p>
                               </v-col>
@@ -590,7 +590,7 @@
                             <v-row>
                               <v-col class="pt-0 pl-0 pb-2">
                                 <p class="custom-label">
-                                  วันที่หมดอายุ<span class="grey--text">
+                                  วันที่หมดอายุ<span class="text-caption grey--text lighten-5">
                                     Expiry date </span
                                   ><span class="red--text"> * </span>
                                 </p>
@@ -657,7 +657,7 @@
                           >
                             <p class="custom-label">
                               วันเกิด
-                              <span class="grey--text">Date of Birth</span
+                              <span class="text-caption grey--text lighten-5">Date of Birth</span
                               ><span class="red--text"> * </span>
                             </p>
                           </v-col>
@@ -711,7 +711,7 @@
                             class="d-flex justify-start align-center pt-0 pl-0 pb-2"
                           >
                             <p class="custom-label pb-0 mt-md-1">
-                              อายุ <span class="grey--text"> Age </span>
+                              อายุ <span class="text-caption grey--text lighten-5"> Age </span>
                             </p>
                           </v-col>
                         </v-row>
@@ -746,7 +746,7 @@
                           >
                             <p class="custom-label">
                               โรคประจำตัว
-                              <span class="grey--text">
+                              <span class="text-caption grey--text lighten-5">
                                 Any physical disability or disease?
                               </span>
                             </p>
@@ -779,7 +779,7 @@
                               class="d-flex justify-start align-center pt-0 pl-0 pb-2"
                             >
                               <p class="custom-label">
-                                สัญชาติ<span class="grey--text">
+                                สัญชาติ<span class="text-caption grey--text lighten-5">
                                   Nationality
                                 </span>
                               </p>
@@ -811,12 +811,12 @@
                               class="d-flex justify-start align-center pt-0 pl-0 pb-2"
                             >
                               <p class="custom-label">
-                                เชื้อชาติ<span class="grey--text"> Race </span>
+                                เชื้อชาติ<span class="text-caption grey--text lighten-5"> Race </span>
                               </p>
                             </v-col>
                           </v-row>
                           <v-row>
-                            <v-col class="pt-0 pl-0 pr-md-4 pb-0">
+                            <v-col class="pt-0 pl-0 pr-md-4 pb-0 pb-md-2">
                               <v-text-field
                                 label="ระบุเชื้อชาติ"
                                 :rules="[(v) => !!v || 'กรุณาระบุเชื้อชาติ']"
@@ -841,12 +841,12 @@
                               class="d-flex justify-start align-center pt-0 pl-0 pb-2"
                             >
                               <p class="custom-label">
-                                ศาสนา<span class="grey--text"> Religion </span>
+                                ศาสนา<span class="text-caption grey--text lighten-5"> Religion </span>
                               </p>
                             </v-col>
                           </v-row>
                           <v-row>
-                            <v-col class="pt-0 pl-0 pb-0 pr-1">
+                            <v-col class="pt-0 pl-0 pb-0 pr-1 pb-md-2">
                               <v-text-field
                                 label="ระบุศาสนา"
                                 :rules="[(v) => !!v || 'กรุณาระบุศาสนา']"
@@ -865,19 +865,19 @@
                   <v-row>
                     <v-col>
                       <v-row class="pt-4 pt-md-0">
-                        <v-col cols="12" md="2" class="pl-6">
+                        <v-col cols="12" md="1" class="pl-6">
                           <v-row
                             class="d-flex flex-md-column flex-row align-center align-md-start pb-md-6"
                           >
-                            <p class="custom-label mb-0 mr-2 mr-md-0 pl-md-4">
+                            <p class="custom-label mb-0 mr-2 mr-md-0 pl-md-4 doc">
                               สถานะทางทหาร :
                             </p>
-                            <p class="grey--text custom-label mb-0 pl-md-4">
+                            <p class="text-caption grey--text lighten-5 mb-0 pl-md-4 doc">
                               Military Service
                             </p>
                           </v-row>
                         </v-col>
-                        <v-col cols="12" md="9" class="py-0">
+                        <v-col cols="12" md="9" class="py-0 ml-md-6">
                           <v-radio-group
                             v-model="soldier"
                             row
@@ -895,7 +895,7 @@
                                 <template #label>
                                   <v-col class="pa-0">
                                     <p>ได้รับการยกเว้น</p>
-                                    <p class="text-caption text--secondary">
+                                    <p class="text-caption grey--text lighten-5">
                                       Exempted
                                     </p>
                                   </v-col>
@@ -908,7 +908,7 @@
                                 <template #label>
                                   <v-col class="pa-0">
                                     <p>ศึกษาวิชาทหาร</p>
-                                    <p class="text-caption text--secondary">
+                                    <p class="text-caption grey--text lighten-5">
                                       Military Studies
                                     </p>
                                   </v-col>
@@ -927,7 +927,7 @@
                                 <template #label>
                                   <v-col class="pa-0">
                                     <p>ผ่านการเกณฑ์ทหาร</p>
-                                    <p class="text-caption text--secondary">
+                                    <p class="text-caption grey--text lighten-5">
                                       Discharged
                                     </p>
                                   </v-col>
@@ -940,7 +940,7 @@
                                 <template #label>
                                   <v-col class="pa-0">
                                     <p>อื่นๆ</p>
-                                    <p class="text-caption text--secondary">
+                                    <p class="text-caption grey--text lighten-5">
                                       Others
                                     </p>
                                   </v-col>
@@ -973,7 +973,7 @@
                         >
                           <p class="custom-label">
                             เบอร์โทรศัพท์
-                            <span class="grey--text"> Telephone No. </span>
+                            <span class="text-caption grey--text lighten-5"> Telephone No. </span>
                           </p>
                         </v-col>
                       </v-row>
@@ -981,7 +981,7 @@
                         <v-col class="pt-0 pl-4 pr-md-4 pb-md-0">
                           <v-text-field
                             v-model="phoneNumber"
-                            label="เบอร์โทรศัพท์"
+                            label="090-000-0000"
                             :rules="[
                               (v) => !!v || 'กรุณากรอกเบอร์โทรศัพท์',
                               (v) =>
@@ -1005,14 +1005,14 @@
                           class="d-flex justify-start align-center pt-0 pl-0 pb-2"
                         >
                           <p class="custom-label">
-                            อีเมล <span class="grey--text"> E-mail </span>
+                            อีเมล <span class="text-caption grey--text lighten-5"> E-mail </span>
                           </p>
                         </v-col>
                       </v-row>
                       <v-row>
                         <v-col class="pt-0 pl-0 pb-md-0">
                           <v-text-field
-                            label="อีเมล"
+                            label="HR_inet@one.th"
                             :rules="[
                               (v) => !!v || 'กรุณากรอกอีเมล',
                               (v) =>
@@ -1074,89 +1074,15 @@ export default {
         { number: 4, label: "analyst" },
       ],
       WorkplaceFields: [
-        { number: 1, label: "Bangkok" },
-        { number: 2, label: "Chiang Mai" },
-        { number: 3, label: "Phuket" },
-        { number: 4, label: "Khon Kaen" },
+        { number: 1, label: "INET กรุงเทพ" },
+        { number: 2, label: "INET ขอนแก่น" },
+        { number: 3, label: "INET เชียงใหม่" },
+        { number: 4, label: "INET หาดใหญ่" },
+        { number: 5, label: "INET นครราชสีมา" },
       ],
-      Provinces: [
-        { number: 1, label: "กรุงเทพมหานคร" },
-        { number: 2, label: "กระบี่" },
-        { number: 3, label: "กาญจนบุรี" },
-        { number: 4, label: "กาฬสินธุ์" },
-        { number: 5, label: "กำแพงเพชร" },
-        { number: 6, label: "ขอนแก่น" },
-        { number: 7, label: "จันทบุรี" },
-        { number: 8, label: "ฉะเชิงเทรา" },
-        { number: 9, label: "ชลบุรี" },
-        { number: 10, label: "ชัยนาท" },
-        { number: 11, label: "ชัยภูมิ" },
-        { number: 12, label: "ชุมพร" },
-        { number: 13, label: "เชียงราย" },
-        { number: 14, label: "เชียงใหม่" },
-        { number: 15, label: "ตรัง" },
-        { number: 16, label: "ตราด" },
-        { number: 17, label: "ตาก" },
-        { number: 18, label: "นครนายก" },
-        { number: 19, label: "นครปฐม" },
-        { number: 20, label: "นครพนม" },
-        { number: 21, label: "นครราชสีมา" },
-        { number: 22, label: "นครศรีธรรมราช" },
-        { number: 23, label: "นครสวรรค์" },
-        { number: 24, label: "นราธิวาส" },
-        { number: 25, label: "น่าน" },
-        { number: 26, label: "บึงกาฬ" },
-        { number: 27, label: "บุรีรัมย์" },
-        { number: 28, label: "ประจวบคีรีขันธ์" },
-        { number: 29, label: "ปทุมธานี" },
-        { number: 30, label: "ปราจีนบุรี" },
-        { number: 31, label: "ปัตตานี" },
-        { number: 32, label: "พะเยา" },
-        { number: 33, label: "พระนครศรีอยุธยา" },
-        { number: 34, label: "พังงา" },
-        { number: 35, label: "พัทลุง" },
-        { number: 36, label: "พิจิตร" },
-        { number: 37, label: "พิษณุโลก" },
-        { number: 38, label: "เพชรบุรี" },
-        { number: 39, label: "เพชรบูรณ์" },
-        { number: 40, label: "แพร่" },
-        { number: 41, label: "พัทลุง" },
-        { number: 42, label: "ภูเก็ต" },
-        { number: 43, label: "มหาสารคาม" },
-        { number: 44, label: "มุกดาหาร" },
-        { number: 45, label: "แม่ฮ่องสอน" },
-        { number: 46, label: "ยโสธร" },
-        { number: 47, label: "ยะลา" },
-        { number: 48, label: "ร้อยเอ็ด" },
-        { number: 49, label: "ระนอง" },
-        { number: 50, label: "ระยอง" },
-        { number: 51, label: "ราชบุรี" },
-        { number: 52, label: "ลพบุรี" },
-        { number: 53, label: "ลำปาง" },
-        { number: 54, label: "ลำพูน" },
-        { number: 55, label: "เลย" },
-        { number: 56, label: "ศรีสะเกษ" },
-        { number: 57, label: "สกลนคร" },
-        { number: 58, label: "สงขลา" },
-        { number: 59, label: "สตูล" },
-        { number: 60, label: "สมุทรปราการ" },
-        { number: 61, label: "สมุทรสงคราม" },
-        { number: 62, label: "สมุทรสาคร" },
-        { number: 63, label: "สระแก้ว" },
-        { number: 64, label: "สระบุรี" },
-        { number: 65, label: "สิงห์บุรี" },
-        { number: 66, label: "สุโขทัย" },
-        { number: 67, label: "สุพรรณบุรี" },
-        { number: 68, label: "สุราษฎร์ธานี" },
-        { number: 69, label: "สุรินทร์" },
-        { number: 70, label: "หนองคาย" },
-        { number: 71, label: "หนองบัวลำภู" },
-        { number: 72, label: "อำนาจเจริญ" },
-        { number: 73, label: "อุดรธานี" },
-        { number: 74, label: "อุตรดิตถ์" },
-        { number: 75, label: "อุทัยธานี" },
-        { number: 76, label: "อุบลราชธานี" },
-        { number: 77, label: "ยะลา" },
+      WorkFields: [
+        { number: 1, label: "สหกิจ" },
+        { number: 2, label: "ฝึกงาน" },
       ],
       previewUrl: null,
       isProfileComplete: false,
@@ -1464,10 +1390,11 @@ export default {
   object-fit: cover;
 }
 
-.color-label .v-label {
-  color: rgb(0, 0, 0);
+::v-deep .color-label .v-label {
+    color: rgb(0, 0, 0);
   font-size: 0.75rem !important;
   font-weight: 500;
+
 }
 
 .custom-label {
@@ -1618,13 +1545,52 @@ export default {
   display: none !important;
 }
 
-/* Vue 2 สามารถใช้ deep selector แบบนี้ได้ */
 .remove-message::v-deep .v-messages {
   display: none !important;
 }
 
-/* หรือ */
 ::v-deep .remove-message .v-messages {
   display: none !important;
 }
+
+::v-deep .input-select.v-text-field--outlined fieldset {
+  border-color: #e6e6e6 !important; /* เทา */
+}
+::v-deep .input-select.v-input.error--text.v-text-field--outlined fieldset {
+  border-color: #e53935 !important; /* สีแดง error */
+}
+::v-deep .input-select.v-input--is-focused fieldset {
+  border-color: #4caf50 !important; /* เขียวเข้ม */
+  border-width: 2px !important;
+}
+
+
+::v-deep .input-box.v-text-field--outlined fieldset {
+  border-color: #e6e6e6 !important; /* เทา */
+}
+::v-deep .input-box.v-input.error--text.v-text-field--outlined fieldset {
+  border-color: #e53935 !important; /* สีแดง error */
+}
+::v-deep .input-box.v-input--is-focused fieldset {
+  border-color: #4caf50 !important; /* เขียวเข้ม */
+  border-width: 2px !important;
+}
+
+::v-deep .custom-radio .v-icon {
+  color: #4caf50 !important; /* สีของจุดวงกลม */
+}
+
+::v-deep .custom-select .v-input__append-inner .v-icon {
+  color: #4caf50 !important;
+}
+
+.doc {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.bg-header{
+  background-color: #f0f9ee;
+}
+
 </style>
