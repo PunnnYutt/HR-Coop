@@ -16,6 +16,7 @@
         outlined
         dense
         hide-details
+        append-icon="mdi-chevron-down"
         :menu-props="{ offsetY: true }"
       >
       </v-select>

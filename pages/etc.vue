@@ -1275,6 +1275,7 @@ export default {
 
 ::v-deep .input-select .v-input__append-inner .v-icon {
   color: #4caf50 !important;
+  font-size: 16px;
 }
 
 .bg-header{

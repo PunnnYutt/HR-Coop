@@ -29,20 +29,20 @@
                           </p>
                         </v-col>
                         <v-col cols="12" class="pl-0 position-bottom">
-<<<<<<< HEAD
                           <v-select
                             v-if="position.number === 1"
                             :items="positionFields"
                             item-text="label"
                             item-value="label"
                             outlined
+                            append-icon="mdi-chevron-down"
                             dense
                             placeholder="เลือกตำแหน่งสหกิจหรือฝึกงาน"
                             clearable
                             :class="
                               position.number === 1
-                                ? 'pr-md-4 input-select input-box'
-                                : 'pr-lg-4 input-select input-box'
+                                ?'pr-md-4 input-select input-box custom-select-size custom-select' :
+                                 'pr-lg-4 input-select input-box custom-select-size custom-select'
                             "
                             v-model="formData.position"
                           />
@@ -53,9 +53,10 @@
                             item-value="label"
                             outlined
                             dense
+                            append-icon="mdi-chevron-down"
                             placeholder="เลือกประจำศูนย์"
                             clearable
-                            class="pr-md-4 input-select input-box"
+                            class="pr-md-4 input-select input-box custom-select-size custom-select"
                             v-model="formData.workplace"
                           />
 
@@ -66,26 +67,12 @@
                             item-value="label"
                             outlined
                             dense
+                            append-icon="mdi-chevron-down"
                             placeholder="เลือกการฝึกงาน"
                             clearable
-                            class="pr-md-4 input-select input-box"
+                            class="pr-md-4 input-select input-box custom-select-size custom-select"
                             v-model="formData.internshipFormat"
                           />
-=======
-                          <v-select v-if="position.number < 2" :items="positionFields" item-text="label"
-                            append-icon="mdi-chevron-down" append-icon-color="primary" item-value="label" outlined dense
-                            placeholder="เลือกตำแหน่งสหกิจหรือฝึกงาน" clearable :class="position.number === 1 ? 'pr-md-4 input-select input-box custom-select-size custom-select' : 'pr-lg-4 input-select input-box custom-select-size custom-select'
-                              " />
-                          <v-select v-else-if="position.number === 2" :items="WorkplaceFields" item-text="label"
-                            append-icon="mdi-chevron-down" append-icon-color="primary" item-value="label" outlined dense
-                            placeholder="เลือกประจำศูนย์" clearable
-                            class="pr-md-4 input-select input-box custom-select-size custom-select" />
-
-                          <v-select v-else-if="position.number === 3" :items="WorkFields" item-text="label"
-                            append-icon="mdi-chevron-down" append-icon-color="primary" item-value="label" outlined dense
-                            placeholder="เลือกการฝึกงาน" clearable
-                            class="pr-md-4 input-select input-box custom-select-size custom-select" />
->>>>>>> 080e6c6012aa55d3a76e40fab0a7f13b13f7e8fc
                         </v-col>
                       </v-row>
                     </v-col>
@@ -144,7 +131,6 @@
                     </v-col>
                     <v-col cols="12" md="9" class="pl-6 pl-md-0">
                       <v-row>
-<<<<<<< HEAD
                         <v-col
                           cols="12"
                           no-gutters
@@ -155,12 +141,6 @@
                             row
                             class="color-label custom-label custom-radio-group remove-message"
                           >
-=======
-                        <v-col cols="12" no-gutters
-                          class="d-flex justify-start align-center mt-12 mt-md-0 pb-0 pt-0 pl-4">
-                          <v-radio-group v-model="selectedGender" row
-                            class="color-label custom-label custom-radio-group remove-message">
->>>>>>> 080e6c6012aa55d3a76e40fab0a7f13b13f7e8fc
                             <template #label>
                               <span class="custom-label black--text">คำนำหน้าชื่อ<span class="red--text"> *
                                 </span>:</span>
@@ -186,7 +166,6 @@
                             </v-row>
                             <v-row>
                               <v-col class="pt-0 pl-0 pr-md-0 pb-0">
-<<<<<<< HEAD
                                 <v-text-field
                                   label="ชื่อ (ภาษาไทย)"
                                   :rules="[
@@ -202,14 +181,6 @@
                                   class="input-box"
                                   v-model="formData.firstNameTh"
                                 />
-=======
-                                <v-text-field label="ชื่อ (ภาษาไทย)" :rules="[
-                                  (v) => !!v || 'กรุณากรอกชื่อ',
-                                  (v) =>
-                                    /^[ก-๙\s]+$/.test(v) ||
-                                    'กรุณากรอกเฉพาะตัวอักษรภาษาไทย',
-                                ]" outlined dense single-line required class="input-box" />
->>>>>>> 080e6c6012aa55d3a76e40fab0a7f13b13f7e8fc
                               </v-col>
                             </v-row>
                           </v-col>
@@ -227,7 +198,6 @@
                             </v-row>
                             <v-row>
                               <v-col class="pt-0 pl-0 pr-md-4 pb-0">
-<<<<<<< HEAD
                                 <v-text-field
                                   label="นามสกุล (ภาษาไทย)"
                                   :rules="[
@@ -243,14 +213,6 @@
                                   class="input-box"
                                   v-model="formData.lastNameTh"
                                 />
-=======
-                                <v-text-field label="นามสกุล (ภาษาไทย)" :rules="[
-                                  (v) => !!v || 'กรุณากรอกนามสกุล',
-                                  (v) =>
-                                    /^[ก-๙\s]+$/.test(v) ||
-                                    'กรุณากรอกเฉพาะตัวอักษรภาษาไทย',
-                                ]" outlined dense single-line required class="input-box" />
->>>>>>> 080e6c6012aa55d3a76e40fab0a7f13b13f7e8fc
                               </v-col>
                             </v-row>
                           </v-col>
@@ -268,7 +230,6 @@
                             </v-row>
                             <v-row>
                               <v-col class="pt-0 pl-0 pb-0 pr-4">
-<<<<<<< HEAD
                                 <v-text-field
                                   label="ชื่อเล่น (ภาษาไทย)"
                                   :rules="[
@@ -284,19 +245,10 @@
                                   class="input-box"
                                   v-model="formData.nickNameTh"
                                 />
-=======
-                                <v-text-field label="ชื่อเล่น (ภาษาไทย)" :rules="[
-                                  (v) => !!v || 'กรุณากรอกนามสกุล',
-                                  (v) =>
-                                    /^[ก-๙\s]+$/.test(v) ||
-                                    'กรุณากรอกเฉพาะตัวอักษรภาษาไทย',
-                                ]" outlined dense single-line required class="input-box" />
->>>>>>> 080e6c6012aa55d3a76e40fab0a7f13b13f7e8fc
                               </v-col>
                             </v-row>
                           </v-col>
                         </v-col>
-<<<<<<< HEAD
                         <v-col
                           cols="12"
                           no-gutters
@@ -307,11 +259,6 @@
                             row
                             class="color-label custom-label mt-1 mt-md-0 remove-message"
                           >
-=======
-                        <v-col cols="12" no-gutters class="d-flex justify-start align-center pb-0 pt-md-0 pl-4">
-                          <v-radio-group v-model="selectedGender" row
-                            class="color-label custom-label mt-1 mt-md-0 remove-message">
->>>>>>> 080e6c6012aa55d3a76e40fab0a7f13b13f7e8fc
                             <template #label>
                               <span class="custom-label">Name title<span class="red--text"> * </span>:</span>
                             </template>
@@ -331,7 +278,6 @@
                             </v-row>
                             <v-row>
                               <v-col class="pt-0 pl-0 pr-md-0 pb-0">
-<<<<<<< HEAD
                                 <v-text-field
                                   label="Name"
                                   :rules="[
@@ -347,14 +293,6 @@
                                   class="input-box"
                                   v-model="formData.firstNameEn"
                                 ></v-text-field>
-=======
-                                <v-text-field label="Name" :rules="[
-                                  (v) => !!v || 'Please input name',
-                                  (v) =>
-                                    /^[A-Za-z\\s]+$/.test(v) ||
-                                    'Please input English letters only',
-                                ]" outlined dense single-line required class="input-box"></v-text-field>
->>>>>>> 080e6c6012aa55d3a76e40fab0a7f13b13f7e8fc
                               </v-col>
                             </v-row>
                           </v-col>
@@ -370,7 +308,6 @@
                             </v-row>
                             <v-row>
                               <v-col class="pt-0 pl-0 pr-md-0 pb-0">
-<<<<<<< HEAD
                                 <v-text-field
                                   label="Surname"
                                   :rules="[
@@ -386,14 +323,6 @@
                                   class="input-box"
                                   v-model="formData.lastNameEn"
                                 ></v-text-field>
-=======
-                                <v-text-field label="Surname" :rules="[
-                                  (v) => !!v || 'Please input Surname',
-                                  (v) =>
-                                    /^[A-Za-z\\s]+$/.test(v) ||
-                                    'Please input English letters only',
-                                ]" outlined dense single-line required class="input-box"></v-text-field>
->>>>>>> 080e6c6012aa55d3a76e40fab0a7f13b13f7e8fc
                               </v-col>
                             </v-row>
                           </v-col>
@@ -409,7 +338,6 @@
                             </v-row>
                             <v-row>
                               <v-col class="pt-0 pl-0 pr-md-4 pb-0">
-<<<<<<< HEAD
                                 <v-text-field
                                   label="Nickname"
                                   :rules="[
@@ -425,14 +353,6 @@
                                   class="input-box"
                                   v-model="formData.nickNameEn"
                                 ></v-text-field>
-=======
-                                <v-text-field label="Nickname" :rules="[
-                                  (v) => !!v || 'Please input Nickname',
-                                  (v) =>
-                                    /^[A-Za-z\\s]+$/.test(v) ||
-                                    'Please input English letters only',
-                                ]" outlined dense single-line required class="input-box"></v-text-field>
->>>>>>> 080e6c6012aa55d3a76e40fab0a7f13b13f7e8fc
                               </v-col>
                             </v-row>
                           </v-col>
@@ -450,14 +370,10 @@
                             </v-row>
                             <v-row>
                               <v-col class="pt-0 pl-0 pr-md-4 pb-0">
-<<<<<<< HEAD
                                 <v-text-field
                                   label="0-0000-00000-00-0"
                                   v-model="formData.citizenId"
                                   @input="formatCitizenId"
-=======
-                                <v-text-field label="0-0000-00000-00-0" v-model="citizenId" @input="formatCitizenId"
->>>>>>> 080e6c6012aa55d3a76e40fab0a7f13b13f7e8fc
                                   :rules="[
                                     (v) => !!v || 'กรุณากรอกเลขบัตรประชาชน',
                                     (v) =>
@@ -487,7 +403,6 @@
                             </v-row>
                             <v-row>
                               <v-col class="pt-0 pl-0 pr-md-0 pb-0">
-<<<<<<< HEAD
                                 <v-text-field
                                   label="ระบุเขต/อำเภอที่ออกบัตร"
                                   :rules="[
@@ -504,15 +419,6 @@
                                   class="input-box"
                                   v-model="formData.idIssueDistrict"
                                 />
-=======
-                                <v-text-field label="ระบุเขต/อำเภอที่ออกบัตร" :rules="[
-                                  (v) =>
-                                    !!v || 'กรุณากรอกเขต/อำเภอที่ออกบัตร',
-                                  (v) =>
-                                    /^[ก-๙\s]+$/.test(v) ||
-                                    'กรุณากรอกเฉพาะตัวอักษรภาษาไทย',
-                                ]" outlined dense single-line required class="input-box" />
->>>>>>> 080e6c6012aa55d3a76e40fab0a7f13b13f7e8fc
                               </v-col>
                             </v-row>
                           </v-col>
@@ -533,7 +439,6 @@
                                 <v-menu ref="menu" v-model="menu1" :close-on-content-click="false" :nudge-top="40"
                                   transition="scale-transition" offset-y min-width="290px">
                                   <template #activator="{ on, attrs }">
-<<<<<<< HEAD
                                     <v-text-field
                                       v-model="formData.formattedIssueDate"
                                       placeholder="วว/ดด/ปปปป"
@@ -544,10 +449,6 @@
                                       v-on="on"
                                       class="date_box input-box"
                                       :rules="[
-=======
-                                    <v-text-field v-model="formattedDate1" placeholder="วว/ดด/ปปปป" outlined dense
-                                      readonly v-bind="attrs" v-on="on" class="date_box input-box" :rules="[
->>>>>>> 080e6c6012aa55d3a76e40fab0a7f13b13f7e8fc
                                         (v) => !!v || 'กรุณาระบุวันเกิด',
                                       ]" required>
                                       <template #append>
@@ -555,7 +456,6 @@
                                       </template>
                                     </v-text-field>
                                   </template>
-<<<<<<< HEAD
                                   <v-date-picker
                                     v-model="formData.idIssueDate"
                                     locale="th"
@@ -564,10 +464,6 @@
                                     @input="updateIssueDate"
                                     class="compact-date-picker"
                                   />
-=======
-                                  <v-date-picker v-model="date1" locale="th" scrollable :max="todayDate"
-                                    @input="updateDate1" class="compact-date-picker" />
->>>>>>> 080e6c6012aa55d3a76e40fab0a7f13b13f7e8fc
                                 </v-menu>
                               </v-col>
                             </v-row>
@@ -586,7 +482,6 @@
                                 <v-menu ref="menu" v-model="menu2" :close-on-content-click="false" :nudge-top="40"
                                   transition="scale-transition" offset-y min-width="290px">
                                   <template #activator="{ on, attrs }">
-<<<<<<< HEAD
                                     <v-text-field
                                       v-model="formData.formattedExpiryDate"
                                       placeholder="วว/ดด/ปปปป"
@@ -597,10 +492,6 @@
                                       v-bind="attrs"
                                       v-on="on"
                                       :rules="[
-=======
-                                    <v-text-field v-model="formattedDate2" placeholder="วว/ดด/ปปปป" outlined dense
-                                      readonly class="date_box input-box" v-bind="attrs" v-on="on" :rules="[
->>>>>>> 080e6c6012aa55d3a76e40fab0a7f13b13f7e8fc
                                         (v) => !!v || 'กรุณาระบุวันเกิด',
                                       ]" required>
                                       <template #append>
@@ -608,7 +499,6 @@
                                       </template>
                                     </v-text-field>
                                   </template>
-<<<<<<< HEAD
                                   <v-date-picker
                                     v-model="formData.idExpiryDate"
                                     locale="th"
@@ -616,10 +506,6 @@
                                     @input="updateExpiryDate"
                                     class="compact-date-picker"
                                   />
-=======
-                                  <v-date-picker v-model="date2" locale="th" scrollable @input="updateDate2"
-                                    class="compact-date-picker" />
->>>>>>> 080e6c6012aa55d3a76e40fab0a7f13b13f7e8fc
                                 </v-menu>
                               </v-col>
                             </v-row>
@@ -645,7 +531,6 @@
                             <v-menu ref="menu" v-model="menu3" :close-on-content-click="false" :nudge-top="200"
                               transition="scale-transition" offset-y min-width="290px">
                               <template #activator="{ on, attrs }">
-<<<<<<< HEAD
                                 <v-text-field
                                   v-model="formData.formattedBirthDate"
                                   placeholder="วว/ดด/ปปปป"
@@ -658,17 +543,11 @@
                                   :rules="[(v) => !!v || 'กรุณาระบุวันเกิด']"
                                   required
                                 >
-=======
-                                <v-text-field v-model="formattedDate3" placeholder="วว/ดด/ปปปป" outlined dense readonly
-                                  v-bind="attrs" v-on="on" class="date_box input-box"
-                                  :rules="[(v) => !!v || 'กรุณาระบุวันเกิด']" required>
->>>>>>> 080e6c6012aa55d3a76e40fab0a7f13b13f7e8fc
                                   <template #append>
                                     <v-icon color="primary">mdi-calendar</v-icon>
                                   </template>
                                 </v-text-field>
                               </template>
-<<<<<<< HEAD
                               <v-date-picker
                                 v-model="formData.BirthDate"
                                 locale="th"
@@ -677,10 +556,6 @@
                                 @input="updateBirthDate"
                                 class="compact-date-picker"
                               />
-=======
-                              <v-date-picker v-model="date3" locale="th" scrollable :max="todayDate"
-                                @input="updateDate3" class="compact-date-picker" />
->>>>>>> 080e6c6012aa55d3a76e40fab0a7f13b13f7e8fc
                             </v-menu>
                           </v-col>
                         </v-row>
@@ -695,7 +570,6 @@
                         </v-row>
                         <v-row>
                           <v-col cols="7" class="pt-0 pl-0 pr-2 pb-0">
-<<<<<<< HEAD
                             <v-text-field
                               v-model="formData.age"
                               outlined
@@ -705,10 +579,6 @@
                               placeholder="0"
                               readonly
                             />
-=======
-                            <v-text-field v-model="calculatedAge" outlined dense hide-details="auto"
-                              class="mb-26px grey lighten-4 text-center input-box" placeholder="0" readonly />
->>>>>>> 080e6c6012aa55d3a76e40fab0a7f13b13f7e8fc
                           </v-col>
                           <v-col cols="3">
                             <v-row>
@@ -735,7 +605,6 @@
                         </v-row>
                         <v-row>
                           <v-col class="pt-0 pl-0 pr-4 pb-md-6">
-<<<<<<< HEAD
                             <v-text-field
                               label="ระบุโรคประจำตัว"
                               outlined
@@ -744,10 +613,6 @@
                               class="input-box date_box"
                               v-model="formData.disease"
                             />
-=======
-                            <v-text-field label="ระบุโรคประจำตัว" outlined dense single-line
-                              class="input-box date_box" />
->>>>>>> 080e6c6012aa55d3a76e40fab0a7f13b13f7e8fc
                           </v-col>
                         </v-row>
                       </v-col>
@@ -768,7 +633,6 @@
                           </v-row>
                           <v-row>
                             <v-col class="pt-0 pl-0 pr-md-0 pb-md-2">
-<<<<<<< HEAD
                               <v-text-field
                                 label="ระบุสัญชาติ"
                                 :rules="[(v) => !!v || 'กรุณาระบุสัญชาติ']"
@@ -779,10 +643,6 @@
                                 class="input-box"
                                 v-model="formData.nationality"
                               />
-=======
-                              <v-text-field label="ระบุสัญชาติ" :rules="[(v) => !!v || 'กรุณาระบุสัญชาติ']" outlined
-                                dense single-line required class="input-box" />
->>>>>>> 080e6c6012aa55d3a76e40fab0a7f13b13f7e8fc
                             </v-col>
                           </v-row>
                         </v-col>
@@ -797,8 +657,7 @@
                             </v-col>
                           </v-row>
                           <v-row>
-<<<<<<< HEAD
-                            <v-col class="pt-0 pl-0 pr-md-4 pb-0">
+                            <v-col class="pt-0 pl-0 pr-md-4 pb-0  pb-md-2">
                               <v-text-field
                                 label="ระบุเชื้อชาติ"
                                 :rules="[(v) => !!v || 'กรุณาระบุเชื้อชาติ']"
@@ -809,11 +668,6 @@
                                 class="input-box"
                                 v-model="formData.race"
                               />
-=======
-                            <v-col class="pt-0 pl-0 pr-md-4 pb-0 pb-md-2">
-                              <v-text-field label="ระบุเชื้อชาติ" :rules="[(v) => !!v || 'กรุณาระบุเชื้อชาติ']" outlined
-                                dense single-line required class="input-box" />
->>>>>>> 080e6c6012aa55d3a76e40fab0a7f13b13f7e8fc
                             </v-col>
                           </v-row>
                         </v-col>
@@ -828,8 +682,7 @@
                             </v-col>
                           </v-row>
                           <v-row>
-<<<<<<< HEAD
-                            <v-col class="pt-0 pl-0 pb-0 pr-1">
+                            <v-col class="pt-0 pl-0 pb-0 pr-1 pb-md-2">
                               <v-text-field
                                 label="ระบุศาสนา"
                                 :rules="[(v) => !!v || 'กรุณาระบุศาสนา']"
@@ -840,11 +693,6 @@
                                 class="input-box"
                                 v-model="formData.religion"
                               />
-=======
-                            <v-col class="pt-0 pl-0 pb-0 pr-1 pb-md-2">
-                              <v-text-field label="ระบุศาสนา" :rules="[(v) => !!v || 'กรุณาระบุศาสนา']" outlined dense
-                                single-line required class="input-box" />
->>>>>>> 080e6c6012aa55d3a76e40fab0a7f13b13f7e8fc
                             </v-col>
                           </v-row>
                         </v-col>
@@ -864,8 +712,7 @@
                             </p>
                           </v-row>
                         </v-col>
-<<<<<<< HEAD
-                        <v-col cols="12" md="9" class="py-0">
+                        <v-col cols="12" md="9" class="py-0 ml-md-9 ">
                           <v-radio-group
                             v-model="formData.soldierStatus"
                             row
@@ -880,14 +727,6 @@
                                 value="three"
                                 class="color-label custom-radio"
                               >
-=======
-                        <v-col cols="12" md="9" class="py-0 ml-md-6">
-                          <v-radio-group v-model="soldier" row
-                            class="color-label custom-label mt-1 mt-md-0 py-md-0 date_box remove-message">
-                            <v-col cols="12" md="4"
-                              class="d-flex flex-row flex-md-colum align-md-start mr-md-0 pa-md-0 pt-0">
-                              <v-radio value="three" class="color-label custom-radio">
->>>>>>> 080e6c6012aa55d3a76e40fab0a7f13b13f7e8fc
                                 <template #label>
                                   <v-col class="pa-0">
                                     <p>ได้รับการยกเว้น</p>
@@ -929,7 +768,6 @@
                                   </v-col>
                                 </template>
                               </v-radio>
-<<<<<<< HEAD
                               <v-col
                                 v-if="formData.soldierStatus === 'zero'"
                                 class="d-flex flex-row flex-md-colum align-md-start pa-0"
@@ -943,12 +781,6 @@
                                   class="input-box margin-zero-message"
                                   v-model="formData.soldierOther"
                                 />
-=======
-                              <v-col v-if="soldier === 'zero'"
-                                class="d-flex flex-row flex-md-colum align-md-start pa-0">
-                                <v-text-field label="ระบุอื่นๆ" :rules="[(v) => !!v || 'กรุณาระบุอื่นๆ']" outlined dense
-                                  single-line class="input-box margin-zero-message" />
->>>>>>> 080e6c6012aa55d3a76e40fab0a7f13b13f7e8fc
                               </v-col>
                             </v-col>
                           </v-radio-group>
@@ -968,10 +800,9 @@
                       </v-row>
                       <v-row>
                         <v-col class="pt-0 pl-4 pr-md-4 pb-md-0">
-<<<<<<< HEAD
                           <v-text-field
                             v-model="formData.phoneNumber"
-                            label="เบอร์โทรศัพท์"
+                            label="090-000-0000"
                             :rules="[
                               (v) => !!v || 'กรุณากรอกเบอร์โทรศัพท์',
                               (v) =>
@@ -986,15 +817,6 @@
                             @input="formatPhoneNumber"
                             @paste.prevent="handlePaste"
                           />
-=======
-                          <v-text-field v-model="phoneNumber" label="090-000-0000" :rules="[
-                            (v) => !!v || 'กรุณากรอกเบอร์โทรศัพท์',
-                            (v) =>
-                              /^0[0-9]{2}-[0-9]{3}-[0-9]{4}$/.test(v) ||
-                              'เบอร์โทรศัพท์ไม่ถูกต้อง',
-                          ]" outlined dense single-line class="input-box" required @input="formatPhoneNumber"
-                            @paste.prevent="handlePaste" />
->>>>>>> 080e6c6012aa55d3a76e40fab0a7f13b13f7e8fc
                         </v-col>
                       </v-row>
                     </v-col>
@@ -1008,9 +830,8 @@
                       </v-row>
                       <v-row>
                         <v-col class="pt-0 pl-0 pb-md-0">
-<<<<<<< HEAD
                           <v-text-field
-                            label="อีเมล"
+                            label="HR_inet@one.th"
                             :rules="[
                               (v) => !!v || 'กรุณากรอกอีเมล',
                               (v) =>
@@ -1023,13 +844,6 @@
                             required
                             v-model="formData.email"
                           />
-=======
-                          <v-text-field label="HR_inet@one.th" :rules="[
-                            (v) => !!v || 'กรุณากรอกอีเมล',
-                            (v) =>
-                              /.+@.+\..+/.test(v) || 'รูปแบบอีเมลไม่ถูกต้อง',
-                          ]" outlined dense single-line class="input-box" required />
->>>>>>> 080e6c6012aa55d3a76e40fab0a7f13b13f7e8fc
                         </v-col>
                       </v-row>
                     </v-col>
@@ -1143,100 +957,11 @@ export default {
         { number: 2, label: "INET ขอนแก่น" },
         { number: 3, label: "INET เชียงใหม่" },
         { number: 4, label: "INET หาดใหญ่" },
-<<<<<<< HEAD
-        { number: 5, label: "INET นครราชสีมา " },
-      ],
-
-      FormatFields: [
-        { number: 1, label: "ฝึกงาน" },
-        { number: 2, label: "สหกิจ" },
-      ],
-
-      Provinces: [
-        { number: 1, label: "กรุงเทพมหานคร" },
-        { number: 2, label: "กระบี่" },
-        { number: 3, label: "กาญจนบุรี" },
-        { number: 4, label: "กาฬสินธุ์" },
-        { number: 5, label: "กำแพงเพชร" },
-        { number: 6, label: "ขอนแก่น" },
-        { number: 7, label: "จันทบุรี" },
-        { number: 8, label: "ฉะเชิงเทรา" },
-        { number: 9, label: "ชลบุรี" },
-        { number: 10, label: "ชัยนาท" },
-        { number: 11, label: "ชัยภูมิ" },
-        { number: 12, label: "ชุมพร" },
-        { number: 13, label: "เชียงราย" },
-        { number: 14, label: "เชียงใหม่" },
-        { number: 15, label: "ตรัง" },
-        { number: 16, label: "ตราด" },
-        { number: 17, label: "ตาก" },
-        { number: 18, label: "นครนายก" },
-        { number: 19, label: "นครปฐม" },
-        { number: 20, label: "นครพนม" },
-        { number: 21, label: "นครราชสีมา" },
-        { number: 22, label: "นครศรีธรรมราช" },
-        { number: 23, label: "นครสวรรค์" },
-        { number: 24, label: "นราธิวาส" },
-        { number: 25, label: "น่าน" },
-        { number: 26, label: "บึงกาฬ" },
-        { number: 27, label: "บุรีรัมย์" },
-        { number: 28, label: "ประจวบคีรีขันธ์" },
-        { number: 29, label: "ปทุมธานี" },
-        { number: 30, label: "ปราจีนบุรี" },
-        { number: 31, label: "ปัตตานี" },
-        { number: 32, label: "พะเยา" },
-        { number: 33, label: "พระนครศรีอยุธยา" },
-        { number: 34, label: "พังงา" },
-        { number: 35, label: "พัทลุง" },
-        { number: 36, label: "พิจิตร" },
-        { number: 37, label: "พิษณุโลก" },
-        { number: 38, label: "เพชรบุรี" },
-        { number: 39, label: "เพชรบูรณ์" },
-        { number: 40, label: "แพร่" },
-        { number: 41, label: "พัทลุง" },
-        { number: 42, label: "ภูเก็ต" },
-        { number: 43, label: "มหาสารคาม" },
-        { number: 44, label: "มุกดาหาร" },
-        { number: 45, label: "แม่ฮ่องสอน" },
-        { number: 46, label: "ยโสธร" },
-        { number: 47, label: "ยะลา" },
-        { number: 48, label: "ร้อยเอ็ด" },
-        { number: 49, label: "ระนอง" },
-        { number: 50, label: "ระยอง" },
-        { number: 51, label: "ราชบุรี" },
-        { number: 52, label: "ลพบุรี" },
-        { number: 53, label: "ลำปาง" },
-        { number: 54, label: "ลำพูน" },
-        { number: 55, label: "เลย" },
-        { number: 56, label: "ศรีสะเกษ" },
-        { number: 57, label: "สกลนคร" },
-        { number: 58, label: "สงขลา" },
-        { number: 59, label: "สตูล" },
-        { number: 60, label: "สมุทรปราการ" },
-        { number: 61, label: "สมุทรสงคราม" },
-        { number: 62, label: "สมุทรสาคร" },
-        { number: 63, label: "สระแก้ว" },
-        { number: 64, label: "สระบุรี" },
-        { number: 65, label: "สิงห์บุรี" },
-        { number: 66, label: "สุโขทัย" },
-        { number: 67, label: "สุพรรณบุรี" },
-        { number: 68, label: "สุราษฎร์ธานี" },
-        { number: 69, label: "สุรินทร์" },
-        { number: 70, label: "หนองคาย" },
-        { number: 71, label: "หนองบัวลำภู" },
-        { number: 72, label: "อำนาจเจริญ" },
-        { number: 73, label: "อุดรธานี" },
-        { number: 74, label: "อุตรดิตถ์" },
-        { number: 75, label: "อุทัยธานี" },
-        { number: 76, label: "อุบลราชธานี" },
-        { number: 77, label: "ยะลา" },
-=======
         { number: 5, label: "INET นครราชสีมา" },
       ],
-      WorkFields: [
+      FormatFields: [
         { number: 1, label: "สหกิจ" },
         { number: 2, label: "ฝึกงาน" },
->>>>>>> 080e6c6012aa55d3a76e40fab0a7f13b13f7e8fc
       ],
       previewUrl: null,
       isProfileComplete: false,
@@ -1749,6 +1474,7 @@ export default {
 
 ::v-deep .custom-select .v-input__append-inner .v-icon {
   color: #4caf50 !important;
+  font-size: 16px;
 }
 
 .doc {
