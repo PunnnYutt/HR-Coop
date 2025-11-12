@@ -176,6 +176,7 @@
           height="20px"
           maxWidth="390px"
           v-model="thaiIDinfo"
+          :toggle="true"
         />
 
         <InputBox
@@ -225,7 +226,7 @@ export default {
         address: "",
       },
 
-      thaiIDinfo: false,
+      thaiIDinfo: null,
     };
   },
 
@@ -236,6 +237,7 @@ export default {
       this.fatherInfo = familyData[0];
       this.motherInfo = familyData[1];
       this.emergencyInfo = familyData[2];
+      this.thaiIDinfo = familyData[3];
     }
   },
 
@@ -244,6 +246,7 @@ export default {
       this.fatherInfo,
       this.motherInfo,
       this.emergencyInfo,
+      this.thaiIDinfo,
     ]);
   },
   methods: {},

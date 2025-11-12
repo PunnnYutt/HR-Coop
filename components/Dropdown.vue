@@ -9,15 +9,18 @@
       <v-select
         :class="{ displayOnly: !changeAble }"
         :value="value"
-        @change="$emit('input', $event)"
+        @change="handleChange"
+        @blur="handleBlur"
         :items="choices"
         :placeholder="placeholder"
         :readonly="!changeAble"
         outlined
         dense
-        hide-details
         append-icon="mdi-chevron-down"
         :menu-props="{ offsetY: true }"
+        :rules="shouldValidate ? validationRules : []"
+        :error="shouldValidate && hasError"
+        validate-on-blur
       >
       </v-select>
     </div>
@@ -33,17 +36,78 @@ export default {
     required: { type: Boolean, default: false },
     choices: { type: Array, default: () => [] },
     placeholder: { type: String, default: "" },
-
     height: { type: String, default: "56px" },
     maxWidth: { type: String, default: "232px" },
-    value: { default: null }, // Changed to accept null
-
+    value: { default: null },
     changeAble: { type: Boolean, default: true },
+    rules: { type: Array, default: () => [] },
+  },
+
+  data() {
+    return {
+      hasError: false,
+      shouldValidate: false,
+    };
   },
 
   computed: {
     boxStyle() {
       return { height: this.height, maxWidth: this.maxWidth };
+    },
+    validationRules() {
+      const rules = [...this.rules];
+
+      // Add required validation if needed
+      if (this.required) {
+        rules.unshift((v) => !!v || `กรุณาเลือก${this.labelTh || "ข้อมูล"}`);
+      }
+
+      return rules;
+    },
+  },
+
+  watch: {
+    value() {
+      if (this.shouldValidate) {
+        this.validateInput();
+      }
+    },
+  },
+
+  methods: {
+    handleChange(value) {
+      this.$emit("input", value);
+    },
+
+    handleBlur() {
+      this.shouldValidate = true;
+      this.validateInput();
+    },
+
+    validateInput() {
+      if (this.validationRules && this.validationRules.length > 0) {
+        for (let rule of this.validationRules) {
+          const result = rule(this.value);
+          if (result !== true) {
+            this.hasError = true;
+            return;
+          }
+        }
+      }
+      this.hasError = false;
+    },
+
+    // Public method to force validation
+    validate() {
+      this.shouldValidate = true;
+      this.validateInput();
+      return !this.hasError;
+    },
+
+    // Reset validation
+    resetValidation() {
+      this.shouldValidate = false;
+      this.hasError = false;
     },
   },
 };
@@ -57,6 +121,7 @@ div.form-input-text {
 
 div.box {
   width: 100%;
+  position: relative;
 }
 
 span {
@@ -75,6 +140,7 @@ span:nth-of-type(3) {
 
 .select-wrap {
   margin: 8px 0 0 0;
+  position: relative;
 }
 
 /* Custom styling for v-select to match your design */
@@ -103,10 +169,6 @@ span:nth-of-type(3) {
   min-height: 32px !important;
   padding: 0px 8px 0px 16px !important;
   border-radius: 4px;
-}
-
-::v-deep .v-text-field__details {
-  display: none;
 }
 
 ::v-deep input::placeholder {
@@ -156,23 +218,54 @@ span:nth-of-type(3) {
 }
 
 /* Focused state border */
-::v-deep .v-input--is-focused fieldset {
+::v-deep .v-input--is-focused:not(.error--text) fieldset {
   border-color: #58a144 !important;
   border-width: 2px !important;
 }
 
 /* When dropdown menu is open */
-::v-deep .v-select.v-select--is-menu-active fieldset {
+::v-deep .v-select.v-select--is-menu-active:not(.error--text) fieldset {
   border-color: #58a144 !important;
   border-width: 2px !important;
 }
 
-/* Remove border */
+/* Error state - RED BORDER */
+::v-deep .error--text fieldset {
+  border-color: #e53935 !important;
+  border-width: 2px !important;
+}
+
+::v-deep .v-input--is-focused.error--text fieldset {
+  border-color: #e53935 !important;
+  border-width: 2px !important;
+}
+
+/* Error messages - Absolute positioning */
+::v-deep .v-text-field__details {
+  position: absolute !important;
+  top: 90% !important;
+  left: 0 !important;
+  margin-top: 2px !important;
+  padding: 0 !important;
+  min-height: auto !important;
+}
+
+::v-deep .v-messages {
+  min-height: auto !important;
+  font-size: 11px !important;
+  font-family: "Sarabun", sans-serif !important;
+}
+
+::v-deep .v-messages__message {
+  color: #e53935 !important;
+  line-height: 14px !important;
+}
+
+/* Disabled/readonly style */
 ::v-deep .displayOnly fieldset {
   border: none !important;
 }
 
-/* Remove icon */
 ::v-deep .displayOnly .v-input__append-inner {
   display: none !important;
 }

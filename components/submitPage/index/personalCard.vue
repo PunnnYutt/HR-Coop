@@ -1,6 +1,6 @@
 <template>
   <v-row class="mx-md-0 mt-md-0 mb-4">
-    <v-col class="mt-3 pa-0 mt-md-0">
+    <v-col class="mt-3 pa-0 mt-md-0 pb-md-0">
       <v-card
         rounded="lg"
         class="px-0 pb-3 pt-0 mt-3 mt-md-0"
@@ -8,7 +8,7 @@
           $vuetify.breakpoint.mdAndUp ? 'shadow-card' : 'shadow-card-none'
         "
       >
-        <v-row no-gutters class="green lighten-5 px-4 py-9px">
+        <v-row no-gutters class="bg-header px-4 py-9px">
           <v-col cols="12">
             <p
               class="primary--text lighten-1 text-body-2 mb-0 font-weight-medium"
@@ -33,23 +33,18 @@
                     <v-col
                       v-bind="props"
                       class="d-flex flex-column align-center justify-center upload-card"
-                      @click="triggerFileInput"
                     >
                       <v-icon
                         color="primary"
-                        size="48"
+                        style="font-size: 40px !important"
                         :class="isHovering ? 'hovering' : 'not-hovering'"
                       >
                         mdi-cloud-upload-outline
                       </v-icon>
                     </v-col>
                   </v-hover>
-                  <input
-                    ref="fileInput"
-                    type="file"
-                    class="d-none"
-                    @change="onFileChange"
-                  />
+                  <input ref="fileInput" type="file" class="d-none" />
+
                   <v-col v-if="previewUrl" class="mt-4 upload-preview">
                     <img
                       :src="previewUrl"
@@ -65,7 +60,7 @@
                   </p>
                 </v-row>
                 <v-row>
-                  <p class="grey--text mt-2 custom-label">
+                  <p class="text-caption grey--text lighten-5 mt-2">
                     Upload Profile image
                   </p>
                 </v-row>
@@ -80,29 +75,32 @@
                 class="d-flex justify-start align-center mt-12 mt-md-0 pb-0 pt-0 pl-4"
               >
                 <v-radio-group
-                  v-model="selectedGender"
+                  v-model="formData.namePrefix"
                   row
-                  class="color-label custom-label custom-radio-group"
+                  class="color-label custom-label custom-radio-group remove-message readOnlyRadio"
+                  readonly
                 >
                   <template #label>
-                    <span>คำนำหน้าชื่อ<span class="red--text"> * </span>:</span>
+                    <span class="custom-label black--text"
+                      >คำนำหน้าชื่อ<span class="red--text"> * </span>:</span
+                    >
                   </template>
                   <v-radio
                     label="นาย"
                     value="one"
-                    class="color-label custom-radio"
+                    class="color-label custom-radio text-caption black--text"
                     >test</v-radio
                   >
                   <v-radio
                     label="นาง"
                     value="two"
-                    class="color-label custom-radio"
+                    class="color-label custom-radio text-caption black--text"
                     >test</v-radio
                   >
                   <v-radio
                     label="นางสาว"
                     value="three"
-                    class="color-label custom-radio"
+                    class="color-label custom-radio text-caption black--text"
                     >test</v-radio
                   >
                 </v-radio-group>
@@ -110,7 +108,7 @@
               <v-col
                 cols="12"
                 md="4"
-                class="d-flex justify-center align-center pt-0 px-4 pb-2"
+                class="d-flex justify-center align-center pt-0 px-4 pb-0"
               >
                 <v-col>
                   <v-row>
@@ -123,13 +121,16 @@
                     </v-col>
                   </v-row>
                   <v-row>
-                    <v-col class="pt-0 pl-0 pr-md-0">
+                    <v-col class="pt-0 pl-0 pr-md-0 pb-0">
                       <v-text-field
+                        label="ชื่อ (ภาษาไทย)"
                         outlined
                         dense
-                        hide-details="auto"
-                        class="ma-0"
-                        placeholder="ชื่อ (ภาษาไทย)"
+                        single-line
+                        required
+                        class="input-box displayOnly"
+                        v-model="formData.firstNameTh"
+                        readonly
                       />
                     </v-col>
                   </v-row>
@@ -138,7 +139,7 @@
               <v-col
                 cols="12"
                 md="4"
-                class="d-flex justify-center align-center pt-0 px-md-0 pb-2"
+                class="d-flex justify-center align-center pt-0 px-md-0 pb-0"
               >
                 <v-col>
                   <v-row>
@@ -151,13 +152,16 @@
                     </v-col>
                   </v-row>
                   <v-row>
-                    <v-col class="pt-0 pl-0 pr-md-4">
+                    <v-col class="pt-0 pl-0 pr-md-4 pb-0">
                       <v-text-field
+                        label="นามสกุล (ภาษาไทย)"
                         outlined
                         dense
-                        hide-details="auto"
-                        class="ma-0"
-                        placeholder="นามสกุล (ภาษาไทย)"
+                        single-line
+                        required
+                        class="input-box displayOnly"
+                        v-model="formData.lastNameTh"
+                        readonly
                       />
                     </v-col>
                   </v-row>
@@ -166,7 +170,7 @@
               <v-col
                 cols="12"
                 md="4"
-                class="d-flex justify-center align-center pt-0 pl-md-0"
+                class="d-flex justify-center align-center pt-0 pl-md-0 pb-md-0"
               >
                 <v-col>
                   <v-row>
@@ -179,13 +183,16 @@
                     </v-col>
                   </v-row>
                   <v-row>
-                    <v-col class="pt-0 pl-0 pb-2 pr-4">
+                    <v-col class="pt-0 pl-0 pb-0 pr-4">
                       <v-text-field
+                        label="ชื่อเล่น (ภาษาไทย)"
                         outlined
                         dense
-                        hide-details="auto"
-                        class="ma-0"
-                        placeholder="ชื่อเล่น (ภาษาไทย)"
+                        single-line
+                        required
+                        class="input-box displayOnly"
+                        v-model="formData.nickNameTh"
+                        readonly
                       />
                     </v-col>
                   </v-row>
@@ -197,12 +204,15 @@
                 class="d-flex justify-start align-center pb-0 pt-md-0 pl-4"
               >
                 <v-radio-group
-                  v-model="selectedGender"
+                  v-model="formData.namePrefix"
                   row
-                  class="color-label custom-label mt-1 mt-md-0"
+                  class="color-label custom-label mt-1 mt-md-0 remove-message readOnlyRadio"
+                  readonly
                 >
                   <template #label>
-                    <span>Name title<span class="red--text"> * </span>:</span>
+                    <span class="custom-label"
+                      >Name title<span class="red--text"> * </span>:</span
+                    >
                   </template>
                   <v-radio
                     label="Mr."
@@ -227,7 +237,7 @@
               <v-col
                 cols="12"
                 md="4"
-                class="d-flex justify-center align-center pt-0 px-md-4"
+                class="d-flex justify-center align-center pt-md-0 px-md-4 pb-md-0"
               >
                 <v-col>
                   <v-row>
@@ -240,14 +250,17 @@
                     </v-col>
                   </v-row>
                   <v-row>
-                    <v-col class="pt-0 pl-0 pr-md-0">
+                    <v-col class="pt-0 pl-0 pr-md-0 pb-0">
                       <v-text-field
+                        label="Name"
                         outlined
                         dense
-                        hide-details="auto"
-                        class="ma-0"
-                        placeholder="Name"
-                      />
+                        single-line
+                        required
+                        class="input-box displayOnly"
+                        v-model="formData.firstNameEn"
+                        readonly
+                      ></v-text-field>
                     </v-col>
                   </v-row>
                 </v-col>
@@ -255,7 +268,7 @@
               <v-col
                 cols="12"
                 md="4"
-                class="d-flex justify-center align-center pl-md-0 pr-md-4 pt-0"
+                class="d-flex justify-center align-center pl-md-0 pr-md-4 pt-0 pb-md-0"
               >
                 <v-col>
                   <v-row>
@@ -268,14 +281,17 @@
                     </v-col>
                   </v-row>
                   <v-row>
-                    <v-col class="pt-0 pl-0 pr-md-0">
+                    <v-col class="pt-0 pl-0 pr-md-0 pb-0">
                       <v-text-field
+                        label="Surname"
                         outlined
                         dense
-                        hide-details="auto"
-                        class="ma-0"
-                        placeholder="Surname"
-                      />
+                        single-line
+                        required
+                        class="input-box displayOnly"
+                        v-model="formData.lastNameEn"
+                        readonly
+                      ></v-text-field>
                     </v-col>
                   </v-row>
                 </v-col>
@@ -283,7 +299,7 @@
               <v-col
                 cols="12"
                 md="4"
-                class="d-flex justify-center align-center pt-0 pl-md-0"
+                class="d-flex justify-center align-center pt-0 pl-md-0 pb-md-0"
               >
                 <v-col>
                   <v-row>
@@ -296,14 +312,17 @@
                     </v-col>
                   </v-row>
                   <v-row>
-                    <v-col class="pt-0 pl-0 pr-md-4">
+                    <v-col class="pt-0 pl-0 pr-md-4 pb-0">
                       <v-text-field
+                        label="Nickname"
                         outlined
                         dense
-                        hide-details="auto"
-                        class="ma-0"
-                        placeholder="Nickname"
-                      />
+                        single-line
+                        required
+                        class="input-box displayOnly"
+                        v-model="formData.nickNameEn"
+                        readonly
+                      ></v-text-field>
                     </v-col>
                   </v-row>
                 </v-col>
@@ -320,20 +339,24 @@
                     >
                       <p class="custom-label">
                         หมายเลขบัตรประชาชน
-                        <span class="grey--text">I.D. Card No.</span
+                        <span class="text-caption grey--text lighten-5"
+                          >I.D. Card No.</span
                         ><span class="red--text"> * </span>
                       </p>
                     </v-col>
                   </v-row>
                   <v-row>
-                    <v-col class="pt-0 pl-0 pr-md-4">
+                    <v-col class="pt-0 pl-0 pr-md-4 pb-0">
                       <v-text-field
+                        label="0-0000-00000-00-0"
+                        v-model="formData.citizenId"
                         outlined
                         dense
-                        hide-details="auto"
-                        class="ma-0"
-                        placeholder="0-0000-00000-00-0"
-                      />
+                        single-line
+                        required
+                        class="input-box displayOnly"
+                        readonly
+                      ></v-text-field>
                     </v-col>
                   </v-row>
                 </v-col>
@@ -356,13 +379,16 @@
                     </v-col>
                   </v-row>
                   <v-row>
-                    <v-col class="pt-0 pl-0 pr-md-0">
+                    <v-col class="pt-0 pl-0 pr-md-0 pb-0">
                       <v-text-field
+                        label="ระบุเขต/อำเภอที่ออกบัตร"
                         outlined
                         dense
-                        hide-details="auto"
-                        class="ma-0"
-                        placeholder="ระบุเขต/อำเภอที่ออกบัตร"
+                        single-line
+                        required
+                        class="input-box displayOnly"
+                        v-model="formData.idIssueDistrict"
+                        readonly
                       />
                     </v-col>
                   </v-row>
@@ -378,7 +404,8 @@
                     <v-col class="pt-0 pl-0 pb-2">
                       <p class="custom-label">
                         วันที่ออกบัตร
-                        <span class="grey--text">Issue date</span
+                        <span class="text-caption grey--text lighten-5"
+                          >Issue date</span
                         ><span class="red--text"> * </span>
                       </p>
                     </v-col>
@@ -389,41 +416,45 @@
                         ref="menu"
                         v-model="menu1"
                         :close-on-content-click="false"
-                        :nudge-right="40"
+                        :nudge-top="40"
                         transition="scale-transition"
                         offset-y
                         min-width="290px"
                       >
                         <template #activator="{ on, attrs }">
                           <v-text-field
-                            v-model="formattedDate1"
+                            v-model="formData.formattedIssueDate"
                             placeholder="วว/ดด/ปปปป"
                             outlined
                             dense
                             readonly
                             v-bind="attrs"
                             v-on="on"
+                            class="date_box input-box displayOnly"
+                            required
                           >
-                            <template #append>
-                              <v-icon color="primary">mdi-calendar</v-icon>
-                            </template>
+                            <template #append> </template>
                           </v-text-field>
                         </template>
                         <v-date-picker
-                          v-model="date1"
+                          v-model="formData.idIssueDate"
                           locale="th"
                           scrollable
-                          @input="updateDate1"
+                          :max="todayDate"
+                          class="compact-date-picker displayOnly"
+                          readonly
                         />
                       </v-menu>
                     </v-col>
                   </v-row>
                 </v-col>
-                <v-col cols="6" class="">
+                <v-col cols="6">
                   <v-row>
                     <v-col class="pt-0 pl-0 pb-2">
                       <p class="custom-label">
-                        วันที่หมดอายุ<span class="grey--text">
+                        วันที่หมดอายุ<span
+                          class="text-caption grey--text lighten-5"
+                        >
                           Expiry date </span
                         ><span class="red--text"> * </span>
                       </p>
@@ -435,31 +466,31 @@
                         ref="menu"
                         v-model="menu2"
                         :close-on-content-click="false"
-                        :nudge-right="40"
+                        :nudge-top="40"
                         transition="scale-transition"
                         offset-y
                         min-width="290px"
                       >
                         <template #activator="{ on, attrs }">
                           <v-text-field
-                            v-model="formattedDate2"
+                            v-model="formData.formattedExpiryDate"
                             placeholder="วว/ดด/ปปปป"
                             outlined
                             dense
                             readonly
+                            class="date_box input-box displayOnly"
                             v-bind="attrs"
                             v-on="on"
+                            required
                           >
-                            <template #append>
-                              <v-icon color="primary">mdi-calendar</v-icon>
-                            </template>
+                            <template #append> </template>
                           </v-text-field>
                         </template>
                         <v-date-picker
-                          v-model="date2"
+                          v-model="formData.idExpiryDate"
                           locale="th"
                           scrollable
-                          @input="updateDate2"
+                          class="compact-date-picker"
                         />
                       </v-menu>
                     </v-col>
@@ -482,7 +513,8 @@
                 >
                   <p class="custom-label">
                     วันเกิด
-                    <span class="grey--text">Date of Birth</span
+                    <span class="text-caption grey--text lighten-5"
+                      >Date of Birth</span
                     ><span class="red--text"> * </span>
                   </p>
                 </v-col>
@@ -493,31 +525,32 @@
                     ref="menu"
                     v-model="menu3"
                     :close-on-content-click="false"
-                    :nudge-right="40"
+                    :nudge-top="200"
                     transition="scale-transition"
                     offset-y
                     min-width="290px"
                   >
                     <template #activator="{ on, attrs }">
                       <v-text-field
-                        v-model="formattedDate3"
+                        v-model="formData.formattedBirthDate"
                         placeholder="วว/ดด/ปปปป"
                         outlined
                         dense
                         readonly
                         v-bind="attrs"
                         v-on="on"
+                        class="date_box input-box displayOnly"
+                        required
                       >
-                        <template #append>
-                          <v-icon color="primary">mdi-calendar</v-icon>
-                        </template>
+                        <template #append> </template>
                       </v-text-field>
                     </template>
                     <v-date-picker
-                      v-model="date3"
+                      v-model="formData.BirthDate"
                       locale="th"
                       scrollable
-                      @input="updateDate3"
+                      :max="todayDate"
+                      class="compact-date-picker"
                     />
                   </v-menu>
                 </v-col>
@@ -527,18 +560,19 @@
               <v-row>
                 <v-col class="d-flex justify-start align-center pt-0 pl-0 pb-2">
                   <p class="custom-label pb-0 mt-md-1">
-                    อายุ <span class="grey--text"> Age </span>
+                    อายุ
+                    <span class="text-caption grey--text lighten-5"> Age </span>
                   </p>
                 </v-col>
               </v-row>
               <v-row>
                 <v-col cols="7" class="pt-0 pl-0 pr-2 pb-0">
                   <v-text-field
-                    v-model="calculatedAge"
+                    v-model="formData.age"
                     outlined
                     dense
                     hide-details="auto"
-                    class="mb-26px grey lighten-4 text-center"
+                    class="mb-26px text-center input-box displayOnly"
                     placeholder="0"
                     readonly
                   />
@@ -558,61 +592,169 @@
             <v-col class="py-0 pl-3 pt-md-3">
               <v-row>
                 <v-col
-                  class="d-flex justify-start align-center pt-0 pl-0 pb-2 mt-md-1"
+                  class="d-flex justify-start align-center pt-0 pl-6 pb-2 mt-md-1"
                 >
                   <p class="custom-label">
                     โรคประจำตัว
-                    <span class="grey--text">
+                    <span class="text-caption grey--text lighten-5">
                       Any physical disability or disease?
                     </span>
                   </p>
                 </v-col>
               </v-row>
               <v-row>
-                <v-col class="pt-0 pl-0 pr-4">
+                <v-col class="pt-0 pl-0 pr-4 pb-md-6">
                   <v-text-field
+                    label="ระบุโรคประจำตัว"
                     outlined
                     dense
-                    hide-details="auto"
-                    class="ma-0"
-                    placeholder="โรคประจำตัว"
+                    single-line
+                    class="input-box date_box displayOnly"
+                    v-model="formData.disease"
+                    readonly
                   />
                 </v-col>
               </v-row>
             </v-col>
           </v-col>
         </v-row>
+        <v-col>
+          <v-row>
+            <v-col
+              cols="12"
+              md="4"
+              class="d-flex justify-center align-center pt-0 px-4 pb-0"
+            >
+              <v-col>
+                <v-row>
+                  <v-col
+                    class="d-flex justify-start align-center pt-0 pl-0 pb-2"
+                  >
+                    <p class="custom-label">
+                      สัญชาติ<span class="text-caption grey--text lighten-5">
+                        Nationality
+                      </span>
+                    </p>
+                  </v-col>
+                </v-row>
+                <v-row>
+                  <v-col class="pt-0 pl-0 pr-md-0 pb-md-2">
+                    <v-text-field
+                      label="ระบุสัญชาติ"
+                      outlined
+                      dense
+                      single-line
+                      required
+                      class="input-box displayOnly"
+                      v-model="formData.nationality"
+                      readonly
+                    />
+                  </v-col>
+                </v-row>
+              </v-col>
+            </v-col>
+            <v-col
+              cols="12"
+              md="4"
+              class="d-flex justify-center align-center pt-0 px-md-0 pb-0"
+            >
+              <v-col>
+                <v-row>
+                  <v-col
+                    class="d-flex justify-start align-center pt-0 pl-0 pb-2"
+                  >
+                    <p class="custom-label">
+                      เชื้อชาติ<span class="text-caption grey--text lighten-5">
+                        Race
+                      </span>
+                    </p>
+                  </v-col>
+                </v-row>
+                <v-row>
+                  <v-col class="pt-0 pl-0 pr-md-4 pb-0 pb-md-2">
+                    <v-text-field
+                      label="ระบุเชื้อชาติ"
+                      outlined
+                      dense
+                      single-line
+                      required
+                      class="input-box displayOnly"
+                      v-model="formData.race"
+                      readonly
+                    />
+                  </v-col>
+                </v-row>
+              </v-col>
+            </v-col>
+            <v-col
+              cols="12"
+              md="4"
+              class="d-flex justify-center align-center pt-0 pl-md-0 pb-md-0"
+            >
+              <v-col>
+                <v-row>
+                  <v-col
+                    class="d-flex justify-start align-center pt-0 pl-0 pb-2"
+                  >
+                    <p class="custom-label">
+                      ศาสนา<span class="text-caption grey--text lighten-5">
+                        Religion
+                      </span>
+                    </p>
+                  </v-col>
+                </v-row>
+                <v-row>
+                  <v-col class="pt-0 pl-0 pb-0 pr-1 pb-md-2">
+                    <v-text-field
+                      label="ระบุศาสนา"
+                      outlined
+                      dense
+                      single-line
+                      required
+                      class="input-box displayOnly"
+                      v-model="formData.religion"
+                      readonly
+                    />
+                  </v-col>
+                </v-row>
+              </v-col>
+            </v-col>
+          </v-row>
+        </v-col>
         <v-row>
           <v-col>
             <v-row class="pt-4 pt-md-0">
-              <v-col cols="12" md="2" class="pl-6">
+              <v-col cols="12" md="1" class="pl-6">
                 <v-row
                   class="d-flex flex-md-column flex-row align-center align-md-start pb-md-6"
                 >
-                  <p class="custom-label mb-0 mr-2 mr-md-0 pl-md-4">
+                  <p class="custom-label mb-0 mr-2 mr-md-0 pl-md-4 doc">
                     สถานะทางทหาร :
                   </p>
-                  <p class="grey--text custom-label mb-0 pl-md-4">
+                  <p class="text-caption grey--text lighten-5 mb-0 pl-md-4 doc">
                     Military Service
                   </p>
                 </v-row>
               </v-col>
-              <v-col cols="12" md="9" class="py-0">
+              <v-col cols="12" md="9" class="py-0 ml-md-9">
                 <v-radio-group
-                  v-model="soldier"
+                  v-model="formData.soldierStatus"
                   row
-                  class="color-label custom-label mt-1 mt-md-0 py-md-0"
+                  class="color-label custom-label mt-1 mt-md-0 py-md-0 date_box remove-message readOnlyRadio"
+                  readonly
                 >
                   <v-col
                     cols="12"
                     md="4"
-                    class="d-flex flex-row flex-md-colum mr-md-0 pa-md-0 pt-0"
+                    class="d-flex flex-row flex-md-colum align-md-start mr-md-0 pa-md-0 pt-0"
                   >
                     <v-radio value="three" class="color-label custom-radio">
                       <template #label>
                         <v-col class="pa-0">
                           <p>ได้รับการยกเว้น</p>
-                          <p class="text-caption text--secondary">Exempted</p>
+                          <p class="text-caption grey--text lighten-5">
+                            Exempted
+                          </p>
                         </v-col>
                       </template>
                     </v-radio>
@@ -620,7 +762,7 @@
                       <template #label>
                         <v-col class="pa-0">
                           <p>ศึกษาวิชาทหาร</p>
-                          <p class="text-caption text--secondary">
+                          <p class="text-caption grey--text lighten-5">
                             Military Studies
                           </p>
                         </v-col>
@@ -630,13 +772,15 @@
                   <v-col
                     cols="12"
                     md="6"
-                    class="d-flex flex-row flex-md-colum pa-md-0 py-0"
+                    class="d-flex flex-row flex-md-colum align-md-start pa-md-0 py-0"
                   >
                     <v-radio value="two" class="color-label custom-radio">
                       <template #label>
                         <v-col class="pa-0">
                           <p>ผ่านการเกณฑ์ทหาร</p>
-                          <p class="text-caption text--secondary">Discharged</p>
+                          <p class="text-caption grey--text lighten-5">
+                            Discharged
+                          </p>
                         </v-col>
                       </template>
                     </v-radio>
@@ -644,17 +788,24 @@
                       <template #label>
                         <v-col class="pa-0">
                           <p>อื่นๆ</p>
-                          <p class="text-caption text--secondary">Others</p>
+                          <p class="text-caption grey--text lighten-5">
+                            Others
+                          </p>
                         </v-col>
                       </template>
                     </v-radio>
-                    <v-col v-if="soldier === 'zero'" class="pa-0">
+                    <v-col
+                      v-if="formData.soldierStatus === 'zero'"
+                      class="d-flex flex-row flex-md-colum align-md-start pa-0"
+                    >
                       <v-text-field
+                        label="ระบุอื่นๆ"
                         outlined
                         dense
-                        hide-details="auto"
-                        class="ma-0"
-                        placeholder="ระบุอื่นๆ"
+                        single-line
+                        class="input-box margin-zero-message displayOnly"
+                        v-model="formData.soldierOther"
+                        readonly
                       />
                     </v-col>
                   </v-col>
@@ -668,18 +819,24 @@
             <v-row>
               <v-col class="d-flex justify-start align-center pt-0 pl-4 pb-2">
                 <p class="custom-label">
-                  เบอร์โทรศัพท์ <span class="grey--text"> Telephone No. </span>
+                  เบอร์โทรศัพท์
+                  <span class="text-caption grey--text lighten-5">
+                    Telephone No.
+                  </span>
                 </p>
               </v-col>
             </v-row>
             <v-row>
-              <v-col class="pt-0 pl-4 pr-md-4 pb-md-4">
+              <v-col class="pt-0 pl-4 pr-md-4 pb-md-0">
                 <v-text-field
+                  v-model="formData.phoneNumber"
+                  label="090-000-0000"
                   outlined
                   dense
-                  hide-details="auto"
-                  class="ma-0"
-                  placeholder="090-000-0000"
+                  single-line
+                  class="input-box displayOnly"
+                  required
+                  readonly
                 />
               </v-col>
             </v-row>
@@ -688,18 +845,24 @@
             <v-row>
               <v-col class="d-flex justify-start align-center pt-0 pl-0 pb-2">
                 <p class="custom-label">
-                  อีเมล <span class="grey--text"> E-mail </span>
+                  อีเมล
+                  <span class="text-caption grey--text lighten-5">
+                    E-mail
+                  </span>
                 </p>
               </v-col>
             </v-row>
             <v-row>
-              <v-col class="pt-0 pl-0 pb-md-4">
+              <v-col class="pt-0 pl-0 pb-md-0">
                 <v-text-field
+                  label="HR_inet@one.th"
                   outlined
                   dense
-                  hide-details="auto"
-                  class="ma-0"
-                  placeholder="HR_inet@one.th"
+                  single-line
+                  class="input-box displayOnly"
+                  required
+                  v-model="formData.email"
+                  readonly
                 />
               </v-col>
             </v-row>
@@ -709,273 +872,77 @@
     </v-col>
   </v-row>
 </template>
+
 <script>
 export default {
-  layout: "form",
+  mounted() {
+    // ✅ DEEP COPY - No reference to store
+    const storeData = this.$store.state.pages;
+    if ("email" in storeData[6]) {
+      const storeDataCopy = JSON.parse(JSON.stringify(storeData));
+      this.formData = storeDataCopy[6];
+      this.formData.profileImage = this.$fileStore.imageFile;
+
+      if (this.formData.profileImage) {
+        this.previewUrl = URL.createObjectURL(this.formData.profileImage);
+        this.isProfileComplete = true;
+      }
+    }
+  },
+  beforeDestroy() {
+    if (this.previewUrl) {
+      URL.revokeObjectURL(this.previewUrl);
+    }
+  },
   data() {
     return {
-      // format currency
-      salaryFrom: 0,
-      salaryFromDisplay: "",
-      salaryTo: 0,
-      salaryToDisplay: "",
-      // validation salary
-      salaryFromError: false,
-      salaryFromErrorMessage: "",
-      salaryToError: false,
-      salaryToErrorMessage: "",
-      // texts
-      steps: [
-        { number: 1, label: "ประวัติส่วนตัว" },
-        { number: 2, label: "ประวัติการศึกษา" },
-        { number: 3, label: "ประวัติการทำงาน" },
-        { number: 4, label: "ประวัติครอบครัว" },
-        { number: 5, label: "ทักษะและความสามารถ" },
-        { number: 6, label: "ประวัติเพิ่มเติม" },
-      ],
-      positions: [
-        { number: 1, label: "ตำแหน่งสหกิจหรือฝึกงาน", labelEn: "Position" },
-        { number: 2, label: "ประจำศูนย์", labelEn: "Workplace" },
-        { number: 3, label: "รูปแบบการฝึกงาน", labelEn: "Internship Format" },
-      ],
-      positionFields: [
-        { number: 1, label: "programer" },
-        { number: 2, label: "designer" },
-        { number: 3, label: "manager" },
-        { number: 4, label: "analyst" },
-      ],
-      WorkplaceFields: [
-        { number: 1, label: "Bangkok" },
-        { number: 2, label: "Chiang Mai" },
-        { number: 3, label: "Phuket" },
-        { number: 4, label: "Khon Kaen" },
-      ],
-      Provinces: [
-        { number: 1, label: "กรุงเทพมหานคร" },
-        { number: 2, label: "กระบี่" },
-        { number: 3, label: "กาญจนบุรี" },
-        { number: 4, label: "กาฬสินธุ์" },
-        { number: 5, label: "กำแพงเพชร" },
-        { number: 6, label: "ขอนแก่น" },
-        { number: 7, label: "จันทบุรี" },
-        { number: 8, label: "ฉะเชิงเทรา" },
-        { number: 9, label: "ชลบุรี" },
-        { number: 10, label: "ชัยนาท" },
-        { number: 11, label: "ชัยภูมิ" },
-        { number: 12, label: "ชุมพร" },
-        { number: 13, label: "เชียงราย" },
-        { number: 14, label: "เชียงใหม่" },
-        { number: 15, label: "ตรัง" },
-        { number: 16, label: "ตราด" },
-        { number: 17, label: "ตาก" },
-        { number: 18, label: "นครนายก" },
-        { number: 19, label: "นครปฐม" },
-        { number: 20, label: "นครพนม" },
-        { number: 21, label: "นครราชสีมา" },
-        { number: 22, label: "นครศรีธรรมราช" },
-        { number: 23, label: "นครสวรรค์" },
-        { number: 24, label: "นราธิวาส" },
-        { number: 25, label: "น่าน" },
-        { number: 26, label: "บึงกาฬ" },
-        { number: 27, label: "บุรีรัมย์" },
-        { number: 28, label: "ประจวบคีรีขันธ์" },
-        { number: 29, label: "ปทุมธานี" },
-        { number: 30, label: "ปราจีนบุรี" },
-        { number: 31, label: "ปัตตานี" },
-        { number: 32, label: "พะเยา" },
-        { number: 33, label: "พระนครศรีอยุธยา" },
-        { number: 34, label: "พังงา" },
-        { number: 35, label: "พัทลุง" },
-        { number: 36, label: "พิจิตร" },
-        { number: 37, label: "พิษณุโลก" },
-        { number: 38, label: "เพชรบุรี" },
-        { number: 39, label: "เพชรบูรณ์" },
-        { number: 40, label: "แพร่" },
-        { number: 41, label: "พัทลุง" },
-        { number: 42, label: "ภูเก็ต" },
-        { number: 43, label: "มหาสารคาม" },
-        { number: 44, label: "มุกดาหาร" },
-        { number: 45, label: "แม่ฮ่องสอน" },
-        { number: 46, label: "ยโสธร" },
-        { number: 47, label: "ยะลา" },
-        { number: 48, label: "ร้อยเอ็ด" },
-        { number: 49, label: "ระนอง" },
-        { number: 50, label: "ระยอง" },
-        { number: 51, label: "ราชบุรี" },
-        { number: 52, label: "ลพบุรี" },
-        { number: 53, label: "ลำปาง" },
-        { number: 54, label: "ลำพูน" },
-        { number: 55, label: "เลย" },
-        { number: 56, label: "ศรีสะเกษ" },
-        { number: 57, label: "สกลนคร" },
-        { number: 58, label: "สงขลา" },
-        { number: 59, label: "สตูล" },
-        { number: 60, label: "สมุทรปราการ" },
-        { number: 61, label: "สมุทรสงคราม" },
-        { number: 62, label: "สมุทรสาคร" },
-        { number: 63, label: "สระแก้ว" },
-        { number: 64, label: "สระบุรี" },
-        { number: 65, label: "สิงห์บุรี" },
-        { number: 66, label: "สุโขทัย" },
-        { number: 67, label: "สุพรรณบุรี" },
-        { number: 68, label: "สุราษฎร์ธานี" },
-        { number: 69, label: "สุรินทร์" },
-        { number: 70, label: "หนองคาย" },
-        { number: 71, label: "หนองบัวลำภู" },
-        { number: 72, label: "อำนาจเจริญ" },
-        { number: 73, label: "อุดรธานี" },
-        { number: 74, label: "อุตรดิตถ์" },
-        { number: 75, label: "อุทัยธานี" },
-        { number: 76, label: "อุบลราชธานี" },
-        { number: 77, label: "ยะลา" },
-      ],
+      formData: {
+        position: "",
+        workplace: "",
+        internshipFormat: "",
+
+        namePrefix: "",
+        firstNameTh: "",
+        lastNameTh: "",
+        nickNameTh: "",
+
+        firstNameEn: "",
+        lastNameEn: "",
+        nickNameEn: "",
+
+        citizenId: "",
+        idIssueDistrict: "",
+        idIssueDate: null,
+        formattedIssueDate: "",
+        formattedExpiryDate: "",
+        idExpiryDate: null,
+
+        formattedBirthDate: "",
+        BirthDate: null,
+        age: "",
+        disease: "",
+
+        nationality: "",
+        race: "",
+        religion: "",
+
+        soldierStatus: "",
+        soldierOther: "",
+
+        phoneNumber: "",
+        email: "",
+
+        profileImage: null,
+      },
+
       previewUrl: null,
       isProfileComplete: false,
-      // date
-      menu1: false,
-      date1: null,
-      formattedDate1: "",
-      menu2: false,
-      date2: null,
-      formattedDate2: "",
-      menu3: false,
-      date3: null,
-      formattedDate3: "",
-      // gender
-      selectedGender: null,
-      // address
-      useSameAddress: false,
-      soldier: "",
     };
-  },
-  computed: {
-    todayDate() {
-      return new Date().toISOString().substr(0, 10);
-    },
-    calculatedAge() {
-      if (!this.date3) {
-        return "";
-      }
-      const today = new Date();
-      const birth = new Date(this.date3);
-      let age = today.getFullYear() - birth.getFullYear();
-      const monthDiff = today.getMonth() - birth.getMonth();
-      // ถ้ายังไม่ถึงเดือนเกิด หรือถึงเดือนเกิดแต่ยังไม่ถึงวันเกิด ให้ลบ 1 ปี
-      if (
-        monthDiff < 0 ||
-        (monthDiff === 0 && today.getDate() < birth.getDate())
-      ) {
-        age--;
-      }
-      return age.toString();
-    },
-  },
-  methods: {
-    updateDate1(val) {
-      const d = new Date(val);
-      const options = { day: "2-digit", month: "2-digit", year: "numeric" };
-      this.formattedDate1 = d.toLocaleDateString("th-TH", options);
-      this.menu1 = false;
-    },
-    updateDate2(val) {
-      const d = new Date(val);
-      const options = { day: "2-digit", month: "2-digit", year: "numeric" };
-      this.formattedDate2 = d.toLocaleDateString("th-TH", options);
-      this.menu2 = false;
-    },
-    updateDate3(val) {
-      const d = new Date(val);
-      const options = { day: "2-digit", month: "2-digit", year: "numeric" };
-      this.formattedDate3 = d.toLocaleDateString("th-TH", options);
-      this.menu3 = false;
-    },
-    isNumber(evt) {
-      const charCode = evt.which ? evt.which : evt.keyCode;
-      // อนุญาตเฉพาะตัวเลข 0-9
-      if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-        evt.preventDefault();
-      }
-    },
-    triggerFileInput() {
-      this.$refs.fileInput.click();
-    },
-    onFileChange(event) {
-      const file = event.target.files[0];
-      if (file) {
-        if (this.previewUrl) {
-          URL.revokeObjectURL(this.previewUrl);
-        }
-        this.previewUrl = URL.createObjectURL(file);
-      }
-      this.isProfileComplete = true;
-    },
-    formatSalary(value, type) {
-      const inputValue = typeof value === "string" ? value : value.target.value;
-      const numValue = inputValue.replace(/\D/g, "");
-      if (!numValue) {
-        if (type === "from") {
-          this.salaryFromDisplay = "";
-          this.salaryFrom = 0;
-        } else {
-          this.salaryToDisplay = "";
-          this.salaryTo = 0;
-        }
-        this.validateSalary();
-        return;
-      }
-      const num = parseInt(numValue);
-      const formatted = num.toLocaleString("en-US");
-      if (type === "from") {
-        this.salaryFromDisplay = formatted;
-        this.salaryFrom = num;
-      } else {
-        this.salaryToDisplay = formatted;
-        this.salaryTo = num;
-      }
-      // Validate real-time
-      this.validateSalary();
-    },
-    validateSalary() {
-      // Reset errors
-      this.salaryFromError = false;
-      this.salaryFromErrorMessage = "";
-      this.salaryToError = false;
-      this.salaryToErrorMessage = "";
-      // ตรวจสอบว่ากรอกข้อมูล
-      if (!this.salaryFrom && this.salaryTo) {
-        this.salaryFromError = true;
-        this.salaryFromErrorMessage = "กรุณากรอกเงินเดือนต่ำสุด";
-        return false;
-      }
-      if (this.salaryFrom && !this.salaryTo) {
-        this.salaryToError = true;
-        this.salaryToErrorMessage = "กรุณากรอกเงินเดือนสูงสุด";
-        return false;
-      }
-      // ตรวจสอบว่าเงินเดือนสูงสุดมากกว่าหรือเท่ากับต่ำสุด
-      if (this.salaryFrom && this.salaryTo && this.salaryTo < this.salaryFrom) {
-        this.salaryToError = true;
-        this.salaryToErrorMessage =
-          "เงินเดือนสูงสุดต้องมากกว่าหรือเท่ากับเงินเดือนต่ำสุด";
-        return false;
-      }
-      // ตรวจสอบว่าไม่ติดลบ
-      if (this.salaryFrom < 0) {
-        this.salaryFromError = true;
-        this.salaryFromErrorMessage = "เงินเดือนต้องเป็นจำนวนบวก";
-        return false;
-      }
-      if (this.salaryTo < 0) {
-        this.salaryToError = true;
-        this.salaryToErrorMessage = "เงินเดือนต้องเป็นจำนวนบวก";
-        return false;
-      }
-      return true;
-    },
   },
 };
 </script>
-<style>
+
+<style scoped>
 .v-application--wrap {
   flex: 1 1 auto;
   backface-visibility: hidden;
@@ -986,6 +953,7 @@ export default {
   position: relative;
   background-color: #f2f2f2;
 }
+
 .avatar-border {
   border: 1px solid #58a144 !important;
   border-radius: 50%;
@@ -1017,8 +985,9 @@ export default {
 .position-bottom {
   height: 40px;
 }
-.v-list-item:hover {
-  background-color: #e9ffeb !important;
+
+::v-deep .v-list-item:hover {
+  background-color: #f0f9ee !important;
 }
 
 .show-display {
@@ -1039,14 +1008,16 @@ export default {
   border: 2px dashed #4caf50;
   border-radius: 8px;
   background-color: #f2faf2;
-  cursor: pointer;
 }
+
 .hovering {
   opacity: 0.7;
 }
+
 .not-hovering {
   opacity: 1;
 }
+
 .upload-preview {
   width: 200px;
   height: 200px;
@@ -1058,19 +1029,37 @@ export default {
   height: 100%;
   object-fit: cover;
 }
-.color-label .v-label {
+
+::v-deep .color-label .v-label {
   color: rgb(0, 0, 0);
   font-size: 0.75rem !important;
   font-weight: 500;
 }
+
 .custom-label {
   font-size: 0.75rem !important;
   font-weight: 500;
 }
-.custom-label .v-label {
+
+::v-deep .custom-radio .v-label {
   font-size: 0.75rem !important;
   font-weight: 500;
 }
+
+::v-deep .custom-radio-group > .v-label {
+  font-size: 0.75rem !important;
+  font-weight: 500;
+}
+
+::v-deep .custom-label .v-label {
+  font-size: 0.75rem !important;
+  font-weight: 500;
+}
+
+::v-deep .custom-select-size .v-select__selection {
+  font-size: 0.75rem !important;
+}
+
 .custom-radio .v-input--selection-controls__ripple {
   border-color: #4caf50 !important;
 }
@@ -1082,20 +1071,194 @@ export default {
 .mb-26px {
   margin-bottom: 26px !important;
 }
-.text-center input {
+
+::v-deep .text-center input {
   text-align: center;
 }
+
 .py-9px {
   padding-top: 9px !important;
   padding-bottom: 9px !important;
 }
 
-.custom-radio-group.v-input--selection-controls {
+::v-deep .custom-radio-group.v-input--selection-controls {
   margin-top: 12px;
 }
+
 .custom-radio-group .v-input__slot {
   padding: 0px;
   margin: 0px;
   margin-bottom: 8px;
+}
+
+.date_box .v-messages {
+  display: none !important;
+}
+
+.date_box .v-text-field__details {
+  display: none !important;
+}
+
+::v-deep .input-box .v-input__slot {
+  min-height: 32px !important;
+}
+
+::v-deep .input-box label {
+  font-size: 0.75rem !important;
+}
+
+::v-deep .input-box label {
+  font-size: 0.75rem !important;
+}
+
+/* ลดขนาด input text */
+::v-deep .input-box input {
+  font-size: 0.75rem !important;
+}
+
+/* ลดขนาด placeholder */
+::v-deep .input-box input::placeholder {
+  font-size: 0.75rem !important;
+  opacity: 0.6;
+}
+
+::v-deep .input-select .v-input__control {
+  min-height: 32px !important;
+  height: 32px !important;
+}
+
+::v-deep .input-select input {
+  padding: 0 !important;
+  font-size: 14px !important;
+  height: 32px !important;
+}
+
+::v-deep .input-box input {
+  padding: 0 !important;
+  font-size: 14px !important;
+  height: 32px !important;
+}
+
+::v-deep .input-box .v-label {
+  font-size: 12px !important;
+  top: 50% !important;
+  transform: translateY(-50%) scale(1) !important;
+  color: #cdcbcb;
+}
+
+.input-box .v-text-field__details {
+  padding-top: 2px !important;
+}
+
+::v-deep .centered-input .v-input__slot {
+  align-items: center !important;
+}
+
+::v-deep .align-center-icon {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+::v-deep .v-input__append-inner {
+  margin-top: 5px !important;
+}
+
+::v-deep .compact-date-picker .v-picker__title {
+  height: 81px !important;
+}
+
+::v-deep .margin-zero-message .v-messages {
+  margin-bottom: 0px !important;
+}
+
+::v-deep .margin-zero-message .v-text-field__details {
+  margin-bottom: 0px !important;
+}
+
+.remove-message >>> .v-messages {
+  display: none !important;
+}
+
+.remove-message .v-text-field__details {
+  display: none !important;
+}
+
+.remove-message::v-deep .v-messages {
+  display: none !important;
+}
+
+::v-deep .remove-message .v-messages {
+  display: none !important;
+}
+
+::v-deep .input-select.v-text-field--outlined fieldset {
+  border-color: #e6e6e6 !important;
+  /* เทา */
+}
+
+::v-deep .input-select.v-input.error--text.v-text-field--outlined fieldset {
+  border-color: #e53935 !important;
+  /* สีแดง error */
+}
+
+::v-deep .input-select.v-input--is-focused fieldset {
+  border-color: #4caf50 !important;
+  /* เขียวเข้ม */
+  border-width: 2px !important;
+}
+
+::v-deep .input-box.v-text-field--outlined fieldset {
+  border-color: #e6e6e6 !important;
+  /* เทา */
+}
+
+::v-deep .input-box.v-input.error--text.v-text-field--outlined fieldset {
+  border-color: #e53935 !important;
+  /* สีแดง error */
+}
+
+::v-deep .input-box.v-input--is-focused fieldset {
+  border-color: #4caf50 !important;
+  /* เขียวเข้ม */
+  border-width: 2px !important;
+}
+
+::v-deep .custom-radio .v-icon {
+  color: #4caf50 !important;
+  /* สีของจุดวงกลม */
+}
+
+::v-deep .custom-select .v-input__append-inner .v-icon {
+  color: #4caf50 !important;
+  font-size: 16px;
+}
+
+.doc {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.bg-header {
+  background-color: #f0f9ee;
+}
+
+.readOnlyRadio .v-radio,
+.readOnlyRadio .v-radio:hover,
+.readOnlyRadio .v-radio:focus {
+  cursor: default !important;
+}
+
+.readOnlyRadio .v-radio .v-input--selection-controls__ripple,
+.readOnlyRadio .v-radio .v-ripple__container {
+  display: none !important; /* hides the hover ripple */
+}
+
+.readOnlyRadio .v-radio input[type="radio"] {
+  pointer-events: none; /* block interaction if needed */
+}
+
+.displayOnly.v-text-field--outlined fieldset {
+  border: none !important;
 }
 </style>

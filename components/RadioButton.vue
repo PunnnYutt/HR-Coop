@@ -17,7 +17,7 @@
           :name="group"
           :value="key"
           :checked="internalValue === key"
-          @change="handleChange(key)"
+          @click="handleChange(key)"
         />
         <div class="label-section">
           <label :for="group + '-' + key">{{ key }}</label>
@@ -67,6 +67,7 @@ export default {
   methods: {
     handleChange(key) {
       // If toggle is enabled and clicking the same radio, deselect it
+
       if (this.toggle && this.internalValue === key) {
         this.internalValue = null;
       } else {
@@ -157,12 +158,39 @@ span:nth-of-type(4) {
   color: #989898;
 }
 
-input {
+/* Style the unselected radio button */
+input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
   width: 16px;
   height: 16px;
   margin: 0px 8px 0px 0px;
-  accent-color: #58a144;
+  border: 2px solid #58a144; /* ← Unselected border color (gray) */
+  border-radius: 50%;
+  outline: none;
   cursor: pointer;
+  background-color: white;
+}
+
+/* When checked */
+input[type="radio"]:checked {
+  border-color: #58a144; /* Selected border color (green) */
+  background-color: white;
+  position: relative;
+}
+
+/* Inner dot when checked */
+input[type="radio"]:checked::before {
+  content: "";
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #58a144; /* Inner dot color */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 label {

@@ -8,7 +8,7 @@
           $vuetify.breakpoint.mdAndUp ? 'shadow-card' : 'shadow-card-none'
         "
       >
-        <v-row no-gutters class="green lighten-5 px-4 py-9px">
+        <v-row no-gutters class="bg-header px-4 py-9px">
           <v-col cols="10">
             <p
               class="primary--text lighten-1 text-body-2 mb-0 font-weight-medium"
@@ -28,25 +28,30 @@
           >
             <v-row no-gutters>
               <v-col cols="12">
-                <p class="mb-2 font-weight-light">
+                <p class="mb-2 custom-label pb-md-2">
                   {{ position.label }}
-                  <span
-                    class="pl-2 b-1 grey--text text--lighten-1 font-weight-light"
-                    >{{ position.labelEn }}</span
-                  >
+                  <span class="pl-1 b-1 text-caption grey--text lighten-5">{{
+                    position.labelEn
+                  }}</span>
                 </p>
               </v-col>
               <v-col cols="12" class="pl-0 position-bottom">
                 <v-select
-                  v-if="position.number <= 2"
+                  v-if="position.number === 1"
                   :items="positionFields"
                   item-text="label"
                   item-value="label"
                   outlined
+                  append-icon=""
                   dense
                   placeholder="เลือกตำแหน่งสหกิจหรือฝึกงาน"
-                  clearable
-                  :class="position.number === 1 ? 'pr-md-4' : 'pr-lg-4'"
+                  :class="
+                    position.number === 1
+                      ? 'pr-md-4 input-select input-box custom-select-size custom-select diplayOnly'
+                      : 'pr-lg-4 input-select input-box custom-select-size custom-select diplayOnly'
+                  "
+                  v-model="formData.position"
+                  readonly
                 />
                 <v-select
                   v-else-if="position.number === 2"
@@ -55,21 +60,25 @@
                   item-value="label"
                   outlined
                   dense
+                  append-icon=""
                   placeholder="เลือกประจำศูนย์"
-                  clearable
-                  class="pr-md-4"
+                  class="pr-md-4 input-select input-box custom-select-size custom-select diplayOnly"
+                  v-model="formData.workplace"
+                  readonly
                 />
 
                 <v-select
                   v-else-if="position.number === 3"
-                  :items="WorkplaceFields"
+                  :items="FormatFields"
                   item-text="label"
                   item-value="label"
                   outlined
                   dense
+                  append-icon=""
                   placeholder="เลือกการฝึกงาน"
-                  clearable
-                  class="pr-md-4"
+                  class="pr-md-4 input-select input-box custom-select-size custom-select diplayOnly"
+                  v-model="formData.internshipFormat"
+                  readonly
                 />
               </v-col>
             </v-row>
@@ -79,273 +88,105 @@
     </v-col>
   </v-row>
 </template>
+
 <script>
 export default {
-  layout: "form",
+  mounted() {
+    // ✅ DEEP COPY - No reference to store
+    const storeData = this.$store.state.pages;
+    if ("email" in storeData[6]) {
+      const storeDataCopy = JSON.parse(JSON.stringify(storeData));
+      this.formData = storeDataCopy[6];
+      this.formData.profileImage = this.$fileStore.imageFile;
+
+      if (this.formData.profileImage) {
+        this.previewUrl = URL.createObjectURL(this.formData.profileImage);
+        this.isProfileComplete = true;
+      }
+    }
+  },
+
   data() {
     return {
-      // format currency
-      salaryFrom: 0,
-      salaryFromDisplay: "",
-      salaryTo: 0,
-      salaryToDisplay: "",
-      // validation salary
-      salaryFromError: false,
-      salaryFromErrorMessage: "",
-      salaryToError: false,
-      salaryToErrorMessage: "",
-      // texts
-      steps: [
-        { number: 1, label: "ประวัติส่วนตัว" },
-        { number: 2, label: "ประวัติการศึกษา" },
-        { number: 3, label: "ประวัติการทำงาน" },
-        { number: 4, label: "ประวัติครอบครัว" },
-        { number: 5, label: "ทักษะและความสามารถ" },
-        { number: 6, label: "ประวัติเพิ่มเติม" },
-      ],
+      formData: {
+        position: "",
+        workplace: "",
+        internshipFormat: "",
+
+        namePrefix: "",
+        firstNameTh: "",
+        lastNameTh: "",
+        nickNameTh: "",
+
+        firstNameEn: "",
+        lastNameEn: "",
+        nickNameEn: "",
+
+        citizenId: "",
+        idIssueDistrict: "",
+        idIssueDate: null,
+        formattedIssueDate: "",
+        formattedExpiryDate: "",
+        idExpiryDate: null,
+
+        formattedBirthDate: "",
+        BirthDate: null,
+        age: "",
+        disease: "",
+
+        nationality: "",
+        race: "",
+        religion: "",
+
+        soldierStatus: "",
+        soldierOther: "",
+
+        phoneNumber: "",
+        email: "",
+
+        profileImage: null,
+      },
+
       positions: [
         { number: 1, label: "ตำแหน่งสหกิจหรือฝึกงาน", labelEn: "Position" },
         { number: 2, label: "ประจำศูนย์", labelEn: "Workplace" },
         { number: 3, label: "รูปแบบการฝึกงาน", labelEn: "Internship Format" },
       ],
       positionFields: [
-        { number: 1, label: "programer" },
-        { number: 2, label: "designer" },
-        { number: 3, label: "manager" },
-        { number: 4, label: "analyst" },
+        { number: 1, label: "Front-End Developer" },
+        { number: 2, label: "Back-End Developer" },
+        { number: 3, label: "Business Analysis" },
+        { number: 4, label: "UX/UI Designer" },
+        { number: 5, label: "System Administrator" },
       ],
       WorkplaceFields: [
-        { number: 1, label: "Bangkok" },
-        { number: 2, label: "Chiang Mai" },
-        { number: 3, label: "Phuket" },
-        { number: 4, label: "Khon Kaen" },
+        { number: 1, label: "INET กรุงเทพ" },
+        { number: 2, label: "INET ขอนแก่น" },
+        { number: 3, label: "INET เชียงใหม่" },
+        { number: 4, label: "INET หาดใหญ่" },
+        { number: 5, label: "INET นครราชสีมา" },
       ],
-      Provinces: [
-        { number: 1, label: "กรุงเทพมหานคร" },
-        { number: 2, label: "กระบี่" },
-        { number: 3, label: "กาญจนบุรี" },
-        { number: 4, label: "กาฬสินธุ์" },
-        { number: 5, label: "กำแพงเพชร" },
-        { number: 6, label: "ขอนแก่น" },
-        { number: 7, label: "จันทบุรี" },
-        { number: 8, label: "ฉะเชิงเทรา" },
-        { number: 9, label: "ชลบุรี" },
-        { number: 10, label: "ชัยนาท" },
-        { number: 11, label: "ชัยภูมิ" },
-        { number: 12, label: "ชุมพร" },
-        { number: 13, label: "เชียงราย" },
-        { number: 14, label: "เชียงใหม่" },
-        { number: 15, label: "ตรัง" },
-        { number: 16, label: "ตราด" },
-        { number: 17, label: "ตาก" },
-        { number: 18, label: "นครนายก" },
-        { number: 19, label: "นครปฐม" },
-        { number: 20, label: "นครพนม" },
-        { number: 21, label: "นครราชสีมา" },
-        { number: 22, label: "นครศรีธรรมราช" },
-        { number: 23, label: "นครสวรรค์" },
-        { number: 24, label: "นราธิวาส" },
-        { number: 25, label: "น่าน" },
-        { number: 26, label: "บึงกาฬ" },
-        { number: 27, label: "บุรีรัมย์" },
-        { number: 28, label: "ประจวบคีรีขันธ์" },
-        { number: 29, label: "ปทุมธานี" },
-        { number: 30, label: "ปราจีนบุรี" },
-        { number: 31, label: "ปัตตานี" },
-        { number: 32, label: "พะเยา" },
-        { number: 33, label: "พระนครศรีอยุธยา" },
-        { number: 34, label: "พังงา" },
-        { number: 35, label: "พัทลุง" },
-        { number: 36, label: "พิจิตร" },
-        { number: 37, label: "พิษณุโลก" },
-        { number: 38, label: "เพชรบุรี" },
-        { number: 39, label: "เพชรบูรณ์" },
-        { number: 40, label: "แพร่" },
-        { number: 41, label: "พัทลุง" },
-        { number: 42, label: "ภูเก็ต" },
-        { number: 43, label: "มหาสารคาม" },
-        { number: 44, label: "มุกดาหาร" },
-        { number: 45, label: "แม่ฮ่องสอน" },
-        { number: 46, label: "ยโสธร" },
-        { number: 47, label: "ยะลา" },
-        { number: 48, label: "ร้อยเอ็ด" },
-        { number: 49, label: "ระนอง" },
-        { number: 50, label: "ระยอง" },
-        { number: 51, label: "ราชบุรี" },
-        { number: 52, label: "ลพบุรี" },
-        { number: 53, label: "ลำปาง" },
-        { number: 54, label: "ลำพูน" },
-        { number: 55, label: "เลย" },
-        { number: 56, label: "ศรีสะเกษ" },
-        { number: 57, label: "สกลนคร" },
-        { number: 58, label: "สงขลา" },
-        { number: 59, label: "สตูล" },
-        { number: 60, label: "สมุทรปราการ" },
-        { number: 61, label: "สมุทรสงคราม" },
-        { number: 62, label: "สมุทรสาคร" },
-        { number: 63, label: "สระแก้ว" },
-        { number: 64, label: "สระบุรี" },
-        { number: 65, label: "สิงห์บุรี" },
-        { number: 66, label: "สุโขทัย" },
-        { number: 67, label: "สุพรรณบุรี" },
-        { number: 68, label: "สุราษฎร์ธานี" },
-        { number: 69, label: "สุรินทร์" },
-        { number: 70, label: "หนองคาย" },
-        { number: 71, label: "หนองบัวลำภู" },
-        { number: 72, label: "อำนาจเจริญ" },
-        { number: 73, label: "อุดรธานี" },
-        { number: 74, label: "อุตรดิตถ์" },
-        { number: 75, label: "อุทัยธานี" },
-        { number: 76, label: "อุบลราชธานี" },
-        { number: 77, label: "ยะลา" },
+      FormatFields: [
+        { number: 1, label: "สหกิจ" },
+        { number: 2, label: "ฝึกงาน" },
       ],
-      previewUrl: null,
-      isProfileComplete: false,
-      // date
-      menu1: false,
-      date1: null,
-      formattedDate1: "",
-      menu2: false,
-      date2: null,
-      formattedDate2: "",
-      menu3: false,
-      date3: null,
-      formattedDate3: "",
-      // gender
-      selectedGender: null,
-      // address
-      useSameAddress: false,
-      soldier: "",
     };
-  },
-  computed: {
-    todayDate() {
-      return new Date().toISOString().substr(0, 10);
-    },
-    calculatedAge() {
-      if (!this.date3) {
-        return "";
-      }
-      const today = new Date();
-      const birth = new Date(this.date3);
-      let age = today.getFullYear() - birth.getFullYear();
-      const monthDiff = today.getMonth() - birth.getMonth();
-      // ถ้ายังไม่ถึงเดือนเกิด หรือถึงเดือนเกิดแต่ยังไม่ถึงวันเกิด ให้ลบ 1 ปี
-      if (
-        monthDiff < 0 ||
-        (monthDiff === 0 && today.getDate() < birth.getDate())
-      ) {
-        age--;
-      }
-      return age.toString();
-    },
-  },
-  methods: {
-    updateDate1(val) {
-      const d = new Date(val);
-      const options = { day: "2-digit", month: "2-digit", year: "numeric" };
-      this.formattedDate1 = d.toLocaleDateString("th-TH", options);
-      this.menu1 = false;
-    },
-    updateDate2(val) {
-      const d = new Date(val);
-      const options = { day: "2-digit", month: "2-digit", year: "numeric" };
-      this.formattedDate2 = d.toLocaleDateString("th-TH", options);
-      this.menu2 = false;
-    },
-    updateDate3(val) {
-      const d = new Date(val);
-      const options = { day: "2-digit", month: "2-digit", year: "numeric" };
-      this.formattedDate3 = d.toLocaleDateString("th-TH", options);
-      this.menu3 = false;
-    },
-    isNumber(evt) {
-      const charCode = evt.which ? evt.which : evt.keyCode;
-      // อนุญาตเฉพาะตัวเลข 0-9
-      if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-        evt.preventDefault();
-      }
-    },
-    triggerFileInput() {
-      this.$refs.fileInput.click();
-    },
-    onFileChange(event) {
-      const file = event.target.files[0];
-      if (file) {
-        if (this.previewUrl) {
-          URL.revokeObjectURL(this.previewUrl);
-        }
-        this.previewUrl = URL.createObjectURL(file);
-      }
-      this.isProfileComplete = true;
-    },
-    formatSalary(value, type) {
-      const inputValue = typeof value === "string" ? value : value.target.value;
-      const numValue = inputValue.replace(/\D/g, "");
-      if (!numValue) {
-        if (type === "from") {
-          this.salaryFromDisplay = "";
-          this.salaryFrom = 0;
-        } else {
-          this.salaryToDisplay = "";
-          this.salaryTo = 0;
-        }
-        this.validateSalary();
-        return;
-      }
-      const num = parseInt(numValue);
-      const formatted = num.toLocaleString("en-US");
-      if (type === "from") {
-        this.salaryFromDisplay = formatted;
-        this.salaryFrom = num;
-      } else {
-        this.salaryToDisplay = formatted;
-        this.salaryTo = num;
-      }
-      // Validate real-time
-      this.validateSalary();
-    },
-    validateSalary() {
-      // Reset errors
-      this.salaryFromError = false;
-      this.salaryFromErrorMessage = "";
-      this.salaryToError = false;
-      this.salaryToErrorMessage = "";
-      // ตรวจสอบว่ากรอกข้อมูล
-      if (!this.salaryFrom && this.salaryTo) {
-        this.salaryFromError = true;
-        this.salaryFromErrorMessage = "กรุณากรอกเงินเดือนต่ำสุด";
-        return false;
-      }
-      if (this.salaryFrom && !this.salaryTo) {
-        this.salaryToError = true;
-        this.salaryToErrorMessage = "กรุณากรอกเงินเดือนสูงสุด";
-        return false;
-      }
-      // ตรวจสอบว่าเงินเดือนสูงสุดมากกว่าหรือเท่ากับต่ำสุด
-      if (this.salaryFrom && this.salaryTo && this.salaryTo < this.salaryFrom) {
-        this.salaryToError = true;
-        this.salaryToErrorMessage =
-          "เงินเดือนสูงสุดต้องมากกว่าหรือเท่ากับเงินเดือนต่ำสุด";
-        return false;
-      }
-      // ตรวจสอบว่าไม่ติดลบ
-      if (this.salaryFrom < 0) {
-        this.salaryFromError = true;
-        this.salaryFromErrorMessage = "เงินเดือนต้องเป็นจำนวนบวก";
-        return false;
-      }
-      if (this.salaryTo < 0) {
-        this.salaryToError = true;
-        this.salaryToErrorMessage = "เงินเดือนต้องเป็นจำนวนบวก";
-        return false;
-      }
-      return true;
-    },
   },
 };
 </script>
-<style>
+
+<style scoped>
+.v-application--wrap {
+  flex: 1 1 auto;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  max-width: 100%;
+  position: relative;
+  background-color: #f2f2f2;
+}
+
 .avatar-border {
   border: 1px solid #58a144 !important;
   border-radius: 50%;
@@ -377,8 +218,9 @@ export default {
 .position-bottom {
   height: 40px;
 }
-.v-list-item:hover {
-  background-color: #e9ffeb !important;
+
+::v-deep .v-list-item:hover {
+  background-color: #f0f9ee !important;
 }
 
 .show-display {
@@ -401,12 +243,15 @@ export default {
   background-color: #f2faf2;
   cursor: pointer;
 }
+
 .hovering {
   opacity: 0.7;
 }
+
 .not-hovering {
   opacity: 1;
 }
+
 .upload-preview {
   width: 200px;
   height: 200px;
@@ -418,19 +263,37 @@ export default {
   height: 100%;
   object-fit: cover;
 }
-.color-label .v-label {
+
+::v-deep .color-label .v-label {
   color: rgb(0, 0, 0);
   font-size: 0.75rem !important;
   font-weight: 500;
 }
+
 .custom-label {
   font-size: 0.75rem !important;
   font-weight: 500;
 }
-.custom-label .v-label {
+
+::v-deep .custom-radio .v-label {
   font-size: 0.75rem !important;
   font-weight: 500;
 }
+
+::v-deep .custom-radio-group > .v-label {
+  font-size: 0.75rem !important;
+  font-weight: 500;
+}
+
+::v-deep .custom-label .v-label {
+  font-size: 0.75rem !important;
+  font-weight: 500;
+}
+
+::v-deep .custom-select-size .v-select__selection {
+  font-size: 0.75rem !important;
+}
+
 .custom-radio .v-input--selection-controls__ripple {
   border-color: #4caf50 !important;
 }
@@ -442,20 +305,190 @@ export default {
 .mb-26px {
   margin-bottom: 26px !important;
 }
-.text-center input {
+
+::v-deep .text-center input {
   text-align: center;
 }
+
 .py-9px {
   padding-top: 9px !important;
   padding-bottom: 9px !important;
 }
 
-.custom-radio-group.v-input--selection-controls {
+::v-deep .custom-radio-group.v-input--selection-controls {
   margin-top: 12px;
 }
+
 .custom-radio-group .v-input__slot {
   padding: 0px;
   margin: 0px;
   margin-bottom: 8px;
+}
+
+.date_box .v-messages {
+  display: none !important;
+}
+
+.date_box .v-text-field__details {
+  display: none !important;
+}
+
+::v-deep .input-box .v-input__slot {
+  min-height: 32px !important;
+}
+
+::v-deep .input-box label {
+  font-size: 0.75rem !important;
+}
+
+::v-deep .input-box label {
+  font-size: 0.75rem !important;
+}
+
+/* ลดขนาด input text */
+::v-deep .input-box input {
+  font-size: 0.75rem !important;
+}
+
+/* ลดขนาด placeholder */
+::v-deep .input-box input::placeholder {
+  font-size: 0.75rem !important;
+  opacity: 0.6;
+}
+
+::v-deep .input-select .v-input__control {
+  min-height: 32px !important;
+  height: 32px !important;
+}
+
+::v-deep .input-select input {
+  padding: 0 !important;
+  font-size: 14px !important;
+  height: 32px !important;
+}
+
+::v-deep .input-box input {
+  padding: 0 !important;
+  font-size: 14px !important;
+  height: 32px !important;
+}
+
+::v-deep .input-box .v-label {
+  font-size: 12px !important;
+  top: 50% !important;
+  transform: translateY(-50%) scale(1) !important;
+  color: #cdcbcb;
+}
+
+.input-box .v-text-field__details {
+  padding-top: 2px !important;
+}
+
+::v-deep .centered-input .v-input__slot {
+  align-items: center !important;
+}
+
+::v-deep .align-center-icon {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+::v-deep .v-input__append-inner {
+  margin-top: 5px !important;
+}
+
+::v-deep .compact-date-picker .v-picker__title {
+  height: 81px !important;
+}
+
+::v-deep .margin-zero-message .v-messages {
+  margin-bottom: 0px !important;
+}
+
+::v-deep .margin-zero-message .v-text-field__details {
+  margin-bottom: 0px !important;
+}
+
+.remove-message >>> .v-messages {
+  display: none !important;
+}
+
+.remove-message .v-text-field__details {
+  display: none !important;
+}
+
+.remove-message::v-deep .v-messages {
+  display: none !important;
+}
+
+::v-deep .remove-message .v-messages {
+  display: none !important;
+}
+
+::v-deep .input-select.v-text-field--outlined fieldset {
+  border-color: #e6e6e6 !important;
+  /* เทา */
+}
+
+::v-deep .input-select.v-input.error--text.v-text-field--outlined fieldset {
+  border-color: #e53935 !important;
+  /* สีแดง error */
+}
+
+::v-deep .input-select.v-input--is-focused fieldset {
+  border-color: #4caf50 !important;
+  /* เขียวเข้ม */
+  border-width: 2px !important;
+}
+
+::v-deep .input-box.v-text-field--outlined fieldset {
+  border-color: #e6e6e6 !important;
+  /* เทา */
+}
+
+::v-deep .input-box.v-input.error--text.v-text-field--outlined fieldset {
+  border-color: #e53935 !important;
+  /* สีแดง error */
+}
+
+::v-deep .input-box.v-input--is-focused fieldset {
+  border-color: #4caf50 !important;
+  /* เขียวเข้ม */
+  border-width: 2px !important;
+}
+
+::v-deep .custom-radio .v-icon {
+  color: #4caf50 !important;
+  /* สีของจุดวงกลม */
+}
+
+::v-deep .custom-select .v-input__append-inner .v-icon {
+  color: #4caf50 !important;
+  font-size: 16px;
+}
+
+.doc {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.bg-header {
+  background-color: #f0f9ee;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.diplayOnly >>> .v-input__slot {
+  border: none !important;
+  pointer-events: none !important;
+  cursor: not-allowed !important;
+}
+
+/* Also remove the fieldset border that Vuetify uses for outlined variant */
+.diplayOnly >>> fieldset {
+  border: none !important;
 }
 </style>

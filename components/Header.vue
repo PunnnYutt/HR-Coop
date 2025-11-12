@@ -121,8 +121,12 @@ div.header-logo {
   flex-direction: column;
 }
 
+.v-application .header-logo p {
+  margin-bottom: 10px !important;
+}
+
 .header-logo p {
-  margin: 0 0 10px 0;
+  margin: 0px 0px 10px 0px !important;
   font-weight: 400;
   font-family: "Sarabun", sans-serif;
   line-height: 24px;

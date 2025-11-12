@@ -221,6 +221,7 @@ export default {
       this.fatherInfo = familyData[0];
       this.motherInfo = familyData[1];
       this.emergencyInfo = familyData[2];
+      this.thaiIDinfo = familyData[3];
     }
   },
   data() {

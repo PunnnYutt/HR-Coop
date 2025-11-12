@@ -43,6 +43,10 @@ div.bar {
   margin: 12px auto 12px 16px;
 }
 
+.v-application .logo-section p {
+  margin-bottom: 0px !important;
+}
+
 .logo-section p {
   margin-left: 24px;
   align-self: center;

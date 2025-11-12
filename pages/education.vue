@@ -54,6 +54,7 @@
             height="56px"
             :choices="['ปริญญาตรี', 'ปริญญาโท', 'ปริญญาเอก']"
             v-model="item.Level"
+            :required="true"
           />
 
           <InputBox
@@ -63,6 +64,7 @@
             max-width="516px"
             height="56px"
             v-model="item.Institute"
+            :rules="[(v) => !!v || 'กรุณากรอกข้อมูล']"
           />
 
           <div class="edu-year-section">
@@ -78,6 +80,9 @@
                 locale="th"
                 date-format="th-TH"
                 v-model="item.StartYear"
+                :max="currentYear"
+                :min="currentYear - 50"
+                :rules="[(v) => !!v || 'กรุณากรอกข้อมูล']"
               />
               <p>-</p>
               <date-picker
@@ -87,6 +92,9 @@
                 locale="th"
                 date-format="th-TH"
                 v-model="item.EndYear"
+                :max="item.StartYear + 20"
+                :min="item.StartYear"
+                :rules="[(v) => !!v || 'กรุณากรอกข้อมูล']"
               />
             </div>
           </div>
@@ -97,6 +105,7 @@
             label-en="Qualifications"
             placeholder="0000"
             v-model="item.Qualifications"
+            :rules="[(v) => !!v || 'กรุณากรอกข้อมูล']"
           />
 
           <InputBox
@@ -104,6 +113,7 @@
             label-en="Major"
             placeholder="ระบุสาขาวิชา"
             v-model="item.Major"
+            :rules="[(v) => !!v || 'กรุณากรอกข้อมูล']"
           />
 
           <InputBox
@@ -111,6 +121,7 @@
             label-en="Faculty"
             placeholder="ระบุคณะ"
             v-model="item.Faculty"
+            :rules="[(v) => !!v || 'กรุณากรอกข้อมูล']"
           />
 
           <InputBox
@@ -119,6 +130,10 @@
             placeholder="ระบุเกรดเฉลี่ย"
             type="number"
             v-model="item.GPA"
+            :rules="[
+              (v) => !!v || 'กรุณากรอกข้อมูล',
+              (v) => (v <= 4 && v >= 0) || 'กรุณากรอกข้อมูลเกรดให้ถูกต้อง',
+            ]"
           />
         </div>
       </div>
@@ -135,6 +150,7 @@ export default {
 
   data() {
     return {
+      currentDate: new Date(),
       education_info: [
         {
           Level: "",
@@ -147,7 +163,6 @@ export default {
           GPA: "",
         },
       ],
-      myDate: "",
     };
   },
   components: {
@@ -185,6 +200,13 @@ export default {
   },
   beforeDestroy() {
     this.$store.commit("SET_EDUCATION_DATA", this.education_info);
+  },
+
+  computed: {
+    currentYear() {
+      const y = this.currentDate.getFullYear();
+      return y;
+    },
   },
 };
 </script>
@@ -247,7 +269,7 @@ div.form-title-section-add {
 
 div.form-input-section {
   width: 100%;
-  height: 176px;
+  height: 192px;
   padding: 0px 16px 16px 16px;
   display: flex;
   flex-direction: column;
@@ -259,6 +281,7 @@ div.form-input-section {
 
 div.first-form-input-section {
   padding: 24px 16px 24px 16px;
+  height: 176px;
 }
 
 .delete-button {
