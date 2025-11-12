@@ -43,7 +43,9 @@
                         </p>
                       </v-row>
                       <v-row no-gutters>
-                        <p class="text-caption grey--text lighten-5">Driving licence</p>
+                        <p class="text-caption grey--text lighten-5">
+                          Driving licence
+                        </p>
                       </v-row>
                     </v-col>
                     <v-col cols="4">
@@ -57,7 +59,9 @@
                             <template #label>
                               <v-col class="pa-0">
                                 <p class="custom-label black--text">รถยนต์</p>
-                                <p class="text-caption grey--text lighten-5">Car</p>
+                                <p class="text-caption grey--text lighten-5">
+                                  Car
+                                </p>
                               </v-col>
                             </template>
                           </v-checkbox>
@@ -119,7 +123,9 @@
                                 <template #label>
                                   <v-col class="pa-0">
                                     <p class="text-caption black--text">ได้</p>
-                                    <p class="text-caption grey--text lighten-5">
+                                    <p
+                                      class="text-caption grey--text lighten-5"
+                                    >
                                       Yes
                                     </p>
                                   </v-col>
@@ -131,8 +137,12 @@
                               >
                                 <template #label>
                                   <v-col cols="12" class="pa-0">
-                                    <p class="doc text-caption black--text">ไม่ได้</p>
-                                    <p class="text-caption grey--text lighten-5">
+                                    <p class="doc text-caption black--text">
+                                      ไม่ได้
+                                    </p>
+                                    <p
+                                      class="text-caption grey--text lighten-5"
+                                    >
                                       No
                                     </p>
                                   </v-col>
@@ -180,8 +190,12 @@
                               >
                                 <template #label>
                                   <v-col class="pa-0">
-                                    <p class="doc text-caption black--text">ไม่เคย</p>
-                                    <p class="text-caption grey--text lighten-5">
+                                    <p class="doc text-caption black--text">
+                                      ไม่เคย
+                                    </p>
+                                    <p
+                                      class="text-caption grey--text lighten-5"
+                                    >
                                       No
                                     </p>
                                   </v-col>
@@ -194,7 +208,9 @@
                                 <template #label>
                                   <v-col class="pa-0">
                                     <p class="text-caption black--text">เคย</p>
-                                    <p class="text-caption grey--text lighten-5">
+                                    <p
+                                      class="text-caption grey--text lighten-5"
+                                    >
                                       Yes
                                     </p>
                                   </v-col>
@@ -241,8 +257,12 @@
                               >
                                 <template #label>
                                   <v-col class="pa-0">
-                                    <p class="doc text-caption black--text">ไม่เคย</p>
-                                    <p class="text-caption grey--text lighten-5">
+                                    <p class="doc text-caption black--text">
+                                      ไม่เคย
+                                    </p>
+                                    <p
+                                      class="text-caption grey--text lighten-5"
+                                    >
                                       No
                                     </p>
                                   </v-col>
@@ -255,7 +275,9 @@
                                 <template #label>
                                   <v-col class="pa-0">
                                     <p class="text-caption black--text">เคย</p>
-                                    <p class="text-caption grey--text lighten-5">
+                                    <p
+                                      class="text-caption grey--text lighten-5"
+                                    >
                                       Yes
                                     </p>
                                   </v-col>
@@ -301,8 +323,12 @@
                               >
                                 <template #label>
                                   <v-col class="pa-0">
-                                    <p class="text-caption black--text">ไม่สูบ</p>
-                                    <p class="text-caption grey--text lighten-5 doc">
+                                    <p class="text-caption black--text">
+                                      ไม่สูบ
+                                    </p>
+                                    <p
+                                      class="text-caption grey--text lighten-5 doc"
+                                    >
                                       Non-smoker
                                     </p>
                                   </v-col>
@@ -314,8 +340,12 @@
                               >
                                 <template #label>
                                   <v-col class="pa-0">
-                                    <p class="doc text-caption black--text">สูบบางครั้ง</p>
-                                    <p class="text-caption grey--text lighten-5 doc">
+                                    <p class="doc text-caption black--text">
+                                      สูบบางครั้ง
+                                    </p>
+                                    <p
+                                      class="text-caption grey--text lighten-5 doc"
+                                    >
                                       Occasional smoker
                                     </p>
                                   </v-col>
@@ -330,7 +360,9 @@
                                     <p class="doc text-caption black--text">
                                       สูบเป็นประจํา
                                     </p>
-                                    <p class="text-caption grey--text lighten-5 doc">
+                                    <p
+                                      class="text-caption grey--text lighten-5 doc"
+                                    >
                                       Smoke regularly
                                     </p>
                                   </v-col>
@@ -377,8 +409,12 @@
                               >
                                 <template #label>
                                   <v-col class="pa-0">
-                                    <p class="text-caption black--text">ไม่ดื่ม</p>
-                                    <p class="text-caption grey--text lighten-5 doc">
+                                    <p class="text-caption black--text">
+                                      ไม่ดื่ม
+                                    </p>
+                                    <p
+                                      class="text-caption grey--text lighten-5 doc"
+                                    >
                                       Non-drinker
                                     </p>
                                   </v-col>
@@ -390,8 +426,12 @@
                               >
                                 <template #label>
                                   <v-col class="pa-0">
-                                    <p class="text-caption black--text">ดื่มบางครั้ง</p>
-                                    <p class="text-caption grey--text lighten-5 doc">
+                                    <p class="text-caption black--text">
+                                      ดื่มบางครั้ง
+                                    </p>
+                                    <p
+                                      class="text-caption grey--text lighten-5 doc"
+                                    >
                                       Occasional drinker
                                     </p>
                                   </v-col>
@@ -406,7 +446,9 @@
                                     <p class="doc text-caption black--text">
                                       ดื่มเป็นประจำ
                                     </p>
-                                    <p class="text-caption grey--text lighten-5 doc">
+                                    <p
+                                      class="text-caption grey--text lighten-5 doc"
+                                    >
                                       Regular drinker
                                     </p>
                                   </v-col>
@@ -455,8 +497,12 @@
                               >
                                 <template #label>
                                   <v-col class="pa-0">
-                                    <p class="doc text-caption black--text">ไม่เคย</p>
-                                    <p class="text-caption grey--text lighten-5">
+                                    <p class="doc text-caption black--text">
+                                      ไม่เคย
+                                    </p>
+                                    <p
+                                      class="text-caption grey--text lighten-5"
+                                    >
                                       No
                                     </p>
                                   </v-col>
@@ -469,7 +515,9 @@
                                 <template #label>
                                   <v-col class="pa-0">
                                     <p class="text-caption black--text">เคย</p>
-                                    <p class="text-caption grey--text lighten-5">
+                                    <p
+                                      class="text-caption grey--text lighten-5"
+                                    >
                                       Yes
                                     </p>
                                   </v-col>
@@ -499,7 +547,8 @@
                             v-model="formData.howDidYouHear"
                             :items="howto"
                             multiple
-                            append-icon="mdi-chevron-down" append-icon-color="primary"
+                            append-icon="mdi-chevron-down"
+                            append-icon-color="primary"
                             item-text="label"
                             item-value="value"
                             outlined
@@ -685,7 +734,8 @@
                   color="grey lighten-2"
                   v-model="documentType"
                   :items="documentTypes"
-                  append-icon="mdi-chevron-down" append-icon-color="primary"
+                  append-icon="mdi-chevron-down"
+                  append-icon-color="primary"
                   outlined
                   dense
                   hide-details
@@ -943,7 +993,7 @@ export default {
       }
     },
     removeDocument(index) {
-        this.formData.documents.splice(index, 1);
+      this.formData.documents.splice(index, 1);
     },
     closeDialog() {
       this.dialog = false;
@@ -1055,7 +1105,6 @@ export default {
   height: 32px !important;
 }
 
-
 ::v-deep .input-box input {
   padding: 0 !important;
   font-size: 14px;
@@ -1146,9 +1195,8 @@ export default {
   height: 32px !important;
 }
 
-
 ::v-deep .custom-select-size .v-select__selection {
-  font-size: 0.75rem !important; 
+  font-size: 0.75rem !important;
 }
 
 .document-select:hover .v-input__slot {
@@ -1235,8 +1283,7 @@ export default {
 }
 
 ::v-deep .input-select .v-list-item:hover {
-  background-color: 
-#f0f9ee !important;
+  background-color: #f0f9ee !important;
 }
 
 ::v-deep .input-box label {
@@ -1278,7 +1325,7 @@ export default {
   font-size: 16px;
 }
 
-.bg-header{
+.bg-header {
   background-color: #f0f9ee;
 }
 </style>

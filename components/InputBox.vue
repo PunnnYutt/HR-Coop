@@ -192,7 +192,6 @@ span:nth-of-type(3) {
 /* Focus style */
 .custom-text-field.v-input--is-focused:not(.error--text) >>> .v-input__slot {
   border-color: #58a144 !important;
-  border-width: 2px !important;
 }
 
 /* Error style - RED BORDER */

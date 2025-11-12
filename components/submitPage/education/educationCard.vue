@@ -185,17 +185,13 @@ div.form-title-section p {
 div.form-input-section {
   width: 100%;
   height: 176px;
-  padding: 0px 16px 16px 16px;
+  padding: 24px 16px 24px 16px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   box-sizing: border-box;
   margin-bottom: 24px;
   border-bottom: 1px solid #f2f2f2;
-}
-
-div.first-form-input-section {
-  padding: 24px 16px 24px 16px;
 }
 
 .form-input-section > div {
@@ -236,5 +232,24 @@ div.first-form-input-section {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+::v-deep(.custom-text-field .v-input__slot) {
+  background-color: lightblue !important;
+  padding: 0px 0px !important;
+}
+
+::v-deep(.custom-text-field input) {
+  font-weight: 600 !important;
+  font-size: 14px !important;
+}
+
+::v-deep(.v-input__slot) {
+  padding: 0px !important;
+}
+
+::v-deep .v-select__selection {
+  font-weight: 600 !important;
+  font-size: 14px !important;
 }
 </style>
