@@ -61,7 +61,17 @@ export default {
       // Only validate if user has already interacted with field
       if (this.shouldValidate) {
         this.validateInput();
+        //   this.$store.commit(
+        //     "SET_Validation",
+        //     this.$route.meta.page,
+        //     this.hasError
+        //   );
       }
+      // console.log("hasERR" + this.hasError);
+      // console.log(
+      //   "pageeeeeeeInput" +
+      //     this.$store.state.pageValidation[this.$route.meta.page]
+      // );
     },
   },
 
@@ -227,11 +237,6 @@ span:nth-of-type(3) {
 .custom-text-field.displayOnly >>> .v-input__slot {
   border: none !important;
   background-color: transparent !important;
-  cursor: not-allowed !important;
-}
-
-.custom-text-field.displayOnly >>> input {
-  cursor: not-allowed !important;
 }
 
 /* Remove number input spinners */

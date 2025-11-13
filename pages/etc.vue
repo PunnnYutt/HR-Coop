@@ -712,7 +712,7 @@
           </v-card>
         </v-col>
       </v-row>
-      <v-dialog v-model="dialog" max-width="500">
+      <v-dialog v-model="dialog" max-width="500" persistent>
         <v-card>
           <v-card-title
             class="font-16 green--text bg-header d-flex justify-space-between align-center py-2"

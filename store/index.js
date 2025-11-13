@@ -11,6 +11,8 @@ export const state = () => ({
   },
 
   footerDisplay: true,
+
+  // pageValidation: { 1: true, 2: true, 3: true, 4: true, 5: true, 6: true },
 });
 
 export const mutations = {
@@ -37,4 +39,15 @@ export const mutations = {
   SET_Footer(state, payload) {
     state.footerDisplay = payload;
   },
+
+  SET_Footer(state, payload) {
+    state.footerDisplay = payload;
+  },
+
+  // SET_Validation(state, page, payload) {
+  //   state.pageValidation[page] = state.pageValidation[page] && !payload;
+  //   console.log("page:" + page);
+  //   console.log("payload:" + payload);
+  //   console.log("store:" + state.pageValidation[page]);
+  // },
 };

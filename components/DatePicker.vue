@@ -216,6 +216,12 @@ export default {
       }
       this.hasError = false;
     },
+    validate() {
+      this.shouldValidate = true;
+      this.validateInput();
+      return !this.hasError;
+    },
+
     toggleMenu() {
       if (this.changeAble) {
         this.menuOpen = !this.menuOpen;

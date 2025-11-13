@@ -2,7 +2,7 @@
   <div class="form-body">
     <div class="form-first-section">
       <div class="form-title-section">
-        <p>
+        <p @click="validateAll">
           ประวัติการศึกษา / Education background
           <span style="color: red">*</span>
         </p>
@@ -55,6 +55,7 @@
             :choices="['ปริญญาตรี', 'ปริญญาโท', 'ปริญญาเอก']"
             v-model="item.Level"
             :required="true"
+            :ref="`Level-${index}`"
           />
 
           <InputBox
@@ -65,6 +66,7 @@
             height="56px"
             v-model="item.Institute"
             :rules="[(v) => !!v || 'กรุณากรอกข้อมูล']"
+            :ref="`Institute-${index}`"
           />
 
           <div class="edu-year-section">
@@ -83,6 +85,7 @@
                 :max="currentYear"
                 :min="currentYear - 50"
                 :rules="[(v) => !!v || 'กรุณากรอกข้อมูล']"
+                :ref="`StartYear-${index}`"
               />
               <p>-</p>
               <date-picker
@@ -95,6 +98,7 @@
                 :max="item.StartYear + 20"
                 :min="item.StartYear"
                 :rules="[(v) => !!v || 'กรุณากรอกข้อมูล']"
+                :ref="`EndYear-${index}`"
               />
             </div>
           </div>
@@ -106,6 +110,7 @@
             placeholder="0000"
             v-model="item.Qualifications"
             :rules="[(v) => !!v || 'กรุณากรอกข้อมูล']"
+            :ref="`Qualifications-${index}`"
           />
 
           <InputBox
@@ -114,6 +119,7 @@
             placeholder="ระบุสาขาวิชา"
             v-model="item.Major"
             :rules="[(v) => !!v || 'กรุณากรอกข้อมูล']"
+            :ref="`Major-${index}`"
           />
 
           <InputBox
@@ -122,6 +128,7 @@
             placeholder="ระบุคณะ"
             v-model="item.Faculty"
             :rules="[(v) => !!v || 'กรุณากรอกข้อมูล']"
+            :ref="`Faculty-${index}`"
           />
 
           <InputBox
@@ -134,6 +141,7 @@
               (v) => !!v || 'กรุณากรอกข้อมูล',
               (v) => (v <= 4 && v >= 0) || 'กรุณากรอกข้อมูลเกรดให้ถูกต้อง',
             ]"
+            :ref="`GPA-${index}`"
           />
         </div>
       </div>
@@ -181,6 +189,33 @@ export default {
   },
 
   methods: {
+    validateAll() {
+      console.log("it works");
+      let allValid = true;
+      const inputBoxField = [
+        "Level",
+        "StartYear",
+        "EndYear",
+        "GPA",
+        "Faculty",
+        "Major",
+        "Qualifications",
+        "Institute",
+      ];
+      for (let field of inputBoxField) {
+        for (let index = 0; index < this.education_info.length; index++) {
+          let inputBox = this.$refs[`${field}-${index}`];
+          console.log(inputBox);
+          if (!inputBox[0].validate()) {
+            console.log("not pass");
+            allValid = false;
+          }
+        }
+      }
+
+      return allValid;
+    },
+
     addEducation() {
       this.education_info.push({
         Level: "",
@@ -192,7 +227,6 @@ export default {
         Faculty: "",
         GPA: "",
       });
-      console.log(this.education_info);
     },
     delEducation(index) {
       this.education_info.splice(index, 1);

@@ -7,7 +7,8 @@
       <div class="submit-button" v-if="page == 6" @click="submitForm">
         <p>ส่งใบสมัครฝึกงาน</p>
       </div>
-      <div class="next-button" v-else @click="goNext">
+      <div class="next-button" v-else @click="$emit('goNext')">
+        <!-- @click="goNext" -->
         <p>ถัดไป</p>
       </div>
     </div>
@@ -47,20 +48,18 @@ export default {
         this.$router.push({ name: "etc" });
       }
     },
-
-    goNext() {
-      if (this.page === 1) {
-        this.$router.push({ name: "education" });
-      } else if (this.page === 2) {
-        this.$router.push({ name: "family" });
-      } else if (this.page === 3) {
-        this.$router.push({ name: "skill" });
-      } else if (this.page === 4) {
-        this.$router.push({ name: "etc" });
-      } else if (this.page === 5) {
-        this.$router.push({ name: "submit" });
-      }
-    },
+    // goNext() {
+    //   if (this.page === 1) {
+    //     this.$router.push({ name: "education" });
+    //   } else if (this.page === 2) {
+    //     this.$router.push({ name: "family" });
+    //   } else if (this.page === 3) {
+    //     this.$router.push({ name: "skill" });
+    //   } else if (this.page === 4) {
+    //     this.$router.push({ name: "etc" });
+    //   } else if (this.page === 5) {
+    //     this.$router.push({ name: "submit" });
+    //   }
 
     submitForm() {},
   },
