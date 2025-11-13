@@ -7,10 +7,10 @@
     <v-card>
       <v-card-text class="pa-0">
         <div class="popup-section">
-          <v-icon size="100px" color="orange" class="popup-icon"
+          <v-icon size="100px" color="orange lighten-3" class="popup-icon"
             >mdi-alert-circle-outline
           </v-icon>
-          <p>กรุณากรอกข้อมูลให้ถูกต้อง</p>
+          <p>กรุณากรอกข้อมูลให้ครบถ้วน</p>
         </div>
       </v-card-text>
     </v-card>
@@ -55,16 +55,13 @@ export default {
 .popup-section > p {
   width: 100%;
   text-align: center;
-  top: 70%;
+  top: 75%;
   left: 50%;
   transform: translate(-50%, -50%);
   position: absolute;
   font-weight: 600;
   font-family: "Sarabun", sans-serif;
   line-height: 24px;
-  font-size: 18px;
+  font-size: 20px;
 }
 </style>
-
-font-family: Sarabun; font-weight: 600; font-size: 16px; leading-trim: NONE;
-line-height: 24px; letter-spacing: 0%; text-align: center;

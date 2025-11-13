@@ -38,7 +38,7 @@ export default {
     handleGoNext() {
       console.log("POPUPPPPPPsss" + this.showValidPopup);
       let valid = true;
-      if (this.headerVariant === 2) {
+      if (this.headerVariant === 2 || this.headerVariant === 3) {
         valid = this.$refs.page.$children[0].validateAll();
       }
 

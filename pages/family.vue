@@ -25,6 +25,8 @@
             placeholder="ชื่อ(ภาษาไทย)"
             v-model="fatherInfo.name"
             max-width="333px"
+            ref="fatherName"
+            :rules="[(v) => !!v || 'กรุณากรอกข้อมูล']"
           />
 
           <InputBox
@@ -34,6 +36,8 @@
             placeholder="นามสกุล(ภาษาไทย)"
             v-model="fatherInfo.sureName"
             max-width="333px"
+            ref="fatherSurename"
+            :rules="[(v) => !!v || 'กรุณากรอกข้อมูล']"
           />
 
           <InputBox
@@ -43,6 +47,8 @@
             placeholder="ระบุอาชีพ"
             v-model="fatherInfo.job"
             max-width="333px"
+            ref="fatherJob"
+            :rules="[(v) => !!v || 'กรุณากรอกข้อมูล']"
           />
         </div>
         <div class="tel-section">
@@ -53,6 +59,8 @@
             placeholder="090-000-0000"
             v-model="fatherInfo.tel"
             max-width="508px"
+            ref="fatherTelephone"
+            :rules="[(v) => !!v || 'กรุณากรอกข้อมูล']"
           />
 
           <InputBox
@@ -61,6 +69,7 @@
             placeholder="ระบุที่อยู่/สถานที่ทำงาน"
             v-model="fatherInfo.address"
             max-width="508px"
+            ref="fatherAddress"
           />
         </div>
       </div>
@@ -91,6 +100,8 @@
             placeholder="ชื่อ(ภาษาไทย)"
             v-model="motherInfo.name"
             max-width="333px"
+            ref="momName"
+            :rules="[(v) => !!v || 'กรุณากรอกข้อมูล']"
           />
 
           <InputBox
@@ -100,6 +111,8 @@
             placeholder="นามสกุล(ภาษาไทย)"
             v-model="motherInfo.sureName"
             max-width="333px"
+            ref="momSurename"
+            :rules="[(v) => !!v || 'กรุณากรอกข้อมูล']"
           />
 
           <InputBox
@@ -109,6 +122,8 @@
             placeholder="ระบุอาชีพ"
             v-model="motherInfo.job"
             max-width="333px"
+            ref="momJob"
+            :rules="[(v) => !!v || 'กรุณากรอกข้อมูล']"
           />
         </div>
         <div class="tel-section">
@@ -119,6 +134,8 @@
             placeholder="090-000-0000"
             v-model="motherInfo.tel"
             max-width="508px"
+            ref="momTelephone"
+            :rules="[(v) => !!v || 'กรุณากรอกข้อมูล']"
           />
 
           <InputBox
@@ -127,6 +144,7 @@
             placeholder="ระบุที่อยู่/สถานที่ทำงาน"
             v-model="motherInfo.address"
             max-width="508px"
+            ref="momAddress"
           />
         </div>
       </div>
@@ -148,6 +166,8 @@
             placeholder="ระบุชื่อ-นามสกุล"
             v-model="emergencyInfo.fullName"
             max-width="333px"
+            ref="Fullname"
+            :rules="[(v) => !!v || 'กรุณากรอกข้อมูล']"
           />
 
           <InputBox
@@ -156,6 +176,8 @@
             placeholder="ระบุความสัมพันธ์"
             v-model="emergencyInfo.relation"
             max-width="333px"
+            ref="Relationship"
+            :rules="[(v) => !!v || 'กรุณากรอกข้อมูล']"
           />
 
           <InputBox
@@ -164,6 +186,8 @@
             placeholder="090-000-0000"
             v-model="emergencyInfo.tel"
             max-width="333px"
+            ref="Telephone"
+            :rules="[(v) => !!v || 'กรุณากรอกข้อมูล']"
           />
         </div>
 
@@ -185,6 +209,7 @@
           placeholder="ระบุที่อยู่"
           max-width="1032px"
           v-model="emergencyInfo.address"
+          ref="Address"
         />
       </div>
     </div>
@@ -249,7 +274,41 @@ export default {
       this.thaiIDinfo,
     ]);
   },
-  methods: {},
+  methods: {
+    validateAll() {
+      console.log("it works");
+      let allValid = true;
+      const inputBoxField = [
+        "fatherName",
+        "fatherSurename",
+        "fatherJob",
+        "fatherTelephone",
+        "fatherAddress",
+
+        "momName",
+        "momSurename",
+        "momJob",
+        "momTelephone",
+        "momAddress",
+
+        "Fullname",
+        "Relationship",
+        "Telephone",
+        "Address",
+      ];
+      console.log("AAA");
+      for (let field of inputBoxField) {
+        let inputBox = this.$refs[field];
+        console.log(inputBox);
+        if (!inputBox.validate()) {
+          console.log("not pass");
+          allValid = false;
+        }
+      }
+
+      return allValid;
+    },
+  },
 };
 </script>
 
