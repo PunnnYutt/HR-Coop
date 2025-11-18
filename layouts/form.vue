@@ -57,10 +57,10 @@ export default {
       } else {
         console.log("POPUPPPPPP");
         this.showValidPopup = true;
-        //close popup after 1 sec
+        //close popup after 2 sec
         setTimeout(() => {
           this.showValidPopup = false;
-        }, 1000);
+        }, 2000);
       }
     },
   },

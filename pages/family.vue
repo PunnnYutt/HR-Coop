@@ -10,11 +10,13 @@
             labelTh="คำนำหน้าชื่อ"
             labelEn="Name title"
             :required="true"
-            :choices="{ นาย: null }"
+            :choices="{ นาย: null, อื่นๆ: null }"
             group="father"
             height="20px"
             maxWidth="300px"
             v-model="fatherInfo.nameTitle"
+            ref="fatherNameTitle"
+            :rules="[(v) => !!v || 'กรุณากรอกข้อมูล']"
           />
         </div>
         <div class="name-section">
@@ -26,7 +28,10 @@
             v-model="fatherInfo.name"
             max-width="333px"
             ref="fatherName"
-            :rules="[(v) => !!v || 'กรุณากรอกข้อมูล']"
+            :rules="[
+              (v) => !!v || 'กรุณากรอกข้อมูล',
+              (v) => /^[ก-๙\s]+$/.test(v) || 'กรุณากรอกเฉพาะตัวอักษรภาษาไทย',
+            ]"
           />
 
           <InputBox
@@ -37,7 +42,10 @@
             v-model="fatherInfo.sureName"
             max-width="333px"
             ref="fatherSurename"
-            :rules="[(v) => !!v || 'กรุณากรอกข้อมูล']"
+            :rules="[
+              (v) => !!v || 'กรุณากรอกข้อมูล',
+              (v) => /^[ก-๙\s]+$/.test(v) || 'กรุณากรอกเฉพาะตัวอักษรภาษาไทย',
+            ]"
           />
 
           <InputBox
@@ -60,7 +68,13 @@
             v-model="fatherInfo.tel"
             max-width="508px"
             ref="fatherTelephone"
-            :rules="[(v) => !!v || 'กรุณากรอกข้อมูล']"
+            :rules="[
+              (v) => !!v || 'กรุณากรอกข้อมูล',
+              (v) =>
+                /^0[0-9]{2}-[0-9]{3}-[0-9]{4}$/.test(v) ||
+                'เบอร์โทรศัพท์ไม่ถูกต้อง',
+            ]"
+            @input="formatPhoneNumber('fatherInfo')"
           />
 
           <InputBox
@@ -85,11 +99,13 @@
             labelTh="คำนำหน้าชื่อ"
             labelEn="Name title"
             :required="true"
-            :choices="{ นาง: null, นางสาว: null }"
+            :choices="{ นาง: null, นางสาว: null, อื่นๆ: null }"
             group="mother"
             height="20px"
-            maxWidth="300px"
+            maxWidth="400px"
             v-model="motherInfo.nameTitle"
+            ref="momNameTitle"
+            :rules="[(v) => !!v || 'กรุณากรอกข้อมูล']"
           />
         </div>
         <div class="name-section">
@@ -101,7 +117,10 @@
             v-model="motherInfo.name"
             max-width="333px"
             ref="momName"
-            :rules="[(v) => !!v || 'กรุณากรอกข้อมูล']"
+            :rules="[
+              (v) => !!v || 'กรุณากรอกข้อมูล',
+              (v) => /^[ก-๙\s]+$/.test(v) || 'กรุณากรอกเฉพาะตัวอักษรภาษาไทย',
+            ]"
           />
 
           <InputBox
@@ -112,7 +131,10 @@
             v-model="motherInfo.sureName"
             max-width="333px"
             ref="momSurename"
-            :rules="[(v) => !!v || 'กรุณากรอกข้อมูล']"
+            :rules="[
+              (v) => !!v || 'กรุณากรอกข้อมูล',
+              (v) => /^[ก-๙\s]+$/.test(v) || 'กรุณากรอกเฉพาะตัวอักษรภาษาไทย',
+            ]"
           />
 
           <InputBox
@@ -135,7 +157,13 @@
             v-model="motherInfo.tel"
             max-width="508px"
             ref="momTelephone"
-            :rules="[(v) => !!v || 'กรุณากรอกข้อมูล']"
+            :rules="[
+              (v) => !!v || 'กรุณากรอกข้อมูล',
+              (v) =>
+                /^0[0-9]{2}-[0-9]{3}-[0-9]{4}$/.test(v) ||
+                'เบอร์โทรศัพท์ไม่ถูกต้อง',
+            ]"
+            @input="formatPhoneNumber('motherInfo')"
           />
 
           <InputBox
@@ -187,7 +215,13 @@
             v-model="emergencyInfo.tel"
             max-width="333px"
             ref="Telephone"
-            :rules="[(v) => !!v || 'กรุณากรอกข้อมูล']"
+            :rules="[
+              (v) => !!v || 'กรุณากรอกข้อมูล',
+              (v) =>
+                /^0[0-9]{2}-[0-9]{3}-[0-9]{4}$/.test(v) ||
+                'เบอร์โทรศัพท์ไม่ถูกต้อง',
+            ]"
+            @input="formatPhoneNumber('emergencyInfo')"
           />
         </div>
 
@@ -295,6 +329,9 @@ export default {
         "Relationship",
         "Telephone",
         "Address",
+
+        "fatherNameTitle",
+        "momNameTitle",
       ];
       console.log("AAA");
       for (let field of inputBoxField) {
@@ -307,6 +344,22 @@ export default {
       }
 
       return allValid;
+    },
+    formatPhoneNumber(info) {
+      // ลบทุกอักขระที่ไม่ใช่ตัวเลข
+      let cleaned = this[info].tel.replace(/\D/g, "");
+
+      // จำกัดให้ไม่เกิน 10 ตัว
+      cleaned = cleaned.substring(0, 10);
+
+      // เพิ่มขีดตามรูปแบบ
+      if (cleaned.length > 6) {
+        this[info].tel = cleaned.replace(/(\d{3})(\d{3})(\d{0,4})/, "$1-$2-$3");
+      } else if (cleaned.length > 3) {
+        this[info].tel = cleaned.replace(/(\d{3})(\d{0,3})/, "$1-$2");
+      } else {
+        this[info].tel = cleaned;
+      }
     },
   },
 };

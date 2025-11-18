@@ -2,7 +2,7 @@
   <div class="form-body">
     <div class="form-first-section">
       <div class="form-title-section">
-        <p @click="validateAll">
+        <p>
           ประวัติการศึกษา / Education background
           <span style="color: red">*</span>
         </p>

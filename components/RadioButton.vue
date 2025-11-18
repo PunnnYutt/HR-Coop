@@ -9,22 +9,29 @@
       </div>
     </div>
 
-    <div class="radio-input">
+    <v-radio-group
+      v-model="internalValue"
+      class="radio-input"
+      :class="{ 'has-error': shouldValidate && hasError }"
+      @change="handleGroupChange"
+      row
+      :rules="shouldValidate ? rules : []"
+      :error="shouldValidate && hasError"
+      hide-details
+    >
       <div v-for="(value, key) in choices" :key="key">
-        <input
-          type="radio"
-          :class="{ displayOnly: !changeAble }"
-          :name="group"
+        <v-radio
           :value="key"
-          :checked="internalValue === key"
-          @click="handleChange(key)"
-        />
+          :disabled="!changeAble"
+          @click.native.capture="handleClick($event, key)"
+          color="#58a144"
+        ></v-radio>
         <div class="label-section">
           <label :for="group + '-' + key">{{ key }}</label>
           <p v-if="value">&nbsp;{{ value }}</p>
         </div>
       </div>
-    </div>
+    </v-radio-group>
   </div>
 </template>
 
@@ -32,7 +39,7 @@
 export default {
   name: "RadioButton",
   props: {
-    value: { type: [String, Number, Boolean], default: null }, // For v-model binding
+    value: { type: [String, Number, Boolean], default: null },
     labelTh: { type: String, default: null },
     labelEn: { type: String, default: "" },
     required: { type: Boolean, default: false },
@@ -41,14 +48,16 @@ export default {
 
     height: { type: String, default: "20px" },
     maxWidth: { type: String, default: "316px" },
-
     toggle: { type: Boolean, default: false },
     changeAble: { type: Boolean, default: true },
+    rules: { type: Array, default: () => [] },
   },
 
   data() {
     return {
       internalValue: this.value,
+      hasError: false,
+      shouldValidate: false,
     };
   },
 
@@ -61,22 +70,52 @@ export default {
   watch: {
     value(newVal) {
       this.internalValue = newVal;
+      this.validate();
     },
   },
 
   methods: {
-    handleChange(key) {
-      // If toggle is enabled and clicking the same radio, deselect it
-
+    handleClick(event, key) {
       if (this.toggle && this.internalValue === key) {
-        this.internalValue = null;
-      } else {
-        this.internalValue = key;
-      }
+        // Prevent and stop propagation to stop v-radio-group from updating
+        event.preventDefault();
+        event.stopPropagation();
 
-      // Emit the new value for v-model
-      this.$emit("input", this.internalValue);
-      this.$emit("change", this.internalValue);
+        this.$nextTick(() => {
+          this.internalValue = null;
+          this.$emit("input", null);
+          this.$emit("change", null);
+        });
+      }
+    },
+    handleGroupChange(val) {
+      // Only emit if value is not null (not being toggled off)
+      if (val !== null) {
+        this.$emit("input", val);
+        this.$emit("change", val);
+      }
+    },
+
+    validateInput() {
+      if (this.rules && this.rules.length > 0) {
+        for (let rule of this.rules) {
+          const result = rule(this.value);
+          if (result !== true) {
+            this.hasError = true;
+            return;
+          }
+        }
+      }
+      this.hasError = false;
+    },
+
+    //----------------------------------------------------------------------------
+    // Public method to force validation (can be called from parent)
+    validate() {
+      console.log("valll");
+      this.shouldValidate = true;
+      this.validateInput();
+      return !this.hasError;
     },
   },
 };
@@ -130,12 +169,43 @@ span:nth-of-type(4) {
   box-sizing: border-box;
 }
 
-.radio-input > div {
+/* Reset Vuetify's default radio group styles */
+.radio-input::v-deep .v-input__control {
+  width: 100%;
+  height: 100%;
+}
+
+.radio-input::v-deep .v-input__slot {
+  margin: 0;
+  height: 100%;
+}
+
+.radio-input::v-deep .v-input--radio-group__input {
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
+  align-items: center;
+  height: 100%;
+}
+
+.radio-input > div,
+.radio-input::v-deep .v-input--radio-group__input > div {
   height: 100%;
   box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* Override Vuetify radio styles */
+.radio-input::v-deep .v-radio {
+  margin: 0px 8px 0px 0px;
+  padding: 0;
+}
+
+.radio-input::v-deep .v-input--selection-controls__input,
+::v-deep .v-input--selection-controls {
+  margin: 0 !important;
 }
 
 .label-section {
@@ -158,47 +228,20 @@ span:nth-of-type(4) {
   color: #989898;
 }
 
-/* Style the unselected radio button */
-input[type="radio"] {
-  appearance: none;
-  -webkit-appearance: none;
-  width: 16px;
-  height: 16px;
-  margin: 0px 8px 0px 0px;
-  border: 2px solid #58a144; /* ← Unselected border color (gray) */
-  border-radius: 50%;
-  outline: none;
-  cursor: pointer;
-  background-color: white;
-}
-
-/* When checked */
-input[type="radio"]:checked {
-  border-color: #58a144; /* Selected border color (green) */
-  background-color: white;
-  position: relative;
-}
-
-/* Inner dot when checked */
-input[type="radio"]:checked::before {
-  content: "";
-  display: block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: #58a144; /* Inner dot color */
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
 label {
   cursor: pointer;
 }
 
-input.displayOnly {
-  pointer-events: none;
-  cursor: not-allowed;
+::v-deep .v-radio .v-input--selection-controls__input .v-icon {
+  color: #58a144 !important;
+}
+
+/* Make circles red when there's an error */
+.radio-input.has-error
+  ::v-deep
+  .v-radio
+  .v-input--selection-controls__input
+  .v-icon {
+  color: #ff5252 !important;
 }
 </style>
