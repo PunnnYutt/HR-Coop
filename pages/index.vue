@@ -519,6 +519,7 @@
                                       validateThaiID(v.replace(/-/g, '')) ||
                                       'เลขบัตรประชาชนไม่ถูกต้อง',
                                   ]"
+                                  :maxlength="17"
                                   outlined
                                   dense
                                   single-line
@@ -1070,6 +1071,7 @@
                                 'เบอร์โทรศัพท์ไม่ถูกต้อง',
                             ]"
                             outlined
+                            :maxlength="12"
                             dense
                             single-line
                             class="input-box"
