@@ -1,9 +1,25 @@
 <template>
   <div class="bar">
+    <svg
+      width="32"
+      height="32"
+      viewBox="0 0 32 32"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      class="hamburger-icon"
+    >
+      <path
+        d="M4 8H28V10.6667H4V8ZM4 14.6667H28V17.3333H4V14.6667ZM4 21.3333H28V24H4V21.3333Z"
+        fill="white"
+      />
+    </svg>
+
     <div class="logo-section">
       <img src="../assets/images/inet_logo.png" alt="logo_nav" />
       <p>HR Management</p>
     </div>
+
+    <img src="../assets/images/user.png" alt="user" class="user-img-mobile" />
 
     <div class="user-section">
       <img src="../assets/images/user.png" alt="user" class="user-img" />
@@ -30,21 +46,31 @@
 </template>
 
 <style scoped>
+.v-application .logo-section p {
+  margin-bottom: 0px !important;
+}
+
+.user-section:hover {
+  background-color: rgb(192, 227, 186);
+  cursor: pointer;
+}
+
+p {
+  user-select: none;
+}
+
 div.bar {
   background-color: #58a144;
   width: 100%;
   height: 56px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .bar .logo-section {
   display: flex;
   margin: 12px auto 12px 16px;
-}
-
-.v-application .logo-section p {
-  margin-bottom: 0px !important;
 }
 
 .logo-section p {
@@ -106,12 +132,38 @@ div.user-icon {
   height: 16px;
 }
 
-.user-section:hover {
-  background-color: rgb(192, 227, 186);
-  cursor: pointer;
+.user-img-mobile {
+  display: none;
 }
 
-p {
-  user-select: none;
+.hamburger-icon {
+  display: none;
+}
+
+@media (max-width: 391px) {
+  div.bar {
+    width: 390px;
+    padding: 12px 16px;
+  }
+
+  .bar .logo-section {
+    margin: 0;
+  }
+
+  .logo-section p {
+    display: none;
+  }
+  .bar .user-section {
+    display: none;
+  }
+
+  .user-img-mobile {
+    display: block;
+    margin: 0;
+  }
+
+  .hamburger-icon {
+    display: block;
+  }
 }
 </style>
