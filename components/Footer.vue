@@ -7,7 +7,12 @@
       <div class="submit-button" v-if="page == 6" @click="submitForm">
         <p>ส่งใบสมัครฝึกงาน</p>
       </div>
-      <div class="next-button" v-else @click="$emit('goNext')">
+      <div
+        class="next-button"
+        v-else
+        @click="$emit('goNext')"
+        :class="{ 'next-button-first': page == 1 }"
+      >
         <!-- @click="goNext" -->
         <p>ถัดไป</p>
       </div>
@@ -176,5 +181,26 @@ p {
 }
 .v-application p {
   margin-bottom: 0px !important;
+}
+
+@media (max-width: 391px) {
+  .next-button,
+  .back-button {
+    max-width: 161px;
+  }
+
+  .back-button {
+    border: 1px solid #58a144;
+  }
+
+  .next-button > p,
+  .back-button > p {
+    line-height: 22px;
+    font-size: 14px;
+  }
+
+  .next-button-first {
+    max-width: 359px;
+  }
 }
 </style>
