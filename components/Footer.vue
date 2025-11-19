@@ -194,13 +194,19 @@ p {
   }
 
   .next-button > p,
-  .back-button > p {
+  .back-button > p,
+  .submit-button > p {
     line-height: 22px;
     font-size: 14px;
   }
 
   .next-button-first {
     max-width: 359px;
+  }
+
+  .submit-button {
+    max-width: 161px;
+    height: 40px;
   }
 }
 </style>
