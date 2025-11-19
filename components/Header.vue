@@ -1,7 +1,7 @@
 <template>
   <div class="form-header">
     <div class="header-logo">
-      <p>ใบสมัครงาน</p>
+      <p>ใบสมัครนักศึกษาฝึกงาน</p>
       <svg
         width="79"
         height="38"
@@ -64,6 +64,13 @@
         <p class="page-name">{{ value }}</p>
       </div>
     </div>
+
+    <div class="header-page-mobile">
+      <p>{{ pages[page] }}</p>
+      <div>
+        <p>{{ page }}/6</p>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -114,9 +121,9 @@ div.form-header {
 div.header-logo {
   flex: 0 0 auto; /* keeps its natural size */
   height: 72px;
-  width: 80px;
+  width: 157px;
   margin-left: 16px;
-  margin-right: 48px;
+  margin-right: 0px;
   display: flex;
   flex-direction: column;
 }
@@ -210,4 +217,82 @@ p {
 .v-application p {
   margin-bottom: 0px !important;
 }
+
+.header-page-mobile {
+  display: none;
+}
+
+@media (max-width: 391px) {
+  div.form-header {
+    width: 100%;
+    height: 49px;
+    max-width: 359px;
+    justify-content: space-between;
+  }
+
+  div.header-page {
+    display: none;
+  }
+
+  .header-logo svg {
+    display: none;
+  }
+
+  div.header-logo {
+    height: 16px;
+    width: 139px;
+    margin: 16px;
+  }
+
+  .header-logo p {
+    font-weight: 600;
+    line-height: 16px;
+    font-size: 14px;
+  }
+
+  .v-application .header-logo p[data-v-1a9bb128] {
+    margin: 0px !important;
+  }
+
+  .header-page-mobile {
+    min-width: 108px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: 11px;
+  }
+
+  .header-page-mobile > p {
+    min-width: 68px;
+    height: 16px;
+    font-weight: 400;
+    font-family: "Sarabun", sans-serif;
+    line-height: 16px;
+    font-size: 12px;
+    margin-right: 8px;
+  }
+
+  .header-page-mobile > div {
+    width: 32px;
+    height: 32px;
+    background-color: #f0f9ee;
+    border: 1px solid #58a144;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .header-page-mobile > div > p {
+    font-weight: 400;
+    font-family: "Sarabun", sans-serif;
+    line-height: 16px;
+    font-size: 12px;
+    color: #58a144;
+  }
+}
 </style>
+@media (max-width: 391px) { } font-family: Sarabun; font-weight: 400; font-size:
+12px; leading-trim: NONE; line-height: 16px; letter-spacing: 0%; text-align:
+right; vertical-align: middle;
