@@ -152,7 +152,7 @@
                             outlined
                             color="grey"
                             @click="removeRow(row.id)"
-                            class="px-0 btn-delete"
+                            class="px-0 btn-delete  btn-delete-border"
                           >
                             <v-icon color="grey" class="icon-delete"
                               >mdi-trash-can-outline</v-icon
@@ -262,10 +262,12 @@ export default {
   height: 32px !important;
   min-width: 32px !important;
 }
+.btn-delete-border {
+  border-color: #e1e1e1 !important; /* สีแดง */
+}
 .icon-delete {
   font-size: 18px !important;
 }
-
 .height-20px {
   height: 20px !important;
 }
@@ -341,5 +343,17 @@ export default {
 
 .bg-header{
   background-color: #f0f9ee;
+}
+</style>
+<style>
+.v-application--wrap {
+  flex: 1 1 auto;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  max-width: 100%;
+  position: relative;
+  background-color: #f2f2f2;
 }
 </style>

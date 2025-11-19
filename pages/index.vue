@@ -322,7 +322,7 @@
                                 <v-text-field
                                   label="ชื่อเล่น (ภาษาไทย)"
                                   :rules="[
-                                    (v) => !!v || 'กรุณากรอกนามสกุล',
+                                    (v) => !!v || 'กรุณากรอกชื่อเล่น',
                                     (v) =>
                                       /^[ก-๙\s]+$/.test(v) ||
                                       'กรุณากรอกเฉพาะตัวอักษรภาษาไทย',
@@ -394,7 +394,7 @@
                                 <v-text-field
                                   label="Name"
                                   :rules="[
-                                    (v) => !!v || 'Please input name',
+                                    (v) => !!v || 'Please input Name',
                                     (v) =>
                                       /^[A-Za-z\\s]+$/.test(v) ||
                                       'Please input English letters only',
@@ -610,7 +610,7 @@
                                       v-on="on"
                                       class="date_box input-box"
                                       :rules="[
-                                        (v) => !!v || 'กรุณาระบุวันเกิด',
+                                        (v) => !!v || 'กรุณาระบุวันที่ออกบัตร',
                                       ]"
                                       required
                                     >
@@ -667,7 +667,7 @@
                                       v-bind="attrs"
                                       v-on="on"
                                       :rules="[
-                                        (v) => !!v || 'กรุณาระบุวันเกิด',
+                                        (v) => !!v || 'กรุณาระบุวันที่หมดอายุ',
                                       ]"
                                       required
                                     >
@@ -775,7 +775,7 @@
                               outlined
                               dense
                               hide-details="auto"
-                              class="mb-26px grey lighten-4 text-center input-box"
+                              class="mb-26px grey lighten-4 text-center input-box input-box-2"
                               placeholder="0"
                               readonly
                             />
@@ -785,7 +785,7 @@
                               <p class="custom-label">ปี</p>
                             </v-row>
                             <v-row>
-                              <p class="custom-label">Years</p>
+                              <p class="text-caption grey--text lighten-5">Years</p>
                             </v-row>
                           </v-col>
                         </v-row>
@@ -1128,7 +1128,6 @@
 export default {
   layout: "form",
   mounted() {
-    // ✅ DEEP COPY - No reference to store
     const storeData = this.$store.state.pages;
     if ("email" in storeData[6]) {
       const storeDataCopy = JSON.parse(JSON.stringify(storeData));
@@ -1339,7 +1338,7 @@ export default {
       const checkDigit = (11 - (sum % 11)) % 10;
       return checkDigit === parseInt(id.charAt(12));
     },
-    updateIssueDate(val) {
+    updateIssueDate(val) { 
       const d = new Date(val);
       const options = { day: "2-digit", month: "2-digit", year: "numeric" };
       this.formData.formattedIssueDate = d.toLocaleDateString("th-TH", options);
@@ -1682,6 +1681,10 @@ export default {
   margin-bottom: 0px !important;
 }
 
+::v-deep .input-box .v-messages {
+  margin-top: 3px !important;
+}
+
 .remove-message >>> .v-messages {
   display: none !important;
 }
@@ -1730,6 +1733,12 @@ export default {
   border-width: 2px !important;
 }
 
+::v-deep .input-box-2.v-input--is-focused fieldset {
+  border-color: #e6e6e6 !important;
+  /* เขียวเข้ม */
+  border-width: 1px !important;
+}
+
 ::v-deep .custom-radio .v-icon {
   color: #4caf50 !important;
   /* สีของจุดวงกลม */
@@ -1751,5 +1760,17 @@ export default {
 
 .clickable {
   cursor: pointer;
+}
+</style>
+<style>
+.v-application--wrap {
+  flex: 1 1 auto;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  max-width: 100%;
+  position: relative;
+  background-color: #f2f2f2;
 }
 </style>
