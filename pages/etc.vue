@@ -428,33 +428,11 @@
                       </v-row>
                       <v-row no-gutters>
                         <v-col cols="5" class="pt-0 pl-0 pr-md-4">
-<<<<<<< HEAD
-                          <v-select
-                            v-model="formData.howDidYouHear"
-                            :items="howto"
-                            multiple
-                            append-icon="mdi-chevron-down"
-                            append-icon-color="primary"
-                            item-text="label"
-                            item-value="value"
-                            outlined
-                            dense
-                            :rules="[(v) => !!v || '']"
-                            placeholder="เลือกข่าวสารการสมัครงาน"
-                            clearable
-                            :menu-props="{ maxHeight: 240 }"
-                            chips
-                            small-chips
-                            hide-details
-                            class="remove-message input-box input-select custom-height"
-                          >
-=======
                           <v-select v-model="formData.howDidYouHear" :items="howto" multiple
                             append-icon="mdi-chevron-down" item-text="label" item-value="value" outlined dense
                             :rules="[(v) => !!v || '']" placeholder="เลือกข่าวสารการสมัครงาน" clearable
                             :menu-props="{ maxHeight: 240 }" chips small-chips hide-details
                             class="remove-message input-box input-select custom-height custom-multi-select-inline">
->>>>>>> e5be87a91d2d2c460de77ded752684596274320b
                             <template v-slot:selection="{ item, index }">
                               <!-- แสดง chip สูงสุด 5 ตัว -->
                               <v-chip v-if="index < 5" small color="green lighten-5" text-color="primary"
@@ -581,7 +559,6 @@
                 <span>ประเภทเอกสาร :</span>
               </v-col>
               <v-col cols="9">
-<<<<<<< HEAD
                 <v-select
                   color="grey lighten-2"
                   v-model="documentType"
@@ -594,11 +571,6 @@
                   class="custom-height input-select input-select-2"
                   placeholder="กรุณาเลือกประเภทเอกสาร"
                 >
-=======
-                <v-select color="grey lighten-2" v-model="documentType" :items="documentTypes"
-                  append-icon="mdi-chevron-down" append-icon-color="primary" outlined dense hide-details
-                  class="custom-height input-select input-select-2" placeholder="กรุณาเลือกประเภทเอกสาร">
->>>>>>> e5be87a91d2d2c460de77ded752684596274320b
                 </v-select>
               </v-col>
             </v-row>
@@ -1119,12 +1091,7 @@ export default {
 }
 
 ::v-deep .input-select .v-list-item:hover {
-<<<<<<< HEAD
   background-color: #f0f9ee !important;
-=======
-  background-color:
-    #f0f9ee !important;
->>>>>>> e5be87a91d2d2c460de77ded752684596274320b
 }
 
 ::v-deep .input-box label {
